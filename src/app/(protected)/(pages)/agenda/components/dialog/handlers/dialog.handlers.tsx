@@ -28,8 +28,8 @@ const startDateSelectHandler = ({
 };
 
 const submitHandler = async ({
-  form,
-  setLoading,
+  // form,
+  // setLoading,
   values,
 }: SubmitHandlerProps): Promise<void> => {
   console.log("submitHandler", values);
