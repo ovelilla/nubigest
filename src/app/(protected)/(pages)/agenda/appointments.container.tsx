@@ -11,7 +11,7 @@ const AppointmentsContainer = () => {
   const {
     appointmentForm,
     calendarRef,
-    datesState,
+    // datesState,
     openDialog,
     openSearchBar,
     openSidebar,
