@@ -1,52 +1,84 @@
 // Vendors
-import NextAuth from "next-auth";
 import { NextResponse } from "next/server";
+import createMiddleware from "next-intl/middleware";
 // Config
-import authConfig from "@/auth.config";
+import { auth } from "@/auth";
+import { routing } from "@/i18n/routing";
 // Routes
 import {
   API_PREFIX,
   AUTH_ROUTES,
   DEFAULT_LOGIN_REDIRECT,
   PUBLIC_ROUTES,
-} from "@/routes";
+  SUPPORTED_LOCALES,
+} from "@/constants";
 
-const { auth } = NextAuth(authConfig);
+const intlMiddleware = createMiddleware(routing);
+
+const getPreferredLocale = (req: Request): string => {
+  const acceptLanguage = req.headers.get("accept-language") || "";
+  return (
+    acceptLanguage
+      .split(",")
+      .map((lang) => lang.split(";")[0])
+      .find((lang) => new Set(SUPPORTED_LOCALES).has(lang)) ||
+    routing.defaultLocale
+  );
+};
+
+const getLocaleFromPath = (pathname: string): string | null => {
+  const localeRegex = new RegExp(`^/(${routing.locales.join("|")})(?=/|$)`);
+  const match = pathname.match(localeRegex);
+  return match ? match[1] : null;
+};
+
+const removeLocaleFromPath = (pathname: string, locale: string): string =>
+  pathname.replace(new RegExp(`^/${locale}`), "") || "/";
 
 export default auth((req) => {
-  const { nextUrl } = req;
-  const { pathname } = nextUrl;
+  const { pathname, search } = req.nextUrl;
 
-  const isLoggedIn = !!req.auth;
+  if (pathname.startsWith("/_next/") || pathname.includes(".")) {
+    return NextResponse.next();
+  }
+
+  const locale = getLocaleFromPath(pathname) || getPreferredLocale(req);
+  const pathWithoutLocale = removeLocaleFromPath(pathname, locale);
+
   const isApiRoute = pathname.startsWith(API_PREFIX);
-  const isPublicRoute = PUBLIC_ROUTES.includes(pathname);
-  const isAuthRoute = AUTH_ROUTES.includes(pathname);
+  const isAuthRoute = new Set(AUTH_ROUTES).has(pathWithoutLocale);
+  const isPublicRoute = new Set(PUBLIC_ROUTES).has(pathWithoutLocale);
+  const isLoggedIn = !!req.auth;
 
   if (isApiRoute) {
-    const params = new URLSearchParams(nextUrl.search);
+    const params = new URLSearchParams(search);
     const error = params.get("error");
 
     if (error) {
-      return Response.redirect(new URL(`/login?error=${error}`, nextUrl));
+      return NextResponse.redirect(
+        new URL(`/${locale}/login?error=${error}`, req.nextUrl),
+      );
     }
     return NextResponse.next();
   }
 
   if (isAuthRoute && isLoggedIn) {
-    return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+    return NextResponse.redirect(
+      new URL(`/${locale}${DEFAULT_LOGIN_REDIRECT}`, req.nextUrl),
+    );
   }
 
   if (isAuthRoute && !isLoggedIn) {
-    return NextResponse.next();
+    return intlMiddleware(req);
   }
 
   if (!isLoggedIn && !isPublicRoute) {
-    return Response.redirect(new URL("/login", nextUrl));
+    return NextResponse.redirect(new URL(`/${locale}/login`, req.nextUrl));
   }
 
-  return NextResponse.next();
+  return intlMiddleware(req);
 });
 
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };

@@ -6,7 +6,7 @@ import type { NextAuthConfig } from "next-auth";
 // Libs
 import { prisma } from "./lib/prisma";
 // Schemas
-import { loginSchema } from "./app/(auth)/(pages)/login/schemas/login.schema";
+import { loginSchema } from "./app/[locale]/(auth)/(pages)/login/schemas/login.schema";
 
 class CustomAuthError extends CredentialsSignin {
   constructor(code: string) {
