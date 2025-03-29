@@ -1,7 +1,7 @@
 // Constants
 import { LOCALES, PATHNAMES } from "@/i18n/constants/i18n.constants";
 // Types
-import type { Locale, Pathname } from "@/i18n/types/routing.types";
+import type { Locale, Pathname } from "@/i18n/types/i18n.types";
 
 const createOriginalPathMap = (): Map<string, string> => {
   const originalPathMap = new Map();

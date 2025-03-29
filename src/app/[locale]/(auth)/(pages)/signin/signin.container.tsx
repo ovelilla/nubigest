@@ -1,6 +1,4 @@
 "use client";
-// Vendors
-import { useTranslations } from "next-intl";
 // Components
 import { ButtonLink } from "@/components/ui/button-link";
 import { ButtonLoading } from "@/components/ui/button-loading";
