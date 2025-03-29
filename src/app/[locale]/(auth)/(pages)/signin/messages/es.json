@@ -1,0 +1,92 @@
+{
+  "signin": {
+    "actions": {
+      "signin": {
+        "error": {
+          "invalidFields": "Campos inválidos",
+          "invalidCredentials": "Credenciales inválidas",
+          "invalidOtp": "Código de verificación inválido",
+          "expiredOtp": "El código de verificación ha expirado",
+          "generic": "Ha ocurrido un error inesperado"
+        },
+        "success": {
+          "verificationEmail": "Email de verificación enviado"
+        }
+      }
+    },
+    "handlers": {
+      "submit": {
+        "error": {
+          "generic": "Ha ocurrido un error inesperado"
+        }
+      },
+      "oauth": {
+        "error": {
+          "generic": "Ha ocurrido un error inesperado"
+        }
+      }
+    },
+    "metadata": {
+      "title": "Iniciar sesión",
+      "description": "Inicia sesión en tu cuenta"
+    },
+    "page": {
+      "card": {
+        "header": {
+          "title": "Iniciar sesión",
+          "description": "¡Bienvenido de nuevo! Por favor, inicia sesión en tu cuenta."
+        },
+        "content": {
+          "separator": "O inicia sesión con correo electrónico"
+        },
+        "footer": {
+          "registerLink": {
+            "label": "¿No tienes una cuenta? Regístrate"
+          }
+        }
+      },
+      "form": {
+        "otp": {
+          "label": "Código de verificación"
+        },
+        "email": {
+          "label": "Correo electrónico",
+          "placeholder": "john.doe@example.com"
+        },
+        "password": {
+          "label": "Contraseña",
+          "placeholder": "******",
+          "toggle": {
+            "show": "Mostrar contraseña",
+            "hide": "Ocultar contraseña"
+          }
+        },
+        "forgotLink": {
+          "label": "¿Olvidaste tu contraseña?"
+        },
+        "submitButton": {
+          "signinLabel": "Iniciar sesión",
+          "otpLabel": "Verificar"
+        }
+      },
+      "oauth": {
+        "google": {
+          "label": "Continuar con Google"
+        }
+      }
+    },
+    "schemas": {
+      "signin": {
+        "email": {
+          "required": "El correo electrónico es obligatorio",
+          "invalid": "El correo electrónico es inválido"
+        },
+        "password": {
+          "required": "La contraseña es obligatoria",
+          "min": "La contraseña debe tener al menos 6 caracteres",
+          "max": "La contraseña no puede tener más de 32 caracteres"
+        }
+      }
+    }
+  }
+}

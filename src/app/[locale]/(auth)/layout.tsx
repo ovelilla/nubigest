@@ -1,10 +1,10 @@
+// Layouts
+import { AuthLayout as AuthLayoutWrapper } from "./layouts/auth/auth.layout";
 // Types
-import { AuthLayoutProps } from "./types/layout.types";
+import type { AuthLayoutProps } from "./layouts/auth/types/auth.types";
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
-  return (
-    <div className="flex grow justify-center md:items-center">{children}</div>
-  );
+  return <AuthLayoutWrapper>{children}</AuthLayoutWrapper>;
 };
 
 export default AuthLayout;

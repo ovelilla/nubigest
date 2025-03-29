@@ -1,6 +1,6 @@
 // Vendors
-import { auth } from "@/auth";
-// Layout
+import { auth } from "@/lib/auth";
+// Layouts
 import { DashboardLayout } from "./layouts/dashboard/dashboard.layout";
 // Styles
 import "./layout.css";

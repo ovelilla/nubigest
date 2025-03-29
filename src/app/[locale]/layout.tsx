@@ -1,12 +1,10 @@
 // Vendors
-import { Analytics } from "@vercel/analytics/react";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { SessionProvider } from "next-auth/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 // Auth
-import { auth } from "../../auth";
+import { auth } from "@/lib/auth";
 // Components
 import { Toaster } from "@/components/ui/sonner";
 // Fonts
@@ -34,10 +32,6 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
 
   return {
     title: locale === "es" ? "Nubigest ERP" : "Nubigest ERP",
@@ -78,8 +72,6 @@ async function RootLayout({
             </ThemeProvider>
           </NextIntlClientProvider>
           <Toaster />
-          <Analytics />
-          <SpeedInsights />
         </body>
       </html>
     </SessionProvider>

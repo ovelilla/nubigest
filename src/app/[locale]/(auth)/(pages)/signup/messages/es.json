@@ -1,0 +1,104 @@
+{
+  "signup": {
+    "actions": {
+      "signup": {
+        "error": {
+          "invalidFields": "Campos inválidos",
+          "emailAlreadyExists": "El correo electrónico ya está en uso"
+        },
+        "success": {
+          "verificationEmail": "Email de verificación enviado"
+        }
+      }
+    },
+    "handlers": {
+      "submit": {
+        "error": {
+          "generic": "Ha ocurrido un error inesperado"
+        }
+      },
+      "oauth": {
+        "error": {
+          "generic": "Ha ocurrido un error inesperado"
+        }
+      }
+    },
+    "metadata": {
+      "title": "Registrarse",
+      "description": "Regístrate para crear una cuenta"
+    },
+    "page": {
+      "card": {
+        "header": {
+          "title": "Registrarse",
+          "description": "Crea una cuenta para acceder a todas las funciones."
+        },
+        "content": {
+          "separator": "O regístrate con correo electrónico"
+        },
+        "footer": {
+          "signupLink": {
+            "label": "¿Ya tienes una cuenta? Iniciar sesión"
+          }
+        }
+      },
+      "form": {
+        "name": {
+          "label": "Nombre",
+          "placeholder": "Introduce tu nombre"
+        },
+        "email": {
+          "label": "Correo electrónico",
+          "placeholder": "p. ej., nombre@ejemplo.com"
+        },
+        "password": {
+          "label": "Contraseña",
+          "placeholder": "Introduce una contraseña segura",
+          "toggle": {
+            "show": "Mostrar contraseña",
+            "hide": "Ocultar contraseña"
+          },
+          "rules": {
+            "length": "Mínimo 6 caracteres",
+            "number": "Un número",
+            "special": "Un carácter especial",
+            "uppercase": "Una letra mayúscula"
+          }
+        },
+        "submitButton": {
+          "label": "Registrarse"
+        }
+      },
+      "oauth": {
+        "google": {
+          "label": "Registrarse con Google"
+        }
+      }
+    },
+    "schemas": {
+      "signup": {
+        "name": {
+          "required": "El nombre es obligatorio",
+          "min": "El nombre debe tener al menos 2 caracteres",
+          "max": "El nombre no puede tener más de 64 caracteres"
+        },
+        "email": {
+          "required": "El correo electrónico es obligatorio",
+          "invalid": "El correo electrónico es inválido"
+        },
+        "password": {
+          "required": "La contraseña es obligatoria",
+          "min": "La contraseña debe tener al menos 6 caracteres",
+          "max": "La contraseña no puede tener más de 32 caracteres",
+          "rules": {
+            "length": "La contraseña debe tener al menos 6 caracteres",
+            "lowercase": "La contraseña debe contener al menos una letra minúscula",
+            "number": "La contraseña debe contener al menos un número",
+            "special": "La contraseña debe contener al menos un carácter especial",
+            "uppercase": "La contraseña debe contener al menos una letra mayúscula"
+          }
+        }
+      }
+    }
+  }
+}

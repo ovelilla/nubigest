@@ -5,7 +5,7 @@ import { useState } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Sidebar } from "./components/sidebar/sidebar.component";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { ToggleTheme } from "./components/toggle-theme/toggle-theme.component";
+import { ToggleTheme } from "@/components/toggle-theme/toggle-theme.component";
 import { UserNav } from "./components/user-nav/user-nav";
 // Types
 import { DashboardProps } from "./types/dashboard.types";

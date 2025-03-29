@@ -1,5 +1,5 @@
-type AuthLayoutProps = {
+type LayoutProps = {
   children: React.ReactNode;
 };
 
-export type { AuthLayoutProps };
+export type { LayoutProps };

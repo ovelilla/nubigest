@@ -1,35 +1,36 @@
 "use client";
 // Vendors
-import Link from "next/link";
+import Link, { type LinkProps } from "next/link";
 // Components
 import { Button } from "./button";
 // Types
 import { ButtonProps } from "./button";
+// Libs
+import { cn } from "@/lib/utils";
 
-type ButtonLinkProps = ButtonProps & {
-  fullWidth?: boolean;
-  href: string;
-  label: string;
+type ButtonLinkProps = {
+  buttonProps?: Omit<ButtonProps, "asChild" | "children" | "className">;
+  linkProps: Omit<LinkProps, "children">;
+  className?: string;
+  children: React.ReactNode;
 };
 
-const ButtonLink: React.FC<ButtonLinkProps> = ({
-  fullWidth = false,
-  href,
-  label,
-  size = "default",
-  variant = "link",
+const ButtonLink = ({
+  buttonProps,
+  linkProps,
   className,
-  ...props
-}) => (
-  <Button
-    variant={variant}
-    size={size}
-    className={`${fullWidth ? "w-full" : ""} px-0 font-normal ${className}`}
-    asChild
-    {...props}
-  >
-    <Link href={href}>{label}</Link>
-  </Button>
-);
+  children,
+}: ButtonLinkProps) => {
+  return (
+    <Button
+      asChild
+      variant="link"
+      className={cn("px-0 font-normal", className)}
+      {...buttonProps}
+    >
+      <Link {...linkProps}>{children}</Link>
+    </Button>
+  );
+};
 
 export { ButtonLink };

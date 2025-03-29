@@ -1,4 +1,6 @@
+// Vendors
 import { v2 as cloudinary } from "cloudinary";
+// Types
 import type {
   UploadImageToCloudinaryProps,
   UploadImageToCloudinaryReturn,
@@ -36,7 +38,7 @@ const uploadImage = async ({
   try {
     const arrayBuffer = await file.arrayBuffer();
     const base64 = Buffer.from(arrayBuffer).toString("base64");
-    const dataURI = `data:image/jpeg;base64,${base64}`; // Ajusta según el tipo de imagen
+    const dataURI = `data:image/jpeg;base64,${base64}`;
 
     const result = await cloudinary.uploader.upload(dataURI, {
       folder,

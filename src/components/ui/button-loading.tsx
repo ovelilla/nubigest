@@ -7,33 +7,22 @@ import { LoaderCircle } from "lucide-react";
 import { ButtonProps } from "./button";
 
 type ButtonLoadingProps = ButtonProps & {
-  fullWidth?: boolean;
-  label: string;
-  loading: boolean;
-  showLabel?: boolean;
+  hideOnLoading?: boolean;
+  loading?: boolean;
 };
 
 const ButtonLoading: React.FC<ButtonLoadingProps> = ({
-  fullWidth = false,
-  label,
-  loading,
-  showLabel = false,
+  children,
+  className,
+  disabled,
+  hideOnLoading = false,
+  loading = false,
   ...props
 }) => {
-  const fullWidthClasses = fullWidth ? "w-full" : "";
-
-  const buttonContent = loading ? (
-    <>
-      <LoaderCircle className="mr-2 h-5 w-5 animate-spin" />
-      {showLabel && label}
-    </>
-  ) : (
-    label
-  );
-
   return (
-    <Button disabled={loading} className={fullWidthClasses} {...props}>
-      {buttonContent}
+    <Button disabled={loading || disabled} className={className} {...props}>
+      {loading && <LoaderCircle className="mr-2 h-5 w-5 animate-spin" />}
+      {!loading || !hideOnLoading ? children : null}
     </Button>
   );
 };

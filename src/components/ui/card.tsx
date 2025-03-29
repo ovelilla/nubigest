@@ -58,9 +58,9 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
 function CardSeparator({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div className={cn("flex items-center gap-4", className)}>
-      <div className="grow border-t border-gray-200"></div>
-      <span className="text-sm text-gray-500" {...props} />
-      <div className="grow border-t border-gray-200"></div>
+      <div className="grow border-t"></div>
+      <span className="text-muted-foreground text-sm" {...props} />
+      <div className="grow border-t"></div>
     </div>
   );
 }

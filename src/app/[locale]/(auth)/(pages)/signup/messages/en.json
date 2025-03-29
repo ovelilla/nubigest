@@ -1,0 +1,104 @@
+{
+  "signup": {
+    "actions": {
+      "signup": {
+        "error": {
+          "invalidFields": "Invalid fields",
+          "emailAlreadyExists": "The email address is already in use"
+        },
+        "success": {
+          "verificationEmail": "Verification email sent"
+        }
+      }
+    },
+    "handlers": {
+      "submit": {
+        "error": {
+          "generic": "An unexpected error has occurred"
+        }
+      },
+      "oauth": {
+        "error": {
+          "generic": "An unexpected error has occurred"
+        }
+      }
+    },
+    "metadata": {
+      "title": "Sign up",
+      "description": "Sign up to create an account"
+    },
+    "page": {
+      "card": {
+        "header": {
+          "title": "Sign up",
+          "description": "Create an account to access all features."
+        },
+        "content": {
+          "separator": "Or sign up with email"
+        },
+        "footer": {
+          "signupLink": {
+            "label": "Already have an account? Sign in"
+          }
+        }
+      },
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Enter your name"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "e.g., name@example.com"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Enter a strong password",
+          "toggle": {
+            "show": "Show password",
+            "hide": "Hide password"
+          },
+          "rules": {
+            "length": "6 characters minimum",
+            "number": "One number",
+            "special": "One special character",
+            "uppercase": "One uppercase letter"
+          }
+        },
+        "submitButton": {
+          "label": "Sign up"
+        }
+      },
+      "oauth": {
+        "google": {
+          "label": "Sign up with Google"
+        }
+      }
+    },
+    "schemas": {
+      "signup": {
+        "name": {
+          "required": "Name is required",
+          "min": "Name must be at least 2 characters long",
+          "max": "Name cannot be more than 64 characters long"
+        },
+        "email": {
+          "required": "Email is required",
+          "invalid": "Invalid email"
+        },
+        "password": {
+          "required": "Password is required",
+          "min": "Password must be at least 6 characters long",
+          "max": "Password cannot be more than 32 characters long",
+          "rules": {
+            "length": "Password must be at least 6 characters long",
+            "lowercase": "Password must contain at least one lowercase letter",
+            "number": "Password must contain at least one number",
+            "special": "Password must contain at least one special character",
+            "uppercase": "Password must contain at least one uppercase letter"
+          }
+        }
+      }
+    }
+  }
+}

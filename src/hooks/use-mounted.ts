@@ -1,22 +1,23 @@
+// Vendors
 import { useEffect, useState } from "react";
 
 type UseIsMountedReturn = {
-  mounted: boolean;
+  isMounted: boolean;
 };
 
 const useIsMounted = (): UseIsMountedReturn => {
-  const [mounted, setMounted] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
-    setMounted(true);
+    setIsMounted(true);
 
     return () => {
-      setMounted(false);
+      setIsMounted(false);
     };
   }, []);
 
   return {
-    mounted,
+    isMounted,
   };
 };
 
