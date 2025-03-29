@@ -7,7 +7,7 @@ const createOriginalPathMap = (): Map<string, string> => {
   const originalPathMap = new Map();
 
   Object.entries(PATHNAMES).forEach(([originalPath, translations]) => {
-    Object.entries(translations).forEach(([_, translatedPath]) => {
+    Object.entries(translations).forEach(([, translatedPath]) => {
       originalPathMap.set(translatedPath, originalPath);
     });
   });
