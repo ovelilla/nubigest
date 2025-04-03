@@ -10,7 +10,7 @@
       }
     },
     "emails": {
-      "verificationEmail": {
+      "verificationToken": {
         "subject": "Verifica tu dirección de correo electrónico",
         "content": {
           "previewText": "Verifica tu correo",
