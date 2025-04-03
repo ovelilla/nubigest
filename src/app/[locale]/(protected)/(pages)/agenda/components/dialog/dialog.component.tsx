@@ -99,11 +99,11 @@ const Dialog = ({ form, open, setOpen }: DialogProps) => {
           <ButtonLoading
             disabled={loading}
             form="appointment-form"
-            label="Crear"
             loading={loading}
-            showLabel={false}
             type="submit"
-          />
+          >
+            Crear
+          </ButtonLoading>
         </DialogFooter>
       </DialogContent>
     </DialogComponent>
