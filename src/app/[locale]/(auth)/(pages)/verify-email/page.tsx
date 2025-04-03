@@ -51,7 +51,7 @@ const VerifyEmailPage = async ({
         <CardDescription>{result.message}</CardDescription>
       </CardHeader>
       <CardFooter>
-        <ButtonLink linkProps={{ href: "/signin" }}>
+        <ButtonLink linkProps={{ href: "/signin", prefetch: false }}>
           {t("card.footer.signinLink.label")}
         </ButtonLink>
       </CardFooter>

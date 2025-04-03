@@ -61,8 +61,8 @@ const ResetPasswordContainer = () => {
                       <FormLabel htmlFor={field.name}>
                         {t("page.form.password.label")}
                       </FormLabel>
-                      <FormControl>
-                        <div className="relative">
+                      <div className="relative">
+                        <FormControl>
                           <Input
                             {...field}
                             autoComplete="new-password"
@@ -72,18 +72,18 @@ const ResetPasswordContainer = () => {
                             placeholder={t("page.form.password.placeholder")}
                             type={showPassword ? "text" : "password"}
                           />
-                          <ButtonTogglePassword
-                            aria-label={
-                              showPassword
-                                ? t("page.form.password.toggle.hide")
-                                : t("page.form.password.toggle.show")
-                            }
-                            disabled={loading}
-                            onClick={handleToggleShowPassword}
-                            showPassword={showPassword}
-                          />
-                        </div>
-                      </FormControl>
+                        </FormControl>
+                        <ButtonTogglePassword
+                          aria-label={
+                            showPassword
+                              ? t("page.form.password.toggle.hide")
+                              : t("page.form.password.toggle.show")
+                          }
+                          disabled={loading}
+                          onClick={handleToggleShowPassword}
+                          showPassword={showPassword}
+                        />
+                      </div>
                       <FormMessage />
                       <PasswordStrength value={field.value}>
                         <PasswordStrengthBar />

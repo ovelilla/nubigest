@@ -118,8 +118,8 @@ const SignUpContainer = () => {
                       <FormLabel htmlFor={field.name}>
                         {t("page.form.password.label")}
                       </FormLabel>
-                      <FormControl>
-                        <div className="relative">
+                      <div className="relative">
+                        <FormControl>
                           <Input
                             {...field}
                             autoComplete="new-password"
@@ -129,18 +129,18 @@ const SignUpContainer = () => {
                             placeholder={t("page.form.password.placeholder")}
                             type={showPassword ? "text" : "password"}
                           />
-                          <ButtonTogglePassword
-                            aria-label={
-                              showPassword
-                                ? t("page.form.password.toggle.hide")
-                                : t("page.form.password.toggle.show")
-                            }
-                            disabled={loading.status}
-                            onClick={handleToggleShowPassword}
-                            showPassword={showPassword}
-                          />
-                        </div>
-                      </FormControl>
+                        </FormControl>
+                        <ButtonTogglePassword
+                          aria-label={
+                            showPassword
+                              ? t("page.form.password.toggle.hide")
+                              : t("page.form.password.toggle.show")
+                          }
+                          disabled={loading.status}
+                          onClick={handleToggleShowPassword}
+                          showPassword={showPassword}
+                        />
+                      </div>
                       <FormMessage />
                       {field.value && (
                         <PasswordStrength value={field.value}>
@@ -176,7 +176,7 @@ const SignUpContainer = () => {
         </Form>
       </CardContent>
       <CardFooter>
-        <ButtonLink linkProps={{ href: "/signin" }}>
+        <ButtonLink linkProps={{ href: "/signin", prefetch: false }}>
           {t("page.card.footer.signupLink.label")}
         </ButtonLink>
       </CardFooter>
