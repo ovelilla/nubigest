@@ -32,17 +32,17 @@ const VerificationTokenEmail = async ({
         <Body className="m-0 bg-slate-50 p-4 font-sans">
           <Container className="max-w-lg rounded-lg bg-white p-8">
             <Section>
-              <Text className="text-3xl font-semibold text-slate-700">
+              <Text className="text-2xl font-medium text-slate-700">
                 {t("title")}
               </Text>
-              <Text className="text-lg text-slate-700">
+              <Text className="text-base text-slate-700">
                 {t("firstParagraph")}
               </Text>
             </Section>
 
             <Section className="mt-6">
               <Button
-                className="text-md rounded-md bg-slate-700 px-4 py-2 font-medium whitespace-nowrap text-white"
+                className="rounded-md bg-slate-700 px-4 py-2 text-base font-medium whitespace-nowrap text-white"
                 href={link}
               >
                 {t("button")}
@@ -50,14 +50,14 @@ const VerificationTokenEmail = async ({
             </Section>
 
             <Section className="mt-6">
-              <Text className="text-lg text-slate-700">
+              <Text className="text-base text-slate-700">
                 {t("secondParagraph")} <br />
                 <Link href={link}>{link}</Link>
               </Text>
             </Section>
 
             <Section className="mt-6">
-              <Text className="text-lg text-slate-700">
+              <Text className="text-base text-slate-700">
                 {t("thirdParagraph")} <br />
                 <span className="font-bold">{email}</span>
               </Text>

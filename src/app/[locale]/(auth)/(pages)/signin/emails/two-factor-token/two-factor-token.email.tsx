@@ -25,10 +25,10 @@ const TwoFactorTokenEmail = async ({ token }: TwoFactorTokenProps) => {
         <Body className="m-0 bg-slate-50 p-4 font-sans">
           <Container className="max-w-lg rounded-lg bg-white p-8">
             <Section>
-              <Text className="text-3xl font-semibold text-slate-700">
+              <Text className="text-2xl font-semibold text-slate-700">
                 {t("title")}
               </Text>
-              <Text className="text-lg text-slate-700">
+              <Text className="text-base text-slate-700">
                 {t("firstParagraph")}
               </Text>
             </Section>
@@ -37,13 +37,13 @@ const TwoFactorTokenEmail = async ({ token }: TwoFactorTokenProps) => {
               <Text className="text-center text-5xl font-medium tracking-widest text-slate-700">
                 {token}
               </Text>
-              <Text className="text-center text-lg text-slate-500">
+              <Text className="text-center text-base text-slate-500">
                 {t("secondParagraph")}
               </Text>
             </Section>
 
             <Section className="mt-6">
-              <Text className="text-lg text-slate-700">
+              <Text className="text-base text-slate-700">
                 {t("thirdParagraph")}
               </Text>
             </Section>
