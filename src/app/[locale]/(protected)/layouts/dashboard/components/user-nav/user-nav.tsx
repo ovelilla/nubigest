@@ -65,7 +65,7 @@ const UserNav = ({ session }: UserNavProps) => {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/logout">
+          <Link href="/signout">
             <LogOut />
             Cerrar sesión
           </Link>

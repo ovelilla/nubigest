@@ -1,13 +1,13 @@
 const API_PREFIX = "/api";
 const AUTH_ROUTES = [
-  "/error",
+  "/auth-error",
+  "/forgot-password",
+  "/reset-password",
   "/signin",
-  "/new-password",
   "/signup",
-  "/reset",
-  "/two-factor",
+  "/verify-email",
 ];
 const DEFAULT_SIGNIN_REDIRECT = "/dashboard";
-const PUBLIC_ROUTES = ["/", "/verification"];
+const PUBLIC_ROUTES = ["/"];
 
 export { API_PREFIX, AUTH_ROUTES, DEFAULT_SIGNIN_REDIRECT, PUBLIC_ROUTES };

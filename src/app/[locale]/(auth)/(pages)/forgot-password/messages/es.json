@@ -1,0 +1,67 @@
+{
+  "forgotPassword": {
+    "actions": {
+      "forgotPassword": {
+        "error": {
+          "invalidFields": "Por favor, introduce una dirección de correo electrónico válida.",
+          "userNotFound": "No se ha encontrado ninguna cuenta asociada a ese correo."
+        },
+        "success": "Te hemos enviado un correo con instrucciones para restablecer tu contraseña."
+      }
+    },
+    "emails": {
+      "passwordResetToken": {
+        "subject": "Restablece tu contraseña",
+        "content": {
+          "previewText": "Restablece tu contraseña",
+          "title": "Restablece tu contraseña",
+          "button": "Restablecer contraseña",
+          "firstParagraph": "Si solicitaste restablecer tu contraseña, haz clic en el botón de abajo. Este enlace caducará en 1 hora.",
+          "secondParagraph": "O copia y pega el siguiente enlace en tu navegador:",
+          "footer": "Si no solicitaste este mensaje, puedes ignorarlo con seguridad."
+        }
+      }
+    },
+    "handlers": {
+      "submit": {
+        "error": {
+          "generic": "Ha ocurrido un error inesperado."
+        }
+      }
+    },
+    "metadata": {
+      "title": "¿Olvidaste tu contraseña?",
+      "description": "Recupera tu cuenta restableciendo tu contraseña."
+    },
+    "page": {
+      "card": {
+        "header": {
+          "title": "¿Olvidaste tu contraseña?",
+          "description": "Introduce tu correo electrónico y te enviaremos instrucciones para restablecerla."
+        },
+        "footer": {
+          "signinLink": {
+            "label": "¿Recordaste tu contraseña? Inicia sesión"
+          }
+        }
+      },
+      "form": {
+        "email": {
+          "label": "Correo electrónico",
+          "placeholder": "p. ej., nombre@ejemplo.com"
+        },
+        "submitButton": {
+          "label": "Enviar enlace de restablecimiento"
+        }
+      }
+    },
+    "schemas": {
+      "forgotPassword": {
+        "email": {
+          "required": "El correo electrónico es obligatorio.",
+          "invalid": "El correo electrónico no es válido."
+        }
+      }
+    }
+  }
+}

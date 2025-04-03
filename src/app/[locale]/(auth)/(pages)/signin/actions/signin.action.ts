@@ -7,30 +7,31 @@ import { prisma } from "@/lib/prisma";
 import { signIn } from "@/lib/auth";
 // Schemas
 import { getSignInSchema } from "../schemas/signin.schema";
+// Services
+import { generateVerificationToken } from "@/app/[locale]/(auth)/(pages)/signup/actions/services/generate-verification-token.service";
+import { sendVerificationTokenEmail } from "@/app/[locale]/(auth)/(pages)/signup/actions/services/send-verification-token-email.service";
+import { generateTwoFactorToken } from "./services/generate-two-factor-token.service";
+import { sendTwoFactorTokenEmail } from "./services/send-two-factor-token-email.service";
+
 // Types
 import type {
   SignInActionProps,
   SignInActionReturn,
 } from "./types/signin.action.types";
-// Utils
-import { generateTwoFactorToken } from "@/app/[locale]/(auth)/utils/token/generate-two-factor-token.util";
-import { generateVerificationToken } from "@/app/[locale]/(auth)/utils/token/generate-verification-token.util";
-import { sendTwoFactorAuthenticationEmail } from "@/app/[locale]/(auth)/utils/email/send-two-factor-authentication-email.util";
-import { sendVerificationTokenEmail } from "@/app/[locale]/(auth)/utils/email/send-verification-token-email.util";
 
 const signInAction = async ({
   values,
-}: SignInActionProps): Promise<SignInActionReturn | undefined> => {
-  const t = {
-    schema: await getTranslations("signin.schemas.signin"),
-    action: await getTranslations("signin.actions.signin"),
-  };
+}: SignInActionProps): Promise<SignInActionReturn> => {
+  const t = await getTranslations("signin");
 
-  const signInSchema = getSignInSchema(t.schema);
+  const signInSchema = getSignInSchema(t);
   const validatedFields = signInSchema.safeParse(values);
 
   if (!validatedFields.success) {
-    return { error: t.action("error.invalidFields") };
+    return {
+      status: "error",
+      message: t("actions.signin.error.invalidFields"),
+    };
   }
 
   const { email, password, otp } = validatedFields.data;
@@ -46,30 +47,41 @@ const signInAction = async ({
     },
   });
 
-  if (!existingUser?.email || !existingUser?.password) {
-    return { error: t.action("error.invalidCredentials") };
+  if (!existingUser || !existingUser.password) {
+    return {
+      status: "error",
+      message: t("actions.signin.error.invalidCredentials"),
+    };
   }
 
   if (!existingUser.emailVerified) {
-    const verificationToken = await generateVerificationToken(email);
+    const verificationToken = await generateVerificationToken({ email });
 
     await sendVerificationTokenEmail({
       email: verificationToken.email,
       token: verificationToken.token,
     });
 
-    return { success: t.action("success.verificationEmail") };
+    return {
+      status: "verificationRequired",
+      message: t("actions.signin.intermediate.verificationRequired"),
+    };
   }
 
   if (existingUser.isTwoFactorEnabled && existingUser.email && !otp) {
-    const twoFactorToken = await generateTwoFactorToken(existingUser.email);
+    const twoFactorToken = await generateTwoFactorToken({
+      email: existingUser.email,
+    });
 
-    await sendTwoFactorAuthenticationEmail({
+    await sendTwoFactorTokenEmail({
       email: twoFactorToken.email,
       token: twoFactorToken.token,
     });
 
-    return { twoFactor: true };
+    return {
+      status: "twoFactorRequired",
+      message: t("actions.signin.intermediate.twoFactorRequired"),
+    };
   }
 
   if (existingUser.isTwoFactorEnabled && existingUser.email && otp) {
@@ -79,17 +91,17 @@ const signInAction = async ({
     });
 
     if (!twoFactorToken) {
-      return { error: t.action("error.invalidOtp") };
+      return { status: "error", message: t("actions.signin.error.invalidOtp") };
     }
 
     if (twoFactorToken.token !== otp) {
-      return { error: t.action("error.invalidOtp") };
+      return { status: "error", message: t("actions.signin.error.invalidOtp") };
     }
 
     const hasExpired = new Date(twoFactorToken.expires) < new Date();
 
     if (hasExpired) {
-      return { error: t.action("error.expiredOtp") };
+      return { status: "error", message: t("actions.signin.error.expiredOtp") };
     }
 
     await prisma.twoFactorToken.delete({
@@ -120,13 +132,24 @@ const signInAction = async ({
       password,
       redirect: false,
     });
+
+    return {
+      status: "success",
+      message: t("actions.signin.success"),
+    };
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
-          return { error: t.action("error.invalidCredentials") };
+          return {
+            status: "error",
+            message: t("actions.signin.error.invalidCredentials"),
+          };
         default:
-          return { error: t.action("error.generic") };
+          return {
+            status: "error",
+            message: t("actions.signin.error.generic"),
+          };
       }
     }
 

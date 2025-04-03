@@ -28,7 +28,7 @@ export default {
         password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
-        const t = await getTranslations("signin.schemas.signin");
+        const t = await getTranslations("signin");
         const loginSchema = getSignInSchema(t);
 
         const { email, password } = await loginSchema.parseAsync(credentials);

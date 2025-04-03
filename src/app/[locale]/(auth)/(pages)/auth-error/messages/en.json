@@ -1,0 +1,21 @@
+{
+  "authError": {
+    "metadata": {
+      "title": "Authentication error",
+      "description": "An error occurred during the authentication process"
+    },
+    "page": {
+      "card": {
+        "header": {
+          "title": "Something went wrong",
+          "description": "We couldn't complete your authentication. Please try again."
+        },
+        "footer": {
+          "registerLink": {
+            "label": "Return to sign in"
+          }
+        }
+      }
+    }
+  }
+}

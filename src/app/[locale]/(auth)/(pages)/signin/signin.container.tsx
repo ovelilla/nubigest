@@ -161,7 +161,7 @@ const SignInContainer = () => {
                   />
                   <ButtonLink
                     className="h-8 self-start"
-                    linkProps={{ href: "/reset" }}
+                    linkProps={{ href: "/forgot-password" }}
                   >
                     {t("page.form.forgotLink.label")}
                   </ButtonLink>

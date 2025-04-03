@@ -1,0 +1,67 @@
+{
+  "forgotPassword": {
+    "actions": {
+      "forgotPassword": {
+        "error": {
+          "invalidFields": "Please enter a valid email address.",
+          "userNotFound": "We couldn’t find an account associated with that email."
+        },
+        "success": "We’ve sent you an email with instructions to reset your password."
+      }
+    },
+    "emails": {
+      "passwordResetToken": {
+        "subject": "Reset your password",
+        "content": {
+          "previewText": "Reset your password",
+          "title": "Reset your password",
+          "button": "Reset your password",
+          "firstParagraph": "If you requested a password reset, click the button below. This link will expire in 1 hour.",
+          "secondParagraph": "Or copy and paste the following link into your browser:",
+          "footer": "If you didn’t request this, you can safely ignore this email."
+        }
+      }
+    },
+    "handlers": {
+      "submit": {
+        "error": {
+          "generic": "An unexpected error has occurred."
+        }
+      }
+    },
+    "metadata": {
+      "title": "Forgot your password?",
+      "description": "Recover your account by resetting your password."
+    },
+    "page": {
+      "card": {
+        "header": {
+          "title": "Forgot your password?",
+          "description": "Enter your email and we'll send you instructions to reset it."
+        },
+        "footer": {
+          "signinLink": {
+            "label": "Remembered your password? Sign in"
+          }
+        }
+      },
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "e.g., name@example.com"
+        },
+        "submitButton": {
+          "label": "Send reset link"
+        }
+      }
+    },
+    "schemas": {
+      "forgotPassword": {
+        "email": {
+          "required": "Email is required.",
+          "invalid": "Please enter a valid email address."
+        }
+      }
+    }
+  }
+}

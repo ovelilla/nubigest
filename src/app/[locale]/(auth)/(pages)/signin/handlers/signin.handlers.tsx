@@ -45,27 +45,31 @@ const submitHandler = async ({
   setLoading({ provider: "credentials", status: true });
 
   try {
-    const { error, success, twoFactor } =
-      (await signInAction({ values })) ?? {};
+    const result = await signInAction({ values });
 
-    if (error) {
-      toast.error(error);
+    if (result.status === "error") {
+      toast.error(result.message);
       form.setValue("password", "");
       return;
     }
 
-    if (success) {
-      toast.success(success);
+    if (result.status === "success") {
+      toast.success(result.message);
       form.reset();
+      router.push(DEFAULT_SIGNIN_REDIRECT);
       return;
     }
 
-    if (twoFactor) {
+    if (result.status === "verificationRequired") {
+      toast.info(result.message);
+      return;
+    }
+
+    if (result.status === "twoFactorRequired") {
+      toast.info(result.message);
       setShowTwoFactor(true);
       return;
     }
-
-    router.push(DEFAULT_SIGNIN_REDIRECT);
   } catch (error) {
     console.error("Error in signInAction", error);
     toast.error(t("handlers.submit.error.generic"));

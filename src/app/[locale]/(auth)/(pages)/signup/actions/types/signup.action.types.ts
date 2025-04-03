@@ -5,9 +5,16 @@ type SignUpActionProps = {
   values: SignUpSchema;
 };
 
-type SignUpActionReturn = {
-  error?: string;
-  success?: string;
+type SignUpSuccess = {
+  status: "success";
+  message: string;
 };
+
+type SignUpError = {
+  status: "error";
+  message: string;
+};
+
+type SignUpActionReturn = SignUpSuccess | SignUpError;
 
 export type { SignUpActionProps, SignUpActionReturn };

@@ -43,16 +43,18 @@ const submitHandler = async ({
   setLoading({ provider: "credentials", status: true });
 
   try {
-    const { error, success } = (await signUpAction({ values })) ?? {};
+    const result = await signUpAction({ values });
 
-    if (error) {
-      toast.error(error);
+    if (result.status === "error") {
+      toast.error(result.message);
       form.setValue("password", "");
+      return;
     }
 
-    if (success) {
-      toast.success(success);
+    if (result.status === "success") {
+      toast.success(result.message);
       form.reset();
+      return;
     }
   } catch (error) {
     console.error("Error in submitHandler", error);
@@ -83,8 +85,8 @@ const SignUpHandlers = ({
       submitHandler({
         form,
         setLoading,
-        values,
         t,
+        values,
       }),
     handleToggleShowPassword: () =>
       toggleShowPasswordHandler({ setShowPassword, showPassword }),

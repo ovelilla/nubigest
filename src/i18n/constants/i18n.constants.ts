@@ -8,6 +8,21 @@ const PATHNAMES = {
   "/signup": {
     es: "/registrarse",
   },
+  "/forgot-password": {
+    es: "/recuperar-contrasena",
+  },
+  "/reset-password": {
+    es: "/restablecer-contrasena",
+  },
+  "/verify-email": {
+    es: "/verificar-correo",
+  },
+  "/signout": {
+    es: "/cerrar-sesion",
+  },
+  "/auth-error": {
+    es: "/error-autenticacion",
+  },
   "/dashboard": {
     es: "/inicio",
   },

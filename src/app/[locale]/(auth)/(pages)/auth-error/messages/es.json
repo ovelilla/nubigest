@@ -1,0 +1,21 @@
+{
+  "authError": {
+    "metadata": {
+      "title": "Error de autenticación",
+      "description": "Ocurrió un error durante el proceso de autenticación"
+    },
+    "page": {
+      "card": {
+        "header": {
+          "title": "Algo ha salido mal",
+          "description": "No hemos podido completar tu autenticación. Por favor, inténtalo de nuevo."
+        },
+        "footer": {
+          "registerLink": {
+            "label": "Volver a iniciar sesión"
+          }
+        }
+      }
+    }
+  }
+}

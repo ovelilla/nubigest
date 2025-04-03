@@ -13,7 +13,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   secret: process.env.NEXT_AUTH_SECRET,
   pages: {
     signIn: "/signin",
-    error: "/error",
+    error: "/auth-error",
   },
   events: {
     async linkAccount({ user }) {

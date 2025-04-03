@@ -6,8 +6,20 @@
           "invalidFields": "Campos inválidos",
           "emailAlreadyExists": "El correo electrónico ya está en uso"
         },
-        "success": {
-          "verificationEmail": "Email de verificación enviado"
+        "success": "Email de verificación enviado"
+      }
+    },
+    "emails": {
+      "verificationEmail": {
+        "subject": "Verifica tu dirección de correo electrónico",
+        "content": {
+          "previewText": "Verifica tu correo",
+          "title": "Verifica tu correo electrónico",
+          "button": "Verificar dirección de correo",
+          "firstParagraph": "Haz clic en el botón de abajo para verificar tu dirección de correo electrónico. Este enlace expirará en 1 hora.",
+          "secondParagraph": "O copia y pega el siguiente enlace en tu navegador:",
+          "thirdParagraph": "Confirmar esta solicitud verificará",
+          "footer": "Si no has solicitado este correo, puedes ignorarlo de forma segura."
         }
       }
     },

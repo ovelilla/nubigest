@@ -9,8 +9,23 @@
           "expiredOtp": "El código de verificación ha expirado",
           "generic": "Ha ocurrido un error inesperado"
         },
-        "success": {
-          "verificationEmail": "Email de verificación enviado"
+        "intermediate": {
+          "twoFactorRequired": "Autenticación de dos factores requerida",
+          "verificationRequired": "Hemos enviado un correo de verificación. Por favor, revisa tu bandeja de entrada"
+        },
+        "success": "Inicio de sesión exitoso"
+      }
+    },
+    "emails": {
+      "twoFactorAuthentication": {
+        "subject": "Tu código de autenticación en dos pasos",
+        "content": {
+          "previewText": "Protege tu cuenta con autenticación en dos pasos",
+          "title": "Protege tu cuenta con autenticación en dos pasos",
+          "firstParagraph": "Para mejorar la seguridad de tu cuenta, requerimos autenticación en dos pasos para acceder. Aquí tienes tu código:",
+          "secondParagraph": "El código expira en 5 minutos.",
+          "thirdParagraph": "Ingresa este código en el formulario de inicio de sesión para acceder a tu cuenta.",
+          "footer": "Si no has solicitado este correo, puedes ignorarlo de forma segura."
         }
       }
     },

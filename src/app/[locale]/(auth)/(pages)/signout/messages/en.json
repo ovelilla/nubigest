@@ -1,0 +1,16 @@
+{
+  "signout": {
+    "metadata": {
+      "title": "Sign out",
+      "description": "Sign out from your account"
+    },
+    "page": {
+      "card": {
+        "header": {
+          "title": "Signing out",
+          "description": "Please wait while we log you out"
+        }
+      }
+    }
+  }
+}
