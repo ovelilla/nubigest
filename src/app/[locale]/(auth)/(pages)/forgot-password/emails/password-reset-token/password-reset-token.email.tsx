@@ -43,7 +43,7 @@ const PasswordResetTokenEmail = async ({
 
             <Section className="mt-6">
               <Button
-                className="text-md flex h-12 items-center justify-center gap-2 rounded-md bg-slate-700 px-4 font-medium whitespace-nowrap text-white"
+                className="text-md rounded-md bg-slate-700 px-4 py-2 font-medium whitespace-nowrap text-white"
                 href={link}
               >
                 {t("button")}
