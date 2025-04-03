@@ -23,7 +23,7 @@ const PasswordResetTokenEmail = async ({
     "forgotPassword.emails.passwordResetToken.content",
   );
 
-  const link = `${process.env.NEXT_PUBLIC_APP_URL}/new-password?token=${token}`;
+  const link = `${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`;
 
   return (
     <Html>
@@ -54,7 +54,6 @@ const PasswordResetTokenEmail = async ({
               <Text className="text-base text-slate-700">
                 {t("secondParagraph")}
               </Text>
-              <br />
               <Link className="text-base" href={link}>
                 {link}
               </Link>

@@ -53,7 +53,6 @@ const VerificationTokenEmail = async ({
               <Text className="text-base text-slate-700">
                 {t("secondParagraph")}
               </Text>
-              <br />
               <Link className="text-base" href={link}>
                 {link}
               </Link>
