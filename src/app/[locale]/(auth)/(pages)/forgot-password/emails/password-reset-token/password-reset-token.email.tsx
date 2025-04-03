@@ -52,9 +52,12 @@ const PasswordResetTokenEmail = async ({
 
             <Section className="mt-6">
               <Text className="text-base text-slate-700">
-                {t("secondParagraph")} <br />
-                <Link href={link}>{link}</Link>
+                {t("secondParagraph")}
               </Text>
+              <br />
+              <Link className="text-base" href={link}>
+                {link}
+              </Link>
             </Section>
 
             <Hr className="my-4 border-t border-slate-300" />

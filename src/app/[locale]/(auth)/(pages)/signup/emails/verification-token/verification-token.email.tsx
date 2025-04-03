@@ -22,7 +22,7 @@ const VerificationTokenEmail = async ({
 }: VerificationTokenEmailProps) => {
   const t = await getTranslations("signup.emails.verificationToken.content");
 
-  const link = `${process.env.NEXT_PUBLIC_APP_URL}/verification?token=${token}`;
+  const link = `${process.env.NEXT_PUBLIC_APP_URL}/verify-email?token=${token}`;
 
   return (
     <Html>
@@ -51,9 +51,12 @@ const VerificationTokenEmail = async ({
 
             <Section className="mt-6">
               <Text className="text-base text-slate-700">
-                {t("secondParagraph")} <br />
-                <Link href={link}>{link}</Link>
+                {t("secondParagraph")}
               </Text>
+              <br />
+              <Link className="text-base" href={link}>
+                {link}
+              </Link>
             </Section>
 
             <Section className="mt-6">
