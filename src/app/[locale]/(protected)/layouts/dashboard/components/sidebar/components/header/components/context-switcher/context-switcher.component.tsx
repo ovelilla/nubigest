@@ -110,14 +110,18 @@ const ContextSwitcher = ({
               </DropdownMenuItem>
             );
           })}
-          <DropdownMenuSeparator />
-          <DropdownMenuItem
-            onClick={handleCreateOrganization}
-            className="text-muted-foreground gap-2 p-2 font-medium"
-          >
-            <Plus />
-            {t("addOrganization")}
-          </DropdownMenuItem>
+          {isAdmin && (
+            <>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={handleCreateOrganization}
+                className="text-muted-foreground gap-2 p-2 font-medium"
+              >
+                <Plus />
+                {t("addOrganization")}
+              </DropdownMenuItem>
+            </>
+          )}
         </ScrollArea>
       </DropdownMenuContent>
     </DropdownMenu>
