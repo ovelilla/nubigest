@@ -1,6 +1,7 @@
 "use client";
 // Vendors
-import Link, { type LinkProps } from "next/link";
+import { type ComponentProps } from "react";
+import { Link } from "@/i18n/navigation";
 // Components
 import { Button } from "./button";
 // Types
@@ -10,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 type ButtonLinkProps = {
   buttonProps?: Omit<ButtonProps, "asChild" | "children" | "className">;
-  linkProps: Omit<LinkProps, "children">;
+  linkProps: Omit<ComponentProps<typeof Link>, "children">;
   className?: string;
   children: React.ReactNode;
 };

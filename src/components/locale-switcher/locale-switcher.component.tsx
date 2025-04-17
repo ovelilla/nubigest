@@ -1,7 +1,4 @@
 "use client";
-// Vendors
-import { useLocale } from "next-intl";
-import { useTransition } from "react";
 // Components
 import { Button } from "@/components/ui/button";
 import {
@@ -12,29 +9,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 // Constants
 import { LOCALES } from "./constants/locale-switcher.constants";
-// i18n
-import { usePathname, useRouter } from "@/i18n/navigation";
+// Hooks
+import { LocaleSwitcherHook } from "./hooks/locale-switcher.hook";
 // Icons
 import { ChevronDown, Globe, Loader2 } from "lucide-react";
 
 const LocaleSwitcher = () => {
-  const [isPending, startTransition] = useTransition();
-
-  const locale = useLocale();
-  const pathname = usePathname();
-  const router = useRouter();
-
-  const handleSwitchLocale = (locale: string) => {
-    startTransition(() => {
-      router.replace(pathname, { locale });
-    });
-  };
+  const { handleSwitchLocale, isPending, locale, t } = LocaleSwitcherHook();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          aria-label="Switch language"
+          aria-label={t("button.ariaLabel")}
           disabled={isPending}
           variant="ghost"
         >

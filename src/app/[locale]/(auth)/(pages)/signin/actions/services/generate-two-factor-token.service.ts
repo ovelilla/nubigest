@@ -1,7 +1,7 @@
 // Vendors
 import crypto from "crypto";
 // Libs
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/db/prisma";
 // Types
 import type { GenerateTwoFactorTokenProps } from "./types/generate-two-factor-token.types";
 

@@ -1,0 +1,124 @@
+{
+  "protected": {
+    "layouts": {
+      "dashboard": {
+        "components": {
+          "fullscreenToggle": {
+            "ariaLabel": {
+              "enter": "Enter to fullscreen",
+              "exit": "Exit from fullscreen"
+            }
+          },
+          "sidebar": {
+            "components": {
+              "content": {
+                "components": {
+                  "navigation": {
+                    "global": {
+                      "groups": {
+                        "main": {
+                          "label": "Global panel",
+                          "items": {
+                            "events": "Events",
+                            "home": "Home",
+                            "organizations": "Organizations",
+                            "users": "Users"
+                          }
+                        }
+                      }
+                    },
+                    "organization": {
+                      "groups": {
+                        "main": {
+                          "label": "Organization panel",
+                          "items": {
+                            "appointments": "Appointments",
+                            "clients": "Clients",
+                            "home": "Home",
+                            "services": "Services"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "header": {
+                "components": {
+                  "contextSwitcher": {
+                    "addOrganization": "Add organization",
+                    "global": "Global",
+                    "noOrganization": "No organization",
+                    "organizations": "Organizations",
+                    "roles": {
+                      "ADMIN": "Administrator",
+                      "USER": "User"
+                    }
+                  },
+                  "createOrganization": {
+                    "actions": {
+                      "createOrganization": {
+                        "error": {
+                          "generic": "An unexpected error has occurred",
+                          "invalidFields": "Invalid fields",
+                          "noUser": "No user found",
+                          "slugAlreadyExists": "The slug is already in use"
+                        },
+                        "success": "Organization created successfully"
+                      }
+                    },
+                    "handlers": {
+                      "submit": {
+                        "error": {
+                          "generic": "An unexpected error has occurred"
+                        }
+                      }
+                    },
+                    "schemas": {
+                      "createOrganization": {
+                        "name": {
+                          "required": "Name is required",
+                          "min": "Name must be at least 2 characters long",
+                          "max": "Name cannot be more than 64 characters long"
+                        },
+                        "description": {
+                          "max": "Description cannot be more than 256 characters long"
+                        }
+                      }
+                    },
+                    "ui": {
+                      "dialog": {
+                        "title": "Create Organization",
+                        "description": "Set up a new organization to manage your workspace",
+                        "buttons": {
+                          "cancel": {
+                            "label": "Cancel"
+                          }
+                        }
+                      },
+                      "form": {
+                        "name": {
+                          "label": "Name",
+                          "placeholder": "Enter your name"
+                        },
+                        "description": {
+                          "label": "Description (optional)",
+                          "placeholder": "Briefly describe your organization"
+                        },
+                        "buttons": {
+                          "submit": {
+                            "label": "Create"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

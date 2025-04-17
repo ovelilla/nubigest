@@ -1,7 +1,7 @@
 // Vendors
 import { toast } from "sonner";
 // Actions
-import { forgotPasswordAction } from "../actions/forgot-password.action";
+import { forgotPasswordAction } from "../actions/forgot-password.actions";
 // Types
 import type {
   ForgotPasswordHandlersProps,

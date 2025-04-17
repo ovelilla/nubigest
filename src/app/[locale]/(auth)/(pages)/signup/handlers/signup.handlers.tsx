@@ -2,7 +2,7 @@
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
 // Actions
-import { signUpAction } from "../actions/signup.action";
+import { signUpAction } from "../actions/signup.actions";
 // Constants
 import { DEFAULT_SIGNIN_REDIRECT } from "@/constants/middleware.constants";
 // Types

@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
+  devIndicators: false,
   images: {
     remotePatterns: [
       {
@@ -10,8 +11,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  devIndicators: false,
   reactStrictMode: false,
+  turbopack: {},
 };
 
 const withNextIntl = createNextIntlPlugin();

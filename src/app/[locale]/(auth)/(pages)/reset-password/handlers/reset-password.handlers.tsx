@@ -1,7 +1,7 @@
 // Vendors
 import { toast } from "sonner";
 // Actions
-import { resetPasswordAction } from "../actions/reset-password.action";
+import { resetPasswordAction } from "../actions/reset-password.actions";
 // Types
 import type {
   ResetPasswordHandlersProps,
@@ -19,7 +19,6 @@ const submitHandler = async ({
   values,
 }: SubmitHandlerProps): Promise<void> => {
   setLoading(true);
-  console.log("token", token);
 
   try {
     const result = await resetPasswordAction({ values, token });

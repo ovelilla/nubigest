@@ -1,7 +1,7 @@
 // Vendors
 import { getTranslations } from "next-intl/server";
 // Actions
-import { verifyEmailAction } from "./actions/verify-email.action";
+import { verifyEmailAction } from "./actions/verify-email.actions";
 // Components
 import { ButtonLink } from "@/components/ui/button-link";
 import {

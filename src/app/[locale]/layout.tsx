@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { SessionProvider } from "next-auth/react";
 // Auth
-import { auth } from "@/lib/auth";
+import { auth } from "@/lib/auth/auth";
 // Components
 import { Toaster } from "@/components/ui/sonner";
 // Fonts

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
 import NextAuth from "next-auth";
 // Config
-import authConfig from "@/lib/config/auth.config";
+import authConfig from "@/lib/auth/config/auth.config";
 // Constants
 import {
   API_PREFIX,

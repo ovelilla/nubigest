@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 // Components
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -21,8 +21,12 @@ type UserNavProps = {
 };
 
 const UserNav = ({ session }: UserNavProps) => {
-  const email = session?.user?.email;
-  const name = session?.user?.name;
+  if (!session) {
+    return null;
+  }
+
+  const email = session.user.email;
+  const name = session.user.name;
   const fallback = name?.charAt(0).toUpperCase();
 
   return (
@@ -51,13 +55,13 @@ const UserNav = ({ session }: UserNavProps) => {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href="/ajustes" className="cursor-pointer">
+            <Link href="/dashboard" className="cursor-pointer">
               <Settings />
               Ajustes
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/usuarios" className="cursor-pointer">
+            <Link href="/dashboard" className="cursor-pointer">
               <Users />
               Usuarios
             </Link>

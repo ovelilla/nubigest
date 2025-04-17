@@ -12,6 +12,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     : routing.defaultLocale;
 
   const messages = {
+    ...(await import(`../messages/${locale}.json`)).default,
     ...(
       await import(
         `../app/[locale]/(auth)/(pages)/signin/messages/${locale}.json`
@@ -47,6 +48,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
         `../app/[locale]/(auth)/(pages)/auth-error/messages/${locale}.json`
       )
     ).default,
+    ...(await import(`../app/[locale]/(protected)/messages/${locale}.json`))
+      .default,
   };
 
   return {

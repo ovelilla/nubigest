@@ -1,0 +1,2 @@
+Repasar actions auth (falta try catch en signup)
+Repasar traducciones auth (ui por page)

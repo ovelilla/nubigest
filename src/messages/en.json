@@ -1,0 +1,9 @@
+{
+  "components": {
+    "localeSwitcher": {
+      "button": {
+        "ariaLabel": "Switch language"
+      }
+    }
+  }
+}
