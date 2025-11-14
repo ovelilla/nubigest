@@ -1,15 +1,12 @@
 "use server";
+
 // Vendors
 import { getTranslations } from "next-intl/server";
-// import bcryptjs from "bcryptjs";
 // Libs
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 // Schemas
 import { getSignUpSchema } from "../schemas/signup.schema";
-// Services
-// import { generateVerificationToken } from "./services/generate-verification-token.service";
-// import { sendVerificationTokenEmail } from "./services/send-verification-token-email.service";
 // Types
 import type {
   SignUpActionProps,

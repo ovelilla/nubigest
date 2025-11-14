@@ -1,6 +1,7 @@
 // Vendors
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
+import slug from "slug";
 // Libs
 import { prisma } from "@/lib/prisma";
 // Services
@@ -14,6 +15,20 @@ const auth = betterAuth({
     enabled: true,
   },
   emailVerification: {
+    async afterEmailVerification(user) {
+      await prisma.workspace.create({
+        data: {
+          name: user.name,
+          slug: slug(user.name),
+          members: {
+            create: {
+              userId: user.id,
+              role: "OWNER",
+            },
+          },
+        },
+      });
+    },
     autoSignInAfterVerification: true,
     sendOnSignIn: true,
     sendOnSignUp: true,

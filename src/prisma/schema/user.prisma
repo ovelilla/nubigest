@@ -8,9 +8,11 @@ model User {
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
-  accounts  Account[]
-  sessions  Session[]
-  twoFactor TwoFactor?
+  accounts          Account[]
+  sessions          Session[]
+  twoFactor         TwoFactor?
+  members           Member[]
+  organizationStaff OrganizationStaff[]
 }
 
 model Session {

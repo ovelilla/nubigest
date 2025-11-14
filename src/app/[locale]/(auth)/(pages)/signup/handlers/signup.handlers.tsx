@@ -1,8 +1,9 @@
 // Vendors
-// import { signIn } from "next-auth/react";
 import { toast } from "sonner";
 // Actions
 import { signUpAction } from "../actions/signup.actions";
+// Auth
+import { authClient } from "@/lib/auth-client";
 // Constants
 // import { DEFAULT_SIGNIN_REDIRECT } from "@/constants/middleware.constants";
 // Types
@@ -20,17 +21,18 @@ const oautClickHandler = async ({
   provider,
   t,
 }: OAuthClickHandlerProps): Promise<void> => {
-  // setLoading({ provider, status: true });
-  // try {
-  //   await signIn(provider, {
-  //     callbackUrl: DEFAULT_SIGNIN_REDIRECT,
-  //   });
-  // } catch (error) {
-  //   console.error("Error in oautClickHandler", error);
-  //   toast.error(t("handlers.oauth.error.generic"));
-  // } finally {
-  //   setLoading({ provider, status: false });
-  // }
+  setLoading({ provider, status: true });
+  try {
+    await authClient.signIn.social({
+      provider,
+      callbackURL: "/dashboard",
+    });
+  } catch (error) {
+    console.error("Error in oautClickHandler", error);
+    toast.error(t("handlers.oauth.error.generic"));
+  } finally {
+    setLoading({ provider, status: false });
+  }
 };
 
 const submitHandler = async ({
