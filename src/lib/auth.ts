@@ -14,6 +14,12 @@ const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
+  trustedOrigins: [
+    "https://www.nubigest.com",
+    "http://www.nubigest.com",
+    "https://nubigest.com",
+    "http://nubigest.com",
+  ],
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: true,
