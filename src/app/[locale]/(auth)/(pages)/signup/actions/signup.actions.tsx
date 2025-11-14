@@ -55,6 +55,7 @@ const signUpAction = async ({
         name,
         email,
         password,
+        callbackURL: "/dashboard",
       },
     });
 
