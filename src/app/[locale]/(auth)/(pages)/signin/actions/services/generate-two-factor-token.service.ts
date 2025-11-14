@@ -11,28 +11,28 @@ const generateTwoFactorToken = async ({
   const token = crypto.randomInt(100_000, 1_000_000).toString();
   const expires = new Date(new Date().getTime() + 5 * 60 * 1000);
 
-  const existingToken = await prisma.twoFactorToken.findFirst({
-    where: { email },
-    select: { id: true },
-  });
+  // const existingToken = await prisma.twoFactorToken.findFirst({
+  //   where: { email },
+  //   select: { id: true },
+  // });
 
-  if (existingToken) {
-    await prisma.twoFactorToken.delete({
-      where: {
-        id: existingToken.id,
-      },
-    });
-  }
+  // if (existingToken) {
+  //   await prisma.twoFactorToken.delete({
+  //     where: {
+  //       id: existingToken.id,
+  //     },
+  //   });
+  // }
 
-  const twoFactorToken = await prisma.twoFactorToken.create({
-    data: {
-      email,
-      token,
-      expires,
-    },
-  });
+  // const twoFactorToken = await prisma.twoFactorToken.create({
+  //   data: {
+  //     email,
+  //     token,
+  //     expires,
+  //   },
+  // });
 
-  return twoFactorToken;
+  // return twoFactorToken;
 };
 
 export { generateTwoFactorToken };
