@@ -18,11 +18,9 @@ import type { VerificationTokenEmailProps } from "./types/verification-token.typ
 
 const VerificationTokenEmail = async ({
   email,
-  token,
+  url,
 }: VerificationTokenEmailProps) => {
   const t = await getTranslations("signup.emails.verificationToken.content");
-
-  const link = `${process.env.NEXT_PUBLIC_APP_URL}/verify-email?token=${token}`;
 
   return (
     <Html>
@@ -43,7 +41,7 @@ const VerificationTokenEmail = async ({
             <Section className="mt-6">
               <Button
                 className="rounded-md bg-slate-700 px-4 py-2 text-base font-medium whitespace-nowrap text-white"
-                href={link}
+                href={url}
               >
                 {t("button")}
               </Button>
@@ -53,8 +51,8 @@ const VerificationTokenEmail = async ({
               <Text className="text-base text-slate-700">
                 {t("secondParagraph")}
               </Text>
-              <Link className="text-base" href={link}>
-                {link}
+              <Link className="text-base" href={url}>
+                {url}
               </Link>
             </Section>
 

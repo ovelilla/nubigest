@@ -10,7 +10,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendVerificationTokenEmail = async ({
   email,
-  token,
+  url,
 }: SendVerificationTokenEmailProps): Promise<void> => {
   const t = await getTranslations("signup.emails.verificationToken");
 
@@ -18,7 +18,7 @@ const sendVerificationTokenEmail = async ({
     from: "Nubigest <noreply@nubigest.com>",
     to: email,
     subject: t("subject"),
-    react: <VerificationTokenEmail token={token} email={email} />,
+    react: <VerificationTokenEmail url={url} email={email} />,
   });
 };
 

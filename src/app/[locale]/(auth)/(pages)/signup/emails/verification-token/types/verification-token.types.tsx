@@ -1,6 +1,6 @@
 type VerificationTokenEmailProps = {
   email: string;
-  token: string;
+  url: string;
 };
 
 export type { VerificationTokenEmailProps };

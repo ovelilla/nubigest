@@ -46,7 +46,7 @@ const signUpAction = async ({
     if (existingUser) {
       return {
         status: "error",
-        message: t("actions.signup.error.userAlreadyExists"),
+        message: t("actions.signup.error.emailAlreadyExists"),
       };
     }
 
