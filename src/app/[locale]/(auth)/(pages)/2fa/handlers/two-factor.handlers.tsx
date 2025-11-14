@@ -3,7 +3,7 @@ import { toast } from "sonner";
 // Constants
 import { DEFAULT_REDIRECT } from "@/constants/routes.constants";
 // Types
-import type { SignInSchema } from "../schemas/types/two-factor.schema.types";
+import type { TwoFactorSchema } from "../schemas/types/two-factor.schema.types";
 import type {
   SignInHandlersProps,
   SignInHandlersReturn,
@@ -27,7 +27,7 @@ const SignInHandlers = ({
   tTwoFactor,
 }: SignInHandlersProps): SignInHandlersReturn => {
   return {
-    handleSubmit: (values: SignInSchema) =>
+    handleSubmit: (values: TwoFactorSchema) =>
       submitHandler({
         form,
         setLoading,
