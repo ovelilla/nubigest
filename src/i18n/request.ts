@@ -25,6 +25,9 @@ export default getRequestConfig(async ({ requestLocale }) => {
         `../app/[locale]/(auth)/(pages)/signup/messages/${locale}.json`
       )
     ).default,
+    ...(
+      await import(`../app/[locale]/(auth)/(pages)/2fa/messages/${locale}.json`)
+    ).default,
     ...(await import(`../app/[locale]/(protected)/messages/${locale}.json`))
       .default,
   };

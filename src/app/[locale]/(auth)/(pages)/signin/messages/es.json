@@ -45,9 +45,6 @@
         }
       },
       "form": {
-        "otp": {
-          "label": "Código de verificación"
-        },
         "email": {
           "label": "Correo electrónico",
           "placeholder": "nombre@ejemplo.com"
@@ -64,8 +61,7 @@
           "label": "¿Olvidaste tu contraseña?"
         },
         "submitButton": {
-          "signinLabel": "Iniciar sesión",
-          "otpLabel": "Verificar"
+          "label": "Iniciar sesión"
         }
       },
       "oauth": {

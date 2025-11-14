@@ -4,6 +4,7 @@ const PATHNAMES = {
   "/": "/",
   "/signin": { es: "/iniciar-sesion" },
   "/signup": { es: "/registrarse" },
+  "/2fa": { es: "/2fa" },
   "/forgot-password": { es: "/recuperar-contrasena" },
   "/reset-password": { es: "/restablecer-contrasena" },
   "/verify-email": { es: "/verificar-correo" },

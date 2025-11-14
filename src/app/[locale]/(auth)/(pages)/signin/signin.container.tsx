@@ -131,7 +131,7 @@ const SignInContainer = () => {
               type="submit"
               loading={loading.status && loading.provider === "credentials"}
             >
-              {t("page.form.submitButton.signinLabel")}
+              {t("page.form.submitButton.label")}
             </ButtonLoading>
           </form>
         </Form>

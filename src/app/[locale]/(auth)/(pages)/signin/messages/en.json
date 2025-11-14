@@ -45,9 +45,6 @@
         }
       },
       "form": {
-        "otp": {
-          "label": "One-time password"
-        },
         "email": {
           "label": "Email",
           "placeholder": "name@example.com"
@@ -64,8 +61,7 @@
           "label": "Forgot your password?"
         },
         "submitButton": {
-          "signinLabel": "Sign in",
-          "otpLabel": "Verify"
+          "label": "Sign in"
         }
       },
       "oauth": {

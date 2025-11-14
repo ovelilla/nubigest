@@ -16,7 +16,6 @@ const getSignInSchema = (t: (arg: string) => string) =>
       .min(1, { error: t("schemas.signin.password.required") })
       .min(6, { error: t("schemas.signin.password.min") })
       .max(32, { error: t("schemas.signin.password.max") }),
-    otp: z.string().optional(),
   });
 
 export { getSignInSchema };
