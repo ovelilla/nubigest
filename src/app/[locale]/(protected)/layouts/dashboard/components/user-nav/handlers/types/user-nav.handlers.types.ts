@@ -1,6 +1,6 @@
 // Types
 import type { Dispatch, SetStateAction } from "react";
-import type { useRouter } from "next/navigation";
+import type { useRouter } from "@/i18n/navigation";
 
 type SignOutHandler = (props: {
   event: Event;

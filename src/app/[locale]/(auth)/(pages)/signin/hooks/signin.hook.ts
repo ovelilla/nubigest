@@ -1,5 +1,6 @@
 // Vendors
 import { useForm } from "react-hook-form";
+import { useRouter } from "@/i18n/navigation";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,6 +24,8 @@ const SignInHook = () => {
   const tSignIn = useTranslations("signin");
   const tAuth = useTranslations("auth");
 
+  const router = useRouter();
+
   const signInSchema = getSignInSchema(tSignIn);
 
   const form = useForm<SignInSchema>({
@@ -33,6 +36,7 @@ const SignInHook = () => {
   const { handleOAuthClick, handleSubmit, handleToggleShowPassword } =
     SignInHandlers({
       form,
+      router,
       setLoading,
       setShowPassword,
       showPassword,

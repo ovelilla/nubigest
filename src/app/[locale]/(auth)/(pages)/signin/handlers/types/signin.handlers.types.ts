@@ -1,12 +1,14 @@
 // Types
+import type { _Translator } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";
+import type { LoadingState } from "../../hooks/types/signin.hook.types";
 import type { SignInSchema } from "../../schemas/types/signin.schema.types";
 import type { UseFormReturn } from "react-hook-form";
-import type { LoadingState } from "../../hooks/types/signin.hook.types";
-import type { _Translator } from "next-intl";
+import type { useRouter } from "@/i18n/navigation";
 
 type SignInHandlersProps = {
   form: UseFormReturn<SignInSchema>;
+  router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
   setShowPassword: Dispatch<SetStateAction<boolean>>;
   showPassword: boolean;
@@ -29,6 +31,7 @@ type OAuthClickHandlerProps = {
 
 type SubmitHandlerProps = {
   form: UseFormReturn<SignInSchema>;
+  router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
   tAuth: _Translator;
   tSignIn: _Translator;

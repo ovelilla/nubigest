@@ -41,39 +41,59 @@ const oautClickHandler = async ({
 
 const submitHandler = async ({
   form,
+  router,
   setLoading,
   tAuth,
   tSignIn,
   values,
 }: SubmitHandlerProps): Promise<void> => {
   setLoading({ provider: "credentials", status: true });
-  const { error } = await authClient.signIn.email(
+  const { error: signInError } = await authClient.signIn.email(
     {
       email: values.email,
       password: values.password,
       callbackURL: DEFAULT_REDIRECT,
     },
     {
-      onSuccess(context) {
-        if (context.data?.twoFactorRedirect) {
+      async onSuccess(context) {
+        if (context.data.twoFactorRedirect) {
+          const { error: otpError } = await authClient.twoFactor.sendOtp();
+
+          if (otpError) {
+            const key = `error.${otpError.code ?? ""}`;
+            const message = tAuth.has(key)
+              ? tAuth(key)
+              : tSignIn("handlers.submit.error.generic");
+            toast.error(message);
+
+            form.setValue("password", "");
+            setLoading({ provider: "credentials", status: false });
+            return;
+          }
+
+          router.push("/2fa");
+          setLoading({ provider: "credentials", status: false });
           return;
         }
       },
     },
   );
-  setLoading({ provider: "credentials", status: false });
 
-  if (error) {
-    const key = `error.${error.code ?? ""}`;
+  if (signInError) {
+    const key = `error.${signInError.code ?? ""}`;
     const message = tAuth.has(key)
       ? tAuth(key)
       : tSignIn("handlers.submit.error.generic");
     toast.error(message);
+
     form.setValue("password", "");
+    setLoading({ provider: "credentials", status: false });
     return;
   }
+
   toast.success(tSignIn("handlers.submit.success"));
   form.reset();
+  setLoading({ provider: "credentials", status: false });
 };
 
 const toggleShowPasswordHandler = ({
@@ -85,6 +105,7 @@ const toggleShowPasswordHandler = ({
 
 const SignInHandlers = ({
   form,
+  router,
   setLoading,
   setShowPassword,
   showPassword,
@@ -97,6 +118,7 @@ const SignInHandlers = ({
     handleSubmit: (values: SignInSchema) =>
       submitHandler({
         form,
+        router,
         setLoading,
         tAuth,
         tSignIn,
