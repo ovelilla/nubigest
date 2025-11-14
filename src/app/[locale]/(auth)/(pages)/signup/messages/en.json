@@ -1,15 +1,5 @@
 {
   "signup": {
-    "actions": {
-      "signup": {
-        "error": {
-          "invalidFields": "Invalid fields",
-          "emailAlreadyExists": "The email address is already in use",
-          "generic": "An unexpected error has occurred"
-        },
-        "success": "Verification email sent"
-      }
-    },
     "emails": {
       "verificationToken": {
         "subject": "Verify your email address",
@@ -28,7 +18,8 @@
       "submit": {
         "error": {
           "generic": "An unexpected error has occurred"
-        }
+        },
+        "success": "Verification email sent"
       },
       "oauth": {
         "error": {

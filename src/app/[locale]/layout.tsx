@@ -4,9 +4,6 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 // i18n
 import { routing } from "@/i18n/routing";
-// import { SessionProvider } from "next-auth/react";
-// Auth
-// import { auth } from "@/lib/auth/auth";
 // Components
 import { Toaster } from "@/components/ui/sonner";
 // Fonts
@@ -14,11 +11,12 @@ import { Inter } from "next/font/google";
 // Providers
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "next-themes";
-// import { TooltipProvider } from "@/components/ui/tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 // Styles
 import "../globals.css";
 // Types
 import type { Metadata } from "next";
+import type { Locale } from "next-intl";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +27,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }): Promise<Metadata> {
   const { locale } = await params;
 
@@ -59,10 +57,7 @@ async function RootLayout({
 
   setRequestLocale(locale);
 
-  // const session = await auth();
-
   return (
-    // <SessionProvider session={session}>
     <html lang={locale} suppressHydrationWarning>
       <body className={`flex min-h-dvh antialiased ${inter.className}`}>
         <NextIntlClientProvider>
@@ -72,14 +67,12 @@ async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {/* <TooltipProvider>{children}</TooltipProvider> */}
-            {children}
+            <TooltipProvider>{children}</TooltipProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
         <Toaster />
       </body>
     </html>
-    // </SessionProvider>
   );
 }
 

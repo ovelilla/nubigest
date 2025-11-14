@@ -1,21 +1,5 @@
 {
   "signin": {
-    "actions": {
-      "signin": {
-        "error": {
-          "invalidFields": "Invalid fields",
-          "invalidCredentials": "Invalid credentials",
-          "invalidOtp": "Invalid verification code",
-          "expiredOtp": "The verification code has expired",
-          "generic": "An unexpected error has occurred"
-        },
-        "intermediate": {
-          "twoFactorRequired": "Two-factor authentication required",
-          "verificationRequired": "Please check your inbox to verify your email address"
-        },
-        "success": "Sign in successful"
-      }
-    },
     "emails": {
       "twoFactorToken": {
         "subject": "Your two-factor authentication code",

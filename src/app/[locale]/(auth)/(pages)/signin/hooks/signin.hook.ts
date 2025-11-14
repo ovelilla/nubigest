@@ -4,38 +4,40 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 // Constants
-import { DEFAULT_VALUES } from "../constants/signup.constants";
+import { DEFAULT_VALUES } from "../constants/signin.constants";
 // Handlers
-import { SignUpHandlers } from "../handlers/signup.handlers";
+import { SignInHandlers } from "../handlers/signin.handlers";
 // Schemas
-import { getSignUpSchema } from "../schemas/signup.schema";
+import { getSignInSchema } from "../schemas/signin.schema";
 // Types
-import type { SignUpSchema } from "../schemas/types/signup.schema.types";
-import type { LoadingState, SignUpHookReturn } from "./types/signup.hook.types";
+import type { SignInSchema } from "../schemas/types/signin.schema.types";
+import type { LoadingState } from "./types/signin.hook.types";
 
-const SignUpHook = (): SignUpHookReturn => {
+const SignInHook = () => {
   const [loading, setLoading] = useState<LoadingState>({
     provider: "",
     status: false,
   });
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const t = useTranslations("signup");
+  const tSignIn = useTranslations("signin");
+  const tAuth = useTranslations("auth");
 
-  const signUpSchema = getSignUpSchema(t);
+  const signInSchema = getSignInSchema(tSignIn);
 
-  const form = useForm<SignUpSchema>({
-    resolver: zodResolver(signUpSchema),
+  const form = useForm<SignInSchema>({
+    resolver: zodResolver(signInSchema),
     defaultValues: DEFAULT_VALUES,
   });
 
   const { handleOAuthClick, handleSubmit, handleToggleShowPassword } =
-    SignUpHandlers({
+    SignInHandlers({
       form,
       setLoading,
       setShowPassword,
       showPassword,
-      t,
+      tAuth,
+      tSignIn,
     });
 
   return {
@@ -45,8 +47,8 @@ const SignUpHook = (): SignUpHookReturn => {
     handleToggleShowPassword,
     loading,
     showPassword,
-    t,
+    t: tSignIn,
   };
 };
 
-export { SignUpHook };
+export { SignInHook };

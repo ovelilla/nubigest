@@ -1,15 +1,5 @@
 {
   "signup": {
-    "actions": {
-      "signup": {
-        "error": {
-          "invalidFields": "Campos inválidos",
-          "emailAlreadyExists": "El correo electrónico ya está en uso",
-          "generic": "Ha ocurrido un error inesperado"
-        },
-        "success": "Email de verificación enviado"
-      }
-    },
     "emails": {
       "verificationToken": {
         "subject": "Verifica tu dirección de correo electrónico",
@@ -28,7 +18,8 @@
       "submit": {
         "error": {
           "generic": "Ha ocurrido un error inesperado"
-        }
+        },
+        "success": "Email de verificación enviado"
       },
       "oauth": {
         "error": {

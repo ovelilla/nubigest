@@ -1,21 +1,5 @@
 {
   "signin": {
-    "actions": {
-      "signin": {
-        "error": {
-          "invalidFields": "Campos inválidos",
-          "invalidCredentials": "Credenciales inválidas",
-          "invalidOtp": "Código de verificación inválido",
-          "expiredOtp": "El código de verificación ha expirado",
-          "generic": "Ha ocurrido un error inesperado"
-        },
-        "intermediate": {
-          "twoFactorRequired": "Autenticación de dos factores requerida",
-          "verificationRequired": "Hemos enviado un correo de verificación. Por favor, revisa tu bandeja de entrada"
-        },
-        "success": "Inicio de sesión exitoso"
-      }
-    },
     "emails": {
       "twoFactorAuthentication": {
         "subject": "Tu código de autenticación en dos pasos",

@@ -1,10 +1,8 @@
 // Types
 import type { LucideIcon } from "lucide-react";
-import type { routing } from "@/i18n/routing";
+import type { Pathnames } from "@/i18n/types/i18n.types";
 
-type AppRoutes = keyof typeof routing.pathnames;
-
-type Href = { pathname: AppRoutes };
+type Href = { pathname: Pathnames };
 
 type Item = {
   title: string;

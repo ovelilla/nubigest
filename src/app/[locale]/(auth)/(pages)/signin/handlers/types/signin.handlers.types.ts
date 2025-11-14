@@ -2,17 +2,16 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { SignInSchema } from "../../schemas/types/signin.schema.types";
 import type { UseFormReturn } from "react-hook-form";
-import type { useRouter } from "@/i18n/navigation";
 import type { LoadingState } from "../../hooks/types/signin.hook.types";
+import type { _Translator } from "next-intl";
 
 type SignInHandlersProps = {
   form: UseFormReturn<SignInSchema>;
-  router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
   setShowPassword: Dispatch<SetStateAction<boolean>>;
-  setShowTwoFactor: Dispatch<SetStateAction<boolean>>;
   showPassword: boolean;
-  t: (arg: string) => string;
+  tAuth: _Translator;
+  tSignIn: _Translator;
 };
 
 type SignInHandlersReturn = {
@@ -21,21 +20,25 @@ type SignInHandlersReturn = {
   handleToggleShowPassword: VoidFunction;
 };
 
-type OAuthClickHandlerProps = Pick<SignInHandlersProps, "setLoading" | "t"> & {
+type OAuthClickHandlerProps = {
+  setLoading: Dispatch<SetStateAction<LoadingState>>;
   provider: string;
+  tAuth: _Translator;
+  tSignIn: _Translator;
 };
 
-type SubmitHandlerProps = Pick<
-  SignInHandlersProps,
-  "form" | "router" | "setLoading" | "setShowTwoFactor" | "t"
-> & {
+type SubmitHandlerProps = {
+  form: UseFormReturn<SignInSchema>;
+  setLoading: Dispatch<SetStateAction<LoadingState>>;
+  tAuth: _Translator;
+  tSignIn: _Translator;
   values: SignInSchema;
 };
 
-type ToggleShowPasswordHandlerProps = Pick<
-  SignInHandlersProps,
-  "setShowPassword" | "showPassword"
->;
+type ToggleShowPasswordHandlerProps = {
+  setShowPassword: Dispatch<SetStateAction<boolean>>;
+  showPassword: boolean;
+};
 
 export type {
   OAuthClickHandlerProps,

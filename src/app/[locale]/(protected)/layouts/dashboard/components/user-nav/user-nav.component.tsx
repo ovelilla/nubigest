@@ -1,3 +1,4 @@
+// Vendors
 import { Link } from "@/i18n/navigation";
 // Components
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -11,12 +12,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Spinner } from "@/components/ui/spinner";
+// Hooks
+import { UserNavHook } from "./hooks/user-nav.hook";
 // Icons
 import { Users, LogOut, Settings } from "lucide-react";
 // Types
 import type { UserNavProps } from "./types/user-nav.component.types";
 
 const UserNav = ({ session }: UserNavProps) => {
+  const { handleSignOut, isSigningOut, t } = UserNavHook();
+
   const email = session.user.email;
   const name = session.user.name;
   const fallback = name?.charAt(0).toUpperCase();
@@ -49,22 +55,22 @@ const UserNav = ({ session }: UserNavProps) => {
           <DropdownMenuItem asChild>
             <Link href="/dashboard" className="cursor-pointer">
               <Settings />
-              Ajustes
+              {t("dropdown.items.settings")}
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link href="/dashboard" className="cursor-pointer">
               <Users />
-              Usuarios
+              {t("dropdown.items.users")}
             </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          <Link href="/signout">
-            <LogOut />
-            Cerrar sesión
-          </Link>
+        <DropdownMenuItem onSelect={handleSignOut} disabled={isSigningOut}>
+          {isSigningOut ? <Spinner /> : <LogOut />}
+          {isSigningOut
+            ? t("dropdown.items.signingOut")
+            : t("dropdown.items.signOut")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

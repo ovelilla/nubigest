@@ -116,6 +116,16 @@
                 }
               }
             }
+          },
+          "userNav": {
+            "dropdown": {
+              "items": {
+                "settings": "Ajustes",
+                "users": "Usuarios",
+                "signOut": "Cerrar sesión",
+                "signingOut": "Cerrando sesión..."
+              }
+            }
           }
         }
       }

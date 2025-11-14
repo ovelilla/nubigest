@@ -1,8 +1,8 @@
 // Constants
-import { LOCALES, PATHNAMES } from "@/i18n/constants/i18n.constants";
+import { routing } from "@/i18n/routing";
 
-type Locale = (typeof LOCALES)[number];
+type Locale = (typeof routing.locales)[number];
 
-type Pathname = keyof typeof PATHNAMES;
+type Pathnames = keyof typeof routing.pathnames;
 
-export type { Locale, Pathname };
+export type { Locale, Pathnames };

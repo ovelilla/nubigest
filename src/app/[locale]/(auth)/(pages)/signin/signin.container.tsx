@@ -20,11 +20,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
 import { OAuthButtons } from "@/components/oauth-buttons/oauth-buttons.component";
 import { SeparatorWithText } from "@/components/ui/separator-with-text";
 // Constants
@@ -40,7 +35,6 @@ const SignInContainer = () => {
     handleToggleShowPassword,
     loading,
     showPassword,
-    showTwoFactor,
     t,
   } = SignInHook();
 
@@ -52,142 +46,101 @@ const SignInContainer = () => {
       </CardHeader>
 
       <CardContent>
-        {!showTwoFactor && (
-          <>
-            <OAuthButtons
-              loading={loading}
-              onClick={handleOAuthClick}
-              providers={OAUTH_PROVIDERS.map((provider) => ({
-                ...provider,
-                label: t(`page.oauth.${provider.provider}.label`),
-              }))}
-            />
-            <SeparatorWithText>
-              {t("page.card.content.separator")}
-            </SeparatorWithText>
-          </>
-        )}
+        <OAuthButtons
+          loading={loading}
+          onClick={handleOAuthClick}
+          providers={OAUTH_PROVIDERS.map((provider) => ({
+            ...provider,
+            label: t(`page.oauth.${provider.provider}.label`),
+          }))}
+        />
+        <SeparatorWithText>
+          {t("page.card.content.separator")}
+        </SeparatorWithText>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(handleSubmit)}
             className="flex flex-col gap-6"
           >
             <div className="flex flex-col gap-4">
-              {showTwoFactor && (
-                <FormField
-                  control={form.control}
-                  name="otp"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel htmlFor={field.name}>
-                        {t("page.form.otp.label")}
-                      </FormLabel>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel htmlFor={field.name}>
+                      {t("page.form.email.label")}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        autoComplete="username"
+                        disabled={loading.status}
+                        id={field.name}
+                        placeholder={t("page.form.email.placeholder")}
+                        type="email"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel htmlFor="password">
+                      {t("page.form.password.label")}
+                    </FormLabel>
+                    <div className="relative">
                       <FormControl>
-                        <InputOTP
+                        <Input
                           {...field}
+                          autoComplete="current-password"
+                          className="pr-12"
                           disabled={loading.status}
-                          id={field.name}
-                          maxLength={6}
-                          type="text"
-                        >
-                          <InputOTPGroup>
-                            {Array.from({ length: 6 }).map((_, index) => (
-                              <InputOTPSlot key={index} index={index} />
-                            ))}
-                          </InputOTPGroup>
-                        </InputOTP>
+                          id="password"
+                          placeholder={t("page.form.password.placeholder")}
+                          type={showPassword ? "text" : "password"}
+                        />
                       </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              )}
-              {!showTwoFactor && (
-                <>
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel htmlFor={field.name}>
-                          {t("page.form.email.label")}
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            {...field}
-                            autoComplete="username"
-                            disabled={loading.status}
-                            id={field.name}
-                            placeholder={t("page.form.email.placeholder")}
-                            type="email"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="password"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel htmlFor="password">
-                          {t("page.form.password.label")}
-                        </FormLabel>
-                        <div className="relative">
-                          <FormControl>
-                            <Input
-                              {...field}
-                              autoComplete="current-password"
-                              className="pr-12"
-                              disabled={loading.status}
-                              id="password"
-                              placeholder={t("page.form.password.placeholder")}
-                              type={showPassword ? "text" : "password"}
-                            />
-                          </FormControl>
-                          <ButtonTogglePassword
-                            aria-label={
-                              showPassword
-                                ? t("page.form.password.toggle.hide")
-                                : t("page.form.password.toggle.show")
-                            }
-                            disabled={loading.status}
-                            onClick={handleToggleShowPassword}
-                            showPassword={showPassword}
-                          />
-                        </div>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <ButtonLink
-                    className="h-8 self-start"
-                    linkProps={{ href: "/forgot-password" }}
-                  >
-                    {t("page.form.forgotLink.label")}
-                  </ButtonLink>
-                </>
-              )}
+                      <ButtonTogglePassword
+                        aria-label={
+                          showPassword
+                            ? t("page.form.password.toggle.hide")
+                            : t("page.form.password.toggle.show")
+                        }
+                        disabled={loading.status}
+                        onClick={handleToggleShowPassword}
+                        showPassword={showPassword}
+                      />
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <ButtonLink
+                className="h-8 self-start"
+                linkProps={{ href: "/forgot-password" }}
+              >
+                {t("page.form.forgotLink.label")}
+              </ButtonLink>
             </div>
             <ButtonLoading
               type="submit"
               loading={loading.status && loading.provider === "credentials"}
             >
-              {showTwoFactor
-                ? t("page.form.submitButton.otpLabel")
-                : t("page.form.submitButton.signinLabel")}
+              {t("page.form.submitButton.signinLabel")}
             </ButtonLoading>
           </form>
         </Form>
       </CardContent>
 
       <CardFooter>
-        {!showTwoFactor && (
-          <ButtonLink linkProps={{ href: "/signup" }}>
-            {t("page.card.footer.registerLink.label")}
-          </ButtonLink>
-        )}
+        <ButtonLink linkProps={{ href: "/signup", prefetch: false }}>
+          {t("page.card.footer.registerLink.label")}
+        </ButtonLink>
       </CardFooter>
     </Card>
   );

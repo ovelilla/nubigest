@@ -1,11 +1,9 @@
 // Vendors
 import { toast } from "sonner";
-// Actions
-import { signUpAction } from "../actions/signup.actions";
 // Auth
 import { authClient } from "@/lib/auth-client";
 // Constants
-// import { DEFAULT_SIGNIN_REDIRECT } from "@/constants/middleware.constants";
+import { DEFAULT_REDIRECT } from "@/constants/routes.constants";
 // Types
 import type { SignUpSchema } from "../schemas/types/signup.schema.types";
 import type {
@@ -19,47 +17,57 @@ import type {
 const oautClickHandler = async ({
   setLoading,
   provider,
-  t,
+  tAuth,
+  tSignUp,
 }: OAuthClickHandlerProps): Promise<void> => {
   setLoading({ provider, status: true });
-  try {
-    await authClient.signIn.social({
-      provider,
-      callbackURL: "/dashboard",
-    });
-  } catch (error) {
-    console.error("Error in oautClickHandler", error);
-    toast.error(t("handlers.oauth.error.generic"));
-  } finally {
-    setLoading({ provider, status: false });
+
+  const { error } = await authClient.signIn.social({
+    provider,
+    callbackURL: DEFAULT_REDIRECT,
+  });
+
+  setLoading({ provider, status: false });
+
+  if (error) {
+    const key = `error.${error.code ?? ""}`;
+    const message = tAuth.has(key)
+      ? tAuth(key)
+      : tSignUp("handlers.oauthClick.error.generic");
+    toast.error(message);
+    return;
   }
 };
 
 const submitHandler = async ({
   form,
   setLoading,
-  t,
+  tAuth,
+  tSignUp,
   values,
 }: SubmitHandlerProps): Promise<void> => {
   setLoading({ provider: "credentials", status: true });
-  try {
-    const result = await signUpAction({ values });
-    if (result.status === "error") {
-      toast.error(result.message);
-      form.setValue("password", "");
-      return;
-    }
-    if (result.status === "success") {
-      toast.success(result.message);
-      form.reset();
-      return;
-    }
-  } catch (error) {
-    console.error("Error in submitHandler", error);
-    toast.error(t("handlers.submit.error.generic"));
-  } finally {
-    setLoading({ provider: "credentials", status: false });
+  const { error } = await authClient.signUp.email({
+    name: values.name,
+    email: values.email,
+    password: values.password,
+    callbackURL: DEFAULT_REDIRECT,
+  });
+
+  setLoading({ provider: "credentials", status: false });
+
+  if (error) {
+    const key = `error.${error.code ?? ""}`;
+    const message = tAuth.has(key)
+      ? tAuth(key)
+      : tSignUp("handlers.submit.error.generic");
+    toast.error(message);
+    form.setValue("password", "");
+    return;
   }
+
+  toast.success(tSignUp("handlers.submit.success"));
+  form.reset();
 };
 
 const toggleShowPasswordHandler = ({
@@ -74,16 +82,18 @@ const SignUpHandlers = ({
   setShowPassword,
   setLoading,
   showPassword,
-  t,
+  tAuth,
+  tSignUp,
 }: SignUpHandlersProps): SignUpHandlersReturn => {
   return {
     handleOAuthClick: (provider: string) =>
-      oautClickHandler({ setLoading, provider, t }),
+      oautClickHandler({ setLoading, provider, tAuth, tSignUp }),
     handleSubmit: (values: SignUpSchema) =>
       submitHandler({
         form,
         setLoading,
-        t,
+        tAuth,
+        tSignUp,
         values,
       }),
     handleToggleShowPassword: () =>

@@ -4,11 +4,12 @@ import { getTranslations } from "next-intl/server";
 import { SignUpContainer } from "./signup.container";
 // Types
 import type { Metadata } from "next";
+import type { Locale } from "next-intl";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({

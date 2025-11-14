@@ -1,3 +1,5 @@
+// Containers
+import { DashboardContainer } from "./dashboard.container";
 // Types
 import type { Metadata } from "next";
 
@@ -7,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const DashboardPage = async () => {
-  return <div className="p-4">Dashboard Page</div>;
+  return <DashboardContainer />;
 };
 
 export default DashboardPage;

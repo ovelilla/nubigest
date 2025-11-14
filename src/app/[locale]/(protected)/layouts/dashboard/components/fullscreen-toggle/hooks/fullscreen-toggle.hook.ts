@@ -21,7 +21,7 @@ const FullscreenToggleHook = () => {
     return () => {
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
-  }, []);
+  }, [handleFullscreenChange]);
 
   return {
     handleToggleFullscreen,

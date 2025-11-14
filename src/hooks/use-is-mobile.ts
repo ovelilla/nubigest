@@ -1,70 +1,19 @@
-"use client";
+import * as React from "react"
 
-import { useState, useEffect } from "react";
+const MOBILE_BREAKPOINT = 768
 
-interface UseIsMobileReturn {
-  isMobile: boolean;
-  isLoading: boolean;
-}
+export function useIsMobile() {
+  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
 
-export const useIsMobile = (): UseIsMobileReturn => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      const mediaQuery = window.matchMedia("(max-width: 768px)");
-
-      const userAgent = navigator.userAgent.toLowerCase();
-      const mobileKeywords = [
-        "android",
-        "webos",
-        "iphone",
-        "ipad",
-        "ipod",
-        "blackberry",
-        "windows phone",
-        "mobile",
-      ];
-
-      const isMobileUA = mobileKeywords.some((keyword) =>
-        userAgent.includes(keyword),
-      );
-
-      const isMobileDevice =
-        mediaQuery.matches || (isMobileUA && window.innerWidth <= 768);
-
-      setIsMobile(isMobileDevice);
-      setIsLoading(false);
-    };
-
-    checkIsMobile();
-
-    const mediaQuery = window.matchMedia("(max-width: 768px)");
-    const handleChange = () => checkIsMobile();
-
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener("change", handleChange);
-    } else {
-      mediaQuery.addListener(handleChange);
+  React.useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
+    const onChange = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
     }
+    mql.addEventListener("change", onChange)
+    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+    return () => mql.removeEventListener("change", onChange)
+  }, [])
 
-    window.addEventListener("resize", checkIsMobile);
-
-    return () => {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener("change", handleChange);
-      } else {
-        mediaQuery.removeListener(handleChange);
-      }
-      window.removeEventListener("resize", checkIsMobile);
-    };
-  }, []);
-
-  return {
-    isMobile,
-    isLoading,
-  };
-};
-
-export default useIsMobile;
+  return !!isMobile
+}
