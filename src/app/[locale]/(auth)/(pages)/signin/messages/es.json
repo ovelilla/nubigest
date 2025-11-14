@@ -17,7 +17,8 @@
       "submit": {
         "error": {
           "generic": "Ha ocurrido un error inesperado"
-        }
+        },
+        "success": "Inicio de sesión exitoso"
       },
       "oauth": {
         "error": {

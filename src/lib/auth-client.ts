@@ -5,7 +5,7 @@ export const authClient = createAuthClient({
   plugins: [
     twoFactorClient({
       onTwoFactorRedirect() {
-        window.location.href = "/two-factor-authentication";
+        window.location.href = "/2fa";
       },
     }),
   ],

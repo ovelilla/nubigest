@@ -56,7 +56,6 @@ const submitHandler = async ({
     {
       onSuccess(context) {
         if (context.data?.twoFactorRedirect) {
-          console.log("Redirecting to two-factor authentication...");
           return;
         }
       },

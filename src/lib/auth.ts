@@ -39,6 +39,7 @@ const auth = betterAuth({
     //     },
     //   });
     // },
+
     autoSignInAfterVerification: true,
     sendOnSignIn: true,
     sendOnSignUp: true,
@@ -51,6 +52,7 @@ const auth = betterAuth({
   },
   plugins: [
     twoFactor({
+      skipVerificationOnEnable: true,
       otpOptions: {
         async sendOTP({ user, otp }) {
           await sendTwoFactorTokenEmail({

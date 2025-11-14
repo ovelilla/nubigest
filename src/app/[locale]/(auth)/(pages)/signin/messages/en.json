@@ -17,7 +17,8 @@
       "submit": {
         "error": {
           "generic": "An unexpected error has occurred"
-        }
+        },
+        "success": "Signed in successfully"
       },
       "oauth": {
         "error": {
