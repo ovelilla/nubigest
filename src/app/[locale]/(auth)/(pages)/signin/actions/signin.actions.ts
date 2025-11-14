@@ -10,7 +10,6 @@ import { prisma } from "@/lib/prisma";
 // Schemas
 import { getSignInSchema } from "../schemas/signin.schema";
 // Services
-import { generateVerificationToken } from "@/app/[locale]/(auth)/(pages)/signup/actions/services/generate-verification-token.service";
 import { sendVerificationTokenEmail } from "@/app/[locale]/(auth)/(pages)/signup/actions/services/send-verification-token-email.service";
 import { generateTwoFactorToken } from "./services/generate-two-factor-token.service";
 import { sendTwoFactorTokenEmail } from "./services/send-two-factor-token-email.service";
