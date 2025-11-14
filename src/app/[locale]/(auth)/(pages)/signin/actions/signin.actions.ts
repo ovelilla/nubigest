@@ -59,19 +59,19 @@ const signInAction = async ({
       };
     }
 
-    if (!existingUser.emailVerified) {
-      const verificationToken = await generateVerificationToken({ email });
+    // if (!existingUser.emailVerified) {
+    //   const verificationToken = await generateVerificationToken({ email });
 
-      await sendVerificationTokenEmail({
-        email: verificationToken.email,
-        token: verificationToken.token,
-      });
+    //   await sendVerificationTokenEmail({
+    //     email: verificationToken.email,
+    //     token: verificationToken.token,
+    //   });
 
-      return {
-        status: "verificationRequired",
-        message: t("actions.signin.intermediate.verificationRequired"),
-      };
-    }
+    //   return {
+    //     status: "verificationRequired",
+    //     message: t("actions.signin.intermediate.verificationRequired"),
+    //   };
+    // }
 
     // if (existingUser.isTwoFactorEnabled && existingUser.email && !otp) {
     //   const twoFactorToken = await generateTwoFactorToken({
