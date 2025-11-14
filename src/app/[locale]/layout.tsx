@@ -1,10 +1,12 @@
 // Vendors
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
+// i18n
 import { routing } from "@/i18n/routing";
-import { SessionProvider } from "next-auth/react";
+// import { SessionProvider } from "next-auth/react";
 // Auth
-import { auth } from "@/lib/auth/auth";
+// import { auth } from "@/lib/auth/auth";
 // Components
 import { Toaster } from "@/components/ui/sonner";
 // Fonts
@@ -12,15 +14,13 @@ import { Inter } from "next/font/google";
 // Providers
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "next-themes";
-import { TooltipProvider } from "@/components/ui/tooltip";
+// import { TooltipProvider } from "@/components/ui/tooltip";
 // Styles
 import "../globals.css";
 // Types
 import type { Metadata } from "next";
 
-const inter = Inter({
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -33,12 +33,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
 
+  const t = await getTranslations({
+    locale,
+    namespace: "appLayout.metadata",
+  });
+
   return {
-    title: locale === "es" ? "Nubigest ERP" : "Nubigest ERP",
-    description:
-      locale === "es"
-        ? "ERP de gestión empresarial"
-        : "Business management ERP",
+    title: t("title"),
+    description: t("description"),
   };
 }
 
@@ -55,26 +57,29 @@ async function RootLayout({
     notFound();
   }
 
-  const session = await auth();
+  setRequestLocale(locale);
+
+  // const session = await auth();
 
   return (
-    <SessionProvider session={session}>
-      <html lang={locale} suppressHydrationWarning>
-        <body className={`flex min-h-dvh antialiased ${inter.className}`}>
-          <NextIntlClientProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <TooltipProvider>{children}</TooltipProvider>
-            </ThemeProvider>
-          </NextIntlClientProvider>
-          <Toaster />
-        </body>
-      </html>
-    </SessionProvider>
+    // <SessionProvider session={session}>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={`flex min-h-dvh antialiased ${inter.className}`}>
+        <NextIntlClientProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {/* <TooltipProvider>{children}</TooltipProvider> */}
+            {children}
+          </ThemeProvider>
+        </NextIntlClientProvider>
+        <Toaster />
+      </body>
+    </html>
+    // </SessionProvider>
   );
 }
 

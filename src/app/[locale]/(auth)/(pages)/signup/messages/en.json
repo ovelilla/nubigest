@@ -4,7 +4,8 @@
       "signup": {
         "error": {
           "invalidFields": "Invalid fields",
-          "emailAlreadyExists": "The email address is already in use"
+          "emailAlreadyExists": "The email address is already in use",
+          "generic": "An unexpected error has occurred"
         },
         "success": "Verification email sent"
       }
@@ -91,12 +92,13 @@
       "signup": {
         "name": {
           "required": "Name is required",
-          "min": "Name must be at least 2 characters long",
+          "min": "Name must be at least 1 character long",
           "max": "Name cannot be more than 64 characters long"
         },
         "email": {
-          "required": "Email is required",
-          "invalid": "Invalid email"
+          "invalid": "Invalid email",
+          "max": "Email cannot be more than 254 characters long",
+          "required": "Email is required"
         },
         "password": {
           "required": "Password is required",

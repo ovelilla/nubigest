@@ -1,14 +1,15 @@
 "use server";
 // Vendors
 import { getTranslations } from "next-intl/server";
-import bcryptjs from "bcryptjs";
+// import bcryptjs from "bcryptjs";
 // Libs
-import { prisma } from "@/lib/db/prisma";
+import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 // Schemas
 import { getSignUpSchema } from "../schemas/signup.schema";
 // Services
-import { generateVerificationToken } from "./services/generate-verification-token.service";
-import { sendVerificationTokenEmail } from "./services/send-verification-token-email.service";
+// import { generateVerificationToken } from "./services/generate-verification-token.service";
+// import { sendVerificationTokenEmail } from "./services/send-verification-token-email.service";
 // Types
 import type {
   SignUpActionProps,
@@ -32,43 +33,42 @@ const signUpAction = async ({
 
   const { name, email, password } = validatedFields.data;
 
-  const existingUser = await prisma.user.findUnique({
-    where: {
-      email,
-    },
-    select: {
-      id: true,
-    },
-  });
+  try {
+    const existingUser = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+      select: {
+        id: true,
+      },
+    });
 
-  if (existingUser) {
+    if (existingUser) {
+      return {
+        status: "error",
+        message: t("actions.signup.error.userAlreadyExists"),
+      };
+    }
+
+    await auth.api.signUpEmail({
+      body: {
+        name,
+        email,
+        password,
+      },
+    });
+
+    return {
+      status: "success",
+      message: t("actions.signup.success"),
+    };
+  } catch (error) {
+    console.error("Error in signUpAction:", error);
     return {
       status: "error",
-      message: t("actions.signup.error.userAlreadyExists"),
+      message: t("actions.signup.error.generic"),
     };
   }
-
-  const hashedPassword = await bcryptjs.hash(password, 10);
-
-  await prisma.user.create({
-    data: {
-      name,
-      email,
-      password: hashedPassword,
-    },
-  });
-
-  const verificationToken = await generateVerificationToken({ email });
-
-  await sendVerificationTokenEmail({
-    email: verificationToken.email,
-    token: verificationToken.token,
-  });
-
-  return {
-    status: "success",
-    message: t("actions.signup.success"),
-  };
 };
 
 export { signUpAction };

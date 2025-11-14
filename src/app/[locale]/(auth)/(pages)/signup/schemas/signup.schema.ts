@@ -27,15 +27,20 @@ export const passwordRules = [
 const getSignUpSchema = (t: (arg: string) => string) =>
   z.object({
     name: z
-      .string({ required_error: t("schemas.signup.name.required") })
-      .min(2, t("schemas.signup.name.min"))
+      .string({ error: t("schemas.signup.name.required") })
+      .trim()
+      .min(1, t("schemas.signup.name.min"))
       .max(64, t("schemas.signup.name.max")),
     email: z
-      .string({ required_error: t("schemas.signup.email.required") })
-      .min(1, t("schemas.signup.email.required"))
-      .email(t("schemas.signup.email.invalid")),
+      .string()
+      .trim()
+      .min(1, { error: t("schemas.signup.email.required") })
+      .max(254, { error: t("schemas.signup.email.max") })
+      .pipe(z.email({ error: t("schemas.signup.email.invalid") }))
+      .transform((s) => s.toLowerCase()),
     password: z
-      .string({ required_error: t("schemas.signup.password.required") })
+      .string()
+      .trim()
       .min(1, t("schemas.signup.password.required"))
       .min(6, t("schemas.signup.password.min"))
       .max(32, t("schemas.signup.password.max"))
@@ -43,7 +48,7 @@ const getSignUpSchema = (t: (arg: string) => string) =>
         passwordRules.forEach((rule) => {
           if (!rule.test(value)) {
             ctx.addIssue({
-              code: z.ZodIssueCode.custom,
+              code: "custom",
               message: t(`schemas.signup.password.rules.${rule.key}`),
             });
           }

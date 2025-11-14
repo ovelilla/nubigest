@@ -8,7 +8,7 @@ import { AuthLayoutProps } from "./types/auth.types";
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
     <div className="flex grow flex-col">
-      <header className="bg-background flex h-14 shrink-0 items-center justify-end px-2 sm:h-16 sm:px-4">
+      <header className="bg-background flex h-14 shrink-0 items-center justify-end px-2 md:h-16 md:px-4">
         <div className="flex gap-2">
           <LocaleSwitcher />
           <ToggleTheme />

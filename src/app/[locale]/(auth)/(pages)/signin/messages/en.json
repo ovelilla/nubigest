@@ -66,7 +66,7 @@
         },
         "email": {
           "label": "Email",
-          "placeholder": "john.doe@example.com"
+          "placeholder": "name@example.com"
         },
         "password": {
           "label": "Password",
@@ -93,8 +93,9 @@
     "schemas": {
       "signin": {
         "email": {
-          "required": "Email is required",
-          "invalid": "Invalid email"
+          "invalid": "Invalid email",
+          "max": "Email cannot be more than 254 characters long",
+          "required": "Email is required"
         },
         "password": {
           "required": "Password is required",

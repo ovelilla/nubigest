@@ -66,7 +66,7 @@
         },
         "email": {
           "label": "Correo electrónico",
-          "placeholder": "john.doe@example.com"
+          "placeholder": "nombre@ejemplo.com"
         },
         "password": {
           "label": "Contraseña",
@@ -93,8 +93,9 @@
     "schemas": {
       "signin": {
         "email": {
-          "required": "El correo electrónico es obligatorio",
-          "invalid": "El correo electrónico es inválido"
+          "invalid": "El correo electrónico es inválido",
+          "max": "El correo electrónico no puede tener más de 254 caracteres",
+          "required": "El correo electrónico es obligatorio"
         },
         "password": {
           "required": "La contraseña es obligatoria",

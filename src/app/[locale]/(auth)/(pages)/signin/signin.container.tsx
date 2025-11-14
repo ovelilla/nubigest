@@ -9,7 +9,6 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardSeparator,
   CardTitle,
 } from "@/components/ui/card";
 import {
@@ -27,6 +26,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { OAuthButtons } from "@/components/oauth-buttons/oauth-buttons.component";
+import { SeparatorWithText } from "@/components/ui/separator-with-text";
 // Constants
 import { OAUTH_PROVIDERS } from "./constants/signin.constants";
 // Hooks
@@ -62,7 +62,9 @@ const SignInContainer = () => {
                 label: t(`page.oauth.${provider.provider}.label`),
               }))}
             />
-            <CardSeparator>{t("page.card.content.separator")}</CardSeparator>
+            <SeparatorWithText>
+              {t("page.card.content.separator")}
+            </SeparatorWithText>
           </>
         )}
         <Form {...form}>

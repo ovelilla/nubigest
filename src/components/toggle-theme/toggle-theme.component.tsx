@@ -9,13 +9,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 // Hooks
 import { useTheme } from "next-themes";
-import { useIsMounted } from "../../hooks/use-mounted";
+import { useIsMounted } from "@/hooks/use-is-mounted";
 // Icons
 import { Loader2, Moon, Sun } from "lucide-react";
 
 const ToggleTheme = () => {
   const { theme, setTheme } = useTheme();
-  const { isMounted } = useIsMounted();
+  const isMounted = useIsMounted();
 
   return (
     <DropdownMenu>

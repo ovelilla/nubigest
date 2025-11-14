@@ -10,7 +10,7 @@ const PasswordStrengthRules = ({
 }: PasswordStrengthRulesProps) => (
   <ul
     className={cn(
-      "text-muted-foreground grid grid-cols-2 gap-1 text-sm sm:grid-cols-2",
+      "text-muted-foreground grid grid-cols-2 gap-1 text-sm",
       className,
     )}
   >

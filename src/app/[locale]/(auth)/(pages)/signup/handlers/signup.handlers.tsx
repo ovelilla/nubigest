@@ -1,10 +1,10 @@
 // Vendors
-import { signIn } from "next-auth/react";
+// import { signIn } from "next-auth/react";
 import { toast } from "sonner";
 // Actions
 import { signUpAction } from "../actions/signup.actions";
 // Constants
-import { DEFAULT_SIGNIN_REDIRECT } from "@/constants/middleware.constants";
+// import { DEFAULT_SIGNIN_REDIRECT } from "@/constants/middleware.constants";
 // Types
 import type { SignUpSchema } from "../schemas/types/signup.schema.types";
 import type {
@@ -20,18 +20,17 @@ const oautClickHandler = async ({
   provider,
   t,
 }: OAuthClickHandlerProps): Promise<void> => {
-  setLoading({ provider, status: true });
-
-  try {
-    await signIn(provider, {
-      callbackUrl: DEFAULT_SIGNIN_REDIRECT,
-    });
-  } catch (error) {
-    console.error("Error in oautClickHandler", error);
-    toast.error(t("handlers.oauth.error.generic"));
-  } finally {
-    setLoading({ provider, status: false });
-  }
+  // setLoading({ provider, status: true });
+  // try {
+  //   await signIn(provider, {
+  //     callbackUrl: DEFAULT_SIGNIN_REDIRECT,
+  //   });
+  // } catch (error) {
+  //   console.error("Error in oautClickHandler", error);
+  //   toast.error(t("handlers.oauth.error.generic"));
+  // } finally {
+  //   setLoading({ provider, status: false });
+  // }
 };
 
 const submitHandler = async ({
@@ -41,16 +40,13 @@ const submitHandler = async ({
   values,
 }: SubmitHandlerProps): Promise<void> => {
   setLoading({ provider: "credentials", status: true });
-
   try {
     const result = await signUpAction({ values });
-
     if (result.status === "error") {
       toast.error(result.message);
       form.setValue("password", "");
       return;
     }
-
     if (result.status === "success") {
       toast.success(result.message);
       form.reset();

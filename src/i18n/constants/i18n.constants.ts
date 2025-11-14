@@ -26,30 +26,6 @@ const PATHNAMES = {
   "/dashboard": {
     es: "/panel",
   },
-  "/dashboard/global": {
-    es: "/panel/global",
-  },
-  "/dashboard/global/events": {
-    es: "/panel/global/eventos",
-  },
-  "/dashboard/global/organizations": {
-    es: "/panel/global/organizaciones",
-  },
-  "/dashboard/global/users": {
-    es: "/panel/global/usuarios",
-  },
-  "/dashboard/[slug]": {
-    es: "/panel/[slug]",
-  },
-  "/dashboard/[slug]/appointments": {
-    es: "/panel/[slug]/agenda",
-  },
-  "/dashboard/[slug]/clients": {
-    es: "/panel/[slug]/clientes",
-  },
-  "/dashboard/[slug]/services": {
-    es: "/panel/[slug]/servicios",
-  },
 } as const;
 
 export { DEFAULT_LOCALE, LOCALES, PATHNAMES };

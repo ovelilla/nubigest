@@ -9,7 +9,6 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardSeparator,
   CardTitle,
 } from "@/components/ui/card";
 import {
@@ -28,6 +27,7 @@ import {
   PasswordStrengthRules,
   PasswordStrengthRule,
 } from "@/components/password-strength";
+import { SeparatorWithText } from "@/components/ui/separator-with-text";
 // Constants
 import { OAUTH_PROVIDERS } from "./constants/signup.constants";
 // Hooks
@@ -59,7 +59,9 @@ const SignUpContainer = () => {
             label: t(`page.oauth.${provider.provider}.label`),
           }))}
         />
-        <CardSeparator>{t("page.card.content.separator")}</CardSeparator>
+        <SeparatorWithText>
+          {t("page.card.content.separator")}
+        </SeparatorWithText>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(handleSubmit)}

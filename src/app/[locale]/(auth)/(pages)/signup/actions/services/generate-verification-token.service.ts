@@ -1,7 +1,7 @@
 // Vendors
 import { v4 as uuidv4 } from "uuid";
 // Libs
-import { prisma } from "@/lib/db/prisma";
+import { prisma } from "@/lib/prisma";
 // Types
 import type { GenerateVerificationTokenProps } from "./types/generate-verification-token.types";
 
@@ -11,28 +11,28 @@ const generateVerificationToken = async ({
   const token = uuidv4();
   const expires = new Date(new Date().getTime() + 3600 * 1000);
 
-  const existingToken = await prisma.verificationToken.findFirst({
-    where: { email },
-    select: { id: true },
-  });
+  // const existingToken = await prisma.verificationToken.findFirst({
+  //   where: { email },
+  //   select: { id: true },
+  // });
 
-  if (existingToken) {
-    await prisma.verificationToken.delete({
-      where: {
-        id: existingToken.id,
-      },
-    });
-  }
+  // if (existingToken) {
+  //   await prisma.verificationToken.delete({
+  //     where: {
+  //       id: existingToken.id,
+  //     },
+  //   });
+  // }
 
-  const verificationToken = await prisma.verificationToken.create({
-    data: {
-      email,
-      token,
-      expires,
-    },
-  });
+  // const verificationToken = await prisma.verificationToken.create({
+  //   data: {
+  //     email,
+  //     token,
+  //     expires,
+  //   },
+  // });
 
-  return verificationToken;
+  // return verificationToken;
 };
 
 export { generateVerificationToken };

@@ -4,7 +4,8 @@
       "signup": {
         "error": {
           "invalidFields": "Campos inválidos",
-          "emailAlreadyExists": "El correo electrónico ya está en uso"
+          "emailAlreadyExists": "El correo electrónico ya está en uso",
+          "generic": "Ha ocurrido un error inesperado"
         },
         "success": "Email de verificación enviado"
       }
@@ -91,12 +92,13 @@
       "signup": {
         "name": {
           "required": "El nombre es obligatorio",
-          "min": "El nombre debe tener al menos 2 caracteres",
+          "min": "El nombre debe tener al menos 1 carácter",
           "max": "El nombre no puede tener más de 64 caracteres"
         },
         "email": {
-          "required": "El correo electrónico es obligatorio",
-          "invalid": "El correo electrónico es inválido"
+          "invalid": "El correo electrónico es inválido",
+          "max": "El correo electrónico no puede tener más de 254 caracteres",
+          "required": "El correo electrónico es obligatorio"
         },
         "password": {
           "required": "La contraseña es obligatoria",
