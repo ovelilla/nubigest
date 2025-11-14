@@ -1,26 +1,26 @@
 // Types
 import type { Dispatch, SetStateAction } from "react";
-import type { SignInSchema } from "../../schemas/types/two-factor.schema.types";
+import type { TwoFactorSchema } from "../../schemas/types/two-factor.schema.types";
 import type { UseFormReturn } from "react-hook-form";
 import type { _Translator } from "next-intl";
 
 type SignInHandlersProps = {
-  form: UseFormReturn<SignInSchema>;
+  form: UseFormReturn<TwoFactorSchema>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   tAuth: _Translator;
   tTwoFactor: _Translator;
 };
 
 type SignInHandlersReturn = {
-  handleSubmit: (values: SignInSchema) => void;
+  handleSubmit: (values: TwoFactorSchema) => void;
 };
 
 type SubmitHandlerProps = {
-  form: UseFormReturn<SignInSchema>;
+  form: UseFormReturn<TwoFactorSchema>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   tAuth: _Translator;
   tTwoFactor: _Translator;
-  values: SignInSchema;
+  values: TwoFactorSchema;
 };
 
 export type { SignInHandlersProps, SignInHandlersReturn, SubmitHandlerProps };
