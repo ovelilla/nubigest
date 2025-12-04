@@ -1,4 +1,5 @@
 // Vendors
+import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 // Containers
 import { SignInContainer } from "./signin.container";
@@ -23,7 +24,11 @@ export async function generateMetadata({
 }
 
 const SignInPage = () => {
-  return <SignInContainer />;
+  return (
+    <Suspense>
+      <SignInContainer />
+    </Suspense>
+  );
 };
 
 export default SignInPage;
