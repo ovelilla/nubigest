@@ -1,4 +1,5 @@
 // Vendors
+import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 // Containers
 import { ResetPasswordContainer } from "./reset-password.container";
@@ -23,7 +24,11 @@ export async function generateMetadata({
 }
 
 const ResetPasswordPage = () => {
-  return <ResetPasswordContainer />;
+  return (
+    <Suspense>
+      <ResetPasswordContainer />
+    </Suspense>
+  );
 };
 
 export default ResetPasswordPage;
