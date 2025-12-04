@@ -2,27 +2,56 @@
 import { betterAuth } from "better-auth";
 import { twoFactor } from "better-auth/plugins";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import slug from "slug";
+// import slug from "slug";
 // Libs
 import { prisma } from "@/lib/prisma";
 // Utils
-import { sendVerificationTokenEmail } from "@/app/[locale]/(auth)/(pages)/signup/utils/send-verification-token-email/send-verification-token-email.util";
-import { sendTwoFactorTokenEmail } from "@/app/[locale]/(auth)/(pages)/signin/utils/send-two-factor-token-email/send-two-factor-token-email.util";
+import { sendResetPasswordEmail } from "@/app/[locale]/(auth)/(pages)/forgot-password/services/send-reset-password-email.service";
+import { sendVerificationEmail } from "@/app/[locale]/(auth)/(pages)/signup/services/send-verification-email/send-verification-email.service";
+import { sendTwoFactorOtpEmail } from "@/app/[locale]/(auth)/(pages)/two-factor/services/send-two-factor-otp-email/send-two-factor-otp-email.service";
 
 const auth = betterAuth({
+  advanced: {
+    ipAddress: {
+      ipAddressHeaders: ["cf-connecting-ip"],
+    },
+  },
   appName: "Nubigest",
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
-  trustedOrigins: [
-    "https://www.nubigest.com",
-    "http://www.nubigest.com",
-    "https://nubigest.com",
-    "http://nubigest.com",
-  ],
+  rateLimit: {
+    customRules: {
+      "/send-verification-email": {
+        window: 30,
+        max: 1,
+      },
+      "/sign-in/email": {
+        window: 30,
+        max: 5,
+      },
+      "/sign-up/email": {
+        window: 60,
+        max: 3,
+      },
+      "/two-factor/*": {
+        window: 30,
+        max: 1,
+      },
+    },
+    enabled: true,
+    storage: "database",
+  },
+  trustedOrigins: ["https://www.nubigest.com", "https://nubigest.com"],
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: true,
+    sendResetPassword: async ({ user, url }) => {
+      sendResetPasswordEmail({
+        email: user.email,
+        url,
+      });
+    },
   },
   emailVerification: {
     // async afterEmailVerification(user) {
@@ -39,12 +68,11 @@ const auth = betterAuth({
     //     },
     //   });
     // },
-
     autoSignInAfterVerification: true,
     sendOnSignIn: true,
     sendOnSignUp: true,
     sendVerificationEmail: async ({ user, url }) => {
-      await sendVerificationTokenEmail({
+      sendVerificationEmail({
         email: user.email,
         url,
       });
@@ -54,8 +82,8 @@ const auth = betterAuth({
     twoFactor({
       skipVerificationOnEnable: true,
       otpOptions: {
-        async sendOTP({ user, otp }) {
-          await sendTwoFactorTokenEmail({
+        sendOTP: async ({ user, otp }) => {
+          sendTwoFactorOtpEmail({
             email: user.email,
             token: otp,
           });

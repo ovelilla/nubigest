@@ -1,0 +1,62 @@
+{
+  "forgotPassword": {
+    "emails": {
+      "resetPassword": {
+        "subject": "Restablece tu contraseña",
+        "content": {
+          "previewText": "Restablece tu contraseña",
+          "title": "Restablece tu contraseña",
+          "button": "Restablecer contraseña",
+          "firstParagraph": "Si solicitaste restablecer tu contraseña, haz clic en el botón de abajo. Este enlace caducará en 1 hora.",
+          "secondParagraph": "O copia y pega el siguiente enlace en tu navegador:",
+          "footer": "Si no solicitaste este mensaje, puedes ignorarlo con seguridad."
+        }
+      }
+    },
+    "handlers": {
+      "submit": {
+        "error": {
+          "generic": "Ha ocurrido un error inesperado."
+        },
+        "success": "Te hemos enviado un correo con instrucciones para restablecer tu contraseña."
+      }
+    },
+    "metadata": {
+      "title": "¿Olvidaste tu contraseña?",
+      "description": "Recupera tu cuenta restableciendo tu contraseña."
+    },
+    "page": {
+      "card": {
+        "header": {
+          "title": "¿Olvidaste tu contraseña?",
+          "description": "Introduce tu correo electrónico y te enviaremos instrucciones para restablecerla."
+        },
+        "content": {
+          "form": {
+            "email": {
+              "label": "Correo electrónico",
+              "placeholder": "nombre@ejemplo.com"
+            },
+            "submitButton": {
+              "label": "Enviar enlace"
+            }
+          }
+        },
+        "footer": {
+          "signinLink": {
+            "label": "¿Recordaste tu contraseña? Inicia sesión"
+          }
+        }
+      }
+    },
+    "schemas": {
+      "forgotPassword": {
+        "email": {
+          "invalid": "El correo electrónico es inválido",
+          "max": "El correo electrónico no puede tener más de 254 caracteres",
+          "required": "El correo electrónico es obligatorio"
+        }
+      }
+    }
+  }
+}

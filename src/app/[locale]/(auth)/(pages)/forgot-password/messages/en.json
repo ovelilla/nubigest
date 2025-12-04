@@ -1,0 +1,62 @@
+{
+  "forgotPassword": {
+    "emails": {
+      "resetPassword": {
+        "subject": "Reset your password",
+        "content": {
+          "previewText": "Reset your password",
+          "title": "Reset your password",
+          "button": "Reset your password",
+          "firstParagraph": "If you requested a password reset, click the button below. This link will expire in 1 hour.",
+          "secondParagraph": "Or copy and paste the following link into your browser:",
+          "footer": "If you didn’t request this, you can safely ignore this email."
+        }
+      }
+    },
+    "handlers": {
+      "submit": {
+        "error": {
+          "generic": "An unexpected error has occurred."
+        },
+        "success": "We’ve sent you an email with instructions to reset your password."
+      }
+    },
+    "metadata": {
+      "title": "Forgot your password?",
+      "description": "Recover your account by resetting your password."
+    },
+    "page": {
+      "card": {
+        "header": {
+          "title": "Forgot your password?",
+          "description": "Enter your email and we'll send you instructions to reset it."
+        },
+        "content": {
+          "form": {
+            "email": {
+              "label": "Email",
+              "placeholder": "name@example.com"
+            },
+            "submitButton": {
+              "label": "Send reset link"
+            }
+          }
+        },
+        "footer": {
+          "signinLink": {
+            "label": "Remembered your password? Sign in"
+          }
+        }
+      }
+    },
+    "schemas": {
+      "forgotPassword": {
+        "email": {
+          "invalid": "Invalid email",
+          "max": "Email cannot be more than 254 characters long",
+          "required": "Email is required"
+        }
+      }
+    }
+  }
+}

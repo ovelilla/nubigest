@@ -56,7 +56,7 @@ const SignUpContainer = () => {
           onClick={handleOAuthClick}
           providers={OAUTH_PROVIDERS.map((provider) => ({
             ...provider,
-            label: t(`page.oauth.${provider.provider}.label`),
+            label: t(`page.card.content.oauth.${provider.provider}.label`),
           }))}
         />
         <SeparatorWithText>
@@ -74,14 +74,16 @@ const SignUpContainer = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel htmlFor={field.name}>
-                      {t("page.form.name.label")}
+                      {t("page.card.content.form.name.label")}
                     </FormLabel>
                     <FormControl>
                       <Input
                         {...field}
                         disabled={loading.status}
                         id={field.name}
-                        placeholder={t("page.form.name.placeholder")}
+                        placeholder={t(
+                          "page.card.content.form.name.placeholder",
+                        )}
                         type="text"
                       />
                     </FormControl>
@@ -95,7 +97,7 @@ const SignUpContainer = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel htmlFor={field.name}>
-                      {t("page.form.email.label")}
+                      {t("page.card.content.form.email.label")}
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -103,7 +105,9 @@ const SignUpContainer = () => {
                         autoComplete="username"
                         disabled={loading.status}
                         id={field.name}
-                        placeholder={t("page.form.email.placeholder")}
+                        placeholder={t(
+                          "page.card.content.form.email.placeholder",
+                        )}
                         type="email"
                       />
                     </FormControl>
@@ -118,7 +122,7 @@ const SignUpContainer = () => {
                   return (
                     <FormItem>
                       <FormLabel htmlFor={field.name}>
-                        {t("page.form.password.label")}
+                        {t("page.card.content.form.password.label")}
                       </FormLabel>
                       <div className="relative">
                         <FormControl>
@@ -128,15 +132,17 @@ const SignUpContainer = () => {
                             className="pr-12"
                             disabled={loading.status}
                             id={field.name}
-                            placeholder={t("page.form.password.placeholder")}
+                            placeholder={t(
+                              "page.card.content.form.password.placeholder",
+                            )}
                             type={showPassword ? "text" : "password"}
                           />
                         </FormControl>
                         <ButtonTogglePassword
                           aria-label={
                             showPassword
-                              ? t("page.form.password.toggle.hide")
-                              : t("page.form.password.toggle.show")
+                              ? t("page.card.content.form.password.toggle.hide")
+                              : t("page.card.content.form.password.toggle.show")
                           }
                           disabled={loading.status}
                           onClick={handleToggleShowPassword}
@@ -149,16 +155,24 @@ const SignUpContainer = () => {
                           <PasswordStrengthBar />
                           <PasswordStrengthRules>
                             <PasswordStrengthRule rule="length">
-                              {t("page.form.password.rules.length")}
+                              {t(
+                                "page.card.content.form.password.rules.length",
+                              )}
                             </PasswordStrengthRule>
                             <PasswordStrengthRule rule="number">
-                              {t("page.form.password.rules.number")}
+                              {t(
+                                "page.card.content.form.password.rules.number",
+                              )}
                             </PasswordStrengthRule>
                             <PasswordStrengthRule rule="uppercase">
-                              {t("page.form.password.rules.uppercase")}
+                              {t(
+                                "page.card.content.form.password.rules.uppercase",
+                              )}
                             </PasswordStrengthRule>
                             <PasswordStrengthRule rule="special">
-                              {t("page.form.password.rules.special")}
+                              {t(
+                                "page.card.content.form.password.rules.special",
+                              )}
                             </PasswordStrengthRule>
                           </PasswordStrengthRules>
                         </PasswordStrength>
@@ -172,13 +186,16 @@ const SignUpContainer = () => {
               type="submit"
               loading={loading.status && loading.provider === "credentials"}
             >
-              {t("page.form.submitButton.label")}
+              {t("page.card.content.form.submitButton.label")}
             </ButtonLoading>
           </form>
         </Form>
       </CardContent>
       <CardFooter>
-        <ButtonLink linkProps={{ href: "/signin", prefetch: false }}>
+        <ButtonLink
+          className="text-muted-foreground"
+          linkProps={{ href: "/signin", prefetch: false }}
+        >
           {t("page.card.footer.signupLink.label")}
         </ButtonLink>
       </CardFooter>

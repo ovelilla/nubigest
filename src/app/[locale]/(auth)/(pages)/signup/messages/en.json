@@ -1,7 +1,7 @@
 {
   "signup": {
     "emails": {
-      "verificationToken": {
+      "verification": {
         "subject": "Verify your email address",
         "content": {
           "previewText": "Verify your email",
@@ -38,44 +38,44 @@
           "description": "Create an account to access all features."
         },
         "content": {
+          "form": {
+            "name": {
+              "label": "Name",
+              "placeholder": "Enter your name"
+            },
+            "email": {
+              "label": "Email",
+              "placeholder": "e.g., name@example.com"
+            },
+            "password": {
+              "label": "Password",
+              "placeholder": "Enter a strong password",
+              "toggle": {
+                "show": "Show password",
+                "hide": "Hide password"
+              },
+              "rules": {
+                "length": "6 characters minimum",
+                "number": "One number",
+                "special": "One special character",
+                "uppercase": "One uppercase letter"
+              }
+            },
+            "submitButton": {
+              "label": "Sign up"
+            }
+          },
+          "oauth": {
+            "google": {
+              "label": "Sign up with Google"
+            }
+          },
           "separator": "Or sign up with email"
         },
         "footer": {
           "signupLink": {
             "label": "Already have an account? Sign in"
           }
-        }
-      },
-      "form": {
-        "name": {
-          "label": "Name",
-          "placeholder": "Enter your name"
-        },
-        "email": {
-          "label": "Email",
-          "placeholder": "e.g., name@example.com"
-        },
-        "password": {
-          "label": "Password",
-          "placeholder": "Enter a strong password",
-          "toggle": {
-            "show": "Show password",
-            "hide": "Hide password"
-          },
-          "rules": {
-            "length": "6 characters minimum",
-            "number": "One number",
-            "special": "One special character",
-            "uppercase": "One uppercase letter"
-          }
-        },
-        "submitButton": {
-          "label": "Sign up"
-        }
-      },
-      "oauth": {
-        "google": {
-          "label": "Sign up with Google"
         }
       }
     },

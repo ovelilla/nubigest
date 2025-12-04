@@ -1,5 +1,6 @@
 "use client";
 // Components
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { ButtonLink } from "@/components/ui/button-link";
 import { ButtonLoading } from "@/components/ui/button-loading";
 import { ButtonTogglePassword } from "@/components/ui/button-toggle-password";
@@ -11,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -26,6 +28,8 @@ import { SeparatorWithText } from "@/components/ui/separator-with-text";
 import { OAUTH_PROVIDERS } from "./constants/signin.constants";
 // Hooks
 import { SignInHook } from "./hooks/signin.hook";
+// Icons
+import { CircleCheck } from "lucide-react";
 
 const SignInContainer = () => {
   const {
@@ -34,6 +38,7 @@ const SignInContainer = () => {
     handleSubmit,
     handleToggleShowPassword,
     loading,
+    reset,
     showPassword,
     t,
   } = SignInHook();
@@ -46,12 +51,20 @@ const SignInContainer = () => {
       </CardHeader>
 
       <CardContent>
+        {reset === "success" && (
+          <Alert className="border-none bg-green-50 text-green-900 dark:bg-green-950 dark:text-green-100">
+            <CircleCheck />
+            <AlertTitle>
+              {t("page.card.content.resetSuccessAlert.title")}
+            </AlertTitle>
+          </Alert>
+        )}
         <OAuthButtons
           loading={loading}
           onClick={handleOAuthClick}
           providers={OAUTH_PROVIDERS.map((provider) => ({
             ...provider,
-            label: t(`page.oauth.${provider.provider}.label`),
+            label: t(`page.card.content.oauth.${provider.provider}.label`),
           }))}
         />
         <SeparatorWithText>
@@ -69,7 +82,7 @@ const SignInContainer = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel htmlFor={field.name}>
-                      {t("page.form.email.label")}
+                      {t("page.card.content.form.email.label")}
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -77,7 +90,9 @@ const SignInContainer = () => {
                         autoComplete="username"
                         disabled={loading.status}
                         id={field.name}
-                        placeholder={t("page.form.email.placeholder")}
+                        placeholder={t(
+                          "page.card.content.form.email.placeholder",
+                        )}
                         type="email"
                       />
                     </FormControl>
@@ -91,7 +106,7 @@ const SignInContainer = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel htmlFor="password">
-                      {t("page.form.password.label")}
+                      {t("page.card.content.form.password.label")}
                     </FormLabel>
                     <div className="relative">
                       <FormControl>
@@ -100,16 +115,18 @@ const SignInContainer = () => {
                           autoComplete="current-password"
                           className="pr-12"
                           disabled={loading.status}
-                          id="password"
-                          placeholder={t("page.form.password.placeholder")}
+                          id={field.name}
+                          placeholder={t(
+                            "page.card.content.form.password.placeholder",
+                          )}
                           type={showPassword ? "text" : "password"}
                         />
                       </FormControl>
                       <ButtonTogglePassword
                         aria-label={
                           showPassword
-                            ? t("page.form.password.toggle.hide")
-                            : t("page.form.password.toggle.show")
+                            ? t("page.card.content.form.password.toggle.hide")
+                            : t("page.card.content.form.password.toggle.show")
                         }
                         disabled={loading.status}
                         onClick={handleToggleShowPassword}
@@ -120,25 +137,48 @@ const SignInContainer = () => {
                   </FormItem>
                 )}
               />
-              <ButtonLink
-                className="h-8 self-start"
-                linkProps={{ href: "/forgot-password" }}
-              >
-                {t("page.form.forgotLink.label")}
-              </ButtonLink>
+              <div className="flex flex-wrap justify-between gap-2">
+                <FormField
+                  control={form.control}
+                  name="rememberMe"
+                  render={({ field }) => (
+                    <FormItem className="flex items-center gap-2">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                          disabled={loading.status}
+                        />
+                      </FormControl>
+                      <FormLabel>
+                        {t("page.card.content.form.rememberMe.label")}
+                      </FormLabel>
+                    </FormItem>
+                  )}
+                />
+                <ButtonLink
+                  className="h-8"
+                  linkProps={{ href: "/forgot-password" }}
+                >
+                  {t("page.card.content.form.forgotLink.label")}
+                </ButtonLink>
+              </div>
             </div>
             <ButtonLoading
               type="submit"
               loading={loading.status && loading.provider === "credentials"}
             >
-              {t("page.form.submitButton.label")}
+              {t("page.card.content.form.submitButton.label")}
             </ButtonLoading>
           </form>
         </Form>
       </CardContent>
 
       <CardFooter>
-        <ButtonLink linkProps={{ href: "/signup", prefetch: false }}>
+        <ButtonLink
+          className="text-muted-foreground"
+          linkProps={{ href: "/signup", prefetch: false }}
+        >
           {t("page.card.footer.registerLink.label")}
         </ButtonLink>
       </CardFooter>

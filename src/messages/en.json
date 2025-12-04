@@ -4,6 +4,16 @@
       "button": {
         "ariaLabel": "Switch language"
       }
+    },
+    "themeSwitcher": {
+      "button": {
+        "ariaLabel": "Switch theme"
+      },
+      "themes": {
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      }
     }
   }
 }

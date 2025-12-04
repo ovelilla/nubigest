@@ -5,7 +5,7 @@ import { LocaleSwitcher } from "@/components/locale-switcher/locale-switcher.com
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Sidebar } from "./components/sidebar/sidebar.component";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { ToggleTheme } from "@/components/toggle-theme/toggle-theme.component";
+import { ThemeSwitcher } from "@/components/theme-switcher/theme-switcher.component";
 import { UserNav } from "./components/user-nav/user-nav.component";
 // Hooks
 import { DashboardHook } from "./hooks/dashboard.hook";
@@ -26,7 +26,7 @@ const DashboardLayout = ({ children, session }: DashboardProps) => {
               <LocaleSwitcher />
               <SidebarTrigger />
               <FullscreenToggle />
-              <ToggleTheme />
+              <ThemeSwitcher />
               <UserNav session={session} />
             </div>
           </header>

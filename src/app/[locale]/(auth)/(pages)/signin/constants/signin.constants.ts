@@ -4,6 +4,7 @@ import { SiGoogle } from "@icons-pack/react-simple-icons";
 const DEFAULT_VALUES = {
   email: "",
   password: "",
+  rememberMe: false,
 } as const;
 
 const OAUTH_PROVIDERS = [

@@ -1,0 +1,79 @@
+{
+  "resetPassword": {
+    "handlers": {
+      "submit": {
+        "error": {
+          "generic": "Ha ocurrido un error inesperado"
+        },
+        "success": "Tu contraseña ha sido restablecida con éxito."
+      }
+    },
+    "metadata": {
+      "title": "Restablecer contraseña",
+      "description": "Establece una nueva contraseña para acceder a tu cuenta"
+    },
+    "page": {
+      "error": {
+        "card": {
+          "header": {
+            "title": "Enlace inválido o expirado",
+            "description": "El enlace de restablecimiento de contraseña que utilizaste ya no es válido. Por favor, solicita un nuevo restablecimiento de contraseña."
+          },
+          "footer": {
+            "requestLink": {
+              "label": "Solicitar nuevo enlace"
+            }
+          }
+        }
+      },
+      "card": {
+        "header": {
+          "title": "Restablece tu contraseña",
+          "description": "Introduce tu nueva contraseña a continuación."
+        },
+        "content": {
+          "form": {
+            "password": {
+              "label": "Nueva contraseña",
+              "placeholder": "Introduce una contraseña segura",
+              "toggle": {
+                "show": "Mostrar contraseña",
+                "hide": "Ocultar contraseña"
+              },
+              "rules": {
+                "length": "Mínimo 6 caracteres",
+                "number": "Un número",
+                "special": "Un carácter especial",
+                "uppercase": "Una letra mayúscula"
+              }
+            },
+            "submitButton": {
+              "label": "Restablecer contraseña"
+            }
+          }
+        },
+        "footer": {
+          "signinLink": {
+            "label": "Volver a iniciar sesión"
+          }
+        }
+      }
+    },
+    "schemas": {
+      "resetPassword": {
+        "password": {
+          "required": "La contraseña es obligatoria",
+          "min": "La contraseña debe tener al menos 6 caracteres",
+          "max": "La contraseña no puede tener más de 32 caracteres",
+          "rules": {
+            "length": "La contraseña debe tener al menos 6 caracteres",
+            "lowercase": "La contraseña debe contener al menos una letra minúscula",
+            "number": "La contraseña debe contener al menos un número",
+            "special": "La contraseña debe contener al menos un carácter especial",
+            "uppercase": "La contraseña debe contener al menos una letra mayúscula"
+          }
+        }
+      }
+    }
+  }
+}

@@ -26,7 +26,24 @@ export default getRequestConfig(async ({ requestLocale }) => {
       )
     ).default,
     ...(
-      await import(`../app/[locale]/(auth)/(pages)/2fa/messages/${locale}.json`)
+      await import(
+        `../app/[locale]/(auth)/(pages)/two-factor/messages/${locale}.json`
+      )
+    ).default,
+    ...(
+      await import(
+        `../app/[locale]/(auth)/(pages)/verify/messages/${locale}.json`
+      )
+    ).default,
+    ...(
+      await import(
+        `../app/[locale]/(auth)/(pages)/forgot-password/messages/${locale}.json`
+      )
+    ).default,
+    ...(
+      await import(
+        `../app/[locale]/(auth)/(pages)/reset-password/messages/${locale}.json`
+      )
     ).default,
     ...(await import(`../app/[locale]/(protected)/messages/${locale}.json`))
       .default,

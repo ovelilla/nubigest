@@ -1,18 +1,5 @@
 {
   "signin": {
-    "emails": {
-      "twoFactorAuthentication": {
-        "subject": "Tu código de autenticación en dos pasos",
-        "content": {
-          "previewText": "Protege tu cuenta con autenticación en dos pasos",
-          "title": "Protege tu cuenta con autenticación en dos pasos",
-          "firstParagraph": "Para mejorar la seguridad de tu cuenta, requerimos autenticación en dos pasos para acceder. Aquí tienes tu código:",
-          "secondParagraph": "El código expira en 5 minutos.",
-          "thirdParagraph": "Ingresa este código en el formulario de inicio de sesión para acceder a tu cuenta.",
-          "footer": "Si no has solicitado este correo, puedes ignorarlo de forma segura."
-        }
-      }
-    },
     "handlers": {
       "submit": {
         "error": {
@@ -37,37 +24,43 @@
           "description": "¡Bienvenido de nuevo! Por favor, inicia sesión en tu cuenta."
         },
         "content": {
+          "resetSuccessAlert": {
+            "title": "Tu contraseña ha sido restablecida con éxito."
+          },
+          "form": {
+            "email": {
+              "label": "Correo electrónico",
+              "placeholder": "nombre@ejemplo.com"
+            },
+            "password": {
+              "label": "Contraseña",
+              "placeholder": "******",
+              "toggle": {
+                "show": "Mostrar contraseña",
+                "hide": "Ocultar contraseña"
+              }
+            },
+            "rememberMe": {
+              "label": "Recuérdame"
+            },
+            "forgotLink": {
+              "label": "¿Olvidaste tu contraseña?"
+            },
+            "submitButton": {
+              "label": "Iniciar sesión"
+            }
+          },
+          "oauth": {
+            "google": {
+              "label": "Continuar con Google"
+            }
+          },
           "separator": "O inicia sesión con correo electrónico"
         },
         "footer": {
           "registerLink": {
             "label": "¿No tienes una cuenta? Regístrate"
           }
-        }
-      },
-      "form": {
-        "email": {
-          "label": "Correo electrónico",
-          "placeholder": "nombre@ejemplo.com"
-        },
-        "password": {
-          "label": "Contraseña",
-          "placeholder": "******",
-          "toggle": {
-            "show": "Mostrar contraseña",
-            "hide": "Ocultar contraseña"
-          }
-        },
-        "forgotLink": {
-          "label": "¿Olvidaste tu contraseña?"
-        },
-        "submitButton": {
-          "label": "Iniciar sesión"
-        }
-      },
-      "oauth": {
-        "google": {
-          "label": "Continuar con Google"
         }
       }
     },

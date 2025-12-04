@@ -1,0 +1,51 @@
+{
+  "verify": {
+    "emails": {
+      "twoFactorOtp": {
+        "subject": "Your two-factor authentication code",
+        "content": {
+          "previewText": "Secure your account with two-factor authentication",
+          "title": "Secure your account with two-factor authentication",
+          "firstParagraph": "To keep your account secure, use the following verification code:",
+          "secondParagraph": "This code expires in 5 minutes.",
+          "thirdParagraph": "Enter this code in the verification screen to continue.",
+          "footer": "If you didn't request this email, you can safely ignore it."
+        }
+      }
+    },
+    "handlers": {
+      "resend": {
+        "error": {
+          "generic": "Unable to resend the verification email. Please try again.",
+          "rateLimitExceeded": "You have requested verification emails too many times. Please wait before trying again."
+        },
+        "success": "A new verification email has been sent. Please check your email."
+      }
+    },
+    "metadata": {
+      "description": "Confirm your identity by verifying your email address.",
+      "title": "Email verification"
+    },
+    "page": {
+      "card": {
+        "header": {
+          "title": "Verify your email",
+          "description": "We've sent a verification email to <strong>{email}</strong>. If you didn't receive it, you can resend it below."
+        },
+        "content": {
+          "resendButton": {
+            "label": {
+              "cooldown": "Resend in <seconds></seconds> seconds",
+              "ready": "Resend verification email"
+            }
+          }
+        },
+        "footer": {
+          "changeEmail": {
+            "label": "Is this not your email? Change it here."
+          }
+        }
+      }
+    }
+  }
+}

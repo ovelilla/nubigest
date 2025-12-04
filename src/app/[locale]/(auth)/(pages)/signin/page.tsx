@@ -22,7 +22,7 @@ export async function generateMetadata({
   };
 }
 
-const SignInPage = async () => {
+const SignInPage = () => {
   return <SignInContainer />;
 };
 
