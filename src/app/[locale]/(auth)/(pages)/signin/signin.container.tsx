@@ -158,7 +158,7 @@ const SignInContainer = () => {
                 />
                 <ButtonLink
                   className="h-8"
-                  linkProps={{ href: "/forgot-password" }}
+                  linkProps={{ href: "/forgot-password", prefetch: false }}
                 >
                   {t("page.card.content.form.forgotLink.label")}
                 </ButtonLink>
