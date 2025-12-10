@@ -1,7 +1,6 @@
 // Vendors
 import { useForm } from "react-hook-form";
 import { useRouter } from "@/i18n/navigation";
-import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,9 +20,6 @@ const SignInHook = () => {
     status: false,
   });
   const [showPassword, setShowPassword] = useState<boolean>(false);
-
-  const searchParams = useSearchParams();
-  const reset = searchParams.get("reset");
 
   const tSignIn = useTranslations("signin");
   const tAuth = useTranslations("auth");
@@ -54,7 +50,6 @@ const SignInHook = () => {
     handleSubmit,
     handleToggleShowPassword,
     loading,
-    reset,
     showPassword,
     t: tSignIn,
   };

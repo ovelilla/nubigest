@@ -30,15 +30,16 @@ import { OAUTH_PROVIDERS } from "./constants/signin.constants";
 import { SignInHook } from "./hooks/signin.hook";
 // Icons
 import { CircleCheck } from "lucide-react";
+// Types
+import type { SignInContainerProps } from "./types/signin.container.types";
 
-const SignInContainer = () => {
+const SignInContainer = ({ reset }: SignInContainerProps) => {
   const {
     form,
     handleOAuthClick,
     handleSubmit,
     handleToggleShowPassword,
     loading,
-    reset,
     showPassword,
     t,
   } = SignInHook();

@@ -8,7 +8,7 @@ const DashboardContainer = () => {
       <Button
         onClick={() =>
           authClient.twoFactor.enable({
-            password: "345oV@678",
+            password: "345Test@678",
           })
         }
       >
@@ -17,7 +17,7 @@ const DashboardContainer = () => {
       <Button
         onClick={() =>
           authClient.twoFactor.disable({
-            password: "345oV@678",
+            password: "345Test@678",
           })
         }
       >

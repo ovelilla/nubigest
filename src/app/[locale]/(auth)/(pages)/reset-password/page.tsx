@@ -22,8 +22,13 @@ export async function generateMetadata({
   };
 }
 
-const ResetPasswordPage = () => {
-  return <ResetPasswordContainer />;
+const ResetPasswordPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) => {
+  const { error, token } = await searchParams;
+  return <ResetPasswordContainer error={error} token={token} />;
 };
 
 export default ResetPasswordPage;

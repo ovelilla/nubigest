@@ -24,7 +24,7 @@ const submitHandler: SubmitHandler = async ({
     setLoading(true);
     const { error } = await authClient.resetPassword({
       newPassword: values.password,
-      token: token ?? undefined,
+      token,
     });
     if (error) {
       const key = `errors.${error.code ?? ""}`;

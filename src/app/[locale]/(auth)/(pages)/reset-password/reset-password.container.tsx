@@ -28,17 +28,22 @@ import {
 } from "@/components/password-strength";
 // Hooks
 import { ResetPasswordHook } from "./hooks/reset-password.hook";
+// Types
+import type { ResetPasswordContainerProps } from "./types/reset-password.container.types";
 
-const ResetPasswordContainer = () => {
+const ResetPasswordContainer = ({
+  error,
+  token,
+}: ResetPasswordContainerProps) => {
   const {
     form,
+    isInvalidToken,
     handleSubmit,
     handleToggleShowPassword,
-    isInvalidToken,
     loading,
     showPassword,
     t,
-  } = ResetPasswordHook();
+  } = ResetPasswordHook({ error, token });
 
   if (isInvalidToken) {
     return (

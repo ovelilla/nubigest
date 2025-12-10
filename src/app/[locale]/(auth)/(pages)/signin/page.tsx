@@ -22,8 +22,13 @@ export async function generateMetadata({
   };
 }
 
-const SignInPage = () => {
-  return <SignInContainer />;
+const SignInPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) => {
+  const { reset } = await searchParams;
+  return <SignInContainer reset={reset} />;
 };
 
 export default SignInPage;

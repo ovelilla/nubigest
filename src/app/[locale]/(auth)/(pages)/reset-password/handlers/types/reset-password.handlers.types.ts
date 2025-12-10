@@ -13,7 +13,7 @@ type ResetPasswordHandlersProps = {
   showPassword: boolean;
   tAuth: _Translator;
   tResetPassword: _Translator;
-  token: string | null;
+  token: string | undefined;
 };
 
 type ResetPasswordHandlersReturn = {
@@ -27,7 +27,7 @@ type SubmitHandler = (props: {
   setLoading: Dispatch<SetStateAction<boolean>>;
   tAuth: _Translator;
   tResetPassword: _Translator;
-  token: string | null;
+  token: string | undefined;
   values: ResetPasswordSchema;
 }) => Promise<void>;
 
