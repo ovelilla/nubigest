@@ -18,7 +18,6 @@ const SignUpHook = () => {
     provider: "",
     status: false,
   });
-  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const tSignUp = useTranslations("signup");
   const tAuth = useTranslations("auth");
@@ -30,23 +29,18 @@ const SignUpHook = () => {
     defaultValues: DEFAULT_VALUES,
   });
 
-  const { handleOAuthClick, handleSubmit, handleToggleShowPassword } =
-    SignUpHandlers({
-      form,
-      setLoading,
-      setShowPassword,
-      showPassword,
-      tAuth,
-      tSignUp,
-    });
+  const { handleOAuthClick, handleSubmit } = SignUpHandlers({
+    form,
+    setLoading,
+    tAuth,
+    tSignUp,
+  });
 
   return {
     form,
     handleOAuthClick,
     handleSubmit,
-    handleToggleShowPassword,
     loading,
-    showPassword,
     t: tSignUp,
   };
 };

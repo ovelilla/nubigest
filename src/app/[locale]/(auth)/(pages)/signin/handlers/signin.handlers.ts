@@ -1,5 +1,7 @@
 // Vendors
 import { toast } from "sonner";
+// Actions
+import { setPendingVerificationCookie } from "../actions/set-pending-verification-cookie/set-pending-verification-cookie.action";
 // Auth
 import { authClient } from "@/lib/auth-client";
 // Constants
@@ -11,7 +13,6 @@ import type {
   SignInHandlersProps,
   SignInHandlersReturn,
   SubmitHandlerProps,
-  ToggleShowPasswordHandlerProps,
 } from "./types/signin.handlers.types";
 
 const oautClickHandler = async ({
@@ -77,7 +78,7 @@ const submitHandler = async ({
         },
         onError: async (context) => {
           if (context.error.code === "EMAIL_NOT_VERIFIED") {
-            sessionStorage.setItem("verifyEmail", values.email);
+            await setPendingVerificationCookie(values.email);
             router.push("/verify");
             return;
           }
@@ -97,19 +98,10 @@ const submitHandler = async ({
   }
 };
 
-const toggleShowPasswordHandler = ({
-  setShowPassword,
-  showPassword,
-}: ToggleShowPasswordHandlerProps): void => {
-  setShowPassword(!showPassword);
-};
-
 const SignInHandlers = ({
   form,
   router,
   setLoading,
-  setShowPassword,
-  showPassword,
   tAuth,
   tSignIn,
 }: SignInHandlersProps): SignInHandlersReturn => {
@@ -125,8 +117,6 @@ const SignInHandlers = ({
         tSignIn,
         values,
       }),
-    handleToggleShowPassword: () =>
-      toggleShowPasswordHandler({ setShowPassword, showPassword }),
   };
 };
 

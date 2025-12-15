@@ -1,153 +1,100 @@
 "use client";
+// Vendors
+import { useTranslations } from "next-intl";
 // Components
-import { Button } from "@/components/ui/button";
-import { ButtonLink } from "@/components/ui/button-link";
-import { ButtonLoading } from "@/components/ui/button-loading";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
+  AuthCard,
+  AuthCardContent,
+  AuthCardDescription,
+  AuthCardFooter,
+  AuthCardHeader,
+  AuthCardTitle,
+} from "@/components/auth-card/auth-card.component";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// Hooks
-import { TwoFactorHook } from "./hooks/two-factor.hook";
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/item";
+// i18n
+import { Link } from "@/i18n/navigation";
+// Icons
+import { KeyRound, Mail, Shield } from "lucide-react";
 
 const TwoFactorContainer = () => {
-  const {
-    cooldown,
-    form,
-    handleResend,
-    handleSubmit,
-    loadingEmail,
-    loadingVerify,
-    t,
-  } = TwoFactorHook();
+  const t = useTranslations("twoFactor");
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t("page.card.header.title")}</CardTitle>
-        <CardDescription>{t("page.card.header.description")}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Tabs defaultValue="totp" className="w-full gap-4">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="totp">Authenticator</TabsTrigger>
-            <TabsTrigger value="otp">Email OTP</TabsTrigger>
-          </TabsList>
-          <TabsContent className="pt-4" value="totp"></TabsContent>
-          <TabsContent className="flex flex-col gap-4" value="otp">
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(handleSubmit)}
-                className="flex flex-col gap-6"
-              >
-                <div className="flex flex-col gap-4">
-                  <FormField
-                    control={form.control}
-                    name="code"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel htmlFor={field.name}>
-                          {t("page.card.content.form.code.label")}
-                        </FormLabel>
-                        <FormControl>
-                          <InputOTP
-                            {...field}
-                            disabled={loadingVerify || loadingEmail}
-                            id={field.name}
-                            maxLength={6}
-                            type="text"
-                          >
-                            <InputOTPGroup>
-                              {Array.from({ length: 6 }).map((_, index) => (
-                                <InputOTPSlot key={index} index={index} />
-                              ))}
-                            </InputOTPGroup>
-                          </InputOTP>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="trustDevice"
-                    render={({ field }) => (
-                      <FormItem className="flex items-center gap-2">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value}
-                            disabled={loadingVerify || loadingEmail}
-                            onCheckedChange={field.onChange}
-                          />
-                        </FormControl>
-                        <FormLabel className="mt-0">
-                          {t("page.card.content.form.trustDevice.label")}
-                        </FormLabel>
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                <ButtonLoading
-                  disabled={loadingEmail}
-                  loading={loadingVerify}
-                  type="submit"
-                >
-                  {t("page.card.content.form.submitButton.label")}
-                </ButtonLoading>
-              </form>
-            </Form>
-
-            <p className="text-muted-foreground text-sm">
-              {cooldown > 0
-                ? t.rich("page.card.footer.resend.cooldown", {
-                    seconds: () => (
-                      <span className="tabular-nums">{cooldown}</span>
-                    ),
-                  })
-                : t.rich("page.card.footer.resend.ready", {
-                    button: (chunks) => (
-                      <Button
-                        className="px-0"
-                        disabled={loadingVerify || cooldown > 0}
-                        onClick={handleResend}
-                        variant="link"
-                      >
-                        {chunks}
-                      </Button>
-                    ),
-                  })}
-            </p>
-          </TabsContent>
-        </Tabs>
-      </CardContent>
-      <CardFooter>
-        <ButtonLink
-          className="text-muted-foreground"
-          linkProps={{ href: "/signin", prefetch: false }}
-        >
+    <AuthCard>
+      <AuthCardHeader>
+        <AuthCardTitle>{t("page.card.header.title")}</AuthCardTitle>
+        <AuthCardDescription>
+          {t("page.card.header.description")}
+        </AuthCardDescription>
+      </AuthCardHeader>
+      <AuthCardContent>
+        <div className="flex flex-col gap-4">
+          <Item
+            render={
+              <Link href="/two-factor/authenticator" prefetch={false}>
+                <ItemMedia>
+                  <Shield className="size-6" />
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle>
+                    {t("page.card.content.item.totp.title")}
+                  </ItemTitle>
+                  <ItemDescription>
+                    {t("page.card.content.item.totp.description")}
+                  </ItemDescription>
+                </ItemContent>
+              </Link>
+            }
+            variant="outline"
+          />
+          <Item
+            render={
+              <Link href="/two-factor/email" prefetch={false}>
+                <ItemMedia>
+                  <Mail className="size-6" />
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle>{t("page.card.content.item.otp.title")}</ItemTitle>
+                  <ItemDescription>
+                    {t("page.card.content.item.otp.description")}
+                  </ItemDescription>
+                </ItemContent>
+              </Link>
+            }
+            variant="outline"
+          ></Item>
+          <Item
+            render={
+              <Link href="/two-factor/backup" prefetch={false}>
+                <ItemMedia>
+                  <KeyRound className="size-6" />
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle>
+                    {t("page.card.content.item.backup.title")}
+                  </ItemTitle>
+                  <ItemDescription>
+                    {t("page.card.content.item.backup.description")}
+                  </ItemDescription>
+                </ItemContent>
+              </Link>
+            }
+            variant="outline"
+          ></Item>
+        </div>
+      </AuthCardContent>
+      <AuthCardFooter>
+        <Link className="text-muted-foreground" href="/signin" prefetch={false}>
           {t("page.card.footer.signInLink.label")}
-        </ButtonLink>
-      </CardFooter>
-    </Card>
+        </Link>
+      </AuthCardFooter>
+    </AuthCard>
   );
 };
 

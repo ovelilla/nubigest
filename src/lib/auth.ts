@@ -8,7 +8,7 @@ import { prisma } from "@/lib/prisma";
 // Utils
 import { sendResetPasswordEmail } from "@/app/[locale]/(auth)/(pages)/forgot-password/services/send-reset-password-email.service";
 import { sendVerificationEmail } from "@/app/[locale]/(auth)/(pages)/signup/services/send-verification-email/send-verification-email.service";
-import { sendTwoFactorOtpEmail } from "@/app/[locale]/(auth)/(pages)/two-factor/services/send-two-factor-otp-email/send-two-factor-otp-email.service";
+import { sendTwoFactorOtpEmail } from "@/app/[locale]/(auth)/(pages)/two-factor/(pages)/email/services/send-two-factor-otp-email/send-two-factor-otp-email.service";
 
 const auth = betterAuth({
   advanced: {
@@ -23,19 +23,11 @@ const auth = betterAuth({
   rateLimit: {
     customRules: {
       "/send-verification-email": {
-        window: 30,
+        window: 60,
         max: 1,
       },
-      "/sign-in/email": {
-        window: 30,
-        max: 5,
-      },
-      "/sign-up/email": {
+      "/two-factor/send-otp": {
         window: 60,
-        max: 3,
-      },
-      "/two-factor/*": {
-        window: 30,
         max: 1,
       },
     },
@@ -80,6 +72,7 @@ const auth = betterAuth({
   },
   plugins: [
     twoFactor({
+      issuer: "Nubigest",
       skipVerificationOnEnable: true,
       otpOptions: {
         sendOTP: async ({ user, otp }) => {

@@ -7,6 +7,7 @@ import {
   AUTH_ROUTES,
   DEFAULT_REDIRECT,
   PROTECTED_ROUTES,
+  TWO_FACTOR_ROUTES,
 } from "@/constants/routes.constants";
 // i18n
 import { routing } from "./i18n/routing";
@@ -26,8 +27,15 @@ export async function proxy(request: NextRequest) {
 
   const isAuthRoute = AUTH_ROUTES.includes(pathWithoutLocale);
   const isProtectedRoute = PROTECTED_ROUTES.includes(pathWithoutLocale);
+  const isTwoFactorRoute = TWO_FACTOR_ROUTES.includes(pathWithoutLocale);
 
   const sessionCookie = getSessionCookie(request);
+  const twoFactorCookie = request.cookies.get("better-auth.two_factor");
+
+  if (isTwoFactorRoute && !twoFactorCookie) {
+    const signInUrl = new URL(`/${locale}/signin`, request.url);
+    return NextResponse.redirect(signInUrl);
+  }
 
   if (isProtectedRoute && !sessionCookie) {
     const signInUrl = new URL(`/${locale}/signin`, request.url);

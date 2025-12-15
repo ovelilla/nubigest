@@ -7,12 +7,7 @@ import type {
   SignOutHandler,
 } from "./types/user-nav.handlers.types";
 
-const signOutHandler: SignOutHandler = async ({
-  event,
-  setIsSigningOut,
-  router,
-}) => {
-  event.preventDefault();
+const signOutHandler: SignOutHandler = async ({ setIsSigningOut, router }) => {
   setIsSigningOut(true);
   await authClient.signOut();
   setIsSigningOut(false);
@@ -24,8 +19,7 @@ const UserNavHandlers = ({
   setIsSigningOut,
 }: UserNavHandlersProps): UserNavHandlersReturn => {
   return {
-    handleSignOut: (event) =>
-      signOutHandler({ event, setIsSigningOut, router }),
+    handleSignOut: () => signOutHandler({ setIsSigningOut, router }),
   };
 };
 

@@ -1,92 +1,36 @@
 {
   "twoFactor": {
-    "emails": {
-      "twoFactorOtp": {
-        "subject": "Your two-factor authentication code",
-        "content": {
-          "previewText": "Secure your account with two-factor authentication",
-          "title": "Secure your account with two-factor authentication",
-          "firstParagraph": "To keep your account secure, use the following verification code:",
-          "secondParagraph": "This code expires in 3 minutes.",
-          "thirdParagraph": "Enter this code in the verification screen to continue.",
-          "footer": "If you didn't request this email, you can safely ignore it."
-        }
-      }
-    },
-    "errors": {
-      "BACKUP_CODES_NOT_ENABLED": "Backup codes are not enabled.",
-      "INVALID_BACKUP_CODE": "The backup code you entered is invalid.",
-      "INVALID_CODE": "The verification code you entered is incorrect.",
-      "INVALID_TWO_FACTOR_COOKIE": "Your verification session is invalid. Please request a new code.",
-      "OTP_HAS_EXPIRED": "The verification code has expired. Please request a new one.",
-      "OTP_NOT_ENABLED": "Code-based verification is not enabled.",
-      "TOO_MANY_ATTEMPTS_REQUEST_NEW_CODE": "Too many attempts. Please request a new verification code.",
-      "TOTP_NOT_ENABLED": "Time-based verification is not enabled.",
-      "TWO_FACTOR_NOT_ENABLED": "Two-factor authentication is not enabled."
-    },
-    "handlers": {
-      "resend": {
-        "error": {
-          "generic": "Unable to resend the verification code. Please try again.",
-          "rateLimitExceeded": "You have requested too many verification codes. Please wait before trying again."
-        },
-        "success": "A new verification code has been sent. Please check your email."
-      },
-      "submit": {
-        "error": {
-          "generic": "An unexpected error occurred. Please try again."
-        },
-        "success": "Code verified successfully."
-      }
-    },
     "metadata": {
       "description": "Secure your account with two-factor verification.",
-      "title": "Two-Factor Authentication"
+      "title": "Two-Factor Verification"
     },
     "page": {
       "card": {
         "header": {
           "title": "Two-Factor Verification",
-          "description": "Enter the verification code sent to your email to continue."
+          "description": "Please verify your identity using one of the methods below."
         },
         "content": {
-          "form": {
-            "code": {
-              "label": "Verification code"
+          "item": {
+            "totp": {
+              "title": "Authenticator app",
+              "description": "Enter a code from your authenticator app."
             },
-            "trustDevice": {
-              "label": "Trust this device for 30 days"
+            "otp": {
+              "title": "Email verification code",
+              "description": "Enter the code sent to your email address."
             },
-            "submitButton": {
-              "label": "Verify"
+            "backup": {
+              "title": "Backup code",
+              "description": "Use one of your backup codes to continue."
             }
           }
         },
         "footer": {
-          "resend": {
-            "ready": "Didn't receive the email? <button>Resend verification code</button>",
-            "cooldown": "Didn't receive the email? Resend in <seconds></seconds> seconds"
-          },
           "signInLink": {
             "label": "Back to Sign In"
           }
         }
-      }
-    },
-    "schemas": {
-      "twoFactor": {
-        "code": {
-          "required": "Please enter the verification code."
-        }
-      }
-    },
-    "services": {
-      "sendTwoFactorOtp": {
-        "error": {
-          "generic": "Unable to send the verification code. Please try again.",
-          "rateLimitExceeded": "You have requested too many verification codes. Please wait before trying again."
-        },
-        "success": "A verification code has been sent. Please check your email."
       }
     }
   }

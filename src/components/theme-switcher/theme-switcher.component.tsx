@@ -21,19 +21,25 @@ const ThemeSwitcher = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label={t("button.ariaLabel")}>
-          {isMounted ? (
-            theme === "dark" ? (
-              <Sun />
+      <DropdownMenuTrigger
+        render={
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label={t("button.ariaLabel")}
+          >
+            {isMounted ? (
+              theme === "dark" ? (
+                <Sun />
+              ) : (
+                <Moon />
+              )
             ) : (
-              <Moon />
-            )
-          ) : (
-            <Loader2 className="animate-spin" />
-          )}
-        </Button>
-      </DropdownMenuTrigger>
+              <Loader2 className="animate-spin" />
+            )}
+          </Button>
+        }
+      ></DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>
           {t("themes.light")}

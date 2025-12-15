@@ -3,16 +3,16 @@ import type { Dispatch, SetStateAction } from "react";
 import type { _Translator } from "next-intl";
 
 type ResendHandler = (props: {
-  email: string | null;
-  setCooldown: Dispatch<SetStateAction<number>>;
+  email: string;
+  startCooldown: (seconds: number) => void;
   setLoading: Dispatch<SetStateAction<boolean>>;
   tAuth: _Translator;
   tVerify: _Translator;
 }) => Promise<void>;
 
 type VerifyHandlersProps = {
-  email: string | null;
-  setCooldown: Dispatch<SetStateAction<number>>;
+  email: string;
+  startCooldown: (seconds: number) => void;
   setLoading: Dispatch<SetStateAction<boolean>>;
   tAuth: _Translator;
   tVerify: _Translator;

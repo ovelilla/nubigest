@@ -10,8 +10,6 @@ type SignInHandlersProps = {
   form: UseFormReturn<SignInSchema>;
   router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
-  setShowPassword: Dispatch<SetStateAction<boolean>>;
-  showPassword: boolean;
   tAuth: _Translator;
   tSignIn: _Translator;
 };
@@ -19,7 +17,6 @@ type SignInHandlersProps = {
 type SignInHandlersReturn = {
   handleOAuthClick: (provider: string) => void;
   handleSubmit: (values: SignInSchema) => void;
-  handleToggleShowPassword: VoidFunction;
 };
 
 type OAuthClickHandlerProps = {
@@ -38,15 +35,9 @@ type SubmitHandlerProps = {
   values: SignInSchema;
 };
 
-type ToggleShowPasswordHandlerProps = {
-  setShowPassword: Dispatch<SetStateAction<boolean>>;
-  showPassword: boolean;
-};
-
 export type {
   OAuthClickHandlerProps,
   SignInHandlersProps,
   SignInHandlersReturn,
   SubmitHandlerProps,
-  ToggleShowPasswordHandlerProps,
 };

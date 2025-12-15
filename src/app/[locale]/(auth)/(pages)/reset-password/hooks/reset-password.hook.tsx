@@ -16,7 +16,6 @@ import type { ResetPasswordSchema } from "../schemas/types/reset-password.schema
 
 const ResetPasswordHook = ({ error, token }: ResetPasswordHookProps) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const tResetPassword = useTranslations("resetPassword");
   const tAuth = useTranslations("auth");
@@ -32,12 +31,10 @@ const ResetPasswordHook = ({ error, token }: ResetPasswordHookProps) => {
 
   const isInvalidToken = !token || error === "INVALID_TOKEN";
 
-  const { handleSubmit, handleToggleShowPassword } = ResetPasswordHandlers({
+  const { handleSubmit } = ResetPasswordHandlers({
     form,
     router,
     setLoading,
-    setShowPassword,
-    showPassword,
     tAuth,
     tResetPassword,
     token,
@@ -46,10 +43,8 @@ const ResetPasswordHook = ({ error, token }: ResetPasswordHookProps) => {
   return {
     form,
     handleSubmit,
-    handleToggleShowPassword,
     isInvalidToken,
     loading,
-    showPassword,
     t: tResetPassword,
   };
 };

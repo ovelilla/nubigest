@@ -45,15 +45,11 @@
             },
             "email": {
               "label": "Email",
-              "placeholder": "e.g., name@example.com"
+              "placeholder": "name@example.com"
             },
             "password": {
               "label": "Password",
-              "placeholder": "Enter a strong password",
-              "toggle": {
-                "show": "Show password",
-                "hide": "Hide password"
-              },
+              "placeholder": "******",
               "rules": {
                 "length": "6 characters minimum",
                 "number": "One number",

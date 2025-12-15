@@ -36,10 +36,6 @@
             "password": {
               "label": "New password",
               "placeholder": "Enter a strong password",
-              "toggle": {
-                "show": "Show password",
-                "hide": "Hide password"
-              },
               "rules": {
                 "length": "6 characters minimum",
                 "number": "One number",

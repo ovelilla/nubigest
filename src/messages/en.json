@@ -5,6 +5,10 @@
         "ariaLabel": "Switch language"
       }
     },
+    "passwordInput": {
+      "ariaLabelShow": "Show password",
+      "ariaLabelHide": "Hide password"
+    },
     "themeSwitcher": {
       "button": {
         "ariaLabel": "Switch theme"

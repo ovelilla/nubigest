@@ -42,45 +42,52 @@ const Content = () => {
 
               return isCollapsible ? (
                 <Collapsible
-                  key={item.href.pathname}
-                  asChild
-                  defaultOpen={isActive}
                   className="group/collapsible"
-                >
-                  <SidebarMenuItem>
-                    <CollapsibleTrigger asChild>
-                      <SidebarMenuButton
-                        tooltip={item.title}
-                        isActive={isActive}
-                      >
-                        {item.icon && <item.icon />}
-                        <span>{item.title}</span>
-                        <ChevronRight className="ml-auto group-data-[state=open]/collapsible:rotate-90" />
-                      </SidebarMenuButton>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <SidebarMenuSub>
-                        {item.items?.map((subItem) => (
-                          <SidebarMenuSubItem key={subItem.title}>
-                            <SidebarMenuSubButton asChild>
-                              <Link href={subItem.href}>
-                                <span>{subItem.title}</span>
-                              </Link>
-                            </SidebarMenuSubButton>
-                          </SidebarMenuSubItem>
-                        ))}
-                      </SidebarMenuSub>
-                    </CollapsibleContent>
-                  </SidebarMenuItem>
-                </Collapsible>
+                  defaultOpen={isActive}
+                  key={item.href.pathname}
+                  render={
+                    <SidebarMenuItem>
+                      <CollapsibleTrigger
+                        render={
+                          <SidebarMenuButton
+                            tooltip={item.title}
+                            isActive={isActive}
+                          >
+                            {item.icon && <item.icon />}
+                            <span>{item.title}</span>
+                            <ChevronRight className="ml-auto group-data-[state=open]/collapsible:rotate-90" />
+                          </SidebarMenuButton>
+                        }
+                      />
+                      <CollapsibleContent>
+                        <SidebarMenuSub>
+                          {item.items?.map((subItem) => (
+                            <SidebarMenuSubItem key={subItem.title}>
+                              <SidebarMenuSubButton
+                                render={
+                                  <Link href={subItem.href} prefetch={false}>
+                                    <span>{subItem.title}</span>
+                                  </Link>
+                                }
+                              />
+                            </SidebarMenuSubItem>
+                          ))}
+                        </SidebarMenuSub>
+                      </CollapsibleContent>
+                    </SidebarMenuItem>
+                  }
+                />
               ) : (
                 <SidebarMenuItem key={item.href.pathname}>
-                  <SidebarMenuButton asChild isActive={isActive}>
-                    <Link href={item.href}>
-                      {item.icon && <item.icon />}
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
+                  <SidebarMenuButton
+                    isActive={isActive}
+                    render={
+                      <Link href={item.href} prefetch={false}>
+                        {item.icon && <item.icon />}
+                        <span>{item.title}</span>
+                      </Link>
+                    }
+                  />
                 </SidebarMenuItem>
               );
             })}

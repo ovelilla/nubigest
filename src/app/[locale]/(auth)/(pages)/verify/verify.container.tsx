@@ -1,33 +1,36 @@
 "use client";
 // Components
-import { ButtonLink } from "@/components/ui/button-link";
-import { ButtonLoading } from "@/components/ui/button-loading";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  AuthCard,
+  AuthCardContent,
+  AuthCardDescription,
+  AuthCardFooter,
+  AuthCardHeader,
+  AuthCardTitle,
+} from "@/components/auth-card/auth-card.component";
+import { ButtonLoading } from "@/components/ui/button-loading";
 // Hooks
 import { VerifyHook } from "./hooks/verify.hook";
+// i18n
+import { Link } from "@/i18n/navigation";
+// Types
+import { VerifyContainerProps } from "./types/verify.container.types";
 
-const VerifyContainer = () => {
-  const { cooldown, email, handleResend, loading, t } = VerifyHook();
+const VerifyContainer = ({ email }: VerifyContainerProps) => {
+  const { cooldown, handleResend, loading, t } = VerifyHook({ email });
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t("page.card.header.title")}</CardTitle>
-        <CardDescription>
+    <AuthCard>
+      <AuthCardHeader>
+        <AuthCardTitle>{t("page.card.header.title")}</AuthCardTitle>
+        <AuthCardDescription>
           {t.rich("page.card.header.description", {
             email: email ?? "",
             strong: (chunks) => <strong>{chunks}</strong>,
           })}
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
+        </AuthCardDescription>
+      </AuthCardHeader>
+      <AuthCardContent>
         <ButtonLoading
           loading={loading}
           disabled={cooldown > 0 || loading}
@@ -39,16 +42,13 @@ const VerifyContainer = () => {
               })
             : t("page.card.content.resendButton.label.ready")}
         </ButtonLoading>
-      </CardContent>
-      <CardFooter>
-        <ButtonLink
-          className="text-muted-foreground"
-          linkProps={{ href: "/signin", prefetch: false }}
-        >
+      </AuthCardContent>
+      <AuthCardFooter>
+        <Link className="text-muted-foreground" href="/signin" prefetch={false}>
           {t("page.card.footer.changeEmail.label")}
-        </ButtonLink>
-      </CardFooter>
-    </Card>
+        </Link>
+      </AuthCardFooter>
+    </AuthCard>
   );
 };
 

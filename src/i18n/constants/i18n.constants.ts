@@ -4,7 +4,12 @@ const PATHNAMES = {
   "/": "/",
   "/signin": { es: "/iniciar-sesion" },
   "/signup": { es: "/registrarse" },
-  "/two-factor": { es: "/doble-verificacion" },
+  "/two-factor": { es: "/verificacion-en-dos-pasos" },
+  "/two-factor/authenticator": {
+    es: "/verificacion-en-dos-pasos/autenticador",
+  },
+  "/two-factor/email": { es: "/verificacion-en-dos-pasos/correo" },
+  "/two-factor/backup": { es: "/verificacion-en-dos-pasos/respaldo" },
   "/verify": { es: "/verificar" },
   "/forgot-password": { es: "/recuperar-contrasena" },
   "/reset-password": { es: "/restablecer-contrasena" },

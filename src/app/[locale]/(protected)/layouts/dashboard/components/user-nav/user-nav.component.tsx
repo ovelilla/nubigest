@@ -29,49 +29,70 @@ const UserNav = ({ session }: UserNavProps) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="relative">
-          <Avatar>
-            <AvatarFallback className="text-base">{fallback}</AvatarFallback>
-          </Avatar>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="end" forceMount>
-        <DropdownMenuLabel className="p-0 font-normal">
-          <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-            <Avatar className="h-8 w-8 rounded-lg">
-              <AvatarFallback className="rounded-lg">{fallback}</AvatarFallback>
+      <DropdownMenuTrigger
+        render={
+          <Button variant="ghost" size="icon" className="relative">
+            <Avatar>
+              <AvatarFallback className="text-base">{fallback}</AvatarFallback>
             </Avatar>
-            <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-medium">{name}</span>
-              <span className="text-muted-foreground truncate text-xs">
-                {email}
-              </span>
-            </div>
-          </div>
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
+          </Button>
+        }
+      />
+      <DropdownMenuContent className="w-56" align="end">
         <DropdownMenuGroup>
-          <DropdownMenuItem asChild>
-            <Link href="/dashboard" className="cursor-pointer">
-              <Settings />
-              {t("dropdown.items.settings")}
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/dashboard" className="cursor-pointer">
-              <Users />
-              {t("dropdown.items.users")}
-            </Link>
+          <DropdownMenuLabel className="p-0 font-normal">
+            <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+              <Avatar className="h-8 w-8 rounded-lg">
+                <AvatarFallback className="rounded-lg">
+                  {fallback}
+                </AvatarFallback>
+              </Avatar>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-medium">{name}</span>
+                <span className="text-muted-foreground truncate text-xs">
+                  {email}
+                </span>
+              </div>
+            </div>
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+
+          <DropdownMenuItem
+            render={
+              <Link
+                className="cursor-pointer"
+                href="/dashboard"
+                prefetch={false}
+              >
+                <Settings />
+                {t("dropdown.items.settings")}
+              </Link>
+            }
+          />
+          <DropdownMenuItem
+            render={
+              <Link
+                className="cursor-pointer"
+                href="/dashboard"
+                prefetch={false}
+              >
+                <Users />
+                {t("dropdown.items.users")}
+              </Link>
+            }
+          />
+          <DropdownMenuSeparator />
+          <DropdownMenuItem
+            closeOnClick={false}
+            disabled={isSigningOut}
+            onClick={() => handleSignOut()}
+          >
+            {isSigningOut ? <Spinner /> : <LogOut />}
+            {isSigningOut
+              ? t("dropdown.items.signingOut")
+              : t("dropdown.items.signOut")}
           </DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onSelect={handleSignOut} disabled={isSigningOut}>
-          {isSigningOut ? <Spinner /> : <LogOut />}
-          {isSigningOut
-            ? t("dropdown.items.signingOut")
-            : t("dropdown.items.signOut")}
-        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

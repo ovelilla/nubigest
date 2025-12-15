@@ -32,6 +32,16 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ).default,
     ...(
       await import(
+        `../app/[locale]/(auth)/(pages)/two-factor/(pages)/email/messages/${locale}.json`
+      )
+    ).default,
+    ...(
+      await import(
+        `../app/[locale]/(auth)/(pages)/two-factor/(pages)/authenticator/messages/${locale}.json`
+      )
+    ).default,
+    ...(
+      await import(
         `../app/[locale]/(auth)/(pages)/verify/messages/${locale}.json`
       )
     ).default,

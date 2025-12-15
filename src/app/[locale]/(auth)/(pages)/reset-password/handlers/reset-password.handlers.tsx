@@ -7,7 +7,6 @@ import type {
   ResetPasswordHandlersProps,
   ResetPasswordHandlersReturn,
   SubmitHandler,
-  ToggleShowPasswordHandler,
 } from "./types/reset-password.handlers.types";
 import type { ResetPasswordSchema } from "../schemas/types/reset-password.schema.types";
 
@@ -48,19 +47,10 @@ const submitHandler: SubmitHandler = async ({
   }
 };
 
-const toggleShowPasswordHandler: ToggleShowPasswordHandler = ({
-  setShowPassword,
-  showPassword,
-}) => {
-  setShowPassword(!showPassword);
-};
-
 const ResetPasswordHandlers = ({
   form,
   router,
-  setShowPassword,
   setLoading,
-  showPassword,
   tAuth,
   tResetPassword,
   token,
@@ -76,8 +66,6 @@ const ResetPasswordHandlers = ({
         token,
         values,
       }),
-    handleToggleShowPassword: () =>
-      toggleShowPasswordHandler({ setShowPassword, showPassword }),
   };
 };
 

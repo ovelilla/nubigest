@@ -45,15 +45,11 @@
             },
             "email": {
               "label": "Correo electrónico",
-              "placeholder": "p. ej., nombre@ejemplo.com"
+              "placeholder": "nombre@ejemplo.com"
             },
             "password": {
               "label": "Contraseña",
-              "placeholder": "Introduce una contraseña segura",
-              "toggle": {
-                "show": "Mostrar contraseña",
-                "hide": "Ocultar contraseña"
-              },
+              "placeholder": "******",
               "rules": {
                 "length": "Mínimo 6 caracteres",
                 "number": "Un número",

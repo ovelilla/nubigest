@@ -1,0 +1,94 @@
+{
+  "authenticator": {
+    "emails": {
+      "twoFactorOtp": {
+        "subject": "Tu código de verificación en dos pasos",
+        "content": {
+          "previewText": "Protege tu cuenta con verificación en dos pasos",
+          "title": "Protege tu cuenta con verificación en dos pasos",
+          "firstParagraph": "Para mantener tu cuenta segura, utiliza el siguiente código de verificación:",
+          "secondParagraph": "Este código caduca en 3 minutos.",
+          "thirdParagraph": "Introduce el código en la pantalla de verificación para continuar.",
+          "footer": "Si no solicitaste este correo, puedes ignorarlo."
+        }
+      }
+    },
+    "errors": {
+      "BACKUP_CODES_NOT_ENABLED": "Los códigos de respaldo no están habilitados.",
+      "INVALID_BACKUP_CODE": "El código de respaldo introducido no es válido.",
+      "INVALID_CODE": "El código de verificación introducido no es correcto.",
+      "INVALID_TWO_FACTOR_COOKIE": "La sesión de verificación ha expirado. Vuelve a iniciar sesión para continuar.",
+      "OTP_HAS_EXPIRED": "El código de verificación ha expirado. Solicita uno nuevo.",
+      "OTP_NOT_ENABLED": "La verificación mediante código no está habilitada.",
+      "TOO_MANY_ATTEMPTS_REQUEST_NEW_CODE": "Demasiados intentos. Solicita un nuevo código.",
+      "TOTP_NOT_ENABLED": "La verificación basada en tiempo no está habilitada.",
+      "TWO_FACTOR_NOT_ENABLED": "La verificación en dos pasos no está habilitada."
+    },
+    "handlers": {
+      "resend": {
+        "error": {
+          "generic": "No se ha podido reenviar el código de verificación. Por favor, inténtalo de nuevo.",
+          "rateLimitExceeded": "Has solicitado demasiados códigos de verificación. Por favor, espera antes de intentarlo de nuevo."
+        },
+        "success": "Se ha enviado un nuevo código de verificación. Por favor, revisa tu correo."
+      },
+      "submit": {
+        "error": {
+          "generic": "Ha ocurrido un error. Por favor, inténtalo de nuevo."
+        },
+        "success": "Código verificado correctamente."
+      }
+    },
+    "metadata": {
+      "description": "Protege tu cuenta con verificación en dos pasos.",
+      "title": "Verificación en dos pasos"
+    },
+    "page": {
+      "card": {
+        "header": {
+          "title": "Verificación en dos pasos",
+          "description": "Introduce el código de verificación generado por tu aplicación de autenticación."
+        },
+        "content": {
+          "form": {
+            "code": {
+              "label": "Código de verificación"
+            },
+            "trustDevice": {
+              "label": "Confiar en este dispositivo durante 30 días"
+            },
+            "submitButton": {
+              "label": "Verificar"
+            }
+          }
+        },
+        "footer": {
+          "resend": {
+            "ready": "¿No has recibido el correo? <button>Reenviar código de verificación</button>",
+            "cooldown": "¿No has recibido el correo? Reenviar en <seconds></seconds> segundos"
+          },
+          "twoFactorLink": {
+            "label": "Elegir otro método de verificación en dos pasos"
+          }
+        }
+      }
+    },
+    "schemas": {
+      "totp": {
+        "code": {
+          "invalid": "El código de autenticador  no es válido.",
+          "required": "El código de autenticador es obligatorio."
+        }
+      }
+    },
+    "services": {
+      "sendTwoFactorOtp": {
+        "error": {
+          "generic": "No se ha podido enviar el código de verificación. Por favor, inténtalo de nuevo.",
+          "rateLimitExceeded": "Has solicitado demasiados códigos de verificación. Por favor, espera antes de intentarlo de nuevo."
+        },
+        "success": "Se ha enviado un código de verificación. Por favor, revisa tu correo."
+      }
+    }
+  }
+}

@@ -1,23 +1,16 @@
 "use client";
-
-import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
-
-interface SeparatorWithTextProps extends React.HTMLAttributes<HTMLSpanElement> {
-  children: React.ReactNode;
-}
+import { cn } from "@/lib/utils";
 
 function SeparatorWithText({
   className,
   children,
   ...props
-}: SeparatorWithTextProps) {
+}: React.HTMLAttributes<HTMLDivElement> & { children: React.ReactNode }) {
   return (
-    <div className={cn("flex items-center gap-4", className)}>
+    <div className={cn("flex items-center gap-4", className)} {...props}>
       <Separator className="flex-1" />
-      <span className="text-muted-foreground text-sm" {...props}>
-        {children}
-      </span>
+      <span className="text-muted-foreground text-sm">{children}</span>
       <Separator className="flex-1" />
     </div>
   );

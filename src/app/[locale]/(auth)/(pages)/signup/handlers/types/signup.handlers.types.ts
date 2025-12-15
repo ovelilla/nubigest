@@ -8,8 +8,6 @@ import type { _Translator } from "next-intl";
 type SignUpHandlersProps = {
   form: UseFormReturn<SignUpSchema>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
-  setShowPassword: Dispatch<SetStateAction<boolean>>;
-  showPassword: boolean;
   tAuth: _Translator;
   tSignUp: _Translator;
 };
@@ -17,7 +15,6 @@ type SignUpHandlersProps = {
 type SignUpHandlersReturn = {
   handleOAuthClick: (provider: string) => void;
   handleSubmit: (values: SignUpSchema) => void;
-  handleToggleShowPassword: VoidFunction;
 };
 
 type OAuthClickHandlerProps = {
@@ -35,15 +32,9 @@ type SubmitHandlerProps = {
   values: SignUpSchema;
 };
 
-type ToggleShowPasswordHandlerProps = {
-  setShowPassword: Dispatch<SetStateAction<boolean>>;
-  showPassword: boolean;
-};
-
 export type {
   OAuthClickHandlerProps,
   SignUpHandlersProps,
   SignUpHandlersReturn,
   SubmitHandlerProps,
-  ToggleShowPasswordHandlerProps,
 };

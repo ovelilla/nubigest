@@ -1,28 +1,26 @@
 "use client";
-// Components
 import { Button } from "./button";
-// Icons
 import { LoaderCircle } from "lucide-react";
-// Types
-import { ButtonProps } from "./button";
+import { cn } from "@/lib/utils";
 
-type ButtonLoadingProps = ButtonProps & {
-  hideOnLoading?: boolean;
-  loading?: boolean;
-};
-
-const ButtonLoading: React.FC<ButtonLoadingProps> = ({
+const ButtonLoading = ({
   children,
   className,
   disabled,
-  hideOnLoading = false,
   loading = false,
   ...props
+}: React.ComponentProps<typeof Button> & {
+  loading?: boolean;
 }) => {
   return (
-    <Button disabled={loading || disabled} className={className} {...props}>
-      {loading && <LoaderCircle className="mr-2 h-5 w-5 animate-spin" />}
-      {!loading || !hideOnLoading ? children : null}
+    <Button
+      {...props}
+      className={cn("gap-2", className)}
+      disabled={disabled || loading}
+      focusableWhenDisabled
+    >
+      {loading && <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden />}
+      {children}
     </Button>
   );
 };

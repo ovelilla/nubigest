@@ -19,23 +19,25 @@ const LocaleSwitcher = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          aria-label={t("button.ariaLabel")}
-          disabled={isPending}
-          variant="ghost"
-        >
-          {isPending ? (
-            <Loader2 className="animate-spin" />
-          ) : (
-            <>
-              <Globe />
-              {LOCALES.find((item) => item.value === locale)?.label}
-              <ChevronDown />
-            </>
-          )}
-        </Button>
-      </DropdownMenuTrigger>
+      <DropdownMenuTrigger
+        render={
+          <Button
+            aria-label={t("button.ariaLabel")}
+            disabled={isPending}
+            variant="ghost"
+          >
+            {isPending ? (
+              <Loader2 className="animate-spin" />
+            ) : (
+              <>
+                <Globe />
+                {LOCALES.find((item) => item.value === locale)?.label}
+                <ChevronDown />
+              </>
+            )}
+          </Button>
+        }
+      ></DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         {LOCALES.map((locale) => (
           <DropdownMenuItem

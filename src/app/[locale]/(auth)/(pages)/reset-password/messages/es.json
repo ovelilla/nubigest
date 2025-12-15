@@ -36,10 +36,6 @@
             "password": {
               "label": "Nueva contraseña",
               "placeholder": "Introduce una contraseña segura",
-              "toggle": {
-                "show": "Mostrar contraseña",
-                "hide": "Ocultar contraseña"
-              },
               "rules": {
                 "length": "Mínimo 6 caracteres",
                 "number": "Un número",

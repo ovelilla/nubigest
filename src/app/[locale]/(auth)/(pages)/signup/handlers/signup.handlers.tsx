@@ -11,7 +11,6 @@ import type {
   SignUpHandlersProps,
   SignUpHandlersReturn,
   SubmitHandlerProps,
-  ToggleShowPasswordHandlerProps,
 } from "./types/signup.handlers.types";
 
 const oauthClickHandler = async ({
@@ -86,18 +85,9 @@ const submitHandler = async ({
   }
 };
 
-const toggleShowPasswordHandler = ({
-  setShowPassword,
-  showPassword,
-}: ToggleShowPasswordHandlerProps): void => {
-  setShowPassword(!showPassword);
-};
-
 const SignUpHandlers = ({
   form,
-  setShowPassword,
   setLoading,
-  showPassword,
   tAuth,
   tSignUp,
 }: SignUpHandlersProps): SignUpHandlersReturn => {
@@ -112,8 +102,6 @@ const SignUpHandlers = ({
         tSignUp,
         values,
       }),
-    handleToggleShowPassword: () =>
-      toggleShowPasswordHandler({ setShowPassword, showPassword }),
   };
 };
 

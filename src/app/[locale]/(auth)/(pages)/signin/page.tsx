@@ -28,6 +28,7 @@ const SignInPage = async ({
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) => {
   const { reset } = await searchParams;
+
   return <SignInContainer reset={reset} />;
 };
 

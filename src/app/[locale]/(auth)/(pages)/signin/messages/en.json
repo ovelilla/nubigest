@@ -34,11 +34,7 @@
             },
             "password": {
               "label": "Password",
-              "placeholder": "******",
-              "toggle": {
-                "show": "Show password",
-                "hide": "Hide password"
-              }
+              "placeholder": "******"
             },
             "rememberMe": {
               "label": "Remember me"
