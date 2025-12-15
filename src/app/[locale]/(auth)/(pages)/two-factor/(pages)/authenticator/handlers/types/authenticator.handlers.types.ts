@@ -1,6 +1,6 @@
 // Types
 import type { Dispatch, SetStateAction } from "react";
-import type { TotpSchema } from "../../schemas/types/two-factor.schema.types";
+import type { TotpSchema } from "../../schemas/types/authenticator.schema.types";
 import type { UseFormReturn } from "react-hook-form";
 import type { _Translator } from "next-intl";
 import type { useRouter } from "@/i18n/navigation";
