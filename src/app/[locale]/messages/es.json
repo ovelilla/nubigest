@@ -1,8 +1,14 @@
 {
-  "appLayout": {
+  "rootLayout": {
     "metadata": {
       "title": "Nubigest ERP",
       "description": "ERP de gestión empresarial"
     }
+  },
+  "notFound": {
+    "title": "404 - No Encontrado",
+    "description": "La página que buscas no existe, ha sido movida o no tienes acceso a ella.",
+    "backToHome": "Volver al Inicio",
+    "backToDashboard": "Volver al Panel"
   }
 }

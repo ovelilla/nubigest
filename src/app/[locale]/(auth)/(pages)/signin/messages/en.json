@@ -3,7 +3,8 @@
     "handlers": {
       "submit": {
         "error": {
-          "generic": "An unexpected error has occurred"
+          "generic": "An unexpected error has occurred",
+          "tooManyRequests": "Too many sign-in attempts. Please try again later."
         },
         "success": "Signed in successfully"
       },

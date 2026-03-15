@@ -13,8 +13,9 @@ import {
 } from "@/components/auth-card/auth-card.component";
 import { ButtonLoading } from "@/components/ui/button-loading";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+import { Field, FieldLabel, FieldError, FieldSet } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Link } from "@/components/ui/link";
 import { OAuthButtons } from "@/components/oauth-buttons/oauth-buttons.component";
 import { PasswordInput } from "@/components/password-input/password-input.component";
 import { SeparatorWithText } from "@/components/ui/separator-with-text";
@@ -22,8 +23,6 @@ import { SeparatorWithText } from "@/components/ui/separator-with-text";
 import { OAUTH_PROVIDERS } from "./constants/signin.constants";
 // Hooks
 import { SignInHook } from "./hooks/signin.hook";
-// i18n
-import { Link } from "@/i18n/navigation";
 // Icons
 import { CircleCheck } from "lucide-react";
 // Types
@@ -60,11 +59,8 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
         <SeparatorWithText>
           {t("page.card.content.separator")}
         </SeparatorWithText>
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="flex flex-col gap-6"
-        >
-          <div className="flex flex-col gap-4">
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
+          <FieldSet disabled={loading.status}>
             <Controller
               control={form.control}
               name="email"
@@ -77,7 +73,6 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
                     {...field}
                     aria-invalid={fieldState.invalid}
                     autoComplete="username"
-                    disabled={loading.status}
                     id={field.name}
                     placeholder={t("page.card.content.form.email.placeholder")}
                     type="email"
@@ -100,7 +95,6 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
                     {...field}
                     aria-invalid={fieldState.invalid}
                     autoComplete="current-password"
-                    disabled={loading.status}
                     id={field.name}
                     placeholder={t(
                       "page.card.content.form.password.placeholder",
@@ -122,34 +116,46 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
                     data-invalid={fieldState.invalid}
                     orientation="horizontal"
                   >
-                    <Checkbox
-                      aria-invalid={fieldState.invalid}
-                      checked={field.value}
-                      disabled={loading.status}
-                      id={field.name}
-                      onCheckedChange={field.onChange}
-                    />
                     <FieldLabel htmlFor={field.name}>
+                      <Checkbox
+                        aria-invalid={fieldState.invalid}
+                        aria-label={t(
+                          "page.card.content.form.rememberMe.label",
+                        )}
+                        checked={field.value}
+                        id={field.name}
+                        onCheckedChange={field.onChange}
+                      />
                       {t("page.card.content.form.rememberMe.label")}
                     </FieldLabel>
                   </Field>
                 )}
               />
-              <Link className="h-8" href="/forgot-password" prefetch={false}>
+              <Link
+                className="h-8"
+                disabled={loading.status}
+                href="/forgot-password"
+                prefetch={false}
+              >
                 {t("page.card.content.form.forgotLink.label")}
               </Link>
             </div>
-          </div>
-          <ButtonLoading
-            type="submit"
-            loading={loading.status && loading.provider === "credentials"}
-          >
-            {t("page.card.content.form.submitButton.label")}
-          </ButtonLoading>
+            <ButtonLoading
+              type="submit"
+              loading={loading.status && loading.provider === "credentials"}
+            >
+              {t("page.card.content.form.submitButton.label")}
+            </ButtonLoading>
+          </FieldSet>
         </form>
       </AuthCardContent>
       <AuthCardFooter>
-        <Link className="text-muted-foreground" href="/signup" prefetch={false}>
+        <Link
+          className="text-muted-foreground"
+          disabled={loading.status}
+          href="/signup"
+          prefetch={false}
+        >
           {t("page.card.footer.registerLink.label")}
         </Link>
       </AuthCardFooter>

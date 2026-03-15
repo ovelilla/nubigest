@@ -1,58 +1,72 @@
-model Workspace {
-    id        String   @id @default(cuid())
-    name      String
-    slug      String   @unique
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model Organization {
+  id          String       @id
+  name        String
+  slug        String
+  logo        String?
+  createdAt   DateTime
+  metadata    String?
+  teams       Team[]
+  members     Member[]
+  invitations Invitation[]
 
-    members       Member[]
-    organizations Organization[]
+  @@unique([slug])
+  @@map("organization")
 }
 
 model Member {
-    id          String        @id @default(cuid())
-    userId      String
-    workspaceId String
-    role        WorkspaceRole
+  id             String       @id
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  userId         String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role           String       @default("member")
+  createdAt      DateTime
 
-    user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-    workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-
-    @@unique([userId, workspaceId])
+  @@index([organizationId])
+  @@index([userId])
+  @@map("member")
 }
 
-enum WorkspaceRole {
-    OWNER
-    ADMIN
-    MEMBER
+model Invitation {
+  id             String       @id
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  email          String
+  role           String?
+  teamId         String?
+  status         String       @default("pending")
+  expiresAt      DateTime
+  createdAt      DateTime     @default(now())
+  inviterId      String
+  user           User         @relation(fields: [inviterId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([email])
+  @@map("invitation")
 }
 
-model Organization {
-    id          String   @id @default(cuid())
-    workspaceId String
-    name        String
-    slug        String   @unique
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+model Team {
+  id             String       @id
+  name           String
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  createdAt      DateTime
+  updatedAt      DateTime?    @updatedAt
+  teammembers    TeamMember[]
 
-    workspace Workspace           @relation(fields: [workspaceId], references: [id])
-    staff     OrganizationStaff[]
+  @@index([organizationId])
+  @@map("team")
 }
 
-model OrganizationStaff {
-    id             String           @id @default(cuid())
-    userId         String
-    organizationId String
-    role           OrganizationRole
+model TeamMember {
+  id        String    @id
+  teamId    String
+  team      Team      @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime?
 
-    user         User         @relation(fields: [userId], references: [id])
-    organization Organization @relation(fields: [organizationId], references: [id])
-
-    @@unique([userId, organizationId])
-}
-
-enum OrganizationRole {
-    MANAGER
-    EMPLOYEE
-    VIEWER
+  @@index([teamId])
+  @@index([userId])
+  @@map("teamMember")
 }

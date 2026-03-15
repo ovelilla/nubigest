@@ -13,16 +13,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { ButtonLoading } from "@/components/ui/button-loading";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+import { Field, FieldLabel, FieldError, FieldSet } from "@/components/ui/field";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { Link } from "@/components/ui/link";
 // Hooks
 import { EmailHook } from "./hooks/email.hook";
-// i18n
-import { Link } from "@/i18n/navigation";
 
 const EmailContainer = () => {
   const {
@@ -45,11 +44,8 @@ const EmailContainer = () => {
         </AuthCardDescription>
       </AuthCardHeader>
       <AuthCardContent>
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="flex flex-col gap-6"
-        >
-          <div className="flex flex-col gap-4">
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
+          <FieldSet disabled={isInitializing || loadingVerify || loadingEmail}>
             <Controller
               control={form.control}
               name="code"
@@ -60,7 +56,8 @@ const EmailContainer = () => {
                   </FieldLabel>
                   <InputOTP
                     {...field}
-                    disabled={isInitializing || loadingVerify || loadingEmail}
+                    autoComplete="one-time-code"
+                    aria-invalid={fieldState.invalid}
                     id={field.name}
                     maxLength={6}
                     type="text"
@@ -90,27 +87,23 @@ const EmailContainer = () => {
                   data-invalid={fieldState.invalid}
                   orientation="horizontal"
                 >
-                  <Checkbox
-                    aria-invalid={fieldState.invalid}
-                    checked={field.value}
-                    disabled={isInitializing || loadingVerify || loadingEmail}
-                    id={field.name}
-                    onCheckedChange={field.onChange}
-                  />
                   <FieldLabel htmlFor={field.name}>
+                    <Checkbox
+                      aria-invalid={fieldState.invalid}
+                      aria-label={t("page.card.content.form.trustDevice.label")}
+                      checked={field.value}
+                      id={field.name}
+                      onCheckedChange={field.onChange}
+                    />
                     {t("page.card.content.form.trustDevice.label")}
                   </FieldLabel>
                 </Field>
               )}
             />
-          </div>
-          <ButtonLoading
-            disabled={isInitializing || loadingEmail}
-            loading={loadingVerify}
-            type="submit"
-          >
-            {t("page.card.content.form.submitButton.label")}
-          </ButtonLoading>
+            <ButtonLoading loading={loadingVerify} type="submit">
+              {t("page.card.content.form.submitButton.label")}
+            </ButtonLoading>
+          </FieldSet>
         </form>
 
         <p className="text-muted-foreground text-sm">
@@ -140,6 +133,7 @@ const EmailContainer = () => {
       <AuthCardFooter>
         <Link
           className="text-muted-foreground"
+          disabled={isInitializing || loadingVerify || loadingEmail}
           href="/two-factor"
           prefetch={false}
         >

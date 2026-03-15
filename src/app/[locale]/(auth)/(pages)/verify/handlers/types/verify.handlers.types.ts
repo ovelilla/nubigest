@@ -6,7 +6,7 @@ type ResendHandler = (props: {
   email: string;
   startCooldown: (seconds: number) => void;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  tAuth: _Translator;
+  tRoot: _Translator;
   tVerify: _Translator;
 }) => Promise<void>;
 
@@ -14,7 +14,7 @@ type VerifyHandlersProps = {
   email: string;
   startCooldown: (seconds: number) => void;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  tAuth: _Translator;
+  tRoot: _Translator;
   tVerify: _Translator;
 };
 

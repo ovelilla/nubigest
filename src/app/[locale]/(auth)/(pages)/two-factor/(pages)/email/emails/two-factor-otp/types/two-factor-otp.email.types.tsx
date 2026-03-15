@@ -1,5 +1,5 @@
 type TwoFactorOtpProps = {
-  token: string;
+  otp: string;
 };
 
 export type { TwoFactorOtpProps };

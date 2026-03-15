@@ -10,7 +10,6 @@ type SendTwoFactorOtp = () => Promise<{ retryAfter: number; success: boolean }>;
 
 const sendTwoFactorOtp: SendTwoFactorOtp = async () => {
   try {
-    console.log("Sending two-factor OTP email...");
     const cookieStore = await cookies();
 
     const cookie = cookieStore.get("two_factor_otp_sent");
@@ -33,11 +32,7 @@ const sendTwoFactorOtp: SendTwoFactorOtp = async () => {
       body: { trustDevice: false },
       headers: await headers(),
     });
-    console.log("Two-factor OTP email sent successfully.");
-    console.log(
-      "process.env.NODE_ENV === 'production'",
-      process.env.NODE_ENV === "production",
-    );
+
     const now = Date.now();
 
     cookieStore.set("two_factor_otp_sent", String(now), {

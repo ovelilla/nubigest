@@ -26,58 +26,46 @@ export type AggregateTwoFactor = {
 
 export type TwoFactorMinAggregateOutputType = {
   id: string | null
-  userId: string | null
   secret: string | null
   backupCodes: string | null
-  createdAt: Date | null
-  updatedAt: Date | null
+  userId: string | null
 }
 
 export type TwoFactorMaxAggregateOutputType = {
   id: string | null
-  userId: string | null
   secret: string | null
   backupCodes: string | null
-  createdAt: Date | null
-  updatedAt: Date | null
+  userId: string | null
 }
 
 export type TwoFactorCountAggregateOutputType = {
   id: number
-  userId: number
   secret: number
   backupCodes: number
-  createdAt: number
-  updatedAt: number
+  userId: number
   _all: number
 }
 
 
 export type TwoFactorMinAggregateInputType = {
   id?: true
-  userId?: true
   secret?: true
   backupCodes?: true
-  createdAt?: true
-  updatedAt?: true
+  userId?: true
 }
 
 export type TwoFactorMaxAggregateInputType = {
   id?: true
-  userId?: true
   secret?: true
   backupCodes?: true
-  createdAt?: true
-  updatedAt?: true
+  userId?: true
 }
 
 export type TwoFactorCountAggregateInputType = {
   id?: true
-  userId?: true
   secret?: true
   backupCodes?: true
-  createdAt?: true
-  updatedAt?: true
+  userId?: true
   _all?: true
 }
 
@@ -155,11 +143,9 @@ export type TwoFactorGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type TwoFactorGroupByOutputType = {
   id: string
+  secret: string
+  backupCodes: string
   userId: string
-  secret: string | null
-  backupCodes: string | null
-  createdAt: Date
-  updatedAt: Date
   _count: TwoFactorCountAggregateOutputType | null
   _min: TwoFactorMinAggregateOutputType | null
   _max: TwoFactorMaxAggregateOutputType | null
@@ -185,44 +171,36 @@ export type TwoFactorWhereInput = {
   OR?: Prisma.TwoFactorWhereInput[]
   NOT?: Prisma.TwoFactorWhereInput | Prisma.TwoFactorWhereInput[]
   id?: Prisma.StringFilter<"TwoFactor"> | string
+  secret?: Prisma.StringFilter<"TwoFactor"> | string
+  backupCodes?: Prisma.StringFilter<"TwoFactor"> | string
   userId?: Prisma.StringFilter<"TwoFactor"> | string
-  secret?: Prisma.StringNullableFilter<"TwoFactor"> | string | null
-  backupCodes?: Prisma.StringNullableFilter<"TwoFactor"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"TwoFactor"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"TwoFactor"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type TwoFactorOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  secret?: Prisma.SortOrder
+  backupCodes?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  secret?: Prisma.SortOrderInput | Prisma.SortOrder
-  backupCodes?: Prisma.SortOrderInput | Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type TwoFactorWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  userId?: string
   AND?: Prisma.TwoFactorWhereInput | Prisma.TwoFactorWhereInput[]
   OR?: Prisma.TwoFactorWhereInput[]
   NOT?: Prisma.TwoFactorWhereInput | Prisma.TwoFactorWhereInput[]
-  secret?: Prisma.StringNullableFilter<"TwoFactor"> | string | null
-  backupCodes?: Prisma.StringNullableFilter<"TwoFactor"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"TwoFactor"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"TwoFactor"> | Date | string
+  secret?: Prisma.StringFilter<"TwoFactor"> | string
+  backupCodes?: Prisma.StringFilter<"TwoFactor"> | string
+  userId?: Prisma.StringFilter<"TwoFactor"> | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id" | "userId">
+}, "id">
 
 export type TwoFactorOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  secret?: Prisma.SortOrder
+  backupCodes?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  secret?: Prisma.SortOrderInput | Prisma.SortOrder
-  backupCodes?: Prisma.SortOrderInput | Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
   _count?: Prisma.TwoFactorCountOrderByAggregateInput
   _max?: Prisma.TwoFactorMaxOrderByAggregateInput
   _min?: Prisma.TwoFactorMinOrderByAggregateInput
@@ -233,153 +211,142 @@ export type TwoFactorScalarWhereWithAggregatesInput = {
   OR?: Prisma.TwoFactorScalarWhereWithAggregatesInput[]
   NOT?: Prisma.TwoFactorScalarWhereWithAggregatesInput | Prisma.TwoFactorScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"TwoFactor"> | string
+  secret?: Prisma.StringWithAggregatesFilter<"TwoFactor"> | string
+  backupCodes?: Prisma.StringWithAggregatesFilter<"TwoFactor"> | string
   userId?: Prisma.StringWithAggregatesFilter<"TwoFactor"> | string
-  secret?: Prisma.StringNullableWithAggregatesFilter<"TwoFactor"> | string | null
-  backupCodes?: Prisma.StringNullableWithAggregatesFilter<"TwoFactor"> | string | null
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"TwoFactor"> | Date | string
-  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TwoFactor"> | Date | string
 }
 
 export type TwoFactorCreateInput = {
-  id?: string
-  secret?: string | null
-  backupCodes?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutTwoFactorInput
+  id: string
+  secret: string
+  backupCodes: string
+  user: Prisma.UserCreateNestedOneWithoutTwofactorsInput
 }
 
 export type TwoFactorUncheckedCreateInput = {
-  id?: string
+  id: string
+  secret: string
+  backupCodes: string
   userId: string
-  secret?: string | null
-  backupCodes?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
 }
 
 export type TwoFactorUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutTwoFactorNestedInput
+  secret?: Prisma.StringFieldUpdateOperationsInput | string
+  backupCodes?: Prisma.StringFieldUpdateOperationsInput | string
+  user?: Prisma.UserUpdateOneRequiredWithoutTwofactorsNestedInput
 }
 
 export type TwoFactorUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  secret?: Prisma.StringFieldUpdateOperationsInput | string
+  backupCodes?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TwoFactorCreateManyInput = {
-  id?: string
+  id: string
+  secret: string
+  backupCodes: string
   userId: string
-  secret?: string | null
-  backupCodes?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
 }
 
 export type TwoFactorUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  secret?: Prisma.StringFieldUpdateOperationsInput | string
+  backupCodes?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type TwoFactorUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  secret?: Prisma.StringFieldUpdateOperationsInput | string
+  backupCodes?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type TwoFactorNullableScalarRelationFilter = {
-  is?: Prisma.TwoFactorWhereInput | null
-  isNot?: Prisma.TwoFactorWhereInput | null
+export type TwoFactorListRelationFilter = {
+  every?: Prisma.TwoFactorWhereInput
+  some?: Prisma.TwoFactorWhereInput
+  none?: Prisma.TwoFactorWhereInput
+}
+
+export type TwoFactorOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type TwoFactorCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   secret?: Prisma.SortOrder
   backupCodes?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type TwoFactorMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   secret?: Prisma.SortOrder
   backupCodes?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type TwoFactorMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   secret?: Prisma.SortOrder
   backupCodes?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
-export type TwoFactorCreateNestedOneWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.TwoFactorCreateWithoutUserInput, Prisma.TwoFactorUncheckedCreateWithoutUserInput>
-  connectOrCreate?: Prisma.TwoFactorCreateOrConnectWithoutUserInput
-  connect?: Prisma.TwoFactorWhereUniqueInput
+export type TwoFactorCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.TwoFactorCreateWithoutUserInput, Prisma.TwoFactorUncheckedCreateWithoutUserInput> | Prisma.TwoFactorCreateWithoutUserInput[] | Prisma.TwoFactorUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.TwoFactorCreateOrConnectWithoutUserInput | Prisma.TwoFactorCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.TwoFactorCreateManyUserInputEnvelope
+  connect?: Prisma.TwoFactorWhereUniqueInput | Prisma.TwoFactorWhereUniqueInput[]
 }
 
-export type TwoFactorUncheckedCreateNestedOneWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.TwoFactorCreateWithoutUserInput, Prisma.TwoFactorUncheckedCreateWithoutUserInput>
-  connectOrCreate?: Prisma.TwoFactorCreateOrConnectWithoutUserInput
-  connect?: Prisma.TwoFactorWhereUniqueInput
+export type TwoFactorUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.TwoFactorCreateWithoutUserInput, Prisma.TwoFactorUncheckedCreateWithoutUserInput> | Prisma.TwoFactorCreateWithoutUserInput[] | Prisma.TwoFactorUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.TwoFactorCreateOrConnectWithoutUserInput | Prisma.TwoFactorCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.TwoFactorCreateManyUserInputEnvelope
+  connect?: Prisma.TwoFactorWhereUniqueInput | Prisma.TwoFactorWhereUniqueInput[]
 }
 
-export type TwoFactorUpdateOneWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.TwoFactorCreateWithoutUserInput, Prisma.TwoFactorUncheckedCreateWithoutUserInput>
-  connectOrCreate?: Prisma.TwoFactorCreateOrConnectWithoutUserInput
-  upsert?: Prisma.TwoFactorUpsertWithoutUserInput
-  disconnect?: Prisma.TwoFactorWhereInput | boolean
-  delete?: Prisma.TwoFactorWhereInput | boolean
-  connect?: Prisma.TwoFactorWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TwoFactorUpdateToOneWithWhereWithoutUserInput, Prisma.TwoFactorUpdateWithoutUserInput>, Prisma.TwoFactorUncheckedUpdateWithoutUserInput>
+export type TwoFactorUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.TwoFactorCreateWithoutUserInput, Prisma.TwoFactorUncheckedCreateWithoutUserInput> | Prisma.TwoFactorCreateWithoutUserInput[] | Prisma.TwoFactorUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.TwoFactorCreateOrConnectWithoutUserInput | Prisma.TwoFactorCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.TwoFactorUpsertWithWhereUniqueWithoutUserInput | Prisma.TwoFactorUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.TwoFactorCreateManyUserInputEnvelope
+  set?: Prisma.TwoFactorWhereUniqueInput | Prisma.TwoFactorWhereUniqueInput[]
+  disconnect?: Prisma.TwoFactorWhereUniqueInput | Prisma.TwoFactorWhereUniqueInput[]
+  delete?: Prisma.TwoFactorWhereUniqueInput | Prisma.TwoFactorWhereUniqueInput[]
+  connect?: Prisma.TwoFactorWhereUniqueInput | Prisma.TwoFactorWhereUniqueInput[]
+  update?: Prisma.TwoFactorUpdateWithWhereUniqueWithoutUserInput | Prisma.TwoFactorUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.TwoFactorUpdateManyWithWhereWithoutUserInput | Prisma.TwoFactorUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.TwoFactorScalarWhereInput | Prisma.TwoFactorScalarWhereInput[]
 }
 
-export type TwoFactorUncheckedUpdateOneWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.TwoFactorCreateWithoutUserInput, Prisma.TwoFactorUncheckedCreateWithoutUserInput>
-  connectOrCreate?: Prisma.TwoFactorCreateOrConnectWithoutUserInput
-  upsert?: Prisma.TwoFactorUpsertWithoutUserInput
-  disconnect?: Prisma.TwoFactorWhereInput | boolean
-  delete?: Prisma.TwoFactorWhereInput | boolean
-  connect?: Prisma.TwoFactorWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TwoFactorUpdateToOneWithWhereWithoutUserInput, Prisma.TwoFactorUpdateWithoutUserInput>, Prisma.TwoFactorUncheckedUpdateWithoutUserInput>
+export type TwoFactorUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.TwoFactorCreateWithoutUserInput, Prisma.TwoFactorUncheckedCreateWithoutUserInput> | Prisma.TwoFactorCreateWithoutUserInput[] | Prisma.TwoFactorUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.TwoFactorCreateOrConnectWithoutUserInput | Prisma.TwoFactorCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.TwoFactorUpsertWithWhereUniqueWithoutUserInput | Prisma.TwoFactorUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.TwoFactorCreateManyUserInputEnvelope
+  set?: Prisma.TwoFactorWhereUniqueInput | Prisma.TwoFactorWhereUniqueInput[]
+  disconnect?: Prisma.TwoFactorWhereUniqueInput | Prisma.TwoFactorWhereUniqueInput[]
+  delete?: Prisma.TwoFactorWhereUniqueInput | Prisma.TwoFactorWhereUniqueInput[]
+  connect?: Prisma.TwoFactorWhereUniqueInput | Prisma.TwoFactorWhereUniqueInput[]
+  update?: Prisma.TwoFactorUpdateWithWhereUniqueWithoutUserInput | Prisma.TwoFactorUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.TwoFactorUpdateManyWithWhereWithoutUserInput | Prisma.TwoFactorUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.TwoFactorScalarWhereInput | Prisma.TwoFactorScalarWhereInput[]
 }
 
 export type TwoFactorCreateWithoutUserInput = {
-  id?: string
-  secret?: string | null
-  backupCodes?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  id: string
+  secret: string
+  backupCodes: string
 }
 
 export type TwoFactorUncheckedCreateWithoutUserInput = {
-  id?: string
-  secret?: string | null
-  backupCodes?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
+  id: string
+  secret: string
+  backupCodes: string
 }
 
 export type TwoFactorCreateOrConnectWithoutUserInput = {
@@ -387,75 +354,95 @@ export type TwoFactorCreateOrConnectWithoutUserInput = {
   create: Prisma.XOR<Prisma.TwoFactorCreateWithoutUserInput, Prisma.TwoFactorUncheckedCreateWithoutUserInput>
 }
 
-export type TwoFactorUpsertWithoutUserInput = {
-  update: Prisma.XOR<Prisma.TwoFactorUpdateWithoutUserInput, Prisma.TwoFactorUncheckedUpdateWithoutUserInput>
-  create: Prisma.XOR<Prisma.TwoFactorCreateWithoutUserInput, Prisma.TwoFactorUncheckedCreateWithoutUserInput>
-  where?: Prisma.TwoFactorWhereInput
+export type TwoFactorCreateManyUserInputEnvelope = {
+  data: Prisma.TwoFactorCreateManyUserInput | Prisma.TwoFactorCreateManyUserInput[]
+  skipDuplicates?: boolean
 }
 
-export type TwoFactorUpdateToOneWithWhereWithoutUserInput = {
-  where?: Prisma.TwoFactorWhereInput
+export type TwoFactorUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.TwoFactorWhereUniqueInput
+  update: Prisma.XOR<Prisma.TwoFactorUpdateWithoutUserInput, Prisma.TwoFactorUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.TwoFactorCreateWithoutUserInput, Prisma.TwoFactorUncheckedCreateWithoutUserInput>
+}
+
+export type TwoFactorUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.TwoFactorWhereUniqueInput
   data: Prisma.XOR<Prisma.TwoFactorUpdateWithoutUserInput, Prisma.TwoFactorUncheckedUpdateWithoutUserInput>
+}
+
+export type TwoFactorUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.TwoFactorScalarWhereInput
+  data: Prisma.XOR<Prisma.TwoFactorUpdateManyMutationInput, Prisma.TwoFactorUncheckedUpdateManyWithoutUserInput>
+}
+
+export type TwoFactorScalarWhereInput = {
+  AND?: Prisma.TwoFactorScalarWhereInput | Prisma.TwoFactorScalarWhereInput[]
+  OR?: Prisma.TwoFactorScalarWhereInput[]
+  NOT?: Prisma.TwoFactorScalarWhereInput | Prisma.TwoFactorScalarWhereInput[]
+  id?: Prisma.StringFilter<"TwoFactor"> | string
+  secret?: Prisma.StringFilter<"TwoFactor"> | string
+  backupCodes?: Prisma.StringFilter<"TwoFactor"> | string
+  userId?: Prisma.StringFilter<"TwoFactor"> | string
+}
+
+export type TwoFactorCreateManyUserInput = {
+  id: string
+  secret: string
+  backupCodes: string
 }
 
 export type TwoFactorUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  secret?: Prisma.StringFieldUpdateOperationsInput | string
+  backupCodes?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type TwoFactorUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  secret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  backupCodes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  secret?: Prisma.StringFieldUpdateOperationsInput | string
+  backupCodes?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type TwoFactorUncheckedUpdateManyWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  secret?: Prisma.StringFieldUpdateOperationsInput | string
+  backupCodes?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
 
 export type TwoFactorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  userId?: boolean
   secret?: boolean
   backupCodes?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  userId?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["twoFactor"]>
 
 export type TwoFactorSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  userId?: boolean
   secret?: boolean
   backupCodes?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  userId?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["twoFactor"]>
 
 export type TwoFactorSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  userId?: boolean
   secret?: boolean
   backupCodes?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  userId?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["twoFactor"]>
 
 export type TwoFactorSelectScalar = {
   id?: boolean
-  userId?: boolean
   secret?: boolean
   backupCodes?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
+  userId?: boolean
 }
 
-export type TwoFactorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "secret" | "backupCodes" | "createdAt" | "updatedAt", ExtArgs["result"]["twoFactor"]>
+export type TwoFactorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "secret" | "backupCodes" | "userId", ExtArgs["result"]["twoFactor"]>
 export type TwoFactorInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -473,11 +460,9 @@ export type $TwoFactorPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    secret: string
+    backupCodes: string
     userId: string
-    secret: string | null
-    backupCodes: string | null
-    createdAt: Date
-    updatedAt: Date
   }, ExtArgs["result"]["twoFactor"]>
   composites: {}
 }
@@ -903,11 +888,9 @@ export interface Prisma__TwoFactorClient<T, Null = never, ExtArgs extends runtim
  */
 export interface TwoFactorFieldRefs {
   readonly id: Prisma.FieldRef<"TwoFactor", 'String'>
-  readonly userId: Prisma.FieldRef<"TwoFactor", 'String'>
   readonly secret: Prisma.FieldRef<"TwoFactor", 'String'>
   readonly backupCodes: Prisma.FieldRef<"TwoFactor", 'String'>
-  readonly createdAt: Prisma.FieldRef<"TwoFactor", 'DateTime'>
-  readonly updatedAt: Prisma.FieldRef<"TwoFactor", 'DateTime'>
+  readonly userId: Prisma.FieldRef<"TwoFactor", 'String'>
 }
     
 
@@ -1104,6 +1087,11 @@ export type TwoFactorFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Skip the first `n` TwoFactors.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of TwoFactors.
+   */
   distinct?: Prisma.TwoFactorScalarFieldEnum | Prisma.TwoFactorScalarFieldEnum[]
 }
 

@@ -8,17 +8,14 @@ import type { SendTwoFactorOtpEmail } from "./types/send-two-factor-otp-email.se
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const sendTwoFactorOtpEmail: SendTwoFactorOtpEmail = async ({
-  email,
-  token,
-}) => {
+const sendTwoFactorOtpEmail: SendTwoFactorOtpEmail = async ({ email, otp }) => {
   const t = await getTranslations("email.emails.twoFactorOtp");
 
   void resend.emails.send({
     from: "Nubigest <noreply@nubigest.com>",
     to: email,
     subject: t("subject"),
-    react: <TwoFactorOtpEmail token={token} />,
+    react: <TwoFactorOtpEmail otp={otp} />,
   });
 };
 

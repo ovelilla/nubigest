@@ -8,7 +8,7 @@ import type { _Translator } from "next-intl";
 type SignUpHandlersProps = {
   form: UseFormReturn<SignUpSchema>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
-  tAuth: _Translator;
+  tRoot: _Translator;
   tSignUp: _Translator;
 };
 
@@ -20,14 +20,14 @@ type SignUpHandlersReturn = {
 type OAuthClickHandlerProps = {
   setLoading: Dispatch<SetStateAction<LoadingState>>;
   provider: string;
-  tAuth: _Translator;
+  tRoot: _Translator;
   tSignUp: _Translator;
 };
 
 type SubmitHandlerProps = {
   form: UseFormReturn<SignUpSchema>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
-  tAuth: _Translator;
+  tRoot: _Translator;
   tSignUp: _Translator;
   values: SignUpSchema;
 };

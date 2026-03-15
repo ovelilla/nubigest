@@ -7,8 +7,8 @@ import type { UseFormReturn } from "react-hook-form";
 type ForgotPasswordHandlersProps = {
   form: UseFormReturn<ForgotPasswordSchema>;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  tAuth: _Translator;
   tForgotPassword: _Translator;
+  tRoot: _Translator;
 };
 
 type ForgotPasswordHandlersReturn = {
@@ -18,8 +18,8 @@ type ForgotPasswordHandlersReturn = {
 type SubmitHandler = (props: {
   form: UseFormReturn<ForgotPasswordSchema>;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  tAuth: _Translator;
   tForgotPassword: _Translator;
+  tRoot: _Translator;
   values: ForgotPasswordSchema;
 }) => Promise<void>;
 

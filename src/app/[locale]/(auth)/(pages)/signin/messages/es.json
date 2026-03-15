@@ -3,7 +3,8 @@
     "handlers": {
       "submit": {
         "error": {
-          "generic": "Ha ocurrido un error inesperado"
+          "generic": "Ha ocurrido un error inesperado",
+          "tooManyRequests": "Demasiados intentos de inicio de sesión. Por favor, inténtalo de nuevo más tarde."
         },
         "success": "Inicio de sesión exitoso"
       },

@@ -14,7 +14,7 @@ const LocaleSwitcherHook = () => {
   const params = useParams();
   const pathname = usePathname();
   const router = useRouter();
-  const t = useTranslations("components.localeSwitcher");
+  const t = useTranslations("root.components.localeSwitcher");
 
   const { handleSwitchLocale } = LocaleSwitcherHandlers({
     params,

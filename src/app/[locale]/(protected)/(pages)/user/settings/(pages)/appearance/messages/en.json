@@ -1,0 +1,10 @@
+{
+  "appearanceSettings": {
+    "page": {
+      "header": {
+        "title": "Appearance Settings",
+        "description": "Manage your appearance settings and set preferences."
+      }
+    }
+  }
+}

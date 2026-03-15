@@ -1,8 +1,8 @@
 // Vendors
 import { betterAuth } from "better-auth";
-import { twoFactor } from "better-auth/plugins";
+import { nextCookies } from "better-auth/next-js";
+import { organization, twoFactor } from "better-auth/plugins";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-// import slug from "slug";
 // Libs
 import { prisma } from "@/lib/prisma";
 // Utils
@@ -20,6 +20,84 @@ const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
+  databaseHooks: {
+    session: {
+      create: {
+        before: async (session) => {
+          const organization = await prisma.organization.findFirst({
+            where: {
+              members: {
+                some: {
+                  userId: session.userId,
+                },
+              },
+            },
+          });
+          return {
+            data: {
+              ...session,
+              activeOrganizationId: organization?.id ?? null,
+            },
+          };
+        },
+      },
+    },
+    user: {
+      create: {
+        after: async (user) => {
+          await auth.api.createOrganization({
+            body: {
+              name: "My Organization",
+              slug: `org-${crypto.randomUUID()}`,
+              userId: user.id,
+            },
+          });
+        },
+      },
+    },
+  },
+  emailAndPassword: {
+    enabled: true,
+    requireEmailVerification: true,
+    sendResetPassword: async ({ user, url }) => {
+      sendResetPasswordEmail({
+        email: user.email,
+        url,
+      });
+    },
+  },
+  emailVerification: {
+    autoSignInAfterVerification: true,
+    sendOnSignIn: true,
+    sendOnSignUp: true,
+    sendVerificationEmail: async ({ user, url }) => {
+      sendVerificationEmail({
+        email: user.email,
+        url,
+      });
+    },
+  },
+  plugins: [
+    organization({
+      requireEmailVerificationOnInvitation: true,
+      teams: {
+        enabled: true,
+      },
+    }),
+    twoFactor({
+      issuer: "Nubigest",
+      skipVerificationOnEnable: true,
+      otpOptions: {
+        sendOTP: async ({ user, otp }) => {
+          sendTwoFactorOtpEmail({
+            email: user.email,
+            otp,
+          });
+        },
+      },
+    }),
+    nextCookies(),
+  ],
   rateLimit: {
     customRules: {
       "/send-verification-email": {
@@ -34,62 +112,19 @@ const auth = betterAuth({
     enabled: true,
     storage: "database",
   },
-  trustedOrigins: ["https://www.nubigest.com", "https://nubigest.com"],
-  emailAndPassword: {
-    enabled: true,
-    requireEmailVerification: true,
-    sendResetPassword: async ({ user, url }) => {
-      sendResetPasswordEmail({
-        email: user.email,
-        url,
-      });
+  session: {
+    cookieCache: {
+      enabled: true,
+      maxAge: 5 * 60,
     },
   },
-  emailVerification: {
-    // async afterEmailVerification(user) {
-    //   await prisma.workspace.create({
-    //     data: {
-    //       name: user.name,
-    //       slug: slug(user.name),
-    //       members: {
-    //         create: {
-    //           userId: user.id,
-    //           role: "OWNER",
-    //         },
-    //       },
-    //     },
-    //   });
-    // },
-    autoSignInAfterVerification: true,
-    sendOnSignIn: true,
-    sendOnSignUp: true,
-    sendVerificationEmail: async ({ user, url }) => {
-      sendVerificationEmail({
-        email: user.email,
-        url,
-      });
-    },
-  },
-  plugins: [
-    twoFactor({
-      issuer: "Nubigest",
-      skipVerificationOnEnable: true,
-      otpOptions: {
-        sendOTP: async ({ user, otp }) => {
-          sendTwoFactorOtpEmail({
-            email: user.email,
-            token: otp,
-          });
-        },
-      },
-    }),
-  ],
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     },
   },
+  trustedOrigins: ["https://www.nubigest.com", "https://nubigest.com"],
 });
 
 export { auth };

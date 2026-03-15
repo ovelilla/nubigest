@@ -1,0 +1,10 @@
+{
+  "profileSettings": {
+    "page": {
+      "header": {
+        "title": "Profile Settings",
+        "description": "Manage your profile settings and set preferences."
+      }
+    }
+  }
+}

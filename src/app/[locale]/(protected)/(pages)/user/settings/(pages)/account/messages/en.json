@@ -1,0 +1,10 @@
+{
+  "accountSettings": {
+    "page": {
+      "header": {
+        "title": "Account Settings",
+        "description": "Manage your account settings and set preferences."
+      }
+    }
+  }
+}

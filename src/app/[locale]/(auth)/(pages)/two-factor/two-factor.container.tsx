@@ -20,7 +20,7 @@ import {
 // i18n
 import { Link } from "@/i18n/navigation";
 // Icons
-import { KeyRound, Mail, Shield } from "lucide-react";
+import { KeyRound, Mail, Smartphone } from "lucide-react";
 
 const TwoFactorContainer = () => {
   const t = useTranslations("twoFactor");
@@ -39,7 +39,7 @@ const TwoFactorContainer = () => {
             render={
               <Link href="/two-factor/authenticator" prefetch={false}>
                 <ItemMedia>
-                  <Shield className="size-6" />
+                  <Smartphone className="size-6" />
                 </ItemMedia>
                 <ItemContent>
                   <ItemTitle>

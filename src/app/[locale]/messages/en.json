@@ -1,5 +1,11 @@
 {
-  "appLayout": {
+  "notFound": {
+    "title": "404 - Not Found",
+    "description": "The page you are looking for does not exist, has been moved, or you do not have access to it.",
+    "backToHome": "Back to Home",
+    "backToDashboard": "Back to Dashboard"
+  },
+  "rootLayout": {
     "metadata": {
       "title": "Nubigest ERP",
       "description": "Enterprise management ERP"

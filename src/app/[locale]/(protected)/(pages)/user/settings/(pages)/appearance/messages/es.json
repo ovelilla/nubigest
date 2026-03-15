@@ -1,0 +1,10 @@
+{
+  "appearanceSettings": {
+    "page": {
+      "header": {
+        "title": "Ajustes de Apariencia",
+        "description": "Administra tus ajustes de apariencia y establece preferencias."
+      }
+    }
+  }
+}

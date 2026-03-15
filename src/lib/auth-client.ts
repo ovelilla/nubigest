@@ -1,6 +1,16 @@
 import { createAuthClient } from "better-auth/react";
-import { twoFactorClient } from "better-auth/client/plugins";
+import {
+  organizationClient,
+  twoFactorClient,
+} from "better-auth/client/plugins";
 
 export const authClient = createAuthClient({
-  plugins: [twoFactorClient()],
+  plugins: [
+    organizationClient({
+      teams: {
+        enabled: true,
+      },
+    }),
+    twoFactorClient(),
+  ],
 });

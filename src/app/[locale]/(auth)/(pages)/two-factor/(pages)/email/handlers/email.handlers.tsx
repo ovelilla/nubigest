@@ -6,7 +6,6 @@ import { authClient } from "@/lib/auth-client";
 import { DEFAULT_REDIRECT } from "@/constants/routes.constants";
 import { OTP_COOLDOWN_MS } from "../constants/email.constants";
 // Types
-import type { OtpSchema } from "../schemas/types/email.schema.types";
 import type {
   ResendHandler,
   EmailHandlersProps,
@@ -17,7 +16,8 @@ import type {
 const resendHandler: ResendHandler = async ({
   setLoadingEmail,
   startCooldown,
-  t,
+  tEmail,
+  tTwoFactor,
 }) => {
   try {
     await authClient.twoFactor.sendOtp({
@@ -30,17 +30,21 @@ const resendHandler: ResendHandler = async ({
         },
         onError: async ({ error }) => {
           const key = `errors.${error.code ?? ""}`;
-          toast.error(t.has(key) ? t(key) : t("handlers.resend.error.generic"));
+          toast.error(
+            tTwoFactor.has(key)
+              ? tTwoFactor(key)
+              : tEmail("handlers.resend.error.generic"),
+          );
         },
         onSuccess: async () => {
           startCooldown(OTP_COOLDOWN_MS / 1000);
-          toast.success(t("handlers.resend.success"));
+          toast.success(tEmail("handlers.resend.success"));
         },
       },
     });
   } catch (error) {
     console.error(error);
-    toast.error(t("handlers.resend.error.generic"));
+    toast.error(tEmail("handlers.resend.error.generic"));
   }
 };
 
@@ -48,7 +52,8 @@ const submitHandler: SubmitHandler = async ({
   form,
   router,
   setLoadingVerify,
-  t,
+  tEmail,
+  tTwoFactor,
   values,
 }) => {
   try {
@@ -61,18 +66,20 @@ const submitHandler: SubmitHandler = async ({
 
     if (error) {
       const key = `errors.${error.code ?? ""}`;
-      const message = t.has(key) ? t(key) : t("handlers.submit.error.generic");
+      const message = tTwoFactor.has(key)
+        ? tTwoFactor(key)
+        : tEmail("handlers.submit.error.generic");
       toast.error(message);
       form.setValue("code", "");
       return;
     }
 
-    toast.success(t("handlers.submit.success"));
+    toast.success(tEmail("handlers.submit.success"));
     form.reset();
     router.push(DEFAULT_REDIRECT);
   } catch (error) {
     console.error(error);
-    toast.error(t("handlers.submit.error.generic"));
+    toast.error(tEmail("handlers.submit.error.generic"));
   } finally {
     setLoadingVerify(false);
   }
@@ -84,16 +91,19 @@ const EmailHandlers = ({
   setLoadingEmail,
   setLoadingVerify,
   startCooldown,
-  t,
+  tEmail,
+  tTwoFactor,
 }: EmailHandlersProps): EmailHandlersReturn => {
   return {
-    handleResend: () => resendHandler({ setLoadingEmail, startCooldown, t }),
-    handleSubmit: (values: OtpSchema) =>
+    handleResend: () =>
+      resendHandler({ setLoadingEmail, startCooldown, tEmail, tTwoFactor }),
+    handleSubmit: (values) =>
       submitHandler({
         form,
         router,
         setLoadingVerify,
-        t,
+        tEmail,
+        tTwoFactor,
         values,
       }),
   };

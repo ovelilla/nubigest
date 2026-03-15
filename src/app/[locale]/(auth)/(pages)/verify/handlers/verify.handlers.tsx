@@ -18,7 +18,7 @@ const resendHandler: ResendHandler = async ({
   email,
   startCooldown,
   setLoading,
-  tAuth,
+  tRoot,
   tVerify,
 }) => {
   try {
@@ -40,8 +40,8 @@ const resendHandler: ResendHandler = async ({
           }
           const key = `errors.${error.code ?? ""}`;
           toast.error(
-            tAuth.has(key)
-              ? tAuth(key)
+            tRoot.has(key)
+              ? tRoot(key)
               : tVerify("handlers.resend.error.generic"),
           );
         },
@@ -63,12 +63,12 @@ const VerifyHandlers = ({
   email,
   startCooldown,
   setLoading,
-  tAuth,
+  tRoot,
   tVerify,
 }: VerifyHandlersProps): VerifyHandlersReturn => {
   return {
     handleResend: () =>
-      resendHandler({ email, startCooldown, setLoading, tAuth, tVerify }),
+      resendHandler({ email, startCooldown, setLoading, tRoot, tVerify }),
   };
 };
 

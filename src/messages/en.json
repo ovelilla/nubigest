@@ -1,23 +1,97 @@
 {
-  "components": {
-    "localeSwitcher": {
-      "button": {
-        "ariaLabel": "Switch language"
-      }
-    },
-    "passwordInput": {
-      "ariaLabelShow": "Show password",
-      "ariaLabelHide": "Hide password"
-    },
-    "themeSwitcher": {
-      "button": {
-        "ariaLabel": "Switch theme"
+  "root": {
+    "components": {
+      "buttonCopy": {
+        "ariaLabel": {
+          "copy": "Copy",
+          "copied": "Copied"
+        }
       },
-      "themes": {
-        "light": "Light",
-        "dark": "Dark",
-        "system": "System"
+      "buttonDownload": {
+        "ariaLabel": {
+          "download": "Download",
+          "downloaded": "Downloaded"
+        }
+      },
+      "localeSwitcher": {
+        "button": {
+          "ariaLabel": "Switch language"
+        }
+      },
+      "passwordInput": {
+        "ariaLabelShow": "Show password",
+        "ariaLabelHide": "Hide password"
+      },
+      "themeSwitcher": {
+        "button": {
+          "ariaLabel": "Switch theme"
+        },
+        "themes": {
+          "light": "Light",
+          "dark": "Dark",
+          "system": "System"
+        }
       }
+    },
+    "errors": {
+      "ACCOUNT_NOT_FOUND": "We couldn’t find that account.",
+      "ASYNC_VALIDATION_NOT_SUPPORTED": "This validation method isn’t supported.",
+      "BACKUP_CODES_NOT_ENABLED": "Backup codes are not enabled.",
+      "BODY_MUST_BE_AN_OBJECT": "Invalid request format.",
+      "CALLBACK_URL_REQUIRED": "Missing required information. Please try again.",
+      "CREDENTIAL_ACCOUNT_NOT_FOUND": "No account found with those credentials.",
+      "CROSS_SITE_NAVIGATION_LOGIN_BLOCKED": "Login was blocked for security reasons. Please try again from the same tab.",
+      "DEFAULT": "Something went wrong. Please try again.",
+      "EMAIL_ALREADY_VERIFIED": "Your email is already verified.",
+      "EMAIL_CAN_NOT_BE_UPDATED": "This account’s email cannot be changed.",
+      "EMAIL_MISMATCH": "The email doesn’t match. Please check and try again.",
+      "EMAIL_NOT_VERIFIED": "Your email is not verified. Please check your inbox.",
+      "FAILED_TO_CREATE_SESSION": "We couldn’t start your session. Please try again.",
+      "FAILED_TO_CREATE_USER": "We couldn’t create your account. Please try again.",
+      "FAILED_TO_CREATE_VERIFICATION": "We couldn’t process the verification. Please try again.",
+      "FAILED_TO_GET_SESSION": "We couldn’t retrieve your session. Please try again.",
+      "FAILED_TO_GET_USER_INFO": "We couldn’t retrieve your account information.",
+      "FAILED_TO_UNLINK_LAST_ACCOUNT": "You can’t unlink your last connected account.",
+      "FAILED_TO_UPDATE_USER": "We couldn’t update your profile. Please try again.",
+      "FIELD_NOT_ALLOWED": "A restricted field was submitted.",
+      "ID_TOKEN_NOT_SUPPORTED": "This login method isn’t supported.",
+      "INVALID_BACKUP_CODE": "The backup code you entered is invalid.",
+      "INVALID_CALLBACK_URL": "Invalid return URL. Please try again.",
+      "INVALID_CODE": "The verification code you entered is incorrect.",
+      "INVALID_EMAIL_OR_PASSWORD": "Incorrect email or password.",
+      "INVALID_EMAIL": "Invalid email address.",
+      "INVALID_ERROR_CALLBACK_URL": "Invalid error return URL.",
+      "INVALID_NEW_USER_CALLBACK_URL": "Invalid new user return URL.",
+      "INVALID_ORIGIN": "Invalid request. Please try again.",
+      "INVALID_PASSWORD": "Invalid password.",
+      "INVALID_REDIRECT_URL": "Invalid redirect URL.",
+      "INVALID_TOKEN": "Invalid link or code.",
+      "INVALID_TWO_FACTOR_COOKIE": "Your verification session is invalid. Please request a new code.",
+      "INVALID_USER": "Invalid user.",
+      "LINKED_ACCOUNT_ALREADY_EXISTS": "An account is already linked with this provider.",
+      "METHOD_NOT_ALLOWED_DEFER_SESSION_REQUIRED": "This action isn’t available with the current configuration.",
+      "MISSING_FIELD": "A required field is missing.",
+      "MISSING_OR_NULL_ORIGIN": "Invalid request. Please try again.",
+      "OTP_HAS_EXPIRED": "The verification code has expired. Please request a new one.",
+      "OTP_NOT_ENABLED": "Code-based verification is not enabled.",
+      "PASSWORD_ALREADY_SET": "A password is already set for this account.",
+      "PASSWORD_TOO_LONG": "Password is too long.",
+      "PASSWORD_TOO_SHORT": "Password is too short.",
+      "PROVIDER_NOT_FOUND": "Authentication provider not available.",
+      "SESSION_EXPIRED": "Your session has expired. Please sign in again.",
+      "SESSION_NOT_FRESH": "For security reasons, please sign in again to continue.",
+      "SOCIAL_ACCOUNT_ALREADY_LINKED": "This social account is already linked.",
+      "TOKEN_EXPIRED": "This link or code has expired. Please request a new one.",
+      "TOO_MANY_ATTEMPTS_REQUEST_NEW_CODE": "Too many attempts. Please request a new verification code.",
+      "TOTP_NOT_ENABLED": "Time-based verification is not enabled.",
+      "TWO_FACTOR_NOT_ENABLED": "Two-factor verification is not enabled.",
+      "USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL": "An account already exists with this email. Use another email or sign in.",
+      "USER_ALREADY_EXISTS": "An account already exists with this email.",
+      "USER_ALREADY_HAS_PASSWORD": "A password is already set. Please enter it to continue.",
+      "USER_EMAIL_NOT_FOUND": "We couldn’t find your email address.",
+      "USER_NOT_FOUND": "No account found with those details.",
+      "VALIDATION_ERROR": "Some information is invalid. Please review the form.",
+      "VERIFICATION_EMAIL_NOT_ENABLED": "Email verification is not enabled."
     }
   }
 }

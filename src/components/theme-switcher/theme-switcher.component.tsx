@@ -17,7 +17,7 @@ import { Loader2, Moon, Sun } from "lucide-react";
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();
   const isMounted = useIsMounted();
-  const t = useTranslations("components.themeSwitcher");
+  const t = useTranslations("root.components.themeSwitcher");
 
   return (
     <DropdownMenu>

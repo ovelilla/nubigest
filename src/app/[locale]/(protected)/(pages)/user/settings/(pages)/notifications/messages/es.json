@@ -1,0 +1,10 @@
+{
+  "notificationsSettings": {
+    "page": {
+      "header": {
+        "title": "Ajustes de Notificaciones",
+        "description": "Administra tus ajustes de notificaciones y establece preferencias."
+      }
+    }
+  }
+}

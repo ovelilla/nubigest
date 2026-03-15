@@ -16,7 +16,7 @@ function PasswordInput({
 }: React.ComponentProps<typeof Input>) {
   const [showPassword, setShowPassword] = useState(false);
 
-  const t = useTranslations("components.passwordInput");
+  const t = useTranslations("root.components.passwordInput");
 
   return (
     <div className="relative">

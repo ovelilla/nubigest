@@ -22,7 +22,7 @@ const SignInHook = () => {
   });
 
   const tSignIn = useTranslations("signin");
-  const tAuth = useTranslations("auth");
+  const tRoot = useTranslations("root");
 
   const router = useRouter();
 
@@ -37,7 +37,7 @@ const SignInHook = () => {
     form,
     router,
     setLoading,
-    tAuth,
+    tRoot,
     tSignIn,
   });
 

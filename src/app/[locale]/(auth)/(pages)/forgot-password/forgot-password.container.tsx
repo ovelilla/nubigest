@@ -11,12 +11,11 @@ import {
   AuthCardTitle,
 } from "@/components/auth-card/auth-card.component";
 import { ButtonLoading } from "@/components/ui/button-loading";
-import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+import { Field, FieldLabel, FieldError, FieldSet } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Link } from "@/components/ui/link";
 // Hooks
 import { ForgotPasswordHook } from "./hooks/forgot-password.hook";
-// i18n
-import { Link } from "@/i18n/navigation";
 
 const ForgotPasswordContainer = () => {
   const { form, handleSubmit, loading, t } = ForgotPasswordHook();
@@ -34,7 +33,7 @@ const ForgotPasswordContainer = () => {
           onSubmit={form.handleSubmit(handleSubmit)}
           className="flex flex-col gap-6"
         >
-          <div className="flex flex-col gap-4">
+          <FieldSet disabled={loading}>
             <Controller
               control={form.control}
               name="email"
@@ -47,7 +46,6 @@ const ForgotPasswordContainer = () => {
                     {...field}
                     aria-invalid={fieldState.invalid}
                     autoComplete="username"
-                    disabled={loading}
                     id={field.name}
                     placeholder={t("page.card.content.form.email.placeholder")}
                     type="email"
@@ -58,14 +56,19 @@ const ForgotPasswordContainer = () => {
                 </Field>
               )}
             />
-          </div>
-          <ButtonLoading type="submit" loading={loading}>
-            {t("page.card.content.form.submitButton.label")}
-          </ButtonLoading>
+            <ButtonLoading type="submit" loading={loading}>
+              {t("page.card.content.form.submitButton.label")}
+            </ButtonLoading>
+          </FieldSet>
         </form>
       </AuthCardContent>
       <AuthCardFooter>
-        <Link className="text-muted-foreground" href="/signin" prefetch={false}>
+        <Link
+          className="text-muted-foreground"
+          disabled={loading}
+          href="/signin"
+          prefetch={false}
+        >
           {t("page.card.footer.signinLink.label")}
         </Link>
       </AuthCardFooter>

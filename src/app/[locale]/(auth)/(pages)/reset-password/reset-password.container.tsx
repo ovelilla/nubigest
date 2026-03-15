@@ -11,7 +11,8 @@ import {
   AuthCardTitle,
 } from "@/components/auth-card/auth-card.component";
 import { ButtonLoading } from "@/components/ui/button-loading";
-import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+import { Field, FieldLabel, FieldError, FieldSet } from "@/components/ui/field";
+import { Link } from "@/components/ui/link";
 import { PasswordInput } from "@/components/password-input/password-input.component";
 import {
   PasswordStrength,
@@ -21,8 +22,6 @@ import {
 } from "@/components/password-strength";
 // Hooks
 import { ResetPasswordHook } from "./hooks/reset-password.hook";
-// i18n
-import { Link } from "@/i18n/navigation";
 // Types
 import type { ResetPasswordContainerProps } from "./types/reset-password.container.types";
 
@@ -62,11 +61,8 @@ const ResetPasswordContainer = ({
         </AuthCardDescription>
       </AuthCardHeader>
       <AuthCardContent>
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="flex flex-col gap-6"
-        >
-          <div className="flex flex-col gap-4">
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
+          <FieldSet disabled={loading}>
             <Controller
               control={form.control}
               name="password"
@@ -79,7 +75,6 @@ const ResetPasswordContainer = ({
                     {...field}
                     aria-invalid={fieldState.invalid}
                     autoComplete="new-password"
-                    disabled={loading}
                     id={field.name}
                     placeholder={t(
                       "page.card.content.form.password.placeholder",
@@ -110,14 +105,19 @@ const ResetPasswordContainer = ({
                 </Field>
               )}
             />
-          </div>
-          <ButtonLoading type="submit" loading={loading}>
-            {t("page.card.content.form.submitButton.label")}
-          </ButtonLoading>
+            <ButtonLoading type="submit" loading={loading}>
+              {t("page.card.content.form.submitButton.label")}
+            </ButtonLoading>
+          </FieldSet>
         </form>
       </AuthCardContent>
       <AuthCardFooter>
-        <Link className="text-muted-foreground" href="/signin" prefetch={false}>
+        <Link
+          className="text-muted-foreground"
+          disabled={loading}
+          href="/signin"
+          prefetch={false}
+        >
           {t("page.card.footer.signinLink.label")}
         </Link>
       </AuthCardFooter>

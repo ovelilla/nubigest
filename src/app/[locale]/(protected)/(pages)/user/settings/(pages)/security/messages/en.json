@@ -1,0 +1,384 @@
+{
+  "securitySettings": {
+    "components": {
+      "wizards": {
+        "enableTwoFactor": {
+          "steps": {
+            "password": {
+              "ui": {
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "Confirm your password",
+                      "description": "For security reasons, please confirm your password to continue."
+                    }
+                  }
+                }
+              }
+            },
+            "backupCodes": {
+              "ui": {
+                "alertDialog": {
+                  "content": {
+                    "header": {
+                      "title": "Leave without saving your recovery codes?",
+                      "description": "Make sure you save your recovery codes somewhere safe before continuing. You may need them to access your account if you lose access to your authentication method."
+                    },
+                    "footer": {
+                      "actionButton": {
+                        "label": "Leave"
+                      },
+                      "cancelButton": {
+                        "label": "Stay"
+                      }
+                    }
+                  }
+                },
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "Save your recovery codes",
+                      "description": "These codes let you access your account if you lose access to your authenticator app. Each code can only be used once. Store them somewhere safe."
+                    }
+                  }
+                }
+              }
+            },
+            "complete": {
+              "ui": {
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "Two-factor authentication enabled",
+                      "description": "Your account is now protected with an extra layer of security."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "disableTwoFactor": {
+          "steps": {
+            "password": {
+              "ui": {
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "Confirm your password",
+                      "description": "For security reasons, please confirm your password to continue."
+                    }
+                  }
+                }
+              }
+            },
+            "complete": {
+              "ui": {
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "Two-factor authentication disabled",
+                      "description": "Your account is no longer protected by two-factor authentication. We strongly recommend enabling it to keep your account secure."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "generateBackupCodes": {
+          "steps": {
+            "password": {
+              "ui": {
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "Confirm your password",
+                      "description": "For security reasons, please confirm your password to continue."
+                    }
+                  }
+                }
+              }
+            },
+            "backupCodes": {
+              "ui": {
+                "alertDialog": {
+                  "content": {
+                    "header": {
+                      "title": "Leave without saving your recovery codes?",
+                      "description": "Make sure you save your recovery codes somewhere safe before continuing. You may need them to access your account if you lose access to your authentication method."
+                    },
+                    "footer": {
+                      "actionButton": {
+                        "label": "Leave"
+                      },
+                      "cancelButton": {
+                        "label": "Stay"
+                      }
+                    }
+                  }
+                },
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "Save your recovery codes",
+                      "description": "These codes let you access your account if you lose access to your authenticator app. Each code can only be used once. Store them somewhere safe."
+                    }
+                  }
+                }
+              }
+            },
+            "complete": {
+              "ui": {
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "New recovery codes generated",
+                      "description": "Your old recovery codes are no longer valid. Make sure to save your new recovery codes somewhere safe."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "setupAuthenticatorApp": {
+          "steps": {
+            "password": {
+              "ui": {
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "Confirm your password",
+                      "description": "For security reasons, please confirm your password to continue."
+                    }
+                  }
+                }
+              }
+            },
+            "scanQrCode": {
+              "ui": {
+                "alertDialog": {
+                  "content": {
+                    "header": {
+                      "title": "Leave setup?",
+                      "description": "If you leave now, the authenticator setup will be canceled and you'll need to start again."
+                    },
+                    "footer": {
+                      "actionButton": {
+                        "label": "Leave"
+                      },
+                      "cancelButton": {
+                        "label": "Stay"
+                      }
+                    }
+                  }
+                },
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "Scan the QR code",
+                      "description": "Scan this QR code with your authenticator app (for example, Google Authenticator or Microsoft Authenticator). Then enter the verification code on the next step."
+                    }
+                  }
+                }
+              }
+            },
+            "verifyCode": {
+              "ui": {
+                "alertDialog": {
+                  "content": {
+                    "header": {
+                      "title": "Leave setup?",
+                      "description": "If you leave now, the authenticator setup will be canceled and you'll need to start again."
+                    },
+                    "footer": {
+                      "actionButton": {
+                        "label": "Leave"
+                      },
+                      "cancelButton": {
+                        "label": "Stay"
+                      }
+                    }
+                  }
+                },
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "Enter the verification code",
+                      "description": "Enter the 6-digit code generated by your authenticator app."
+                    }
+                  }
+                }
+              }
+            },
+            "complete": {
+              "ui": {
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "Authenticator app set up successfully",
+                      "description": "Your authenticator app has been successfully set up and will be used to verify your sign-ins."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "viewBackupCodes": {
+          "steps": {
+            "backupCodes": {
+              "ui": {
+                "dialog": {
+                  "content": {
+                    "header": {
+                      "title": "Your recovery codes",
+                      "description": "These codes let you access your account if you lose access to your authenticator app. Each code can only be used once. Store them somewhere safe."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "steps": {
+        "backupCodes": {
+          "ui": {
+            "confirmation": {
+              "label": "I have saved my recovery codes"
+            },
+            "copyButton": {
+              "label": "Copy"
+            },
+            "doneButton": {
+              "label": "Done"
+            },
+            "downloadButton": {
+              "label": "Download"
+            },
+            "nextButton": {
+              "label": "Next"
+            }
+          }
+        },
+        "complete": {
+          "ui": {
+            "doneButton": {
+              "label": "Done"
+            }
+          }
+        },
+        "password": {
+          "schemas": {
+            "password": {
+              "required": "Password is required",
+              "min": "Password must be at least 6 characters long",
+              "max": "Password cannot be more than 32 characters long"
+            }
+          },
+          "ui": {
+            "form": {
+              "password": {
+                "label": "Password",
+                "placeholder": "******"
+              },
+              "actions": {
+                "cancelButton": {
+                  "label": "Cancel"
+                },
+                "nextButton": {
+                  "label": "Next"
+                }
+              }
+            }
+          }
+        },
+        "scanQrCode": {
+          "ui": {
+            "nextButton": {
+              "label": "Next"
+            },
+            "separator": "Or enter the key manually"
+          }
+        },
+        "verifyCode": {
+          "schemas": {
+            "totp": {
+              "code": {
+                "invalid": "The authenticator code is invalid.",
+                "required": "The authenticator code is required."
+              }
+            }
+          },
+          "ui": {
+            "form": {
+              "code": {
+                "label": "Authenticator code"
+              },
+              "actions": {
+                "nextButton": {
+                  "label": "Verify"
+                },
+                "prevButton": {
+                  "label": "Back"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "container": {
+      "authenticatorApp": {
+        "title": "Authenticator app",
+        "description": "Verify your sign-in with an authenticator app like Google Authenticator. Requires app setup.",
+        "actions": {
+          "setupButton": {
+            "label": "Set up"
+          }
+        }
+      },
+      "backupCodes": {
+        "title": "Backup codes",
+        "description": "Generate one-time backup codes for account recovery. Creating new codes will replace any existing backup codes.",
+        "actions": {
+          "generateButton": {
+            "label": "Generate"
+          },
+          "viewButton": {
+            "label": "View"
+          }
+        }
+      },
+      "emailVerification": {
+        "title": "Email Verification",
+        "description": "Verify your sign-in using a code sent to your email address."
+      },
+      "score": {
+        "title": {
+          "enabled": "Account protection: active",
+          "disabled": "Account protection: incomplete"
+        },
+        "description": {
+          "enabled": "Your account is protected with two-factor authentication.",
+          "disabled": "Enable two-factor authentication to protect your account."
+        }
+      },
+      "twoFactorAuthentication": {
+        "title": "Two-Factor Authentication (2FA)",
+        "description": {
+          "enabled": "An extra verification step will be required when you sign in.",
+          "disabled": "Add an extra layer of security to your account."
+        }
+      }
+    },
+    "page": {
+      "header": {
+        "title": "Security Settings",
+        "description": "Manage your security settings and set preferences."
+      }
+    }
+  }
+}

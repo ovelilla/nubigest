@@ -1,5 +1,16 @@
 {
   "twoFactor": {
+    "errors": {
+      "BACKUP_CODES_NOT_ENABLED": "Los códigos de respaldo no están habilitados.",
+      "INVALID_BACKUP_CODE": "El código de respaldo introducido no es válido.",
+      "INVALID_CODE": "El código de verificación introducido no es correcto.",
+      "INVALID_TWO_FACTOR_COOKIE": "La sesión de verificación ha expirado. Vuelve a iniciar sesión para continuar.",
+      "OTP_HAS_EXPIRED": "El código de verificación ha expirado. Solicita uno nuevo.",
+      "OTP_NOT_ENABLED": "La verificación mediante código no está habilitada.",
+      "TOO_MANY_ATTEMPTS_REQUEST_NEW_CODE": "Demasiados intentos. Solicita un nuevo código.",
+      "TOTP_NOT_ENABLED": "La verificación basada en tiempo no está habilitada.",
+      "TWO_FACTOR_NOT_ENABLED": "La verificación en dos pasos no está habilitada."
+    },
     "metadata": {
       "description": "Protege tu cuenta con verificación en dos pasos.",
       "title": "Verificación en dos pasos"

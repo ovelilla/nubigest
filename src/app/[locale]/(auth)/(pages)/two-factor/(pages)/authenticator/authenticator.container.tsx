@@ -12,16 +12,15 @@ import {
 } from "@/components/auth-card/auth-card.component";
 import { ButtonLoading } from "@/components/ui/button-loading";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+import { Field, FieldLabel, FieldError, FieldSet } from "@/components/ui/field";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { Link } from "@/components/ui/link";
 // Hooks
 import { AuthenticatorHook } from "./hooks/authenticator.hook";
-// i18n
-import { Link } from "@/i18n/navigation";
 
 const AuthenticatorContainer = () => {
   const { form, handleSubmit, loading, t } = AuthenticatorHook();
@@ -35,11 +34,8 @@ const AuthenticatorContainer = () => {
         </AuthCardDescription>
       </AuthCardHeader>
       <AuthCardContent>
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="flex flex-col gap-6"
-        >
-          <div className="flex flex-col gap-4">
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
+          <FieldSet disabled={loading}>
             <Controller
               control={form.control}
               name="code"
@@ -50,7 +46,8 @@ const AuthenticatorContainer = () => {
                   </FieldLabel>
                   <InputOTP
                     {...field}
-                    disabled={loading}
+                    autoComplete="one-time-code"
+                    aria-invalid={fieldState.invalid}
                     id={field.name}
                     maxLength={6}
                     type="text"
@@ -80,28 +77,29 @@ const AuthenticatorContainer = () => {
                   data-invalid={fieldState.invalid}
                   orientation="horizontal"
                 >
-                  <Checkbox
-                    aria-invalid={fieldState.invalid}
-                    checked={field.value}
-                    disabled={loading}
-                    id={field.name}
-                    onCheckedChange={field.onChange}
-                  />
                   <FieldLabel htmlFor={field.name}>
+                    <Checkbox
+                      aria-invalid={fieldState.invalid}
+                      aria-label={t("page.card.content.form.trustDevice.label")}
+                      checked={field.value}
+                      id={field.name}
+                      onCheckedChange={field.onChange}
+                    />
                     {t("page.card.content.form.trustDevice.label")}
                   </FieldLabel>
                 </Field>
               )}
             />
-          </div>
-          <ButtonLoading disabled={loading} loading={loading} type="submit">
-            {t("page.card.content.form.submitButton.label")}
-          </ButtonLoading>
+            <ButtonLoading loading={loading} type="submit">
+              {t("page.card.content.form.submitButton.label")}
+            </ButtonLoading>
+          </FieldSet>
         </form>
       </AuthCardContent>
       <AuthCardFooter>
         <Link
           className="text-muted-foreground"
+          disabled={loading}
           href="/two-factor"
           prefetch={false}
         >

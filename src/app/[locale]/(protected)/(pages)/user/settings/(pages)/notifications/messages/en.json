@@ -1,0 +1,10 @@
+{
+  "notificationsSettings": {
+    "page": {
+      "header": {
+        "title": "Notifications Settings",
+        "description": "Manage your notifications settings and set preferences."
+      }
+    }
+  }
+}

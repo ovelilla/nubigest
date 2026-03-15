@@ -6,8 +6,8 @@ const AUTH_ROUTES = [
   "/signup",
   "/verify",
 ];
-const DEFAULT_REDIRECT = "/dashboard";
-const PROTECTED_ROUTES = ["/dashboard"];
+const DEFAULT_REDIRECT = "/org";
+const PROTECTED_ROUTE_PREFIXES = ["/org"];
 const PUBLIC_ROUTES = ["/"];
 const TWO_FACTOR_ROUTES = [
   "/two-factor",
@@ -20,7 +20,7 @@ export {
   API_PREFIX,
   AUTH_ROUTES,
   DEFAULT_REDIRECT,
-  PROTECTED_ROUTES,
+  PROTECTED_ROUTE_PREFIXES,
   PUBLIC_ROUTES,
   TWO_FACTOR_ROUTES,
 };

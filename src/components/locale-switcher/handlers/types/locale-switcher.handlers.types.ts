@@ -2,8 +2,7 @@
 import { useParams } from "next/navigation";
 // Types
 import type { TransitionStartFunction } from "react";
-// i18n
-import { usePathname, useRouter } from "@/i18n/navigation";
+import type { usePathname, useRouter } from "@/i18n/navigation";
 
 type LocaleSwitcherHandlersProps = {
   params: ReturnType<typeof useParams>;

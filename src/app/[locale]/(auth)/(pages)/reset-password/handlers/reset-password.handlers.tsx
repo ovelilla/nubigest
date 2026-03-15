@@ -8,14 +8,13 @@ import type {
   ResetPasswordHandlersReturn,
   SubmitHandler,
 } from "./types/reset-password.handlers.types";
-import type { ResetPasswordSchema } from "../schemas/types/reset-password.schema.types";
 
 const submitHandler: SubmitHandler = async ({
   form,
   router,
   setLoading,
-  tAuth,
   tResetPassword,
+  tRoot,
   token,
   values,
 }) => {
@@ -27,8 +26,8 @@ const submitHandler: SubmitHandler = async ({
     });
     if (error) {
       const key = `errors.${error.code ?? ""}`;
-      const message = tAuth.has(key)
-        ? tAuth(key)
+      const message = tRoot.has(key)
+        ? tRoot(key)
         : tResetPassword("handlers.submit.error.generic");
       toast.error(message);
       return;
@@ -51,18 +50,18 @@ const ResetPasswordHandlers = ({
   form,
   router,
   setLoading,
-  tAuth,
   tResetPassword,
+  tRoot,
   token,
 }: ResetPasswordHandlersProps): ResetPasswordHandlersReturn => {
   return {
-    handleSubmit: (values: ResetPasswordSchema) =>
+    handleSubmit: (values) =>
       submitHandler({
         form,
         router,
         setLoading,
-        tAuth,
         tResetPassword,
+        tRoot,
         token,
         values,
       }),

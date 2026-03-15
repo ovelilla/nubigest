@@ -1,6 +1,6 @@
 type SendTwoFactorOtpEmail = (props: {
   email: string;
-  token: string;
+  otp: string;
 }) => Promise<void>;
 
 export type { SendTwoFactorOtpEmail };

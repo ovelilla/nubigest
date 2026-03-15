@@ -14,7 +14,7 @@ import { getTranslations } from "next-intl/server";
 // Types
 import type { TwoFactorOtpProps } from "./types/two-factor-otp.email.types";
 
-const TwoFactorOtpEmail = async ({ token }: TwoFactorOtpProps) => {
+const TwoFactorOtpEmail = async ({ otp }: TwoFactorOtpProps) => {
   const t = await getTranslations("email.emails.twoFactorOtp.content");
 
   return (
@@ -35,7 +35,7 @@ const TwoFactorOtpEmail = async ({ token }: TwoFactorOtpProps) => {
 
             <Section className="mt-6 rounded-lg bg-slate-50">
               <Text className="text-center text-5xl font-medium tracking-widest text-slate-700">
-                {token}
+                {otp}
               </Text>
               <Text className="text-center text-base text-slate-500">
                 {t("secondParagraph")}

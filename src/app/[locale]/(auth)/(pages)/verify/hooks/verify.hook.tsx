@@ -12,7 +12,7 @@ const VerifyHook = ({ email }: VerifyHookProps) => {
   const [loading, setLoading] = useState(false);
 
   const tVerify = useTranslations("verify");
-  const tAuth = useTranslations("auth");
+  const tRoot = useTranslations("root");
 
   const { cooldown, start: startCooldown } = useCooldown();
 
@@ -20,7 +20,7 @@ const VerifyHook = ({ email }: VerifyHookProps) => {
     email,
     setLoading,
     startCooldown,
-    tAuth,
+    tRoot,
     tVerify,
   });
 

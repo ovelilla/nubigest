@@ -5,7 +5,6 @@ import { authClient } from "@/lib/auth-client";
 // Constants
 import { DEFAULT_REDIRECT } from "@/constants/routes.constants";
 // Types
-import type { SignUpSchema } from "../schemas/types/signup.schema.types";
 import type {
   OAuthClickHandlerProps,
   SignUpHandlersProps,
@@ -16,7 +15,7 @@ import type {
 const oauthClickHandler = async ({
   setLoading,
   provider,
-  tAuth,
+  tRoot,
   tSignUp,
 }: OAuthClickHandlerProps): Promise<void> => {
   try {
@@ -29,8 +28,8 @@ const oauthClickHandler = async ({
 
     if (error) {
       const key = `errors.${error.code ?? ""}`;
-      const message = tAuth.has(key)
-        ? tAuth(key)
+      const message = tRoot.has(key)
+        ? tRoot(key)
         : tSignUp("handlers.oauth.error.generic");
       toast.error(message);
       return;
@@ -46,7 +45,7 @@ const oauthClickHandler = async ({
 const submitHandler = async ({
   form,
   setLoading,
-  tAuth,
+  tRoot,
   tSignUp,
   values,
 }: SubmitHandlerProps): Promise<void> => {
@@ -71,8 +70,8 @@ const submitHandler = async ({
         },
         onError: async (context) => {
           const key = `errors.${context.error.code ?? ""}`;
-          const message = tAuth.has(key)
-            ? tAuth(key)
+          const message = tRoot.has(key)
+            ? tRoot(key)
             : tSignUp("handlers.submit.error.generic");
           toast.error(message);
           form.setValue("password", "");
@@ -88,17 +87,17 @@ const submitHandler = async ({
 const SignUpHandlers = ({
   form,
   setLoading,
-  tAuth,
+  tRoot,
   tSignUp,
 }: SignUpHandlersProps): SignUpHandlersReturn => {
   return {
-    handleOAuthClick: (provider: string) =>
-      oauthClickHandler({ setLoading, provider, tAuth, tSignUp }),
-    handleSubmit: (values: SignUpSchema) =>
+    handleOAuthClick: (provider) =>
+      oauthClickHandler({ setLoading, provider, tRoot, tSignUp }),
+    handleSubmit: (values) =>
       submitHandler({
         form,
         setLoading,
-        tAuth,
+        tRoot,
         tSignUp,
         values,
       }),

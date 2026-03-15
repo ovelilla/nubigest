@@ -10,7 +10,7 @@ type SignInHandlersProps = {
   form: UseFormReturn<SignInSchema>;
   router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
-  tAuth: _Translator;
+  tRoot: _Translator;
   tSignIn: _Translator;
 };
 
@@ -22,7 +22,7 @@ type SignInHandlersReturn = {
 type OAuthClickHandlerProps = {
   setLoading: Dispatch<SetStateAction<LoadingState>>;
   provider: string;
-  tAuth: _Translator;
+  tRoot: _Translator;
   tSignIn: _Translator;
 };
 
@@ -30,7 +30,7 @@ type SubmitHandlerProps = {
   form: UseFormReturn<SignInSchema>;
   router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
-  tAuth: _Translator;
+  tRoot: _Translator;
   tSignIn: _Translator;
   values: SignInSchema;
 };

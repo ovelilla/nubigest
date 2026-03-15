@@ -1,23 +1,97 @@
 {
-  "components": {
-    "localeSwitcher": {
-      "button": {
-        "ariaLabel": "Cambiar idioma"
-      }
-    },
-    "passwordInput": {
-      "ariaLabelShow": "Mostrar contraseña",
-      "ariaLabelHide": "Ocultar contraseña"
-    },
-    "themeSwitcher": {
-      "button": {
-        "ariaLabel": "Cambiar tema"
+  "root": {
+    "components": {
+      "buttonCopy": {
+        "ariaLabel": {
+          "copy": "Copiar",
+          "copied": "Copiado"
+        }
       },
-      "themes": {
-        "light": "Claro",
-        "dark": "Oscuro",
-        "system": "Sistema"
+      "buttonDownload": {
+        "ariaLabel": {
+          "download": "Descargar",
+          "downloaded": "Descargado"
+        }
+      },
+      "localeSwitcher": {
+        "button": {
+          "ariaLabel": "Cambiar idioma"
+        }
+      },
+      "passwordInput": {
+        "ariaLabelShow": "Mostrar contraseña",
+        "ariaLabelHide": "Ocultar contraseña"
+      },
+      "themeSwitcher": {
+        "button": {
+          "ariaLabel": "Cambiar tema"
+        },
+        "themes": {
+          "light": "Claro",
+          "dark": "Oscuro",
+          "system": "Sistema"
+        }
       }
+    },
+    "errors": {
+      "ACCOUNT_NOT_FOUND": "No encontramos esa cuenta.",
+      "ASYNC_VALIDATION_NOT_SUPPORTED": "Esta validación no es compatible.",
+      "BACKUP_CODES_NOT_ENABLED": "Los códigos de respaldo no están habilitados.",
+      "BODY_MUST_BE_AN_OBJECT": "El formato de la solicitud no es válido.",
+      "CALLBACK_URL_REQUIRED": "Falta información para continuar. Vuelve a intentarlo.",
+      "CREDENTIAL_ACCOUNT_NOT_FOUND": "No encontramos una cuenta con esas credenciales.",
+      "CROSS_SITE_NAVIGATION_LOGIN_BLOCKED": "No hemos podido completar el inicio de sesión por seguridad. Vuelve a intentarlo desde la misma pestaña.",
+      "DEFAULT": "Ha ocurrido un error. Inténtalo de nuevo.",
+      "EMAIL_ALREADY_VERIFIED": "Tu email ya está verificado.",
+      "EMAIL_CAN_NOT_BE_UPDATED": "No se puede cambiar el email de esta cuenta.",
+      "EMAIL_MISMATCH": "El email no coincide. Revisa el email e inténtalo de nuevo.",
+      "EMAIL_NOT_VERIFIED": "Tu email aún no está verificado. Revisa tu correo.",
+      "FAILED_TO_CREATE_SESSION": "No hemos podido iniciar sesión. Inténtalo de nuevo.",
+      "FAILED_TO_CREATE_USER": "No hemos podido crear tu cuenta. Inténtalo de nuevo.",
+      "FAILED_TO_CREATE_VERIFICATION": "No hemos podido generar la verificación. Inténtalo de nuevo.",
+      "FAILED_TO_GET_SESSION": "No hemos podido recuperar tu sesión. Vuelve a intentarlo.",
+      "FAILED_TO_GET_USER_INFO": "No hemos podido obtener la información de tu cuenta.",
+      "FAILED_TO_UNLINK_LAST_ACCOUNT": "No puedes desvincular tu última cuenta vinculada.",
+      "FAILED_TO_UPDATE_USER": "No hemos podido actualizar tu perfil. Inténtalo de nuevo.",
+      "FIELD_NOT_ALLOWED": "Se ha enviado un campo no permitido.",
+      "ID_TOKEN_NOT_SUPPORTED": "Este método de inicio de sesión no es compatible.",
+      "INVALID_BACKUP_CODE": "El código de respaldo introducido no es válido.",
+      "INVALID_CALLBACK_URL": "El enlace de retorno no es válido.",
+      "INVALID_CODE": "El código de verificación introducido no es correcto.",
+      "INVALID_EMAIL_OR_PASSWORD": "Email o contraseña incorrectos.",
+      "INVALID_EMAIL": "El email no es válido.",
+      "INVALID_ERROR_CALLBACK_URL": "El enlace de retorno de error no es válido.",
+      "INVALID_NEW_USER_CALLBACK_URL": "El enlace de retorno para nuevos usuarios no es válido.",
+      "INVALID_ORIGIN": "Solicitud no válida. Vuelve a intentarlo.",
+      "INVALID_PASSWORD": "La contraseña no es válida.",
+      "INVALID_REDIRECT_URL": "El enlace de redirección no es válido.",
+      "INVALID_TOKEN": "El enlace o código no es válido.",
+      "INVALID_TWO_FACTOR_COOKIE": "La sesión de verificación ha expirado. Vuelve a iniciar sesión para continuar.",
+      "INVALID_USER": "El usuario no es válido.",
+      "LINKED_ACCOUNT_ALREADY_EXISTS": "Ya existe una cuenta vinculada con ese proveedor.",
+      "METHOD_NOT_ALLOWED_DEFER_SESSION_REQUIRED": "Acción no disponible con la configuración actual.",
+      "MISSING_FIELD": "Falta un campo obligatorio.",
+      "MISSING_OR_NULL_ORIGIN": "Solicitud no válida.",
+      "OTP_HAS_EXPIRED": "El código de verificación ha expirado. Solicita uno nuevo.",
+      "OTP_NOT_ENABLED": "La verificación mediante código no está habilitada.",
+      "PASSWORD_ALREADY_SET": "Ya tienes una contraseña configurada.",
+      "PASSWORD_TOO_LONG": "La contraseña es demasiado larga.",
+      "PASSWORD_TOO_SHORT": "La contraseña es demasiado corta.",
+      "PROVIDER_NOT_FOUND": "El proveedor de autenticación no está disponible.",
+      "SESSION_EXPIRED": "Tu sesión ha caducado. Vuelve a iniciar sesión.",
+      "SESSION_NOT_FRESH": "Por seguridad, vuelve a autenticarte para continuar.",
+      "SOCIAL_ACCOUNT_ALREADY_LINKED": "Esa cuenta social ya está vinculada.",
+      "TOKEN_EXPIRED": "El enlace o código ha caducado. Solicita uno nuevo.",
+      "TOO_MANY_ATTEMPTS_REQUEST_NEW_CODE": "Demasiados intentos. Solicita un nuevo código.",
+      "TOTP_NOT_ENABLED": "La verificación basada en tiempo no está habilitada.",
+      "TWO_FACTOR_NOT_ENABLED": "La verificación en dos pasos no está habilitada.",
+      "USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL": "Ya existe una cuenta con ese email. Usa otro email o inicia sesión.",
+      "USER_ALREADY_EXISTS": "Ya existe una cuenta con ese email.",
+      "USER_ALREADY_HAS_PASSWORD": "Ya tienes una contraseña. Introdúcela para continuar.",
+      "USER_EMAIL_NOT_FOUND": "No hemos podido encontrar el email de tu cuenta.",
+      "USER_NOT_FOUND": "No encontramos ninguna cuenta con esos datos.",
+      "VALIDATION_ERROR": "Hay datos incorrectos. Revisa el formulario.",
+      "VERIFICATION_EMAIL_NOT_ENABLED": "La verificación por email no está disponible."
     }
   }
 }

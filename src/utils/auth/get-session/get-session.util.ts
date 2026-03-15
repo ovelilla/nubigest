@@ -11,9 +11,11 @@ const getSession = async (locale: string): Promise<Session> => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
+
   if (!session) {
     redirect({ href: "/signin", locale });
   }
+
   return session!;
 };
 

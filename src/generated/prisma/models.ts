@@ -8,10 +8,11 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Workspace'
-export type * from './models/Member'
 export type * from './models/Organization'
-export type * from './models/OrganizationStaff'
+export type * from './models/Member'
+export type * from './models/Invitation'
+export type * from './models/Team'
+export type * from './models/TeamMember'
 export type * from './models/User'
 export type * from './models/Session'
 export type * from './models/Account'

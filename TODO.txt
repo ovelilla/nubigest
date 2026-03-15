@@ -1,0 +1,12 @@
+revisar implementacion wizard y steps
+alert para avisar al cerrar wizard
+terminar totp wizard (boton de copy)
+
+revisar boton copy y donload en backup codes, feedback de copy
+
+
+en auth en vez de tRoot tErrors mas limpio?
+
+en auth el estado de carga puede ser disabled={form.formState.isSubmitting}?
+
+ne layout header slector idioma y tema no tiene check de opcion seleccionada

@@ -18,7 +18,7 @@ const ResetPasswordHook = ({ error, token }: ResetPasswordHookProps) => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const tResetPassword = useTranslations("resetPassword");
-  const tAuth = useTranslations("auth");
+  const tRoot = useTranslations("root");
 
   const router = useRouter();
 
@@ -35,7 +35,7 @@ const ResetPasswordHook = ({ error, token }: ResetPasswordHookProps) => {
     form,
     router,
     setLoading,
-    tAuth,
+    tRoot,
     tResetPassword,
     token,
   });

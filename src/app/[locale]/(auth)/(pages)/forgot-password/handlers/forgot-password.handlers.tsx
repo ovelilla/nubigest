@@ -8,13 +8,12 @@ import type {
   ForgotPasswordHandlersReturn,
   SubmitHandler,
 } from "./types/forgot-password.handlers.types";
-import type { ForgotPasswordSchema } from "../schemas/types/forgot-password.schema.types";
 
 const submitHandler: SubmitHandler = async ({
   form,
   setLoading,
-  tAuth,
   tForgotPassword,
+  tRoot,
   values,
 }) => {
   try {
@@ -25,8 +24,8 @@ const submitHandler: SubmitHandler = async ({
     });
     if (error) {
       const key = `errors.${error.code ?? ""}`;
-      const message = tAuth.has(key)
-        ? tAuth(key)
+      const message = tRoot.has(key)
+        ? tRoot(key)
         : tForgotPassword("handlers.submit.error.generic");
       toast.error(message);
       return;
@@ -44,15 +43,15 @@ const submitHandler: SubmitHandler = async ({
 const ForgotPasswordHandlers = ({
   form,
   setLoading,
-  tAuth,
   tForgotPassword,
+  tRoot,
 }: ForgotPasswordHandlersProps): ForgotPasswordHandlersReturn => {
   return {
-    handleSubmit: (values: ForgotPasswordSchema) =>
+    handleSubmit: (values) =>
       submitHandler({
         form,
         setLoading,
-        tAuth,
+        tRoot,
         tForgotPassword,
         values,
       }),

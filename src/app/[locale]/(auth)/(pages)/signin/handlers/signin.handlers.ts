@@ -7,7 +7,6 @@ import { authClient } from "@/lib/auth-client";
 // Constants
 import { DEFAULT_REDIRECT } from "@/constants/routes.constants";
 // Types
-import type { SignInSchema } from "../schemas/types/signin.schema.types";
 import type {
   OAuthClickHandlerProps,
   SignInHandlersProps,
@@ -18,7 +17,7 @@ import type {
 const oautClickHandler = async ({
   provider,
   setLoading,
-  tAuth,
+  tRoot,
   tSignIn,
 }: OAuthClickHandlerProps): Promise<void> => {
   try {
@@ -31,8 +30,8 @@ const oautClickHandler = async ({
 
     if (error) {
       const key = `errors.${error.code ?? ""}`;
-      const message = tAuth.has(key)
-        ? tAuth(key)
+      const message = tRoot.has(key)
+        ? tRoot(key)
         : tSignIn("handlers.oauth.error.generic");
       toast.error(message);
       return;
@@ -49,7 +48,7 @@ const submitHandler = async ({
   form,
   router,
   setLoading,
-  tAuth,
+  tRoot,
   tSignIn,
   values,
 }: SubmitHandlerProps): Promise<void> => {
@@ -77,15 +76,18 @@ const submitHandler = async ({
           router.push(DEFAULT_REDIRECT);
         },
         onError: async (context) => {
-          if (context.error.code === "EMAIL_NOT_VERIFIED") {
+          if (context.error.status === 403) {
             await setPendingVerificationCookie(values.email);
             router.push("/verify");
             return;
           }
-
+          if (context.error.status === 429) {
+            toast.error(tSignIn("handlers.submit.error.tooManyRequests"));
+            return;
+          }
           const key = `errors.${context.error.code}`;
-          const message = tAuth.has(key)
-            ? tAuth(key)
+          const message = tRoot.has(key)
+            ? tRoot(key)
             : tSignIn("handlers.submit.error.generic");
           toast.error(message);
           form.setValue("password", "");
@@ -102,18 +104,18 @@ const SignInHandlers = ({
   form,
   router,
   setLoading,
-  tAuth,
+  tRoot,
   tSignIn,
 }: SignInHandlersProps): SignInHandlersReturn => {
   return {
-    handleOAuthClick: (provider: string) =>
-      oautClickHandler({ setLoading, provider, tAuth, tSignIn }),
-    handleSubmit: (values: SignInSchema) =>
+    handleOAuthClick: (provider) =>
+      oautClickHandler({ setLoading, provider, tRoot, tSignIn }),
+    handleSubmit: (values) =>
       submitHandler({
         form,
         router,
         setLoading,
-        tAuth,
+        tRoot,
         tSignIn,
         values,
       }),

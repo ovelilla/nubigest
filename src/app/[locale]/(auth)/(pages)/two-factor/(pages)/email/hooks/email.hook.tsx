@@ -27,9 +27,10 @@ const EmailHook = () => {
   const [loadingVerify, setLoadingVerify] = useState(false);
   const [isInitializing, setIsInitializing] = useState(true);
 
-  const t = useTranslations("email");
+  const tEmail = useTranslations("email");
+  const tTwoFactor = useTranslations("twoFactor");
 
-  const otpSchema = getOtpSchema(t);
+  const otpSchema = getOtpSchema(tEmail);
 
   const form = useForm<OtpSchema>({
     resolver: zodResolver(otpSchema),
@@ -70,7 +71,8 @@ const EmailHook = () => {
     setLoadingEmail,
     setLoadingVerify,
     startCooldown,
-    t,
+    tEmail,
+    tTwoFactor,
   });
 
   return {
@@ -81,7 +83,7 @@ const EmailHook = () => {
     isInitializing,
     loadingEmail,
     loadingVerify,
-    t,
+    t: tEmail,
   };
 };
 

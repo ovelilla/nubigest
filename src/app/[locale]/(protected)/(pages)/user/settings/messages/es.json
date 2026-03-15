@@ -1,0 +1,14 @@
+{
+  "settings": {
+    "components": {
+      "settingsNav": {
+        "account": "Cuenta",
+        "profile": "Perfil",
+        "security": "Seguridad",
+        "appearance": "Apariencia",
+        "notifications": "Notificaciones",
+        "privacy": "Privacidad"
+      }
+    }
+  }
+}

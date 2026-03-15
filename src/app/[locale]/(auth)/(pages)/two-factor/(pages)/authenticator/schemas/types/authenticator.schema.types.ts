@@ -1,7 +1,7 @@
 // Vendors
 import * as z from "zod";
 // Schemas
-import { getTotpSchema } from "../two-factor.schema";
+import { getTotpSchema } from "../authenticator.schema";
 
 type TotpSchema = z.infer<ReturnType<typeof getTotpSchema>>;
 

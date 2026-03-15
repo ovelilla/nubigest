@@ -11,8 +11,9 @@ import {
   AuthCardTitle,
 } from "@/components/auth-card/auth-card.component";
 import { ButtonLoading } from "@/components/ui/button-loading";
-import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+import { Field, FieldLabel, FieldError, FieldSet } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Link } from "@/components/ui/link";
 import { OAuthButtons } from "@/components/oauth-buttons/oauth-buttons.component";
 import { PasswordInput } from "@/components/password-input/password-input.component";
 import {
@@ -26,8 +27,6 @@ import { SeparatorWithText } from "@/components/ui/separator-with-text";
 import { OAUTH_PROVIDERS } from "./constants/signup.constants";
 // Hooks
 import { SignUpHook } from "./hooks/signup.hook";
-// i18n
-import { Link } from "@/i18n/navigation";
 
 const SignUpContainer = () => {
   const { form, handleOAuthClick, handleSubmit, loading, t } = SignUpHook();
@@ -52,11 +51,8 @@ const SignUpContainer = () => {
         <SeparatorWithText>
           {t("page.card.content.separator")}
         </SeparatorWithText>
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="flex flex-col gap-6"
-        >
-          <div className="flex flex-col gap-4">
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
+          <FieldSet disabled={loading.status}>
             <Controller
               control={form.control}
               name="name"
@@ -69,7 +65,6 @@ const SignUpContainer = () => {
                     {...field}
                     aria-invalid={fieldState.invalid}
                     autoComplete="name"
-                    disabled={loading.status}
                     id={field.name}
                     placeholder={t("page.card.content.form.name.placeholder")}
                     type="text"
@@ -92,7 +87,6 @@ const SignUpContainer = () => {
                     {...field}
                     aria-invalid={fieldState.invalid}
                     autoComplete="username"
-                    disabled={loading.status}
                     id={field.name}
                     placeholder={t("page.card.content.form.email.placeholder")}
                     type="email"
@@ -115,7 +109,6 @@ const SignUpContainer = () => {
                     {...field}
                     aria-invalid={fieldState.invalid}
                     autoComplete="new-password"
-                    disabled={loading.status}
                     id={field.name}
                     placeholder={t(
                       "page.card.content.form.password.placeholder",
@@ -146,17 +139,22 @@ const SignUpContainer = () => {
                 </Field>
               )}
             />
-          </div>
-          <ButtonLoading
-            type="submit"
-            loading={loading.status && loading.provider === "credentials"}
-          >
-            {t("page.card.content.form.submitButton.label")}
-          </ButtonLoading>
+            <ButtonLoading
+              type="submit"
+              loading={loading.status && loading.provider === "credentials"}
+            >
+              {t("page.card.content.form.submitButton.label")}
+            </ButtonLoading>
+          </FieldSet>
         </form>
       </AuthCardContent>
       <AuthCardFooter>
-        <Link className="text-muted-foreground" href="/signin" prefetch={false}>
+        <Link
+          className="text-muted-foreground"
+          disabled={loading.status}
+          href="/signin"
+          prefetch={false}
+        >
           {t("page.card.footer.signupLink.label")}
         </Link>
       </AuthCardFooter>

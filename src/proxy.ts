@@ -6,7 +6,7 @@ import createMiddleware from "next-intl/middleware";
 import {
   AUTH_ROUTES,
   DEFAULT_REDIRECT,
-  PROTECTED_ROUTES,
+  PROTECTED_ROUTE_PREFIXES,
   TWO_FACTOR_ROUTES,
 } from "@/constants/routes.constants";
 // i18n
@@ -26,7 +26,9 @@ export async function proxy(request: NextRequest) {
   const pathWithoutLocale = getPathWithoutLocale(pathname, locale);
 
   const isAuthRoute = AUTH_ROUTES.includes(pathWithoutLocale);
-  const isProtectedRoute = PROTECTED_ROUTES.includes(pathWithoutLocale);
+  const isProtectedRoute = PROTECTED_ROUTE_PREFIXES.some((prefix) =>
+    pathWithoutLocale.startsWith(prefix),
+  );
   const isTwoFactorRoute = TWO_FACTOR_ROUTES.includes(pathWithoutLocale);
 
   const sessionCookie = getSessionCookie(request);

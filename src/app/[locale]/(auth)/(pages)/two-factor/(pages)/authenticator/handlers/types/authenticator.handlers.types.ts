@@ -9,7 +9,8 @@ type TwoFactorHandlersProps = {
   form: UseFormReturn<TotpSchema>;
   router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  t: _Translator;
+  tAuthenticator: _Translator;
+  tTwoFactor: _Translator;
 };
 
 type TwoFactorHandlersReturn = {
@@ -20,7 +21,8 @@ type SubmitHandler = (props: {
   form: UseFormReturn<TotpSchema>;
   router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  t: _Translator;
+  tAuthenticator: _Translator;
+  tTwoFactor: _Translator;
   values: TotpSchema;
 }) => Promise<void>;
 

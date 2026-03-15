@@ -8,7 +8,8 @@ import type { useRouter } from "@/i18n/navigation";
 type ResendHandler = (props: {
   setLoadingEmail: Dispatch<SetStateAction<boolean>>;
   startCooldown: (seconds: number) => void;
-  t: _Translator;
+  tEmail: _Translator;
+  tTwoFactor: _Translator;
 }) => Promise<void>;
 
 type EmailHandlersProps = {
@@ -17,7 +18,8 @@ type EmailHandlersProps = {
   setLoadingEmail: Dispatch<SetStateAction<boolean>>;
   setLoadingVerify: Dispatch<SetStateAction<boolean>>;
   startCooldown: (seconds: number) => void;
-  t: _Translator;
+  tEmail: _Translator;
+  tTwoFactor: _Translator;
 };
 
 type EmailHandlersReturn = {
@@ -29,7 +31,8 @@ type SubmitHandler = (props: {
   form: UseFormReturn<OtpSchema>;
   router: ReturnType<typeof useRouter>;
   setLoadingVerify: Dispatch<SetStateAction<boolean>>;
-  t: _Translator;
+  tEmail: _Translator;
+  tTwoFactor: _Translator;
   values: OtpSchema;
 }) => Promise<void>;
 

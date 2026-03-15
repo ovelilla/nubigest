@@ -16,9 +16,10 @@ import type { TotpSchema } from "../schemas/types/authenticator.schema.types";
 const AuthenticatorHook = () => {
   const [loading, setLoading] = useState(false);
 
-  const t = useTranslations("authenticator");
+  const tAuthenticator = useTranslations("authenticator");
+  const tTwoFactor = useTranslations("twoFactor");
 
-  const totpSchema = getTotpSchema(t);
+  const totpSchema = getTotpSchema(tAuthenticator);
 
   const form = useForm<TotpSchema>({
     resolver: zodResolver(totpSchema),
@@ -31,14 +32,15 @@ const AuthenticatorHook = () => {
     form,
     router,
     setLoading,
-    t,
+    tAuthenticator,
+    tTwoFactor,
   });
 
   return {
     form,
     handleSubmit,
     loading,
-    t,
+    t: tAuthenticator,
   };
 };
 

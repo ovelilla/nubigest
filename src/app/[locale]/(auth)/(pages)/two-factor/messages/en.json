@@ -1,5 +1,16 @@
 {
   "twoFactor": {
+    "errors": {
+      "BACKUP_CODES_NOT_ENABLED": "Backup codes are not enabled.",
+      "INVALID_BACKUP_CODE": "The backup code you entered is invalid.",
+      "INVALID_CODE": "The verification code you entered is incorrect.",
+      "INVALID_TWO_FACTOR_COOKIE": "Your verification session is invalid. Please request a new code.",
+      "OTP_HAS_EXPIRED": "The verification code has expired. Please request a new one.",
+      "OTP_NOT_ENABLED": "Code-based verification is not enabled.",
+      "TOO_MANY_ATTEMPTS_REQUEST_NEW_CODE": "Too many attempts. Please request a new verification code.",
+      "TOTP_NOT_ENABLED": "Time-based verification is not enabled.",
+      "TWO_FACTOR_NOT_ENABLED": "Two-factor verification is not enabled."
+    },
     "metadata": {
       "description": "Secure your account with two-factor verification.",
       "title": "Two-Factor Verification"
