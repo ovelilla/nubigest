@@ -35,3 +35,9 @@
 //   },
 //   locale,
 // });
+
+const TeamIdPage = () => {
+  return <div>Team page</div>;
+};
+
+export default TeamIdPage;
