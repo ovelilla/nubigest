@@ -13,7 +13,7 @@ const submitHandler: SubmitHandler = async ({
   form,
   setLoading,
   tForgotPassword,
-  tRoot,
+  tErrors,
   values,
 }) => {
   try {
@@ -23,11 +23,12 @@ const submitHandler: SubmitHandler = async ({
       redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/reset-password`,
     });
     if (error) {
-      const key = `errors.${error.code ?? ""}`;
-      const message = tRoot.has(key)
-        ? tRoot(key)
-        : tForgotPassword("handlers.submit.error.generic");
-      toast.error(message);
+      if (error.code && tErrors.has(error.code)) {
+        toast.error(tErrors(error.code));
+        return;
+      }
+
+      toast.error(tForgotPassword("handlers.submit.error.generic"));
       return;
     }
     toast.success(tForgotPassword("handlers.submit.success"));
@@ -44,14 +45,14 @@ const ForgotPasswordHandlers = ({
   form,
   setLoading,
   tForgotPassword,
-  tRoot,
+  tErrors,
 }: ForgotPasswordHandlersProps): ForgotPasswordHandlersReturn => {
   return {
     handleSubmit: (values) =>
       submitHandler({
         form,
         setLoading,
-        tRoot,
+        tErrors,
         tForgotPassword,
         values,
       }),

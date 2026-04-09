@@ -5,6 +5,8 @@
         "account": "Account",
         "profile": "Profile",
         "security": "Security",
+        "sessions": "Sessions",
+        "accounts": "Accounts",
         "appearance": "Appearance",
         "notifications": "Notifications",
         "privacy": "Privacy"

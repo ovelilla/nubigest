@@ -1,0 +1,209 @@
+{
+  "accountsSettings": {
+    "components": {
+      "accountsError": {
+        "title": "No se pudieron cargar las cuentas conectadas",
+        "description": "No pudimos cargar tus cuentas conectadas. Inténtalo de nuevo más tarde."
+      },
+      "changePassword": {
+        "handlers": {
+          "submit": {
+            "error": {
+              "generic": "Algo salió mal. Inténtalo de nuevo."
+            },
+            "success": "Contraseña actualizada. Las otras sesiones se han cerrado."
+          }
+        },
+        "schemas": {
+          "changePassword": {
+            "currentPassword": {
+              "required": "La contraseña actual es obligatoria",
+              "min": "La contraseña actual debe tener al menos 6 caracteres",
+              "max": "La contraseña actual no puede tener más de 32 caracteres"
+            },
+            "newPassword": {
+              "required": "La nueva contraseña es obligatoria",
+              "min": "La nueva contraseña debe tener al menos 6 caracteres",
+              "max": "La nueva contraseña no puede tener más de 32 caracteres",
+              "rules": {
+                "length": "La nueva contraseña debe tener al menos 6 caracteres",
+                "lowercase": "Debe contener al menos una letra minúscula",
+                "number": "Debe contener al menos un número",
+                "special": "Debe contener al menos un carácter especial",
+                "uppercase": "Debe contener al menos una letra mayúscula"
+              },
+              "sameAsCurrent": "La nueva contraseña no puede ser igual a la actual"
+            }
+          }
+        },
+        "ui": {
+          "dialog": {
+            "content": {
+              "header": {
+                "title": "Cambiar contraseña",
+                "description": "Actualiza la contraseña que usas para iniciar sesión con tu correo electrónico ({email})."
+              },
+              "form": {
+                "currentPassword": {
+                  "label": "Contraseña actual",
+                  "placeholder": "******"
+                },
+                "newPassword": {
+                  "label": "Nueva contraseña",
+                  "placeholder": "Introduce una contraseña segura",
+                  "rules": {
+                    "length": "Al menos 6 caracteres",
+                    "number": "Un número",
+                    "special": "Un carácter especial",
+                    "uppercase": "Una letra mayúscula"
+                  }
+                },
+                "submitButton": {
+                  "label": "Cambiar contraseña"
+                }
+              }
+            }
+          }
+        }
+      },
+      "setPassword": {
+        "handlers": {
+          "submit": {
+            "error": {
+              "generic": "Algo salió mal. Inténtalo de nuevo."
+            },
+            "success": "Contraseña añadida correctamente."
+          }
+        },
+        "schemas": {
+          "setPassword": {
+            "password": {
+              "required": "La contraseña es obligatoria",
+              "min": "La contraseña debe tener al menos 6 caracteres",
+              "max": "La contraseña no puede tener más de 32 caracteres",
+              "rules": {
+                "length": "La contraseña debe tener al menos 6 caracteres",
+                "lowercase": "Debe contener al menos una letra minúscula",
+                "number": "Debe contener al menos un número",
+                "special": "Debe contener al menos un carácter especial",
+                "uppercase": "Debe contener al menos una letra mayúscula"
+              }
+            }
+          }
+        },
+        "ui": {
+          "dialog": {
+            "content": {
+              "header": {
+                "title": "Añadir contraseña",
+                "description": "Añade una contraseña para iniciar sesión con tu correo electrónico ({email})."
+              },
+              "form": {
+                "password": {
+                  "label": "Nueva contraseña",
+                  "placeholder": "Introduce una contraseña segura",
+                  "rules": {
+                    "length": "Al menos 6 caracteres",
+                    "number": "Un número",
+                    "special": "Un carácter especial",
+                    "uppercase": "Una letra mayúscula"
+                  }
+                },
+                "submitButton": {
+                  "label": "Añadir contraseña"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "container": {
+      "alertDialog": {
+        "unlinkAccount": {
+          "title": "¿Desconectar esta cuenta?",
+          "description": "Ya no podrás iniciar sesión con este proveedor. Asegúrate de tener otra forma de acceder a tu cuenta.",
+          "cancelButton": {
+            "label": "Cancelar"
+          },
+          "actionButton": {
+            "label": "Desconectar"
+          }
+        }
+      },
+      "header": {
+        "title": "Cuentas conectadas",
+        "description": "Gestiona cómo inicias sesión en tu cuenta. Recomendamos tener al menos dos métodos.",
+        "actions": {
+          "refreshButton": {
+            "label": "Actualizar"
+          }
+        }
+      },
+      "credential": {
+        "title": "Correo electrónico y contraseña",
+        "description": {
+          "connected": "Puedes iniciar sesión con {email}. Añadido el {createdAt, date, medium}. Último uso {lastUsed}.",
+          "notConnected": "Añade una contraseña para iniciar sesión con tu correo electrónico."
+        },
+        "actions": {
+          "setPasswordButton": {
+            "label": "Añadir contraseña"
+          },
+          "changePasswordButton": {
+            "label": "Cambiar contraseña"
+          }
+        }
+      },
+      "provider": {
+        "title": {
+          "github": "GitHub",
+          "google": "Google"
+        },
+        "description": "{count, plural, =0 {No hay cuentas conectadas} =1 {# cuenta conectada} other {# cuentas conectadas}}",
+        "actions": {
+          "connectButton": {
+            "label": "{hasAccounts, select, true {Añadir otra cuenta} other {Conectar}}"
+          }
+        },
+        "account": {
+          "description": {
+            "github": "Último uso {lastUsed}. Añadido el {createdAt, date, medium}.",
+            "google": "Último uso {lastUsed}. Añadido el {createdAt, date, medium}."
+          },
+          "actions": {
+            "unlinkButton": {
+              "label": "Desconectar"
+            }
+          }
+        }
+      }
+    },
+    "handlers": {
+      "refresh": {
+        "error": "No se pudieron actualizar las cuentas conectadas."
+      },
+      "link": {
+        "error": "No se pudo conectar {provider}. Inténtalo de nuevo."
+      },
+      "unlink": {
+        "success": "Cuenta desconectada correctamente.",
+        "error": "No se pudo desconectar la cuenta. Inténtalo de nuevo."
+      }
+    },
+    "hooks": {
+      "accounts": {
+        "errors": {
+          "account_already_linked_to_different_user": "Esta cuenta ya está vinculada a un usuario diferente.",
+          "generic": "Ocurrió un error al vincular la cuenta. Por favor, inténtalo de nuevo."
+        }
+      }
+    },
+    "page": {
+      "header": {
+        "title": "Cuentas conectadas",
+        "description": "Gestiona cómo inicias sesión en tu cuenta."
+      }
+    }
+  }
+}

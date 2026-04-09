@@ -2,8 +2,9 @@
 // Vendors
 import { useState } from "react";
 // Components
-import { SidebarProvider } from "@/components/ui/sidebar";
-import { Sidebar, SidebarRail } from "@/components/ui/sidebar";
+import { Sidebar, SidebarProvider, SidebarRail } from "@/components/ui/sidebar";
+// Hooks
+import { useDirection } from "@/components/ui/direction";
 // Types
 import {
   ProtectedLayoutProps,
@@ -34,8 +35,11 @@ const ProtectedLayoutContainer = ({
 };
 
 const ProtectedLayoutSidebar = ({ children }: ProtectedLayoutSidebarProps) => {
+  const direction = useDirection();
+  const side = direction === "rtl" ? "right" : "left";
+
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" side={side} dir={direction}>
       {children}
       <SidebarRail />
     </Sidebar>

@@ -1,5 +1,5 @@
 // Vendors
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 // Handlers
 import { VerifyHandlers } from "../handlers/verify.handlers";
@@ -12,7 +12,7 @@ const VerifyHook = ({ email }: VerifyHookProps) => {
   const [loading, setLoading] = useState(false);
 
   const tVerify = useTranslations("verify");
-  const tRoot = useTranslations("root");
+  const tErrors = useTranslations("root.errors");
 
   const { cooldown, start: startCooldown } = useCooldown();
 
@@ -20,7 +20,7 @@ const VerifyHook = ({ email }: VerifyHookProps) => {
     email,
     setLoading,
     startCooldown,
-    tRoot,
+    tErrors,
     tVerify,
   });
 

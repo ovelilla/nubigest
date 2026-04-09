@@ -6,7 +6,7 @@ import type { SettingsPageProps } from "./types/page.types";
 const SettingsPage = async ({ params }: SettingsPageProps) => {
   const { locale } = await params;
 
-  redirect({ href: "/user/settings/account", locale });
+  redirect({ href: "/user/settings/profile", locale });
 };
 
 export default SettingsPage;

@@ -1,0 +1,134 @@
+{
+  "protected": {
+    "layouts": {
+      "dashboard": {
+        "components": {
+          "fullscreenToggle": {
+            "ariaLabel": {
+              "enter": "الدخول إلى وضع ملء الشاشة",
+              "exit": "الخروج من وضع ملء الشاشة"
+            }
+          },
+          "sidebar": {
+            "components": {
+              "content": {
+                "components": {
+                  "navigation": {
+                    "global": {
+                      "groups": {
+                        "main": {
+                          "label": "اللوحة العامة",
+                          "items": {
+                            "events": "الفعاليات",
+                            "home": "الرئيسية",
+                            "organizations": "المؤسسات",
+                            "users": "المستخدمون"
+                          }
+                        }
+                      }
+                    },
+                    "organization": {
+                      "groups": {
+                        "main": {
+                          "label": "لوحة المؤسسة",
+                          "items": {
+                            "appointments": "المواعيد",
+                            "clients": "العملاء",
+                            "home": "الرئيسية",
+                            "services": "الخدمات"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "header": {
+                "components": {
+                  "contextSwitcher": {
+                    "addOrganization": "إضافة مؤسسة",
+                    "global": "عام",
+                    "noOrganization": "لا توجد مؤسسة",
+                    "organizations": "المؤسسات",
+                    "roles": {
+                      "ADMIN": "مدير",
+                      "USER": "مستخدم"
+                    }
+                  },
+                  "createOrganization": {
+                    "actions": {
+                      "createOrganization": {
+                        "error": {
+                          "generic": "حدث خطأ غير متوقع",
+                          "invalidFields": "الحقول غير صالحة",
+                          "noUser": "لم يتم العثور على مستخدم",
+                          "slugAlreadyExists": "المعرّف مستخدم بالفعل"
+                        },
+                        "success": "تم إنشاء المؤسسة بنجاح"
+                      }
+                    },
+                    "handlers": {
+                      "submit": {
+                        "error": {
+                          "generic": "حدث خطأ غير متوقع"
+                        }
+                      }
+                    },
+                    "schemas": {
+                      "createOrganization": {
+                        "name": {
+                          "required": "الاسم مطلوب",
+                          "min": "يجب أن يتكون الاسم من حرفين على الأقل",
+                          "max": "يجب ألا يتجاوز الاسم 64 حرفًا"
+                        },
+                        "description": {
+                          "max": "يجب ألا يتجاوز الوصف 256 حرفًا"
+                        }
+                      }
+                    },
+                    "ui": {
+                      "dialog": {
+                        "title": "إنشاء مؤسسة",
+                        "description": "أنشئ مؤسسة جديدة لإدارة مساحة العمل الخاصة بك",
+                        "buttons": {
+                          "cancel": {
+                            "label": "إلغاء"
+                          }
+                        }
+                      },
+                      "form": {
+                        "name": {
+                          "label": "الاسم",
+                          "placeholder": "أدخل الاسم"
+                        },
+                        "description": {
+                          "label": "الوصف (اختياري)",
+                          "placeholder": "صف مؤسستك بإيجاز"
+                        },
+                        "buttons": {
+                          "submit": {
+                            "label": "إنشاء"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "userNav": {
+            "dropdown": {
+              "items": {
+                "settings": "الإعدادات",
+                "users": "المستخدمون",
+                "signOut": "تسجيل الخروج",
+                "signingOut": "جارٍ تسجيل الخروج..."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

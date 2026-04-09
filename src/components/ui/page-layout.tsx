@@ -1,4 +1,3 @@
-// Libs
 import { cn } from "@/lib/utils";
 // Types
 import type { HTMLAttributes } from "react";
@@ -47,7 +46,12 @@ const PageLayoutContent = ({
   className,
   ...props
 }: HTMLAttributes<HTMLDivElement>) => {
-  return <div className={cn("flex flex-col gap-6", className)} {...props} />;
+  return (
+    <div
+      className={cn("flex flex-col gap-6 xl:flex-row xl:gap-12", className)}
+      {...props}
+    />
+  );
 };
 
 export {

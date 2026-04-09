@@ -1,0 +1,209 @@
+{
+  "accountsSettings": {
+    "components": {
+      "accountsError": {
+        "title": "تعذر تحميل الحسابات المرتبطة",
+        "description": "لم نتمكن من تحميل حساباتك المرتبطة. يرجى المحاولة مرة أخرى لاحقًا."
+      },
+      "changePassword": {
+        "handlers": {
+          "submit": {
+            "error": {
+              "generic": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+            },
+            "success": "تم تحديث كلمة المرور. تم تسجيل الخروج من الجلسات الأخرى."
+          }
+        },
+        "schemas": {
+          "changePassword": {
+            "currentPassword": {
+              "required": "كلمة المرور الحالية مطلوبة",
+              "min": "يجب أن تكون كلمة المرور الحالية 6 أحرف على الأقل",
+              "max": "يجب ألا تتجاوز كلمة المرور الحالية 32 حرفًا"
+            },
+            "newPassword": {
+              "required": "كلمة المرور الجديدة مطلوبة",
+              "min": "يجب أن تكون كلمة المرور الجديدة 6 أحرف على الأقل",
+              "max": "يجب ألا تتجاوز كلمة المرور الجديدة 32 حرفًا",
+              "rules": {
+                "length": "يجب أن تكون 6 أحرف على الأقل",
+                "lowercase": "يجب أن تحتوي على حرف صغير واحد على الأقل",
+                "number": "يجب أن تحتوي على رقم واحد على الأقل",
+                "special": "يجب أن تحتوي على رمز خاص واحد على الأقل",
+                "uppercase": "يجب أن تحتوي على حرف كبير واحد على الأقل"
+              },
+              "sameAsCurrent": "يجب ألا تكون كلمة المرور الجديدة مطابقة لكلمة المرور الحالية"
+            }
+          }
+        },
+        "ui": {
+          "dialog": {
+            "content": {
+              "header": {
+                "title": "تغيير كلمة المرور",
+                "description": "حدّث كلمة المرور التي تستخدمها لتسجيل الدخول باستخدام بريدك الإلكتروني ({email})."
+              },
+              "form": {
+                "currentPassword": {
+                  "label": "كلمة المرور الحالية",
+                  "placeholder": "******"
+                },
+                "newPassword": {
+                  "label": "كلمة المرور الجديدة",
+                  "placeholder": "أدخل كلمة مرور قوية",
+                  "rules": {
+                    "length": "6 أحرف على الأقل",
+                    "number": "رقم واحد",
+                    "special": "رمز خاص واحد",
+                    "uppercase": "حرف كبير واحد"
+                  }
+                },
+                "submitButton": {
+                  "label": "تغيير كلمة المرور"
+                }
+              }
+            }
+          }
+        }
+      },
+      "setPassword": {
+        "handlers": {
+          "submit": {
+            "error": {
+              "generic": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+            },
+            "success": "تمت إضافة كلمة المرور بنجاح."
+          }
+        },
+        "schemas": {
+          "setPassword": {
+            "password": {
+              "required": "كلمة المرور مطلوبة",
+              "min": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+              "max": "يجب ألا تتجاوز كلمة المرور 32 حرفًا",
+              "rules": {
+                "length": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+                "lowercase": "يجب أن تحتوي على حرف صغير واحد على الأقل",
+                "number": "يجب أن تحتوي على رقم واحد على الأقل",
+                "special": "يجب أن تحتوي على رمز خاص واحد على الأقل",
+                "uppercase": "يجب أن تحتوي على حرف كبير واحد على الأقل"
+              }
+            }
+          }
+        },
+        "ui": {
+          "dialog": {
+            "content": {
+              "header": {
+                "title": "إضافة كلمة مرور",
+                "description": "أضف كلمة مرور لتسجيل الدخول باستخدام بريدك الإلكتروني ({email})."
+              },
+              "form": {
+                "password": {
+                  "label": "كلمة المرور الجديدة",
+                  "placeholder": "أدخل كلمة مرور قوية",
+                  "rules": {
+                    "length": "6 أحرف على الأقل",
+                    "number": "رقم واحد",
+                    "special": "رمز خاص واحد",
+                    "uppercase": "حرف كبير واحد"
+                  }
+                },
+                "submitButton": {
+                  "label": "إضافة كلمة مرور"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "container": {
+      "alertDialog": {
+        "unlinkAccount": {
+          "title": "هل تريد فصل هذا الحساب؟",
+          "description": "لن تتمكن بعد الآن من تسجيل الدخول باستخدام هذا المزوّد. تأكد من أن لديك طريقة أخرى للوصول إلى حسابك.",
+          "cancelButton": {
+            "label": "إلغاء"
+          },
+          "actionButton": {
+            "label": "فصل"
+          }
+        }
+      },
+      "header": {
+        "title": "الحسابات المرتبطة",
+        "description": "أدِر طرق تسجيل الدخول إلى حسابك. نوصي بأن يكون لديك طريقتان على الأقل.",
+        "actions": {
+          "refreshButton": {
+            "label": "تحديث"
+          }
+        }
+      },
+      "credential": {
+        "title": "البريد الإلكتروني وكلمة المرور",
+        "description": {
+          "connected": "يمكنك تسجيل الدخول باستخدام {email}. تمت الإضافة في {createdAt, date, medium}. آخر استخدام {lastUsed}.",
+          "notConnected": "أضف كلمة مرور لتسجيل الدخول باستخدام بريدك الإلكتروني."
+        },
+        "actions": {
+          "setPasswordButton": {
+            "label": "إضافة كلمة مرور"
+          },
+          "changePasswordButton": {
+            "label": "تغيير كلمة المرور"
+          }
+        }
+      },
+      "provider": {
+        "title": {
+          "github": "GitHub",
+          "google": "Google"
+        },
+        "description": "{count, plural, =0 {لا توجد حسابات مرتبطة} =1 {حساب واحد مرتبط} other {{count} حسابات مرتبطة}}",
+        "actions": {
+          "connectButton": {
+            "label": "{hasAccounts, select, true {إضافة حساب آخر} other {ربط}}"
+          }
+        },
+        "account": {
+          "description": {
+            "github": "آخر استخدام {lastUsed}. تمت الإضافة في {createdAt, date, medium}.",
+            "google": "آخر استخدام {lastUsed}. تمت الإضافة في {createdAt, date, medium}."
+          },
+          "actions": {
+            "unlinkButton": {
+              "label": "فصل"
+            }
+          }
+        }
+      }
+    },
+    "handlers": {
+      "refresh": {
+        "error": "تعذر تحديث الحسابات المرتبطة."
+      },
+      "link": {
+        "error": "تعذر ربط {provider}. يرجى المحاولة مرة أخرى."
+      },
+      "unlink": {
+        "success": "تم فصل الحساب بنجاح.",
+        "error": "تعذر فصل الحساب. يرجى المحاولة مرة أخرى."
+      }
+    },
+    "hooks": {
+      "accounts": {
+        "errors": {
+          "account_already_linked_to_different_user": "هذا الحساب مرتبط بالفعل بمستخدم مختلف.",
+          "generic": "حدث خطأ أثناء ربط الحساب. يرجى المحاولة مرة أخرى."
+        }
+      }
+    },
+    "page": {
+      "header": {
+        "title": "الحسابات المرتبطة",
+        "description": "أدِر طرق تسجيل الدخول إلى حسابك."
+      }
+    }
+  }
+}

@@ -179,9 +179,9 @@ export type RateLimitGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type RateLimitGroupByOutputType = {
   id: string
-  key: string | null
-  count: number | null
-  lastRequest: bigint | null
+  key: string
+  count: number
+  lastRequest: bigint
   _count: RateLimitCountAggregateOutputType | null
   _avg: RateLimitAvgAggregateOutputType | null
   _sum: RateLimitSumAggregateOutputType | null
@@ -189,7 +189,7 @@ export type RateLimitGroupByOutputType = {
   _max: RateLimitMaxAggregateOutputType | null
 }
 
-type GetRateLimitGroupByPayload<T extends RateLimitGroupByArgs> = Prisma.PrismaPromise<
+export type GetRateLimitGroupByPayload<T extends RateLimitGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<RateLimitGroupByOutputType, T['by']> &
       {
@@ -209,33 +209,33 @@ export type RateLimitWhereInput = {
   OR?: Prisma.RateLimitWhereInput[]
   NOT?: Prisma.RateLimitWhereInput | Prisma.RateLimitWhereInput[]
   id?: Prisma.StringFilter<"RateLimit"> | string
-  key?: Prisma.StringNullableFilter<"RateLimit"> | string | null
-  count?: Prisma.IntNullableFilter<"RateLimit"> | number | null
-  lastRequest?: Prisma.BigIntNullableFilter<"RateLimit"> | bigint | number | null
+  key?: Prisma.StringFilter<"RateLimit"> | string
+  count?: Prisma.IntFilter<"RateLimit"> | number
+  lastRequest?: Prisma.BigIntFilter<"RateLimit"> | bigint | number
 }
 
 export type RateLimitOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  key?: Prisma.SortOrderInput | Prisma.SortOrder
-  count?: Prisma.SortOrderInput | Prisma.SortOrder
-  lastRequest?: Prisma.SortOrderInput | Prisma.SortOrder
+  key?: Prisma.SortOrder
+  count?: Prisma.SortOrder
+  lastRequest?: Prisma.SortOrder
 }
 
 export type RateLimitWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  key?: string
   AND?: Prisma.RateLimitWhereInput | Prisma.RateLimitWhereInput[]
   OR?: Prisma.RateLimitWhereInput[]
   NOT?: Prisma.RateLimitWhereInput | Prisma.RateLimitWhereInput[]
-  key?: Prisma.StringNullableFilter<"RateLimit"> | string | null
-  count?: Prisma.IntNullableFilter<"RateLimit"> | number | null
-  lastRequest?: Prisma.BigIntNullableFilter<"RateLimit"> | bigint | number | null
-}, "id">
+  count?: Prisma.IntFilter<"RateLimit"> | number
+  lastRequest?: Prisma.BigIntFilter<"RateLimit"> | bigint | number
+}, "id" | "key">
 
 export type RateLimitOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  key?: Prisma.SortOrderInput | Prisma.SortOrder
-  count?: Prisma.SortOrderInput | Prisma.SortOrder
-  lastRequest?: Prisma.SortOrderInput | Prisma.SortOrder
+  key?: Prisma.SortOrder
+  count?: Prisma.SortOrder
+  lastRequest?: Prisma.SortOrder
   _count?: Prisma.RateLimitCountOrderByAggregateInput
   _avg?: Prisma.RateLimitAvgOrderByAggregateInput
   _max?: Prisma.RateLimitMaxOrderByAggregateInput
@@ -248,58 +248,58 @@ export type RateLimitScalarWhereWithAggregatesInput = {
   OR?: Prisma.RateLimitScalarWhereWithAggregatesInput[]
   NOT?: Prisma.RateLimitScalarWhereWithAggregatesInput | Prisma.RateLimitScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"RateLimit"> | string
-  key?: Prisma.StringNullableWithAggregatesFilter<"RateLimit"> | string | null
-  count?: Prisma.IntNullableWithAggregatesFilter<"RateLimit"> | number | null
-  lastRequest?: Prisma.BigIntNullableWithAggregatesFilter<"RateLimit"> | bigint | number | null
+  key?: Prisma.StringWithAggregatesFilter<"RateLimit"> | string
+  count?: Prisma.IntWithAggregatesFilter<"RateLimit"> | number
+  lastRequest?: Prisma.BigIntWithAggregatesFilter<"RateLimit"> | bigint | number
 }
 
 export type RateLimitCreateInput = {
   id: string
-  key?: string | null
-  count?: number | null
-  lastRequest?: bigint | number | null
+  key: string
+  count: number
+  lastRequest: bigint | number
 }
 
 export type RateLimitUncheckedCreateInput = {
   id: string
-  key?: string | null
-  count?: number | null
-  lastRequest?: bigint | number | null
+  key: string
+  count: number
+  lastRequest: bigint | number
 }
 
 export type RateLimitUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  count?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  lastRequest?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  key?: Prisma.StringFieldUpdateOperationsInput | string
+  count?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRequest?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 export type RateLimitUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  count?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  lastRequest?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  key?: Prisma.StringFieldUpdateOperationsInput | string
+  count?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRequest?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 export type RateLimitCreateManyInput = {
   id: string
-  key?: string | null
-  count?: number | null
-  lastRequest?: bigint | number | null
+  key: string
+  count: number
+  lastRequest: bigint | number
 }
 
 export type RateLimitUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  count?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  lastRequest?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  key?: Prisma.StringFieldUpdateOperationsInput | string
+  count?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRequest?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 export type RateLimitUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  key?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  count?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  lastRequest?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  key?: Prisma.StringFieldUpdateOperationsInput | string
+  count?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRequest?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 export type RateLimitCountOrderByAggregateInput = {
@@ -333,16 +333,16 @@ export type RateLimitSumOrderByAggregateInput = {
   lastRequest?: Prisma.SortOrder
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
+export type IntFieldUpdateOperationsInput = {
+  set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
 }
 
-export type NullableBigIntFieldUpdateOperationsInput = {
-  set?: bigint | number | null
+export type BigIntFieldUpdateOperationsInput = {
+  set?: bigint | number
   increment?: bigint | number
   decrement?: bigint | number
   multiply?: bigint | number
@@ -386,9 +386,9 @@ export type $RateLimitPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    key: string | null
-    count: number | null
-    lastRequest: bigint | null
+    key: string
+    count: number
+    lastRequest: bigint
   }, ExtArgs["result"]["rateLimit"]>
   composites: {}
 }

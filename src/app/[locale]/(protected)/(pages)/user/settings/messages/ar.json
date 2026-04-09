@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "components": {
+      "settingsNav": {
+        "account": "الحساب",
+        "profile": "الملف الشخصي",
+        "security": "الأمان",
+        "sessions": "الجلسات",
+        "accounts": "الحسابات",
+        "appearance": "المظهر",
+        "notifications": "الإشعارات",
+        "privacy": "الخصوصية"
+      }
+    }
+  }
+}

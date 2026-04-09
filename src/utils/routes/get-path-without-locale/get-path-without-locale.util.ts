@@ -1,22 +1,16 @@
 // Types
 import type { GetPathWithoutLocale } from "./types/get-path-without-locale.util.types";
 
-const getPathWithoutLocale: GetPathWithoutLocale = (pathname, locale) => {
+const getPathWithoutLocale: GetPathWithoutLocale = ({ pathname, locale }) => {
   const normalized = pathname.startsWith("/") ? pathname : `/${pathname}`;
-
   const segments = normalized.split("/").filter(Boolean);
 
-  if (segments[0] !== locale) {
-    return normalized === "/" ? "/" : `/${segments.join("/")}`;
+  if (segments[0] === locale) {
+    const rest = segments.slice(1);
+    return rest.length ? `/${rest.join("/")}` : "/";
   }
 
-  const withoutLocale = segments.slice(1);
-
-  if (withoutLocale.length === 0) {
-    return "/";
-  }
-
-  return `/${withoutLocale.join("/")}`;
+  return normalized;
 };
 
 export { getPathWithoutLocale };

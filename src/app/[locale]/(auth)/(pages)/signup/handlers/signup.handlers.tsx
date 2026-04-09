@@ -15,7 +15,7 @@ import type {
 const oauthClickHandler = async ({
   setLoading,
   provider,
-  tRoot,
+  tErrors,
   tSignUp,
 }: OAuthClickHandlerProps): Promise<void> => {
   try {
@@ -27,11 +27,11 @@ const oauthClickHandler = async ({
     });
 
     if (error) {
-      const key = `errors.${error.code ?? ""}`;
-      const message = tRoot.has(key)
-        ? tRoot(key)
-        : tSignUp("handlers.oauth.error.generic");
-      toast.error(message);
+      if (error.code && tErrors.has(error.code)) {
+        toast.error(tErrors(error.code));
+        return;
+      }
+      toast.error(tSignUp("handlers.oauth.error.generic"));
       return;
     }
   } catch (error) {
@@ -45,7 +45,7 @@ const oauthClickHandler = async ({
 const submitHandler = async ({
   form,
   setLoading,
-  tRoot,
+  tErrors,
   tSignUp,
   values,
 }: SubmitHandlerProps): Promise<void> => {
@@ -69,12 +69,12 @@ const submitHandler = async ({
           form.reset();
         },
         onError: async (context) => {
-          const key = `errors.${context.error.code ?? ""}`;
-          const message = tRoot.has(key)
-            ? tRoot(key)
-            : tSignUp("handlers.submit.error.generic");
-          toast.error(message);
           form.setValue("password", "");
+          if (context.error.code && tErrors.has(context.error.code)) {
+            toast.error(tErrors(context.error.code));
+            return;
+          }
+          toast.error(tSignUp("handlers.submit.error.generic"));
         },
       },
     );
@@ -87,17 +87,17 @@ const submitHandler = async ({
 const SignUpHandlers = ({
   form,
   setLoading,
-  tRoot,
+  tErrors,
   tSignUp,
 }: SignUpHandlersProps): SignUpHandlersReturn => {
   return {
     handleOAuthClick: (provider) =>
-      oauthClickHandler({ setLoading, provider, tRoot, tSignUp }),
+      oauthClickHandler({ setLoading, provider, tErrors, tSignUp }),
     handleSubmit: (values) =>
       submitHandler({
         form,
         setLoading,
-        tRoot,
+        tErrors,
         tSignUp,
         values,
       }),

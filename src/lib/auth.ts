@@ -1,16 +1,22 @@
 // Vendors
 import { betterAuth } from "better-auth";
 import { nextCookies } from "better-auth/next-js";
-import { organization, twoFactor } from "better-auth/plugins";
+import { organization, twoFactor, username } from "better-auth/plugins";
+import { passkey } from "@better-auth/passkey";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 // Libs
 import { prisma } from "@/lib/prisma";
 // Utils
 import { sendResetPasswordEmail } from "@/app/[locale]/(auth)/(pages)/forgot-password/services/send-reset-password-email.service";
-import { sendVerificationEmail } from "@/app/[locale]/(auth)/(pages)/signup/services/send-verification-email/send-verification-email.service";
 import { sendTwoFactorOtpEmail } from "@/app/[locale]/(auth)/(pages)/two-factor/(pages)/email/services/send-two-factor-otp-email/send-two-factor-otp-email.service";
+import { sendVerificationEmail } from "@/app/[locale]/(auth)/(pages)/signup/services/send-verification-email/send-verification-email.service";
 
 const auth = betterAuth({
+  account: {
+    accountLinking: {
+      allowDifferentEmails: true,
+    },
+  },
   advanced: {
     ipAddress: {
       ipAddressHeaders: ["cf-connecting-ip"],
@@ -59,7 +65,7 @@ const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: true,
-    sendResetPassword: async ({ user, url }) => {
+    sendResetPassword: async ({ user, url }, request) => {
       sendResetPasswordEmail({
         email: user.email,
         url,
@@ -84,6 +90,11 @@ const auth = betterAuth({
         enabled: true,
       },
     }),
+    passkey({
+      rpID: process.env.BETTER_AUTH_PASSKEY_RP_ID,
+      rpName: "Nubigest",
+      origin: process.env.BETTER_AUTH_PASSKEY_ORIGIN,
+    }),
     twoFactor({
       issuer: "Nubigest",
       skipVerificationOnEnable: true,
@@ -96,6 +107,7 @@ const auth = betterAuth({
         },
       },
     }),
+    username(),
     nextCookies(),
   ],
   rateLimit: {
@@ -114,11 +126,15 @@ const auth = betterAuth({
   },
   session: {
     cookieCache: {
-      enabled: true,
+      enabled: false,
       maxAge: 5 * 60,
     },
   },
   socialProviders: {
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+    },
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
@@ -127,4 +143,8 @@ const auth = betterAuth({
   trustedOrigins: ["https://www.nubigest.com", "https://nubigest.com"],
 });
 
+type SocialProviders = keyof typeof auth.options.socialProviders;
+
 export { auth };
+
+export type { SocialProviders };

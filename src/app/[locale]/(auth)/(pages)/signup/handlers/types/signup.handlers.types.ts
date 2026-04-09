@@ -1,14 +1,14 @@
 // Vendors
+import type { _Translator } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";
 import type { LoadingState } from "../../hooks/types/signup.hook.types";
 import type { SignUpSchema } from "../../schemas/types/signup.schema.types";
 import type { UseFormReturn } from "react-hook-form";
-import type { _Translator } from "next-intl";
 
 type SignUpHandlersProps = {
   form: UseFormReturn<SignUpSchema>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
-  tRoot: _Translator;
+  tErrors: _Translator;
   tSignUp: _Translator;
 };
 
@@ -20,14 +20,14 @@ type SignUpHandlersReturn = {
 type OAuthClickHandlerProps = {
   setLoading: Dispatch<SetStateAction<LoadingState>>;
   provider: string;
-  tRoot: _Translator;
+  tErrors: _Translator;
   tSignUp: _Translator;
 };
 
 type SubmitHandlerProps = {
   form: UseFormReturn<SignUpSchema>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
-  tRoot: _Translator;
+  tErrors: _Translator;
   tSignUp: _Translator;
   values: SignUpSchema;
 };

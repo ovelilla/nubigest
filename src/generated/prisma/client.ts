@@ -96,3 +96,8 @@ export type TwoFactor = Prisma.TwoFactorModel
  * 
  */
 export type RateLimit = Prisma.RateLimitModel
+/**
+ * Model Passkey
+ * 
+ */
+export type Passkey = Prisma.PasskeyModel

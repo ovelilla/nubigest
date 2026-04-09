@@ -48,6 +48,9 @@
             }
           },
           "oauth": {
+            "github": {
+              "label": "Continuar con GitHub"
+            },
             "google": {
               "label": "Continuar con Google"
             }

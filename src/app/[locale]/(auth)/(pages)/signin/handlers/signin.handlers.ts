@@ -8,18 +8,19 @@ import { authClient } from "@/lib/auth-client";
 import { DEFAULT_REDIRECT } from "@/constants/routes.constants";
 // Types
 import type {
-  OAuthClickHandlerProps,
+  HandleOAuthClick,
+  HandlePasskeyClick,
+  HandleSubmit,
   SignInHandlersProps,
   SignInHandlersReturn,
-  SubmitHandlerProps,
 } from "./types/signin.handlers.types";
 
-const oautClickHandler = async ({
+const handleOAuthClick: HandleOAuthClick = async ({
   provider,
   setLoading,
-  tRoot,
+  tErrors,
   tSignIn,
-}: OAuthClickHandlerProps): Promise<void> => {
+}) => {
   try {
     setLoading({ provider, status: true });
 
@@ -29,11 +30,12 @@ const oautClickHandler = async ({
     });
 
     if (error) {
-      const key = `errors.${error.code ?? ""}`;
-      const message = tRoot.has(key)
-        ? tRoot(key)
-        : tSignIn("handlers.oauth.error.generic");
-      toast.error(message);
+      if (error.code && tErrors.has(error.code)) {
+        toast.error(tErrors(error.code));
+        return;
+      }
+
+      toast.error(tSignIn("handlers.submit.error.generic"));
       return;
     }
   } catch (error) {
@@ -44,14 +46,40 @@ const oautClickHandler = async ({
   }
 };
 
-const submitHandler = async ({
+const handlePasskeyClick: HandlePasskeyClick = async ({
+  setLoading,
+  tSignIn,
+}) => {
+  try {
+    setLoading({ provider: "passkey", status: true });
+
+    const { error } = await authClient.signIn.passkey({
+      autoFill: false,
+    });
+
+    if (error) {
+      toast.error(tSignIn("handlers.passkey.error.generic"));
+      return;
+    }
+
+    toast.success(tSignIn("handlers.passkey.success"));
+    window.location.href = DEFAULT_REDIRECT;
+  } catch (error) {
+    console.error(error);
+    toast.error(tSignIn("handlers.passkey.error.generic"));
+  } finally {
+    setLoading({ provider: "passkey", status: false });
+  }
+};
+
+const handleSubmit: HandleSubmit = async ({
   form,
   router,
   setLoading,
-  tRoot,
+  tErrors,
   tSignIn,
   values,
-}: SubmitHandlerProps): Promise<void> => {
+}) => {
   try {
     await authClient.signIn.email(
       {
@@ -85,12 +113,12 @@ const submitHandler = async ({
             toast.error(tSignIn("handlers.submit.error.tooManyRequests"));
             return;
           }
-          const key = `errors.${context.error.code}`;
-          const message = tRoot.has(key)
-            ? tRoot(key)
-            : tSignIn("handlers.submit.error.generic");
-          toast.error(message);
           form.setValue("password", "");
+          if (context.error.code && tErrors.has(context.error.code)) {
+            toast.error(tErrors(context.error.code));
+            return;
+          }
+          toast.error(tSignIn("handlers.submit.error.generic"));
         },
       },
     );
@@ -104,18 +132,19 @@ const SignInHandlers = ({
   form,
   router,
   setLoading,
-  tRoot,
+  tErrors,
   tSignIn,
 }: SignInHandlersProps): SignInHandlersReturn => {
   return {
     handleOAuthClick: (provider) =>
-      oautClickHandler({ setLoading, provider, tRoot, tSignIn }),
+      handleOAuthClick({ setLoading, provider, tErrors, tSignIn }),
+    handlePasskeyClick: () => handlePasskeyClick({ setLoading, tSignIn }),
     handleSubmit: (values) =>
-      submitHandler({
+      handleSubmit({
         form,
         router,
         setLoading,
-        tRoot,
+        tErrors,
         tSignIn,
         values,
       }),

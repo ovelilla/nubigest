@@ -18,7 +18,7 @@ const resendHandler: ResendHandler = async ({
   email,
   startCooldown,
   setLoading,
-  tRoot,
+  tErrors,
   tVerify,
 }) => {
   try {
@@ -38,12 +38,11 @@ const resendHandler: ResendHandler = async ({
             startCooldown(retryAfter ?? VERIFY_COOLDOWN_MS / 1000);
             return;
           }
-          const key = `errors.${error.code ?? ""}`;
-          toast.error(
-            tRoot.has(key)
-              ? tRoot(key)
-              : tVerify("handlers.resend.error.generic"),
-          );
+          if (error.code && tErrors.has(error.code)) {
+            toast.error(tErrors(error.code));
+            return;
+          }
+          toast.error(tVerify("handlers.resend.error.generic"));
         },
         onSuccess: async () => {
           startCooldown(VERIFY_COOLDOWN_MS / 1000);
@@ -63,12 +62,12 @@ const VerifyHandlers = ({
   email,
   startCooldown,
   setLoading,
-  tRoot,
+  tErrors,
   tVerify,
 }: VerifyHandlersProps): VerifyHandlersReturn => {
   return {
     handleResend: () =>
-      resendHandler({ email, startCooldown, setLoading, tRoot, tVerify }),
+      resendHandler({ email, startCooldown, setLoading, tErrors, tVerify }),
   };
 };
 

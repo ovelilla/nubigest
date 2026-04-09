@@ -1,0 +1,91 @@
+{
+  "sessionsSettings": {
+    "components": {
+      "sessionsEmpty": {
+        "title": "No hay sesiones activas",
+        "description": "Tu cuenta no está iniciada actualmente en ningún otro dispositivo."
+      },
+      "sessionError": {
+        "title": "No se pueden cargar las sesiones",
+        "description": "No hemos podido cargar tus sesiones activas. Por favor, inténtalo de nuevo más tarde."
+      }
+    },
+    "container": {
+      "alertDialog": {
+        "revokeOtherSessions": {
+          "title": "¿Finalizar todas las demás sesiones?",
+          "description": "Esto cerrará la sesión en todos los demás dispositivos donde tu cuenta esté activa.",
+          "cancelButton": {
+            "label": "Cancelar"
+          },
+          "actionButton": {
+            "label": "Finalizar otras sesiones"
+          }
+        },
+        "signOutCurrentSession": {
+          "title": "¿Cerrar sesión en este dispositivo?",
+          "description": "Se cerrará tu sesión en este dispositivo y serás redirigido a la página de inicio de sesión.",
+          "cancelButton": {
+            "label": "Cancelar"
+          },
+          "actionButton": {
+            "label": "Cerrar sesión"
+          }
+        }
+      },
+      "header": {
+        "title": "Sesiones activas",
+        "description": "Estos son los dispositivos en los que tu cuenta está iniciada actualmente. Si no reconoces alguno, cierra la sesión inmediatamente.",
+        "actions": {
+          "refreshButton": {
+            "label": "Actualizar"
+          },
+          "revokeOtherSessions": {
+            "label": "Finalizar otras sesiones"
+          }
+        }
+      },
+      "session": {
+        "title": {
+          "current": "Dispositivo actual",
+          "default": "{browser} en {os}",
+          "unknown": {
+            "browser": "Navegador desconocido",
+            "os": "Sistema operativo desconocido"
+          }
+        },
+        "description": "Última actividad {lastActive}. Expira {expiresAt}.",
+        "actions": {
+          "revokeButton": {
+            "label": "Finalizar sesión"
+          },
+          "signOutButton": {
+            "label": "Cerrar sesión"
+          }
+        }
+      }
+    },
+    "handlers": {
+      "refresh": {
+        "error": "No se pudieron actualizar las sesiones."
+      },
+      "revoke": {
+        "error": "No se pudo finalizar la sesión. Por favor, inténtalo de nuevo.",
+        "success": "Sesión finalizada correctamente."
+      },
+      "revokeOtherSessions": {
+        "success": "Se han finalizado todas las demás sesiones.",
+        "error": "No se pudieron finalizar las otras sesiones."
+      },
+      "signOut": {
+        "error": "No se pudo cerrar la sesión. Por favor, inténtalo de nuevo."
+      }
+    },
+    "page": {
+      "header": {
+        "title": "Configuración de sesiones",
+        "description": "Gestiona tus sesiones activas y la seguridad de tu cuenta."
+      }
+    }
+  }
+}

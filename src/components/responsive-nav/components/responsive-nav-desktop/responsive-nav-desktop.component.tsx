@@ -10,9 +10,10 @@ const ResponsiveNavDesktop = ({
   items,
   activeItem,
 }: ResponsiveNavDesktopProps) => (
-  <nav className="hidden gap-2 lg:flex">
+  <nav className="hidden gap-2 lg:flex xl:w-64 xl:shrink-0 xl:flex-col">
     {items.map(({ id, label, href }) => (
       <Button
+        className="justify-start"
         key={id}
         nativeButton={false}
         render={

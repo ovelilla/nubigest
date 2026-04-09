@@ -22,14 +22,21 @@ import { SeparatorWithText } from "@/components/ui/separator-with-text";
 // Constants
 import { OAUTH_PROVIDERS } from "./constants/signin.constants";
 // Hooks
-import { SignInHook } from "./hooks/signin.hook";
+import { useSignIn } from "./hooks/use-signin.hook";
 // Icons
 import { CircleCheck } from "lucide-react";
 // Types
 import type { SignInContainerProps } from "./types/signin.container.types";
 
 const SignInContainer = ({ reset }: SignInContainerProps) => {
-  const { form, handleOAuthClick, handleSubmit, loading, t } = SignInHook();
+  const {
+    form,
+    handleOAuthClick,
+    handlePasskeyClick,
+    handleSubmit,
+    loading,
+    t,
+  } = useSignIn();
 
   return (
     <AuthCard>
@@ -48,6 +55,14 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
             </AlertTitle>
           </Alert>
         )}
+        <ButtonLoading
+          loading={loading.status && loading.provider === "passkey"}
+          onClick={handlePasskeyClick}
+          type="button"
+          variant="outline"
+        >
+          {t("page.card.content.passkeyButton.label")}
+        </ButtonLoading>
         <OAuthButtons
           loading={loading}
           onClick={handleOAuthClick}
@@ -72,7 +87,7 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
                   <Input
                     {...field}
                     aria-invalid={fieldState.invalid}
-                    autoComplete="username"
+                    autoComplete="username webauthn"
                     id={field.name}
                     placeholder={t("page.card.content.form.email.placeholder")}
                     type="email"
@@ -94,7 +109,7 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
                   <PasswordInput
                     {...field}
                     aria-invalid={fieldState.invalid}
-                    autoComplete="current-password"
+                    autoComplete="current-password webauthn"
                     id={field.name}
                     placeholder={t(
                       "page.card.content.form.password.placeholder",
@@ -106,7 +121,7 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
                 </Field>
               )}
             />
-            <div className="flex flex-wrap justify-between gap-2">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <Controller
                 control={form.control}
                 name="rememberMe"
@@ -132,7 +147,6 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
                 )}
               />
               <Link
-                className="h-8"
                 disabled={loading.status}
                 href="/forgot-password"
                 prefetch={false}

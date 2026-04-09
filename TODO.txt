@@ -1,12 +1,18 @@
-revisar implementacion wizard y steps
-alert para avisar al cerrar wizard
-terminar totp wizard (boton de copy)
-
-revisar boton copy y donload en backup codes, feedback de copy
 
 
-en auth en vez de tRoot tErrors mas limpio?
+social providers desde server action en auth?
 
-en auth el estado de carga puede ser disabled={form.formState.isSubmitting}?
 
-ne layout header slector idioma y tema no tiene check de opcion seleccionada
+
+
+en seguridad, revisar si hay cuenta credenciales y avisar de ello
+
+
+usememo en getShema
+
+en vez de Hook usar use
+
+https://dribbble.com/shots/26068973-Profile-Settings
+
+
+añadir Breadcrumb

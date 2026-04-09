@@ -1,21 +1,20 @@
 "use client";
-// Components
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-// Hooks
 import { useIsMounted } from "@/hooks/use-is-mounted";
 import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
-// Icons
+import { useTheme } from "@wrksz/themes/client";
 import { Loader2, Moon, Sun } from "lucide-react";
 
 const ThemeSwitcher = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, resolvedTheme, setTheme } = useTheme();
   const isMounted = useIsMounted();
   const t = useTranslations("root.components.themeSwitcher");
 
@@ -29,7 +28,7 @@ const ThemeSwitcher = () => {
             aria-label={t("button.ariaLabel")}
           >
             {isMounted ? (
-              theme === "dark" ? (
+              resolvedTheme === "dark" ? (
                 <Sun />
               ) : (
                 <Moon />
@@ -39,17 +38,22 @@ const ThemeSwitcher = () => {
             )}
           </Button>
         }
-      ></DropdownMenuTrigger>
+      />
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          {t("themes.light")}
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          {t("themes.dark")}
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          {t("themes.system")}
-        </DropdownMenuItem>
+        <DropdownMenuRadioGroup
+          value={theme}
+          onValueChange={(value) => setTheme(value)}
+        >
+          <DropdownMenuRadioItem value="light">
+            {t("themes.light")}
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="dark">
+            {t("themes.dark")}
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="system">
+            {t("themes.system")}
+          </DropdownMenuRadioItem>
+        </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );

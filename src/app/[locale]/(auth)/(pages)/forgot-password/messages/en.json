@@ -18,7 +18,7 @@
         "error": {
           "generic": "An unexpected error has occurred."
         },
-        "success": "We’ve sent you an email with instructions to reset your password."
+        "success": "We've sent you an email with instructions to reset your password."
       }
     },
     "metadata": {

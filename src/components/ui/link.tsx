@@ -1,4 +1,3 @@
-// i18n
 import { Link as NextIntlLink } from "@/i18n/navigation";
 // Libs
 import { cn } from "@/lib/utils";

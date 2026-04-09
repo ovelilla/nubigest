@@ -1,0 +1,91 @@
+{
+  "sessionsSettings": {
+    "components": {
+      "sessionsEmpty": {
+        "title": "لا توجد جلسات نشطة",
+        "description": "حسابك غير مسجل الدخول حاليًا على أي أجهزة أخرى."
+      },
+      "sessionError": {
+        "title": "تعذر تحميل الجلسات",
+        "description": "لم نتمكن من تحميل الجلسات النشطة. يرجى المحاولة مرة أخرى لاحقًا."
+      }
+    },
+    "container": {
+      "alertDialog": {
+        "revokeOtherSessions": {
+          "title": "إنهاء جميع الجلسات الأخرى؟",
+          "description": "سيتم تسجيل خروجك من جميع الأجهزة الأخرى التي يكون حسابك نشطًا عليها.",
+          "cancelButton": {
+            "label": "إلغاء"
+          },
+          "actionButton": {
+            "label": "إنهاء الجلسات الأخرى"
+          }
+        },
+        "signOutCurrentSession": {
+          "title": "تسجيل الخروج من هذا الجهاز؟",
+          "description": "سيتم تسجيل خروجك من هذا الجهاز وإعادة توجيهك إلى صفحة تسجيل الدخول.",
+          "cancelButton": {
+            "label": "إلغاء"
+          },
+          "actionButton": {
+            "label": "تسجيل الخروج"
+          }
+        }
+      },
+      "header": {
+        "title": "الجلسات النشطة",
+        "description": "هذه هي الأجهزة التي تم تسجيل الدخول إلى حسابك منها حاليًا. إذا لم تتعرف على جهاز، قم بإنهاء الجلسة فورًا.",
+        "actions": {
+          "refreshButton": {
+            "label": "تحديث"
+          },
+          "revokeOtherSessions": {
+            "label": "إنهاء الجلسات الأخرى"
+          }
+        }
+      },
+      "session": {
+        "title": {
+          "current": "الجهاز الحالي",
+          "default": "{browser} على {os}",
+          "unknown": {
+            "browser": "متصفح غير معروف",
+            "os": "نظام غير معروف"
+          }
+        },
+        "description": "آخر نشاط {lastActive}. تنتهي الصلاحية {expiresAt}.",
+        "actions": {
+          "revokeButton": {
+            "label": "إنهاء الجلسة"
+          },
+          "signOutButton": {
+            "label": "تسجيل الخروج"
+          }
+        }
+      }
+    },
+    "handlers": {
+      "refresh": {
+        "error": "فشل في تحديث الجلسات."
+      },
+      "revoke": {
+        "error": "فشل في إنهاء الجلسة. يرجى المحاولة مرة أخرى.",
+        "success": "تم إنهاء الجلسة بنجاح."
+      },
+      "revokeOtherSessions": {
+        "success": "تم إنهاء جميع الجلسات الأخرى.",
+        "error": "فشل في إنهاء الجلسات الأخرى."
+      },
+      "signOut": {
+        "error": "فشل في تسجيل الخروج. يرجى المحاولة مرة أخرى."
+      }
+    },
+    "page": {
+      "header": {
+        "title": "إعدادات الجلسات",
+        "description": "قم بإدارة الجلسات النشطة وأمان حسابك."
+      }
+    }
+  }
+}

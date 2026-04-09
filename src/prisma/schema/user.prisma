@@ -7,14 +7,18 @@ model User {
   createdAt        DateTime     @default(now())
   updatedAt        DateTime     @updatedAt
   twoFactorEnabled Boolean?     @default(false)
+  username         String?
+  displayUsername  String?
   sessions         Session[]
   accounts         Account[]
   teammembers      TeamMember[]
   members          Member[]
   invitations      Invitation[]
+  passkeys         Passkey[]
   twofactors       TwoFactor[]
 
   @@unique([email])
+  @@unique([username])
   @@map("user")
 }
 
@@ -81,10 +85,30 @@ model TwoFactor {
 }
 
 model RateLimit {
-  id          String  @id
-  key         String?
-  count       Int?
-  lastRequest BigInt?
+  id          String @id
+  key         String
+  count       Int
+  lastRequest BigInt
 
+  @@unique([key])
   @@map("rateLimit")
+}
+
+model Passkey {
+  id           String    @id
+  name         String?
+  publicKey    String
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  credentialID String
+  counter      Int
+  deviceType   String
+  backedUp     Boolean
+  transports   String?
+  createdAt    DateTime?
+  aaguid       String?
+
+  @@index([userId])
+  @@index([credentialID])
+  @@map("passkey")
 }

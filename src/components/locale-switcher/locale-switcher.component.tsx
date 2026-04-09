@@ -1,17 +1,15 @@
 "use client";
-// Components
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-// Constants
 import { LOCALES } from "./constants/locale-switcher.constants";
-// Hooks
 import { LocaleSwitcherHook } from "./hooks/locale-switcher.hook";
-// Icons
 import { ChevronDown, Globe, Loader2 } from "lucide-react";
 
 const LocaleSwitcher = () => {
@@ -37,17 +35,22 @@ const LocaleSwitcher = () => {
             )}
           </Button>
         }
-      ></DropdownMenuTrigger>
+      />
       <DropdownMenuContent align="end">
-        {LOCALES.map((locale) => (
-          <DropdownMenuItem
-            disabled={isPending}
-            key={locale.value}
-            onClick={() => handleSwitchLocale(locale.value)}
-          >
-            {locale.label}
-          </DropdownMenuItem>
-        ))}
+        <DropdownMenuRadioGroup
+          value={locale}
+          onValueChange={(value) => handleSwitchLocale(value)}
+        >
+          {LOCALES.map((item) => (
+            <DropdownMenuRadioItem
+              key={item.value}
+              value={item.value}
+              disabled={isPending}
+            >
+              {item.label}
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );

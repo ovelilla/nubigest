@@ -10,7 +10,7 @@ type ResetPasswordHandlersProps = {
   router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   tResetPassword: _Translator;
-  tRoot: _Translator;
+  tErrors: _Translator;
   token: string | undefined;
 };
 
@@ -23,7 +23,7 @@ type SubmitHandler = (props: {
   router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   tResetPassword: _Translator;
-  tRoot: _Translator;
+  tErrors: _Translator;
   token: string | undefined;
   values: ResetPasswordSchema;
 }) => Promise<void>;

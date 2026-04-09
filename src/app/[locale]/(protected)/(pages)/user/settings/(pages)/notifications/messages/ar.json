@@ -1,0 +1,10 @@
+{
+  "notificationsSettings": {
+    "page": {
+      "header": {
+        "title": "إعدادات الإشعارات",
+        "description": "قم بإدارة إعدادات الإشعارات وتخصيص تفضيلاتك."
+      }
+    }
+  }
+}

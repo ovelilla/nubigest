@@ -6,11 +6,15 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 // Components
 import { Toaster } from "@/components/ui/sonner";
+// Constants
+import { RTL_LOCALES } from "@/i18n/constants/i18n.constants";
 // Fonts
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_Arabic } from "next/font/google";
 // Providers
+import { DirectionProvider } from "@/components/ui/direction";
 import { NextIntlClientProvider } from "next-intl";
-import { ThemeProvider } from "next-themes";
+import { QueryClientProvider } from "@/providers/query-client/query-client.provider";
+import { ThemeProvider } from "@wrksz/themes/next";
 import { TooltipProvider } from "@/components/ui/tooltip";
 // Styles
 import "../globals.css";
@@ -18,7 +22,15 @@ import "../globals.css";
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const notoSansArabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  variable: "--font-arabic",
+});
 
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -57,20 +69,33 @@ async function RootLayout({
 
   setRequestLocale(locale);
 
+  const direction = RTL_LOCALES.includes(locale) ? "rtl" : "ltr";
+
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body className={`flex min-h-dvh antialiased ${inter.className}`}>
+    <html
+      className={`${inter.variable} ${notoSansArabic.variable}`}
+      dir={direction}
+      lang={locale}
+      suppressHydrationWarning
+    >
+      <body className={"flex min-h-dvh antialiased"}>
         <NextIntlClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <TooltipProvider>{children}</TooltipProvider>
-          </ThemeProvider>
+          <DirectionProvider direction={direction}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <QueryClientProvider>
+                <TooltipProvider>
+                  {children}
+                  <Toaster />
+                </TooltipProvider>
+              </QueryClientProvider>
+            </ThemeProvider>
+          </DirectionProvider>
         </NextIntlClientProvider>
-        <Toaster />
       </body>
     </html>
   );

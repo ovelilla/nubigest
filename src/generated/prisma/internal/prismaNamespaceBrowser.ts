@@ -61,7 +61,8 @@ export const ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   TwoFactor: 'TwoFactor',
-  RateLimit: 'RateLimit'
+  RateLimit: 'RateLimit',
+  Passkey: 'Passkey'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -147,7 +148,9 @@ export const UserScalarFieldEnum = {
   image: 'image',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  twoFactorEnabled: 'twoFactorEnabled'
+  twoFactorEnabled: 'twoFactorEnabled',
+  username: 'username',
+  displayUsername: 'displayUsername'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -218,6 +221,23 @@ export const RateLimitScalarFieldEnum = {
 } as const
 
 export type RateLimitScalarFieldEnum = (typeof RateLimitScalarFieldEnum)[keyof typeof RateLimitScalarFieldEnum]
+
+
+export const PasskeyScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  publicKey: 'publicKey',
+  userId: 'userId',
+  credentialID: 'credentialID',
+  counter: 'counter',
+  deviceType: 'deviceType',
+  backedUp: 'backedUp',
+  transports: 'transports',
+  createdAt: 'createdAt',
+  aaguid: 'aaguid'
+} as const
+
+export type PasskeyScalarFieldEnum = (typeof PasskeyScalarFieldEnum)[keyof typeof PasskeyScalarFieldEnum]
 
 
 export const SortOrder = {

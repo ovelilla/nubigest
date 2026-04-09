@@ -14,7 +14,7 @@ const submitHandler: SubmitHandler = async ({
   router,
   setLoading,
   tResetPassword,
-  tRoot,
+  tErrors,
   token,
   values,
 }) => {
@@ -25,11 +25,11 @@ const submitHandler: SubmitHandler = async ({
       token,
     });
     if (error) {
-      const key = `errors.${error.code ?? ""}`;
-      const message = tRoot.has(key)
-        ? tRoot(key)
-        : tResetPassword("handlers.submit.error.generic");
-      toast.error(message);
+      if (error.code && tErrors.has(error.code)) {
+        toast.error(tErrors(error.code));
+        return;
+      }
+      toast.error(tResetPassword("handlers.submit.error.generic"));
       return;
     }
 
@@ -51,7 +51,7 @@ const ResetPasswordHandlers = ({
   router,
   setLoading,
   tResetPassword,
-  tRoot,
+  tErrors,
   token,
 }: ResetPasswordHandlersProps): ResetPasswordHandlersReturn => {
   return {
@@ -61,7 +61,7 @@ const ResetPasswordHandlers = ({
         router,
         setLoading,
         tResetPassword,
-        tRoot,
+        tErrors,
         token,
         values,
       }),

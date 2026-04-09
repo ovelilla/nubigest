@@ -80,12 +80,12 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 7.5.0
- * Query Engine version: 280c870be64f457428992c43c1f6d557fab6e29e
+ * Prisma Client JS version: 7.7.0
+ * Query Engine version: 75cbdc1eb7150937890ad5465d861175c6624711
  */
 export const prismaVersion: PrismaVersion = {
-  client: "7.5.0",
-  engine: "280c870be64f457428992c43c1f6d557fab6e29e"
+  client: "7.7.0",
+  engine: "75cbdc1eb7150937890ad5465d861175c6624711"
 }
 
 /**
@@ -394,7 +394,8 @@ export const ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   TwoFactor: 'TwoFactor',
-  RateLimit: 'RateLimit'
+  RateLimit: 'RateLimit',
+  Passkey: 'Passkey'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -410,7 +411,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "organization" | "member" | "invitation" | "team" | "teamMember" | "user" | "session" | "account" | "verification" | "twoFactor" | "rateLimit"
+    modelProps: "organization" | "member" | "invitation" | "team" | "teamMember" | "user" | "session" | "account" | "verification" | "twoFactor" | "rateLimit" | "passkey"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1228,6 +1229,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Passkey: {
+      payload: Prisma.$PasskeyPayload<ExtArgs>
+      fields: Prisma.PasskeyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PasskeyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasskeyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PasskeyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasskeyPayload>
+        }
+        findFirst: {
+          args: Prisma.PasskeyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasskeyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PasskeyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasskeyPayload>
+        }
+        findMany: {
+          args: Prisma.PasskeyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasskeyPayload>[]
+        }
+        create: {
+          args: Prisma.PasskeyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasskeyPayload>
+        }
+        createMany: {
+          args: Prisma.PasskeyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PasskeyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasskeyPayload>[]
+        }
+        delete: {
+          args: Prisma.PasskeyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasskeyPayload>
+        }
+        update: {
+          args: Prisma.PasskeyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasskeyPayload>
+        }
+        deleteMany: {
+          args: Prisma.PasskeyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PasskeyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PasskeyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasskeyPayload>[]
+        }
+        upsert: {
+          args: Prisma.PasskeyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PasskeyPayload>
+        }
+        aggregate: {
+          args: Prisma.PasskeyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePasskey>
+        }
+        groupBy: {
+          args: Prisma.PasskeyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PasskeyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PasskeyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PasskeyCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1334,7 +1409,9 @@ export const UserScalarFieldEnum = {
   image: 'image',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  twoFactorEnabled: 'twoFactorEnabled'
+  twoFactorEnabled: 'twoFactorEnabled',
+  username: 'username',
+  displayUsername: 'displayUsername'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1405,6 +1482,23 @@ export const RateLimitScalarFieldEnum = {
 } as const
 
 export type RateLimitScalarFieldEnum = (typeof RateLimitScalarFieldEnum)[keyof typeof RateLimitScalarFieldEnum]
+
+
+export const PasskeyScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  publicKey: 'publicKey',
+  userId: 'userId',
+  credentialID: 'credentialID',
+  counter: 'counter',
+  deviceType: 'deviceType',
+  backedUp: 'backedUp',
+  transports: 'transports',
+  createdAt: 'createdAt',
+  aaguid: 'aaguid'
+} as const
+
+export type PasskeyScalarFieldEnum = (typeof PasskeyScalarFieldEnum)[keyof typeof PasskeyScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1619,6 +1713,7 @@ export type GlobalOmitConfig = {
   verification?: Prisma.VerificationOmit
   twoFactor?: Prisma.TwoFactorOmit
   rateLimit?: Prisma.RateLimitOmit
+  passkey?: Prisma.PasskeyOmit
 }
 
 /* Types for Logging */

@@ -25,6 +25,9 @@
           "description": "Welcome back! Please sign in to your account."
         },
         "content": {
+          "passkeyButton": {
+            "label": "Sign in with Passkey"
+          },
           "resetSuccessAlert": {
             "title": "Your password has been reset successfully."
           },
@@ -48,6 +51,9 @@
             }
           },
           "oauth": {
+            "github": {
+              "label": "Sign in with GitHub"
+            },
             "google": {
               "label": "Sign in with Google"
             }

@@ -1,0 +1,97 @@
+{
+  "root": {
+    "components": {
+      "buttonCopy": {
+        "ariaLabel": {
+          "copy": "نسخ",
+          "copied": "تم النسخ"
+        }
+      },
+      "buttonDownload": {
+        "ariaLabel": {
+          "download": "تنزيل",
+          "downloaded": "تم التنزيل"
+        }
+      },
+      "localeSwitcher": {
+        "button": {
+          "ariaLabel": "تغيير اللغة"
+        }
+      },
+      "passwordInput": {
+        "ariaLabelShow": "إظهار كلمة المرور",
+        "ariaLabelHide": "إخفاء كلمة المرور"
+      },
+      "themeSwitcher": {
+        "button": {
+          "ariaLabel": "تغيير المظهر"
+        },
+        "themes": {
+          "light": "فاتح",
+          "dark": "داكن",
+          "system": "النظام"
+        }
+      }
+    },
+    "errors": {
+      "ACCOUNT_NOT_FOUND": "لم نتمكن من العثور على هذا الحساب.",
+      "ASYNC_VALIDATION_NOT_SUPPORTED": "طريقة التحقق هذه غير مدعومة.",
+      "BACKUP_CODES_NOT_ENABLED": "رموز النسخ الاحتياطي غير مفعلة.",
+      "BODY_MUST_BE_AN_OBJECT": "تنسيق الطلب غير صالح.",
+      "CALLBACK_URL_REQUIRED": "معلومات مطلوبة مفقودة. يرجى المحاولة مرة أخرى.",
+      "CREDENTIAL_ACCOUNT_NOT_FOUND": "لم يتم العثور على حساب بهذه البيانات.",
+      "CROSS_SITE_NAVIGATION_LOGIN_BLOCKED": "تم حظر تسجيل الدخول لأسباب أمنية. يرجى المحاولة مرة أخرى من نفس علامة التبويب.",
+      "DEFAULT": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+      "EMAIL_ALREADY_VERIFIED": "تم التحقق من بريدك الإلكتروني بالفعل.",
+      "EMAIL_CAN_NOT_BE_UPDATED": "لا يمكن تغيير البريد الإلكتروني لهذا الحساب.",
+      "EMAIL_MISMATCH": "البريد الإلكتروني غير مطابق. يرجى التحقق والمحاولة مرة أخرى.",
+      "EMAIL_NOT_VERIFIED": "لم يتم التحقق من بريدك الإلكتروني. يرجى التحقق من صندوق الوارد.",
+      "FAILED_TO_CREATE_SESSION": "لم نتمكن من بدء جلستك. يرجى المحاولة مرة أخرى.",
+      "FAILED_TO_CREATE_USER": "لم نتمكن من إنشاء حسابك. يرجى المحاولة مرة أخرى.",
+      "FAILED_TO_CREATE_VERIFICATION": "لم نتمكن من إتمام عملية التحقق. يرجى المحاولة مرة أخرى.",
+      "FAILED_TO_GET_SESSION": "لم نتمكن من استرجاع جلستك. يرجى المحاولة مرة أخرى.",
+      "FAILED_TO_GET_USER_INFO": "لم نتمكن من استرجاع معلومات حسابك.",
+      "FAILED_TO_UNLINK_LAST_ACCOUNT": "لا يمكنك إلغاء ربط آخر حساب مرتبط.",
+      "FAILED_TO_UPDATE_USER": "لم نتمكن من تحديث ملفك الشخصي. يرجى المحاولة مرة أخرى.",
+      "FIELD_NOT_ALLOWED": "تم إرسال حقل غير مسموح به.",
+      "ID_TOKEN_NOT_SUPPORTED": "طريقة تسجيل الدخول هذه غير مدعومة.",
+      "INVALID_BACKUP_CODE": "رمز النسخ الاحتياطي الذي أدخلته غير صالح.",
+      "INVALID_CALLBACK_URL": "رابط العودة غير صالح.",
+      "INVALID_CODE": "رمز التحقق الذي أدخلته غير صحيح.",
+      "INVALID_EMAIL_OR_PASSWORD": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+      "INVALID_EMAIL": "البريد الإلكتروني غير صالح.",
+      "INVALID_ERROR_CALLBACK_URL": "رابط العودة الخاص بالخطأ غير صالح.",
+      "INVALID_NEW_USER_CALLBACK_URL": "رابط العودة للمستخدم الجديد غير صالح.",
+      "INVALID_ORIGIN": "طلب غير صالح. يرجى المحاولة مرة أخرى.",
+      "INVALID_PASSWORD": "كلمة المرور غير صالحة.",
+      "INVALID_REDIRECT_URL": "رابط إعادة التوجيه غير صالح.",
+      "INVALID_TOKEN": "الرابط أو الرمز غير صالح.",
+      "INVALID_TWO_FACTOR_COOKIE": "جلسة التحقق غير صالحة. يرجى طلب رمز جديد.",
+      "INVALID_USER": "المستخدم غير صالح.",
+      "LINKED_ACCOUNT_ALREADY_EXISTS": "يوجد حساب مرتبط بالفعل بهذا المزود.",
+      "METHOD_NOT_ALLOWED_DEFER_SESSION_REQUIRED": "هذا الإجراء غير متاح في الإعداد الحالي.",
+      "MISSING_FIELD": "حقل مطلوب مفقود.",
+      "MISSING_OR_NULL_ORIGIN": "طلب غير صالح. يرجى المحاولة مرة أخرى.",
+      "OTP_HAS_EXPIRED": "انتهت صلاحية رمز التحقق. يرجى طلب رمز جديد.",
+      "OTP_NOT_ENABLED": "التحقق باستخدام الرمز غير مفعل.",
+      "PASSWORD_ALREADY_SET": "تم تعيين كلمة مرور لهذا الحساب بالفعل.",
+      "PASSWORD_TOO_LONG": "كلمة المرور طويلة جدًا.",
+      "PASSWORD_TOO_SHORT": "كلمة المرور قصيرة جدًا.",
+      "PROVIDER_NOT_FOUND": "مزود المصادقة غير متوفر.",
+      "SESSION_EXPIRED": "انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى.",
+      "SESSION_NOT_FRESH": "لأسباب أمنية، يرجى تسجيل الدخول مرة أخرى للمتابعة.",
+      "SOCIAL_ACCOUNT_ALREADY_LINKED": "هذا الحساب الاجتماعي مرتبط بالفعل.",
+      "TOKEN_EXPIRED": "انتهت صلاحية الرابط أو الرمز. يرجى طلب رمز جديد.",
+      "TOO_MANY_ATTEMPTS_REQUEST_NEW_CODE": "عدد المحاولات كبير جدًا. يرجى طلب رمز تحقق جديد.",
+      "TOTP_NOT_ENABLED": "التحقق المستند إلى الوقت غير مفعل.",
+      "TWO_FACTOR_NOT_ENABLED": "التحقق بخطوتين غير مفعل.",
+      "USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL": "يوجد حساب بالفعل بهذا البريد الإلكتروني. استخدم بريدًا آخر أو قم بتسجيل الدخول.",
+      "USER_ALREADY_EXISTS": "يوجد حساب بالفعل بهذا البريد الإلكتروني.",
+      "USER_ALREADY_HAS_PASSWORD": "تم تعيين كلمة مرور بالفعل. يرجى إدخالها للمتابعة.",
+      "USER_EMAIL_NOT_FOUND": "لم نتمكن من العثور على بريدك الإلكتروني.",
+      "USER_NOT_FOUND": "لم يتم العثور على حساب بهذه البيانات.",
+      "VALIDATION_ERROR": "بعض البيانات غير صالحة. يرجى مراجعة النموذج.",
+      "VERIFICATION_EMAIL_NOT_ENABLED": "التحقق عبر البريد الإلكتروني غير مفعل."
+    }
+  }
+}

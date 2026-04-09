@@ -20,7 +20,7 @@ const SignUpHook = () => {
   });
 
   const tSignUp = useTranslations("signup");
-  const tRoot = useTranslations("root");
+  const tErrors = useTranslations("root.errors");
 
   const signUpSchema = getSignUpSchema(tSignUp);
 
@@ -32,7 +32,7 @@ const SignUpHook = () => {
   const { handleOAuthClick, handleSubmit } = SignUpHandlers({
     form,
     setLoading,
-    tRoot,
+    tErrors,
     tSignUp,
   });
 

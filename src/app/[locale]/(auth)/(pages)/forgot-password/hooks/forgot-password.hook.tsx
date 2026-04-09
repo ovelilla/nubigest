@@ -16,7 +16,7 @@ const ForgotPasswordHook = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const tForgotPassword = useTranslations("forgotPassword");
-  const tRoot = useTranslations("root");
+  const tErrors = useTranslations("root.errors");
 
   const forgotPasswordSchema = getForgotPasswordSchema(tForgotPassword);
 
@@ -28,7 +28,7 @@ const ForgotPasswordHook = () => {
   const { handleSubmit } = ForgotPasswordHandlers({
     form,
     setLoading,
-    tRoot,
+    tErrors,
     tForgotPassword,
   });
 

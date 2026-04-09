@@ -62,6 +62,9 @@
             }
           },
           "oauth": {
+            "github": {
+              "label": "Registrarse con GitHub"
+            },
             "google": {
               "label": "Registrarse con Google"
             }

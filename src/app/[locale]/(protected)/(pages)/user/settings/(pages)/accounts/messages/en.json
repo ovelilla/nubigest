@@ -1,0 +1,209 @@
+{
+  "accountsSettings": {
+    "components": {
+      "accountsError": {
+        "title": "Unable to load connected accounts",
+        "description": "We couldn't load your connected accounts. Please try again later."
+      },
+      "changePassword": {
+        "handlers": {
+          "submit": {
+            "error": {
+              "generic": "Something went wrong. Please try again."
+            },
+            "success": "Password updated. Other sessions have been signed out."
+          }
+        },
+        "schemas": {
+          "changePassword": {
+            "currentPassword": {
+              "required": "Current password is required",
+              "min": "Current password must be at least 6 characters long",
+              "max": "Current password cannot be more than 32 characters long"
+            },
+            "newPassword": {
+              "required": "New password is required",
+              "min": "New password must be at least 6 characters long",
+              "max": "New password cannot be more than 32 characters long",
+              "rules": {
+                "length": "New password must be at least 6 characters long",
+                "lowercase": "New password must contain at least one lowercase letter",
+                "number": "New password must contain at least one number",
+                "special": "New password must contain at least one special character",
+                "uppercase": "New password must contain at least one uppercase letter"
+              },
+              "sameAsCurrent": "New password cannot be the same as the current password"
+            }
+          }
+        },
+        "ui": {
+          "dialog": {
+            "content": {
+              "header": {
+                "title": "Change password",
+                "description": "Update the password you use to sign in with your email address ({email})."
+              },
+              "form": {
+                "currentPassword": {
+                  "label": "Current password",
+                  "placeholder": "******"
+                },
+                "newPassword": {
+                  "label": "New password",
+                  "placeholder": "Enter a strong password",
+                  "rules": {
+                    "length": "At least 6 characters",
+                    "number": "One number",
+                    "special": "One special character",
+                    "uppercase": "One uppercase letter"
+                  }
+                },
+                "submitButton": {
+                  "label": "Change password"
+                }
+              }
+            }
+          }
+        }
+      },
+      "setPassword": {
+        "handlers": {
+          "submit": {
+            "error": {
+              "generic": "Something went wrong. Please try again."
+            },
+            "success": "Password added successfully."
+          }
+        },
+        "schemas": {
+          "setPassword": {
+            "password": {
+              "required": "Password is required",
+              "min": "Password must be at least 6 characters long",
+              "max": "Password cannot be more than 32 characters long",
+              "rules": {
+                "length": "Password must be at least 6 characters long",
+                "lowercase": "Password must contain at least one lowercase letter",
+                "number": "Password must contain at least one number",
+                "special": "Password must contain at least one special character",
+                "uppercase": "Password must contain at least one uppercase letter"
+              }
+            }
+          }
+        },
+        "ui": {
+          "dialog": {
+            "content": {
+              "header": {
+                "title": "Add a password",
+                "description": "Add a password to sign in with your email address ({email})."
+              },
+              "form": {
+                "password": {
+                  "label": "New password",
+                  "placeholder": "Enter a strong password",
+                  "rules": {
+                    "length": "At least 6 characters",
+                    "number": "One number",
+                    "special": "One special character",
+                    "uppercase": "One uppercase letter"
+                  }
+                },
+                "submitButton": {
+                  "label": "Add password"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "container": {
+      "alertDialog": {
+        "unlinkAccount": {
+          "title": "Disconnect this account?",
+          "description": "You will no longer be able to sign in with this provider. Make sure you have another way to access your account.",
+          "cancelButton": {
+            "label": "Cancel"
+          },
+          "actionButton": {
+            "label": "Disconnect"
+          }
+        }
+      },
+      "header": {
+        "title": "Connected accounts",
+        "description": "Manage how you sign in to your account. We recommend having at least two methods.",
+        "actions": {
+          "refreshButton": {
+            "label": "Refresh"
+          }
+        }
+      },
+      "credential": {
+        "title": "Email and password",
+        "description": {
+          "connected": "You can sign in with {email}. Added on {createdAt, date, medium}. Last used {lastUsed}.",
+          "notConnected": "Add a password to sign in with your email address."
+        },
+        "actions": {
+          "setPasswordButton": {
+            "label": "Add password"
+          },
+          "changePasswordButton": {
+            "label": "Change password"
+          }
+        }
+      },
+      "provider": {
+        "title": {
+          "github": "GitHub",
+          "google": "Google"
+        },
+        "description": "{count, plural, =0 {No accounts connected} =1 {# account connected} other {# accounts connected}}",
+        "actions": {
+          "connectButton": {
+            "label": "{hasAccounts, select, true {Add another account} other {Connect}}"
+          }
+        },
+        "account": {
+          "description": {
+            "github": "Last used {lastUsed}. Added on {createdAt, date, medium}.",
+            "google": "Last used {lastUsed}. Added on {createdAt, date, medium}."
+          },
+          "actions": {
+            "unlinkButton": {
+              "label": "Disconnect"
+            }
+          }
+        }
+      }
+    },
+    "handlers": {
+      "refresh": {
+        "error": "Failed to refresh connected accounts."
+      },
+      "link": {
+        "error": "Failed to connect {provider}. Please try again."
+      },
+      "unlink": {
+        "success": "Account disconnected successfully.",
+        "error": "Failed to disconnect account. Please try again."
+      }
+    },
+    "hooks": {
+      "accounts": {
+        "errors": {
+          "account_already_linked_to_different_user": "This account is already linked to a different user.",
+          "generic": "An error occurred while linking the account. Please try again."
+        }
+      }
+    },
+    "page": {
+      "header": {
+        "title": "Connected accounts",
+        "description": "Manage how you sign in to your account."
+      }
+    }
+  }
+}

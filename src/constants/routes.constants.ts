@@ -7,7 +7,7 @@ const AUTH_ROUTES = [
   "/verify",
 ];
 const DEFAULT_REDIRECT = "/org";
-const PROTECTED_ROUTE_PREFIXES = ["/org"];
+const PROTECTED_ROUTE_PREFIXES = ["/admin", "/org", "/user"];
 const PUBLIC_ROUTES = ["/"];
 const TWO_FACTOR_ROUTES = [
   "/two-factor",

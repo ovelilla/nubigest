@@ -1,0 +1,91 @@
+{
+  "sessionsSettings": {
+    "components": {
+      "sessionsEmpty": {
+        "title": "No active sessions",
+        "description": "Your account is not currently signed in on any other devices."
+      },
+      "sessionError": {
+        "title": "Unable to load sessions",
+        "description": "We couldn’t load your active sessions. Please try again later."
+      }
+    },
+    "container": {
+      "alertDialog": {
+        "revokeOtherSessions": {
+          "title": "End all other sessions?",
+          "description": "This will sign you out from all other devices where your account is active.",
+          "cancelButton": {
+            "label": "Cancel"
+          },
+          "actionButton": {
+            "label": "End other sessions"
+          }
+        },
+        "signOutCurrentSession": {
+          "title": "Sign out from this device?",
+          "description": "You will be signed out from this device and redirected to the sign-in page.",
+          "cancelButton": {
+            "label": "Cancel"
+          },
+          "actionButton": {
+            "label": "Sign out"
+          }
+        }
+      },
+      "header": {
+        "title": "Active Sessions",
+        "description": "These are the devices where your account is currently signed in. If you don’t recognize a device, sign out of it immediately.",
+        "actions": {
+          "refreshButton": {
+            "label": "Refresh"
+          },
+          "revokeOtherSessions": {
+            "label": "End other sessions"
+          }
+        }
+      },
+      "session": {
+        "title": {
+          "current": "Current device",
+          "default": "{browser} on {os}",
+          "unknown": {
+            "browser": "Unknown browser",
+            "os": "Unknown OS"
+          }
+        },
+        "description": "Last active {lastActive}. Expires {expiresAt}.",
+        "actions": {
+          "revokeButton": {
+            "label": "End session"
+          },
+          "signOutButton": {
+            "label": "Sign out"
+          }
+        }
+      }
+    },
+    "handlers": {
+      "refresh": {
+        "error": "Failed to refresh sessions."
+      },
+      "revoke": {
+        "error": "Failed to end session. Please try again.",
+        "success": "Session ended successfully."
+      },
+      "revokeOtherSessions": {
+        "success": "All other sessions have been ended.",
+        "error": "Failed to end other sessions."
+      },
+      "signOut": {
+        "error": "Failed to sign out. Please try again."
+      }
+    },
+    "page": {
+      "header": {
+        "title": "Session Settings",
+        "description": "Manage your active sessions and security."
+      }
+    }
+  }
+}

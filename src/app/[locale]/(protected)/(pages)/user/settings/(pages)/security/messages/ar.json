@@ -1,0 +1,450 @@
+{
+  "securitySettings": {
+    "components": {
+      "passkeys": {
+        "handlers": {
+          "addPasskey": {
+            "success": "تمت إضافة مفتاح الوصول بنجاح",
+            "error": "فشل في إضافة مفتاح الوصول. يرجى المحاولة مرة أخرى."
+          },
+          "deletePasskey": {
+            "success": "تم حذف مفتاح الوصول بنجاح",
+            "error": "فشل في حذف مفتاح الوصول. يرجى المحاولة مرة أخرى."
+          },
+          "renamePasskey": {
+            "success": "تمت إعادة تسمية مفتاح الوصول بنجاح",
+            "error": "فشل في إعادة تسمية مفتاح الوصول. يرجى المحاولة مرة أخرى."
+          }
+        },
+        "schemas": {
+          "passkey": {
+            "name": {
+              "required": "الاسم مطلوب",
+              "min": "يجب أن يتكون الاسم من حرف واحد على الأقل",
+              "max": "لا يمكن أن يتجاوز الاسم 64 حرفًا"
+            }
+          }
+        },
+        "ui": {
+          "title": "مفاتيح الوصول",
+          "description": "استخدم Face ID أو بصمة الإصبع أو رمز PIN الخاص بجهازك لتسجيل الدخول بأمان دون كلمة مرور.",
+          "actions": {
+            "addButton": {
+              "label": "إضافة مفتاح وصول"
+            }
+          },
+          "passkey": {
+            "title": "مفتاح وصول بدون اسم",
+            "description": "يمكن استخدام مفتاح الوصول هذا لتسجيل الدخول إلى حسابك.",
+            "actions": {
+              "renameButton": {
+                "label": "إعادة التسمية"
+              },
+              "deleteButton": {
+                "label": "حذف"
+              }
+            },
+            "form": {
+              "name": {
+                "label": "اسم مفتاح الوصول",
+                "placeholder": "مثال: هاتفي iPhone"
+              },
+              "actions": {
+                "cancelButton": {
+                  "label": "إلغاء"
+                },
+                "submitButton": {
+                  "label": "حفظ"
+                }
+              }
+            }
+          }
+        }
+      },
+      "securityStatus": {
+        "ui": {
+          "title": {
+            "enabled": "حماية الحساب: مفعّلة",
+            "disabled": "حماية الحساب: غير مكتملة"
+          },
+          "description": {
+            "enabled": "حسابك محمي بالمصادقة الثنائية.",
+            "disabled": "قم بتفعيل المصادقة الثنائية لحماية حسابك."
+          }
+        }
+      },
+      "twoFactor": {
+        "components": {
+          "steps": {
+            "backupCodes": {
+              "ui": {
+                "confirmation": {
+                  "label": "لقد قمت بحفظ رموز الاسترداد الخاصة بي"
+                },
+                "copyButton": {
+                  "label": "نسخ"
+                },
+                "doneButton": {
+                  "label": "تم"
+                },
+                "downloadButton": {
+                  "label": "تنزيل"
+                },
+                "nextButton": {
+                  "label": "التالي"
+                }
+              }
+            },
+            "complete": {
+              "ui": {
+                "doneButton": {
+                  "label": "تم"
+                }
+              }
+            },
+            "password": {
+              "schemas": {
+                "password": {
+                  "required": "كلمة المرور مطلوبة",
+                  "min": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+                  "max": "لا يمكن أن تتجاوز كلمة المرور 32 حرفًا"
+                }
+              },
+              "ui": {
+                "form": {
+                  "password": {
+                    "label": "كلمة المرور",
+                    "placeholder": "******"
+                  },
+                  "actions": {
+                    "cancelButton": {
+                      "label": "إلغاء"
+                    },
+                    "nextButton": {
+                      "label": "التالي"
+                    }
+                  }
+                }
+              }
+            },
+            "scanQrCode": {
+              "ui": {
+                "nextButton": {
+                  "label": "التالي"
+                },
+                "separator": "أو أدخل المفتاح يدويًا"
+              }
+            },
+            "verifyCode": {
+              "schemas": {
+                "totp": {
+                  "code": {
+                    "invalid": "رمز المصادقة غير صالح.",
+                    "required": "رمز المصادقة مطلوب."
+                  }
+                }
+              },
+              "ui": {
+                "form": {
+                  "code": {
+                    "label": "رمز المصادقة"
+                  },
+                  "actions": {
+                    "nextButton": {
+                      "label": "تحقق"
+                    },
+                    "prevButton": {
+                      "label": "رجوع"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "wizards": {
+            "enableTwoFactor": {
+              "steps": {
+                "password": {
+                  "ui": {
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "تأكيد كلمة المرور",
+                          "description": "لأسباب أمنية، يرجى تأكيد كلمة المرور للمتابعة."
+                        }
+                      }
+                    }
+                  }
+                },
+                "backupCodes": {
+                  "ui": {
+                    "alertDialog": {
+                      "content": {
+                        "header": {
+                          "title": "هل تريد المغادرة دون حفظ رموز الاسترداد؟",
+                          "description": "تأكد من حفظ رموز الاسترداد في مكان آمن قبل المتابعة. قد تحتاج إليها للوصول إلى حسابك إذا فقدت الوصول إلى طريقة المصادقة."
+                        },
+                        "footer": {
+                          "actionButton": {
+                            "label": "مغادرة"
+                          },
+                          "cancelButton": {
+                            "label": "البقاء"
+                          }
+                        }
+                      }
+                    },
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "احفظ رموز الاسترداد الخاصة بك",
+                          "description": "تتيح لك هذه الرموز الوصول إلى حسابك إذا فقدت الوصول إلى تطبيق المصادقة. يمكن استخدام كل رمز مرة واحدة فقط. قم بتخزينها في مكان آمن."
+                        }
+                      }
+                    }
+                  }
+                },
+                "complete": {
+                  "ui": {
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "تم تفعيل المصادقة الثنائية",
+                          "description": "أصبح حسابك الآن محميًا بطبقة أمان إضافية."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "disableTwoFactor": {
+              "steps": {
+                "password": {
+                  "ui": {
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "تأكيد كلمة المرور",
+                          "description": "لأسباب أمنية، يرجى تأكيد كلمة المرور للمتابعة."
+                        }
+                      }
+                    }
+                  }
+                },
+                "complete": {
+                  "ui": {
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "تم تعطيل المصادقة الثنائية",
+                          "description": "لم يعد حسابك محميًا بالمصادقة الثنائية. نوصي بشدة بتفعيلها للحفاظ على أمان حسابك."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "generateBackupCodes": {
+              "steps": {
+                "password": {
+                  "ui": {
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "تأكيد كلمة المرور",
+                          "description": "لأسباب أمنية، يرجى تأكيد كلمة المرور للمتابعة."
+                        }
+                      }
+                    }
+                  }
+                },
+                "backupCodes": {
+                  "ui": {
+                    "alertDialog": {
+                      "content": {
+                        "header": {
+                          "title": "هل تريد المغادرة دون حفظ رموز الاسترداد؟",
+                          "description": "تأكد من حفظ رموز الاسترداد في مكان آمن قبل المتابعة. قد تحتاج إليها للوصول إلى حسابك إذا فقدت الوصول إلى طريقة المصادقة."
+                        },
+                        "footer": {
+                          "actionButton": {
+                            "label": "مغادرة"
+                          },
+                          "cancelButton": {
+                            "label": "البقاء"
+                          }
+                        }
+                      }
+                    },
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "احفظ رموز الاسترداد الخاصة بك",
+                          "description": "تتيح لك هذه الرموز الوصول إلى حسابك إذا فقدت الوصول إلى تطبيق المصادقة. يمكن استخدام كل رمز مرة واحدة فقط. قم بتخزينها في مكان آمن."
+                        }
+                      }
+                    }
+                  }
+                },
+                "complete": {
+                  "ui": {
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "تم إنشاء رموز استرداد جديدة",
+                          "description": "لم تعد رموز الاسترداد القديمة صالحة. تأكد من حفظ الرموز الجديدة في مكان آمن."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "setupAuthenticatorApp": {
+              "steps": {
+                "password": {
+                  "ui": {
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "تأكيد كلمة المرور",
+                          "description": "لأسباب أمنية، يرجى تأكيد كلمة المرور للمتابعة."
+                        }
+                      }
+                    }
+                  }
+                },
+                "scanQrCode": {
+                  "ui": {
+                    "alertDialog": {
+                      "content": {
+                        "header": {
+                          "title": "هل تريد مغادرة الإعداد؟",
+                          "description": "إذا غادرت الآن، سيتم إلغاء إعداد تطبيق المصادقة وسيتعين عليك البدء من جديد."
+                        },
+                        "footer": {
+                          "actionButton": {
+                            "label": "مغادرة"
+                          },
+                          "cancelButton": {
+                            "label": "البقاء"
+                          }
+                        }
+                      }
+                    },
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "امسح رمز QR",
+                          "description": "امسح رمز QR هذا باستخدام تطبيق المصادقة الخاص بك (مثل Google Authenticator أو Microsoft Authenticator). ثم أدخل رمز التحقق في الخطوة التالية."
+                        }
+                      }
+                    }
+                  }
+                },
+                "verifyCode": {
+                  "ui": {
+                    "alertDialog": {
+                      "content": {
+                        "header": {
+                          "title": "هل تريد مغادرة الإعداد؟",
+                          "description": "إذا غادرت الآن، سيتم إلغاء إعداد تطبيق المصادقة وسيتعين عليك البدء من جديد."
+                        },
+                        "footer": {
+                          "actionButton": {
+                            "label": "مغادرة"
+                          },
+                          "cancelButton": {
+                            "label": "البقاء"
+                          }
+                        }
+                      }
+                    },
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "أدخل رمز التحقق",
+                          "description": "أدخل الرمز المكون من 6 أرقام الذي تم إنشاؤه بواسطة تطبيق المصادقة."
+                        }
+                      }
+                    }
+                  }
+                },
+                "complete": {
+                  "ui": {
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "تم إعداد تطبيق المصادقة بنجاح",
+                          "description": "تم إعداد تطبيق المصادقة بنجاح وسيُستخدم للتحقق من عمليات تسجيل الدخول."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "viewBackupCodes": {
+              "steps": {
+                "backupCodes": {
+                  "ui": {
+                    "dialog": {
+                      "content": {
+                        "header": {
+                          "title": "رموز الاسترداد الخاصة بك",
+                          "description": "تتيح لك هذه الرموز الوصول إلى حسابك إذا فقدت الوصول إلى تطبيق المصادقة. يمكن استخدام كل رمز مرة واحدة فقط. قم بتخزينها في مكان آمن."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ui": {
+          "authenticatorApp": {
+            "title": "تطبيق المصادقة",
+            "description": "تحقق من تسجيل الدخول باستخدام تطبيق مصادقة مثل Google Authenticator. يتطلب الإعداد.",
+            "actions": {
+              "setupButton": {
+                "label": "إعداد"
+              }
+            }
+          },
+          "backupCodes": {
+            "title": "رموز النسخ الاحتياطي",
+            "description": "أنشئ رموز نسخ احتياطي للاستخدام مرة واحدة لاستعادة الحساب. سيؤدي إنشاء رموز جديدة إلى استبدال الرموز الحالية.",
+            "actions": {
+              "generateButton": {
+                "label": "إنشاء"
+              },
+              "viewButton": {
+                "label": "عرض"
+              }
+            }
+          },
+          "emailVerification": {
+            "title": "التحقق عبر البريد الإلكتروني",
+            "description": "تحقق من تسجيل الدخول باستخدام رمز يتم إرساله إلى بريدك الإلكتروني."
+          },
+          "twoFactorAuthentication": {
+            "title": "المصادقة الثنائية (2FA)",
+            "description": {
+              "enabled": "سيتطلب تسجيل الدخول خطوة تحقق إضافية.",
+              "disabled": "أضف طبقة أمان إضافية إلى حسابك."
+            }
+          }
+        }
+      }
+    },
+    "page": {
+      "header": {
+        "title": "إعدادات الأمان",
+        "description": "قم بإدارة إعدادات الأمان وتحديد تفضيلاتك."
+      }
+    }
+  }
+}

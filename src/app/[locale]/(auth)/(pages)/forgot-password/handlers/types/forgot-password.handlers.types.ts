@@ -8,7 +8,7 @@ type ForgotPasswordHandlersProps = {
   form: UseFormReturn<ForgotPasswordSchema>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   tForgotPassword: _Translator;
-  tRoot: _Translator;
+  tErrors: _Translator;
 };
 
 type ForgotPasswordHandlersReturn = {
@@ -19,7 +19,7 @@ type SubmitHandler = (props: {
   form: UseFormReturn<ForgotPasswordSchema>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   tForgotPassword: _Translator;
-  tRoot: _Translator;
+  tErrors: _Translator;
   values: ForgotPasswordSchema;
 }) => Promise<void>;
 
