@@ -14,6 +14,7 @@ import type {
   SignInHandlersProps,
   SignInHandlersReturn,
 } from "./types/signin.handlers.types";
+import { error } from "console";
 
 const handleOAuthClick: HandleOAuthClick = async ({
   provider,
@@ -47,28 +48,32 @@ const handleOAuthClick: HandleOAuthClick = async ({
 };
 
 const handlePasskeyClick: HandlePasskeyClick = async ({
+  router,
   setLoading,
   tSignIn,
 }) => {
   try {
-    setLoading({ provider: "passkey", status: true });
-
-    const { error } = await authClient.signIn.passkey({
+    await authClient.signIn.passkey({
       autoFill: false,
+      fetchOptions: {
+        onRequest: () => {
+          setLoading({ provider: "passkey", status: true });
+        },
+        onResponse: () => {
+          setLoading({ provider: "passkey", status: false });
+        },
+        onSuccess: () => {
+          toast.success(tSignIn("handlers.passkey.success"));
+          router.push(DEFAULT_REDIRECT);
+        },
+        onError: () => {
+          toast.error(tSignIn("handlers.passkey.error.generic"));
+        },
+      },
     });
-
-    if (error) {
-      toast.error(tSignIn("handlers.passkey.error.generic"));
-      return;
-    }
-
-    toast.success(tSignIn("handlers.passkey.success"));
-    window.location.href = DEFAULT_REDIRECT;
   } catch (error) {
     console.error(error);
     toast.error(tSignIn("handlers.passkey.error.generic"));
-  } finally {
-    setLoading({ provider: "passkey", status: false });
   }
 };
 
@@ -138,7 +143,8 @@ const SignInHandlers = ({
   return {
     handleOAuthClick: (provider) =>
       handleOAuthClick({ setLoading, provider, tErrors, tSignIn }),
-    handlePasskeyClick: () => handlePasskeyClick({ setLoading, tSignIn }),
+    handlePasskeyClick: () =>
+      handlePasskeyClick({ router, setLoading, tSignIn }),
     handleSubmit: (values) =>
       handleSubmit({
         form,

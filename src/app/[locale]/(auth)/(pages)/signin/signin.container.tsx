@@ -91,7 +91,7 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
                   <Input
                     {...field}
                     aria-invalid={fieldState.invalid}
-                    autoComplete="username webauthn"
+                    autoComplete="username"
                     id={field.name}
                     placeholder={t("page.card.content.form.email.placeholder")}
                     type="email"
@@ -113,7 +113,7 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
                   <PasswordInput
                     {...field}
                     aria-invalid={fieldState.invalid}
-                    autoComplete="current-password webauthn"
+                    autoComplete="current-password"
                     id={field.name}
                     placeholder={t(
                       "page.card.content.form.password.placeholder",

@@ -14,6 +14,7 @@ type HandleOAuthClick = (props: {
 }) => Promise<void>;
 
 type HandlePasskeyClick = (props: {
+  router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
   tSignIn: _Translator;
 }) => Promise<void>;
