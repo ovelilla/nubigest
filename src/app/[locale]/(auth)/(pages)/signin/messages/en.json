@@ -3,15 +3,21 @@
     "handlers": {
       "submit": {
         "error": {
-          "generic": "An unexpected error has occurred",
+          "generic": "Something went wrong. Please try again.",
           "tooManyRequests": "Too many sign-in attempts. Please try again later."
         },
-        "success": "Signed in successfully"
+        "success": "Signed in successfully."
       },
       "oauth": {
         "error": {
-          "generic": "An unexpected error has occurred"
+          "generic": "Something went wrong. Please try again."
         }
+      },
+      "passkey": {
+        "error": {
+          "generic": "Couldn't sign you in with your passkey. Please try again."
+        },
+        "success": "Signed in successfully."
       }
     },
     "metadata": {
@@ -22,14 +28,14 @@
       "card": {
         "header": {
           "title": "Sign in",
-          "description": "Welcome back! Please sign in to your account."
+          "description": "Welcome back. Sign in to continue."
         },
         "content": {
           "passkeyButton": {
-            "label": "Sign in with Passkey"
+            "label": "Continue with passkey"
           },
           "resetSuccessAlert": {
-            "title": "Your password has been reset successfully."
+            "title": "Your password has been reset."
           },
           "form": {
             "email": {
@@ -38,13 +44,13 @@
             },
             "password": {
               "label": "Password",
-              "placeholder": "******"
+              "placeholder": "Enter your password"
             },
             "rememberMe": {
               "label": "Remember me"
             },
             "forgotLink": {
-              "label": "Forgot your password?"
+              "label": "Forgot password?"
             },
             "submitButton": {
               "label": "Sign in"
@@ -52,13 +58,16 @@
           },
           "oauth": {
             "github": {
-              "label": "Sign in with GitHub"
+              "label": "Continue with GitHub"
             },
             "google": {
-              "label": "Sign in with Google"
+              "label": "Continue with Google"
             }
           },
-          "separator": "Or sign in with email"
+          "separators": {
+            "oauth": "Or continue with",
+            "credentials": "Or sign in with email"
+          }
         },
         "footer": {
           "registerLink": {
@@ -70,14 +79,14 @@
     "schemas": {
       "signin": {
         "email": {
-          "invalid": "Invalid email",
-          "max": "Email cannot be more than 254 characters long",
+          "invalid": "Enter a valid email address",
+          "max": "Email must be 254 characters or fewer",
           "required": "Email is required"
         },
         "password": {
           "required": "Password is required",
-          "min": "Password must be at least 6 characters long",
-          "max": "Password cannot be more than 32 characters long"
+          "min": "Password must be at least 6 characters",
+          "max": "Password must be 32 characters or fewer"
         }
       }
     }

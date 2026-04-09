@@ -24,7 +24,7 @@ import { OAUTH_PROVIDERS } from "./constants/signin.constants";
 // Hooks
 import { useSignIn } from "./hooks/use-signin.hook";
 // Icons
-import { CircleCheck } from "lucide-react";
+import { CircleCheck, FingerprintPattern } from "lucide-react";
 // Types
 import type { SignInContainerProps } from "./types/signin.container.types";
 
@@ -61,8 +61,12 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
           type="button"
           variant="outline"
         >
+          <FingerprintPattern className="mr-2 h-5 w-5" />
           {t("page.card.content.passkeyButton.label")}
         </ButtonLoading>
+        <SeparatorWithText>
+          {t("page.card.content.separators.oauth")}
+        </SeparatorWithText>
         <OAuthButtons
           loading={loading}
           onClick={handleOAuthClick}
@@ -72,7 +76,7 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
           }))}
         />
         <SeparatorWithText>
-          {t("page.card.content.separator")}
+          {t("page.card.content.separators.credentials")}
         </SeparatorWithText>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
           <FieldSet disabled={loading.status}>

@@ -3,15 +3,21 @@
     "handlers": {
       "submit": {
         "error": {
-          "generic": "Ha ocurrido un error inesperado",
-          "tooManyRequests": "Demasiados intentos de inicio de sesión. Por favor, inténtalo de nuevo más tarde."
+          "generic": "Algo ha salido mal. Inténtalo de nuevo.",
+          "tooManyRequests": "Demasiados intentos de inicio de sesión. Inténtalo más tarde."
         },
-        "success": "Inicio de sesión exitoso"
+        "success": "Has iniciado sesión correctamente."
       },
       "oauth": {
         "error": {
-          "generic": "Ha ocurrido un error inesperado"
+          "generic": "Algo ha salido mal. Inténtalo de nuevo."
         }
+      },
+      "passkey": {
+        "error": {
+          "generic": "No hemos podido iniciar sesión con tu clave de acceso. Inténtalo de nuevo."
+        },
+        "success": "Has iniciado sesión correctamente."
       }
     },
     "metadata": {
@@ -22,14 +28,14 @@
       "card": {
         "header": {
           "title": "Iniciar sesión",
-          "description": "¡Bienvenido de nuevo! Por favor, inicia sesión en tu cuenta."
+          "description": "Bienvenido de nuevo. Inicia sesión para continuar."
         },
         "content": {
           "passkeyButton": {
-            "label": "Iniciar sesión con Passkey"
+            "label": "Continuar con clave de acceso"
           },
           "resetSuccessAlert": {
-            "title": "Tu contraseña ha sido restablecida con éxito."
+            "title": "Tu contraseña se ha restablecido."
           },
           "form": {
             "email": {
@@ -38,13 +44,13 @@
             },
             "password": {
               "label": "Contraseña",
-              "placeholder": "******"
+              "placeholder": "Introduce tu contraseña"
             },
             "rememberMe": {
-              "label": "Recuérdame"
+              "label": "Recordarme"
             },
             "forgotLink": {
-              "label": "¿Olvidaste tu contraseña?"
+              "label": "¿Has olvidado tu contraseña?"
             },
             "submitButton": {
               "label": "Iniciar sesión"
@@ -58,11 +64,14 @@
               "label": "Continuar con Google"
             }
           },
-          "separator": "O inicia sesión con correo electrónico"
+          "separators": {
+            "oauth": "O continuar con",
+            "credentials": "O iniciar sesión con correo electrónico"
+          }
         },
         "footer": {
           "registerLink": {
-            "label": "¿No tienes una cuenta? Regístrate"
+            "label": "¿No tienes cuenta? Regístrate"
           }
         }
       }
@@ -70,14 +79,14 @@
     "schemas": {
       "signin": {
         "email": {
-          "invalid": "El correo electrónico es inválido",
-          "max": "El correo electrónico no puede tener más de 254 caracteres",
+          "invalid": "Introduce un correo electrónico válido",
+          "max": "El correo electrónico debe tener como máximo 254 caracteres",
           "required": "El correo electrónico es obligatorio"
         },
         "password": {
           "required": "La contraseña es obligatoria",
           "min": "La contraseña debe tener al menos 6 caracteres",
-          "max": "La contraseña no puede tener más de 32 caracteres"
+          "max": "La contraseña debe tener como máximo 32 caracteres"
         }
       }
     }
