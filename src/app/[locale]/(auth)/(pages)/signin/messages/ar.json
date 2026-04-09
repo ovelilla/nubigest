@@ -25,6 +25,9 @@
           "description": "مرحبًا بعودتك! يرجى تسجيل الدخول إلى حسابك."
         },
         "content": {
+          "passkeyButton": {
+            "label": "تسجيل الدخول باستخدام Passkey"
+          },
           "resetSuccessAlert": {
             "title": "تمت إعادة تعيين كلمة المرور بنجاح."
           },

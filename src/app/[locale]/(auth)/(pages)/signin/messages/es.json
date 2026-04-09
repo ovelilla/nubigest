@@ -25,6 +25,9 @@
           "description": "¡Bienvenido de nuevo! Por favor, inicia sesión en tu cuenta."
         },
         "content": {
+          "passkeyButton": {
+            "label": "Iniciar sesión con Passkey"
+          },
           "resetSuccessAlert": {
             "title": "Tu contraseña ha sido restablecida con éxito."
           },
