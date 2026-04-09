@@ -14,7 +14,6 @@ import type {
   SignInHandlersProps,
   SignInHandlersReturn,
 } from "./types/signin.handlers.types";
-import { error } from "console";
 
 const handleOAuthClick: HandleOAuthClick = async ({
   provider,
