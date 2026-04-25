@@ -1,5 +1,279 @@
 {
   "profileSettings": {
+    "components": {
+      "avatar": {
+        "errors": {
+          "FILE_TOO_LARGE": "File size exceeds the 2 MB limit. Please upload a smaller image.",
+          "IMAGE_DIMENSIONS_TOO_LARGE": "Image dimensions are too large. Please upload a smaller image.",
+          "INVALID_FILE_TYPE": "Invalid file type. Please upload a JPEG, PNG, or WebP image.",
+          "INVALID_IMAGE_CONTENT": "The file could not be processed. Please upload a valid image.",
+          "NO_FILE": "Please select an image to upload.",
+          "UNAUTHORIZED": "You are not authorized to perform this action. Please log in and try again.",
+          "UPLOAD_FAILED": "Failed to upload avatar. Please try again."
+        },
+        "handlers": {
+          "upload": {
+            "success": "Avatar updated successfully.",
+            "errors": {
+              "FILE_TOO_LARGE": "File size exceeds the 2 MB limit. Please upload a smaller image.",
+              "INVALID_FILE_TYPE": "Invalid file type. Please upload a JPEG, PNG, or WebP image.",
+              "NO_FILE": "Please select an image to upload.",
+              "UNAUTHORIZED": "You are not authorized to perform this action. Please log in and try again.",
+              "UPLOAD_FAILED": "Failed to upload avatar. Please try again."
+            }
+          }
+        },
+        "schemas": {
+          "avatar": {
+            "file": {
+              "required": "Please select an image",
+              "invalidType": "Please upload a JPEG, PNG, or WebP image",
+              "max": "Image must be 2 MB or less"
+            }
+          }
+        },
+        "ui": {
+          "card": {
+            "header": {
+              "title": "Avatar",
+              "description": "This is your avatar. Click on the avatar to upload a custom one from your files."
+            },
+            "content": {
+              "input": {
+                "label": "Upload avatar image"
+              },
+              "trigger": {
+                "label": "Change avatar"
+              },
+              "avatar": {
+                "alt": "User avatar"
+              }
+            },
+            "footer": {
+              "description": "An avatar is optional but recommended."
+            }
+          },
+          "dialog": {
+            "content": {
+              "header": {
+                "title": "Crop your new avatar",
+                "description": "Adjust the cropping area to select how your new avatar will be displayed."
+              },
+              "cropper": {
+                "aspectRatioLabel": "Aspect ratio",
+                "aspectRatioOptions": {
+                  "square": "Square (1:1)",
+                  "portrait": "Portrait (4:5)",
+                  "landscape": "Landscape (16:9)"
+                }
+              },
+              "footer": {
+                "actions": {
+                  "cancelButton": {
+                    "label": "Cancel"
+                  },
+                  "submitButton": {
+                    "label": "Save"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "name": {
+        "handlers": {
+          "submit": {
+            "success": "Name updated successfully.",
+            "error": "Failed to update name. Please try again."
+          }
+        },
+        "schemas": {
+          "name": {
+            "name": {
+              "required": "Name is required",
+              "min": "Name must be at least 1 character long",
+              "max": "Name cannot be more than 64 characters long"
+            }
+          }
+        },
+        "ui": {
+          "card": {
+            "header": {
+              "title": "Display name",
+              "description": "Please enter your full name, or a display name you are comfortable with."
+            },
+            "content": {
+              "form": {
+                "fields": {
+                  "name": {
+                    "label": "Name",
+                    "placeholder": "Enter your name"
+                  }
+                },
+                "submitButton": {
+                  "label": "Save"
+                }
+              }
+            }
+          }
+        }
+      },
+      "username": {
+        "handlers": {
+          "submit": {
+            "success": "Username updated successfully.",
+            "error": "Failed to update username. Please try again.",
+            "usernameUnavailable": "This username is already taken."
+          }
+        },
+        "schemas": {
+          "username": {
+            "username": {
+              "required": "Username is required",
+              "min": "Username must be at least 3 characters long",
+              "max": "Username cannot be more than 30 characters long",
+              "invalid": "Username can only contain letters, numbers, underscores, and dots"
+            }
+          }
+        },
+        "ui": {
+          "card": {
+            "header": {
+              "title": "Username",
+              "description": "This is your unique username. It may be used to identify you within the application."
+            },
+            "content": {
+              "form": {
+                "fields": {
+                  "username": {
+                    "label": "Username",
+                    "placeholder": "Enter your username"
+                  }
+                },
+                "submitButton": {
+                  "label": "Save"
+                }
+              }
+            }
+          }
+        }
+      },
+      "email": {
+        "handlers": {
+          "submit": {
+            "success": "A verification email has been sent to your new address. Please check your inbox to confirm the change.",
+            "error": "Failed to update email. Please try again."
+          }
+        },
+        "schemas": {
+          "email": {
+            "newEmail": {
+              "required": "Email address is required",
+              "invalid": "Please enter a valid email address",
+              "max": "Email address cannot be more than 255 characters long"
+            }
+          }
+        },
+        "ui": {
+          "card": {
+            "header": {
+              "title": "Email address",
+              "description": "Update the email address associated with your account. A verification link will be sent to your new address."
+            },
+            "content": {
+              "form": {
+                "fields": {
+                  "newEmail": {
+                    "label": "Email address",
+                    "placeholder": "Enter your email address"
+                  }
+                },
+                "submitButton": {
+                  "label": "Save"
+                }
+              }
+            }
+          }
+        }
+      },
+      "deleteAccount": {
+        "emails": {
+          "deleteAccount": {
+            "subject": "Confirm your account deletion",
+            "content": {
+              "previewText": "Confirm account deletion",
+              "title": "Delete your account",
+              "button": "Confirm account deletion",
+              "firstParagraph": "Click the button below to permanently delete your account. This link will expire in 1 hour.",
+              "secondParagraph": "Or copy and paste the following link into your browser:",
+              "thirdParagraph": "This action will permanently delete the account associated with",
+              "footer": "If you didn't request this, you can safely ignore this email. Your account will not be deleted."
+            }
+          }
+        },
+        "handlers": {
+          "deleteClick": {
+            "emailSent": "A confirmation email has been sent. Please check your inbox to confirm account deletion.",
+            "error": "Failed to initiate account deletion. Please try again."
+          },
+          "submit": {
+            "success": "Your account has been permanently deleted.",
+            "error": "Failed to delete account. Please check your password and try again."
+          }
+        },
+        "schemas": {
+          "deleteAccount": {
+            "password": {
+              "required": "Password is required"
+            }
+          }
+        },
+        "ui": {
+          "card": {
+            "header": {
+              "title": "Delete Account",
+              "description": "Permanently remove your account and all of its contents. This action is not reversible, so please continue with caution."
+            },
+            "footer": {
+              "deleteButton": {
+                "label": "Delete Personal Account"
+              }
+            }
+          },
+          "dialog": {
+            "content": {
+              "header": {
+                "title": "Delete Account",
+                "description": "Please enter your password to confirm that you want to permanently delete your account. This action cannot be undone."
+              },
+              "form": {
+                "password": {
+                  "label": "Password",
+                  "placeholder": "Enter your password"
+                },
+                "submitButton": {
+                  "label": "Delete Account"
+                }
+              }
+            }
+          },
+          "oauthDialog": {
+            "content": {
+              "header": {
+                "title": "Delete Account",
+                "description": "This will permanently delete your account and all of its contents. This action is not reversible."
+              },
+              "alert": "This action is not reversible. Please be certain.",
+              "confirmationPhrase": "delete my account",
+              "confirmLabel": "To confirm, type <phrase>{phrase}</phrase> below:",
+              "cancelButton": "Cancel",
+              "submitButton": "Delete Account"
+            }
+          }
+        }
+      }
+    },
     "page": {
       "header": {
         "title": "Profile Settings",

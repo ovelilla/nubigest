@@ -1,5 +1,279 @@
 {
   "profileSettings": {
+    "components": {
+      "avatar": {
+        "errors": {
+          "FILE_TOO_LARGE": "El archivo supera el límite de 2 MB. Sube una imagen más pequeña.",
+          "IMAGE_DIMENSIONS_TOO_LARGE": "Las dimensiones de la imagen son demasiado grandes. Sube una imagen más pequeña.",
+          "INVALID_FILE_TYPE": "Tipo de archivo no válido. Sube una imagen en formato JPEG, PNG o WebP.",
+          "INVALID_IMAGE_CONTENT": "No se ha podido procesar el archivo. Asegúrate de que es una imagen válida.",
+          "NO_FILE": "Selecciona una imagen para subir.",
+          "UNAUTHORIZED": "No tienes permiso para realizar esta acción. Inicia sesión e inténtalo de nuevo.",
+          "UPLOAD_FAILED": "No se ha podido subir el avatar. Inténtalo de nuevo."
+        },
+        "handlers": {
+          "upload": {
+            "success": "Avatar actualizado correctamente.",
+            "errors": {
+              "FILE_TOO_LARGE": "El archivo supera el límite de 2 MB. Sube una imagen más pequeña.",
+              "INVALID_FILE_TYPE": "Tipo de archivo no válido. Sube una imagen en formato JPEG, PNG o WebP.",
+              "NO_FILE": "Selecciona una imagen para subir.",
+              "UNAUTHORIZED": "No tienes permiso para realizar esta acción. Inicia sesión e inténtalo de nuevo.",
+              "UPLOAD_FAILED": "No se ha podido subir el avatar. Inténtalo de nuevo."
+            }
+          }
+        },
+        "schemas": {
+          "avatar": {
+            "file": {
+              "required": "Selecciona una imagen",
+              "invalidType": "Sube una imagen en formato JPEG, PNG o WebP",
+              "max": "La imagen debe pesar 2 MB o menos"
+            }
+          }
+        },
+        "ui": {
+          "card": {
+            "header": {
+              "title": "Avatar",
+              "description": "Este es tu avatar. Haz clic en él para subir uno personalizado desde tus archivos."
+            },
+            "content": {
+              "input": {
+                "label": "Subir imagen de avatar"
+              },
+              "trigger": {
+                "label": "Cambiar avatar"
+              },
+              "avatar": {
+                "alt": "Avatar del usuario"
+              }
+            },
+            "footer": {
+              "description": "El avatar es opcional, pero se recomienda añadir uno."
+            }
+          },
+          "dialog": {
+            "content": {
+              "header": {
+                "title": "Recorta tu nuevo avatar",
+                "description": "Ajusta el área de recorte para definir cómo se mostrará tu nuevo avatar."
+              },
+              "cropper": {
+                "aspectRatioLabel": "Relación de aspecto",
+                "aspectRatioOptions": {
+                  "square": "Cuadrado (1:1)",
+                  "portrait": "Vertical (4:5)",
+                  "landscape": "Horizontal (16:9)"
+                }
+              },
+              "footer": {
+                "actions": {
+                  "cancelButton": {
+                    "label": "Cancelar"
+                  },
+                  "submitButton": {
+                    "label": "Guardar"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "name": {
+        "handlers": {
+          "submit": {
+            "success": "Nombre actualizado correctamente.",
+            "error": "No se ha podido actualizar el nombre. Inténtalo de nuevo."
+          }
+        },
+        "schemas": {
+          "name": {
+            "name": {
+              "required": "El nombre es obligatorio",
+              "min": "El nombre debe tener al menos 1 carácter",
+              "max": "El nombre no puede superar los 64 caracteres"
+            }
+          }
+        },
+        "ui": {
+          "card": {
+            "header": {
+              "title": "Nombre visible",
+              "description": "Introduce tu nombre completo o el nombre con el que quieras que te identifiquen."
+            },
+            "content": {
+              "form": {
+                "fields": {
+                  "name": {
+                    "label": "Nombre",
+                    "placeholder": "Introduce tu nombre"
+                  }
+                },
+                "submitButton": {
+                  "label": "Guardar"
+                }
+              }
+            }
+          }
+        }
+      },
+      "username": {
+        "handlers": {
+          "submit": {
+            "success": "Nombre de usuario actualizado correctamente.",
+            "error": "No se ha podido actualizar el nombre de usuario. Inténtalo de nuevo.",
+            "usernameUnavailable": "Este nombre de usuario ya está en uso."
+          }
+        },
+        "schemas": {
+          "username": {
+            "username": {
+              "required": "El nombre de usuario es obligatorio",
+              "min": "El nombre de usuario debe tener al menos 3 caracteres",
+              "max": "El nombre de usuario no puede superar los 30 caracteres",
+              "invalid": "El nombre de usuario solo puede contener letras, números, guiones bajos y puntos"
+            }
+          }
+        },
+        "ui": {
+          "card": {
+            "header": {
+              "title": "Nombre de usuario",
+              "description": "Este es tu nombre de usuario único. Puede utilizarse para identificarte dentro de la aplicación."
+            },
+            "content": {
+              "form": {
+                "fields": {
+                  "username": {
+                    "label": "Nombre de usuario",
+                    "placeholder": "Introduce tu nombre de usuario"
+                  }
+                },
+                "submitButton": {
+                  "label": "Guardar"
+                }
+              }
+            }
+          }
+        }
+      },
+      "email": {
+        "handlers": {
+          "submit": {
+            "success": "Se ha enviado un correo de verificación a tu nueva dirección. Revisa tu bandeja de entrada para confirmar el cambio.",
+            "error": "No se ha podido actualizar el correo electrónico. Inténtalo de nuevo."
+          }
+        },
+        "schemas": {
+          "email": {
+            "newEmail": {
+              "required": "El correo electrónico es obligatorio",
+              "invalid": "Introduce una dirección de correo electrónico válida",
+              "max": "El correo electrónico no puede superar los 255 caracteres"
+            }
+          }
+        },
+        "ui": {
+          "card": {
+            "header": {
+              "title": "Correo electrónico",
+              "description": "Actualiza el correo electrónico asociado a tu cuenta. Se enviará un enlace de verificación a tu nueva dirección."
+            },
+            "content": {
+              "form": {
+                "fields": {
+                  "newEmail": {
+                    "label": "Correo electrónico",
+                    "placeholder": "Introduce tu correo electrónico"
+                  }
+                },
+                "submitButton": {
+                  "label": "Guardar"
+                }
+              }
+            }
+          }
+        }
+      },
+      "deleteAccount": {
+        "emails": {
+          "deleteAccount": {
+            "subject": "Confirma la eliminación de tu cuenta",
+            "content": {
+              "previewText": "Confirmar eliminación de cuenta",
+              "title": "Eliminar tu cuenta",
+              "button": "Confirmar eliminación de cuenta",
+              "firstParagraph": "Haz clic en el botón de abajo para eliminar tu cuenta de forma permanente. Este enlace expirará en 1 hora.",
+              "secondParagraph": "O copia y pega el siguiente enlace en tu navegador:",
+              "thirdParagraph": "Esta acción eliminará permanentemente la cuenta asociada a",
+              "footer": "Si no has solicitado esto, puedes ignorar este correo de forma segura. Tu cuenta no será eliminada."
+            }
+          }
+        },
+        "handlers": {
+          "deleteClick": {
+            "emailSent": "Se ha enviado un correo de confirmación. Revisa tu bandeja de entrada para confirmar la eliminación de tu cuenta.",
+            "error": "No se ha podido iniciar la eliminación de la cuenta. Inténtalo de nuevo."
+          },
+          "submit": {
+            "success": "Tu cuenta ha sido eliminada permanentemente.",
+            "error": "No se ha podido eliminar la cuenta. Comprueba tu contraseña e inténtalo de nuevo."
+          }
+        },
+        "schemas": {
+          "deleteAccount": {
+            "password": {
+              "required": "La contraseña es obligatoria"
+            }
+          }
+        },
+        "ui": {
+          "card": {
+            "header": {
+              "title": "Eliminar cuenta",
+              "description": "Elimina permanentemente tu cuenta y todo su contenido. Esta acción no es reversible, así que procede con precaución."
+            },
+            "footer": {
+              "deleteButton": {
+                "label": "Eliminar cuenta personal"
+              }
+            }
+          },
+          "dialog": {
+            "content": {
+              "header": {
+                "title": "Eliminar cuenta",
+                "description": "Introduce tu contraseña para confirmar que deseas eliminar permanentemente tu cuenta. Esta acción no se puede deshacer."
+              },
+              "form": {
+                "password": {
+                  "label": "Contraseña",
+                  "placeholder": "Introduce tu contraseña"
+                },
+                "submitButton": {
+                  "label": "Eliminar cuenta"
+                }
+              }
+            }
+          },
+          "oauthDialog": {
+            "content": {
+              "header": {
+                "title": "Eliminar cuenta",
+                "description": "Esto eliminará permanentemente tu cuenta y todos sus contenidos. Esta acción no es reversible."
+              },
+              "alert": "Esta acción no es reversible. Por favor, asegúrate.",
+              "confirmationPhrase": "eliminar mi cuenta",
+              "confirmLabel": "Para confirmar, escribe <phrase>{phrase}</phrase> a continuación:",
+              "cancelButton": "Cancelar",
+              "submitButton": "Eliminar cuenta"
+            }
+          }
+        }
+      }
+    },
     "page": {
       "header": {
         "title": "Ajustes de Perfil",

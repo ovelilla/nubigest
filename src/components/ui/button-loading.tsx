@@ -14,10 +14,10 @@ const ButtonLoading = ({
 }) => {
   return (
     <Button
-      {...props}
       className={cn("gap-2", className)}
       disabled={disabled || loading}
       focusableWhenDisabled
+      {...props}
     >
       {loading && <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden />}
       {children}

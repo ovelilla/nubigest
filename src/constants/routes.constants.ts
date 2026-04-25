@@ -1,5 +1,6 @@
 const API_PREFIX = "/api";
 const AUTH_ROUTES = [
+  "/account-deleted",
   "/forgot-password",
   "/reset-password",
   "/signin",

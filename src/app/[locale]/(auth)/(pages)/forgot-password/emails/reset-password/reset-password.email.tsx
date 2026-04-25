@@ -11,7 +11,7 @@ import {
   Section,
   Tailwind,
   Text,
-} from "@react-email/components";
+} from "react-email";
 import { getTranslations } from "next-intl/server";
 // Types
 import type { ResetPasswordProps } from "./types/reset-password.types";

@@ -56,9 +56,9 @@ const SignInContainer = ({ reset }: SignInContainerProps) => {
           </Alert>
         )}
         <ButtonLoading
-          loading={loading.status && loading.provider === "passkey"}
+          disabled={loading.status}
+          // loading={loading.status && loading.provider === "passkey"}
           onClick={handlePasskeyClick}
-          type="button"
           variant="outline"
         >
           <FingerprintPattern className="mr-2 h-5 w-5" />

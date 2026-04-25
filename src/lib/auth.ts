@@ -10,6 +10,7 @@ import { prisma } from "@/lib/prisma";
 import { sendResetPasswordEmail } from "@/app/[locale]/(auth)/(pages)/forgot-password/services/send-reset-password-email.service";
 import { sendTwoFactorOtpEmail } from "@/app/[locale]/(auth)/(pages)/two-factor/(pages)/email/services/send-two-factor-otp-email/send-two-factor-otp-email.service";
 import { sendVerificationEmail } from "@/app/[locale]/(auth)/(pages)/signup/services/send-verification-email/send-verification-email.service";
+import { sendDeleteAccountVerificationEmail } from "@/app/[locale]/(protected)/(pages)/user/settings/(pages)/profile/components/delete-account/services/send-delete-account-verification-email/send-delete-account-verification-email.service";
 
 const auth = betterAuth({
   account: {
@@ -23,6 +24,11 @@ const auth = betterAuth({
     },
   },
   appName: "Nubigest",
+  baseURL: {
+    allowedHosts: ["nubigest.com", "www.nubigest.com", "localhost:*"],
+    protocol: "auto",
+    fallback: "http://localhost:3000",
+  },
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
@@ -141,6 +147,20 @@ const auth = betterAuth({
     },
   },
   trustedOrigins: ["https://www.nubigest.com", "https://nubigest.com"],
+  user: {
+    changeEmail: {
+      enabled: true,
+    },
+    deleteUser: {
+      enabled: true,
+      sendDeleteAccountVerification: async ({ user, url }) => {
+        sendDeleteAccountVerificationEmail({
+          email: user.email,
+          url,
+        });
+      },
+    },
+  },
 });
 
 type SocialProviders = keyof typeof auth.options.socialProviders;

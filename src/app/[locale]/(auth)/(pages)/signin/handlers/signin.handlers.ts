@@ -22,27 +22,28 @@ const handleOAuthClick: HandleOAuthClick = async ({
   tSignIn,
 }) => {
   try {
-    setLoading({ provider, status: true });
-
-    const { error } = await authClient.signIn.social({
+    await authClient.signIn.social({
       provider,
       callbackURL: DEFAULT_REDIRECT,
+      fetchOptions: {
+        onRequest: () => {
+          setLoading({ provider, status: true });
+        },
+        onResponse: () => {
+          setLoading({ provider, status: false });
+        },
+        onError: (context) => {
+          if (context.error.code && tErrors.has(context.error.code)) {
+            toast.error(tErrors(context.error.code));
+            return;
+          }
+          toast.error(tSignIn("handlers.oauth.error.generic"));
+        },
+      },
     });
-
-    if (error) {
-      if (error.code && tErrors.has(error.code)) {
-        toast.error(tErrors(error.code));
-        return;
-      }
-
-      toast.error(tSignIn("handlers.submit.error.generic"));
-      return;
-    }
   } catch (error) {
     console.error(error);
     toast.error(tSignIn("handlers.oauth.error.generic"));
-  } finally {
-    setLoading({ provider, status: false });
   }
 };
 
@@ -85,13 +86,11 @@ const handleSubmit: HandleSubmit = async ({
   values,
 }) => {
   try {
-    await authClient.signIn.email(
-      {
-        email: values.email,
-        password: values.password,
-        rememberMe: values.rememberMe,
-      },
-      {
+    await authClient.signIn.email({
+      email: values.email,
+      password: values.password,
+      rememberMe: values.rememberMe,
+      fetchOptions: {
         onRequest: () => {
           setLoading({ provider: "credentials", status: true });
         },
@@ -125,7 +124,7 @@ const handleSubmit: HandleSubmit = async ({
           toast.error(tSignIn("handlers.submit.error.generic"));
         },
       },
-    );
+    });
   } catch (error) {
     console.error(error);
     toast.error(tSignIn("handlers.submit.error.generic"));

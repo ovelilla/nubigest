@@ -3,6 +3,7 @@ const LOCALES = ["en", "es", "ar"] as const;
 const RTL_LOCALES = ["ar"];
 const PATHNAMES = {
   "/": "/",
+  "/account-deleted": "/account-deleted",
   "/signin": {
     es: "/iniciar-sesion",
     ar: "/تسجيل-الدخول",

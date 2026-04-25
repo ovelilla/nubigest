@@ -1,10 +1,16 @@
 "use client";
 // Vendors
-import { useState } from "react";
+import { useEffect, useState } from "react";
+// Auth
+import { authClient } from "@/lib/auth-client";
 // Components
 import { Sidebar, SidebarProvider, SidebarRail } from "@/components/ui/sidebar";
+// Constants
+import { BROADCAST_CHANNEL_NAME } from "@/constants/broadcast-channels.constants";
 // Hooks
 import { useDirection } from "@/components/ui/direction";
+// i18n
+import { useRouter } from "@/i18n/navigation";
 // Types
 import {
   ProtectedLayoutProps,
@@ -16,6 +22,18 @@ import {
 
 const ProtectedLayout = ({ children }: ProtectedLayoutProps) => {
   const [open, setOpen] = useState<boolean>(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    const channel = new BroadcastChannel(BROADCAST_CHANNEL_NAME);
+    channel.onmessage = async (event: MessageEvent<{ type: string }>) => {
+      if (event.data?.type === "account-deleted") {
+        await authClient.signOut();
+        router.replace("/signin");
+      }
+    };
+    return () => channel.close();
+  }, [router]);
 
   return (
     <SidebarProvider defaultOpen={true} open={open} onOpenChange={setOpen}>

@@ -3,44 +3,48 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 // Components
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 // Libs
 import { cn } from "@/lib/utils";
 // Icons
 import { Eye, EyeOff } from "lucide-react";
 
-function PasswordInput({
-  className,
-  ...props
-}: React.ComponentProps<typeof Input>) {
-  const [showPassword, setShowPassword] = useState(false);
+type PasswordInputProps = React.ComponentProps<typeof InputGroupInput>;
 
+function PasswordInput({ className, disabled, ...props }: PasswordInputProps) {
+  const [showPassword, setShowPassword] = useState(false);
   const t = useTranslations("root.components.passwordInput");
 
   return (
-    <div className="relative">
-      <Input
+    <InputGroup className={cn(className)}>
+      <InputGroupInput
         {...props}
+        disabled={disabled}
         type={showPassword ? "text" : "password"}
-        className={cn("pr-12", className)}
       />
-      <Button
-        aria-label={showPassword ? t("ariaLabelHide") : t("ariaLabelShow")}
-        aria-pressed={showPassword}
-        className="absolute top-1/2 right-0 -translate-y-1/2"
-        disabled={props.disabled}
-        onClick={() => setShowPassword((v) => !v)}
-        size="icon"
-        variant="ghost"
-      >
-        {showPassword ? (
-          <EyeOff className="h-5 w-5" />
-        ) : (
-          <Eye className="h-5 w-5" />
-        )}
-      </Button>
-    </div>
+      <InputGroupAddon align="inline-end">
+        <InputGroupButton
+          type="button"
+          aria-label={showPassword ? t("ariaLabelHide") : t("ariaLabelShow")}
+          aria-pressed={showPassword}
+          disabled={disabled}
+          onClick={() => setShowPassword((v) => !v)}
+          size="icon-sm"
+          variant="ghost"
+        >
+          {showPassword ? (
+            <EyeOff className="h-4 w-4" />
+          ) : (
+            <Eye className="h-4 w-4" />
+          )}
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
   );
 }
 

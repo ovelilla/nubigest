@@ -1,12 +1,6 @@
-
-
 social providers desde server action en auth?
 
-
-
-
 en seguridad, revisar si hay cuenta credenciales y avisar de ello
-
 
 usememo en getShema
 
@@ -14,5 +8,17 @@ en vez de Hook usar use
 
 https://dribbble.com/shots/26068973-Profile-Settings
 
-
 añadir Breadcrumb
+
+añadir fecha de creacion a passkeys
+
+no handleres invertidos en auth naming
+
+repasar flujos en vercel
+
+si se usa fieldset, se usa fieldgroup
+
+no sr-only, mejor aria
+
+cuando se usa useQuery pasar el userid
+

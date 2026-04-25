@@ -119,6 +119,11 @@
           },
           "userNav": {
             "dropdown": {
+              "trigger": {
+                "avatar": {
+                  "alt": "Avatar del usuario"
+                }
+              },
               "items": {
                 "settings": "Ajustes",
                 "users": "Usuarios",

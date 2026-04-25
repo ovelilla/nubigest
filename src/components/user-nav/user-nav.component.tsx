@@ -1,7 +1,7 @@
 // Vendors
 import { Link } from "@/i18n/navigation";
 // Components
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -33,6 +33,11 @@ const UserNav = ({ session }: UserNavProps) => {
         render={
           <Button variant="ghost" size="icon" className="relative">
             <Avatar>
+              <AvatarImage
+                src={session.user.image ?? undefined}
+                alt={t("dropdown.trigger.avatar.alt")}
+                referrerPolicy="no-referrer"
+              />
               <AvatarFallback className="text-base">{fallback}</AvatarFallback>
             </Avatar>
           </Button>
@@ -43,6 +48,11 @@ const UserNav = ({ session }: UserNavProps) => {
           <DropdownMenuLabel className="p-0 font-normal">
             <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
               <Avatar className="h-8 w-8 rounded-lg">
+                <AvatarImage
+                  src={session.user.image ?? undefined}
+                  alt={t("dropdown.trigger.avatar.alt")}
+                  referrerPolicy="no-referrer"
+                />
                 <AvatarFallback className="rounded-lg">
                   {fallback}
                 </AvatarFallback>
@@ -56,7 +66,6 @@ const UserNav = ({ session }: UserNavProps) => {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-
           <DropdownMenuItem
             render={
               <Link

@@ -9,10 +9,10 @@ import {
   PageLayoutContent,
 } from "@/components/ui/page-layout";
 import { SettingsNav } from "../../components/settings-nav/settings-nav.component";
-// Types
-import type { ProfileSettingsPageProps } from "./types/page.types";
+// Containers
+import { ProfileContainer } from "./profile.container";
 
-const ProfileSettingsPage = ({ children }: ProfileSettingsPageProps) => {
+const ProfileSettingsPage = () => {
   const t = useTranslations("profileSettings.page");
   return (
     <PageLayout>
@@ -24,7 +24,7 @@ const ProfileSettingsPage = ({ children }: ProfileSettingsPageProps) => {
       </PageLayoutHeader>
       <PageLayoutContent>
         <SettingsNav />
-        {children}
+        <ProfileContainer />
       </PageLayoutContent>
     </PageLayout>
   );
