@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Vendors
 import React from "react";
 // Components
@@ -28,7 +28,7 @@ import { AccountsError } from "./components/accounts-error/accounts-error.compon
 import { AccountsSkeleton } from "./components/accounts-skeleton/accounts-skeleton.component";
 import { SetPassword } from "./components/set-password/set-password.component";
 // Hooks
-import { AccountsHook } from "./hooks/accounts.hook";
+import { useAccounts } from "./hooks/use-accounts.hook";
 // Icons
 import { KeyRound } from "lucide-react";
 // Utils
@@ -63,7 +63,7 @@ const AccountsContainer = () => {
     providersWithAccounts,
     setPasswordOpen,
     t,
-  } = AccountsHook();
+  } = useAccounts();
 
   if (isLoading) {
     return <AccountsSkeleton />;

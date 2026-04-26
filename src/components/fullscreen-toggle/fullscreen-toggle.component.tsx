@@ -1,12 +1,12 @@
-// Components
+﻿// Components
 import { Button } from "@/components/ui/button";
 // Hooks
-import { FullscreenToggleHook } from "./hooks/fullscreen-toggle.hook";
+import { useFullscreenToggle } from "./hooks/use-fullscreen-toggle.hook";
 // Icons
 import { Expand, Shrink } from "lucide-react";
 
 const FullscreenToggle = () => {
-  const { handleToggleFullscreen, isFullscreen, t } = FullscreenToggleHook();
+  const { handleToggleFullscreen, isFullscreen, t } = useFullscreenToggle();
 
   return (
     <Button

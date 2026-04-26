@@ -1,8 +1,8 @@
-// Types
+﻿// Types
 import type { Dispatch, SetStateAction } from "react";
 import type { useRouter } from "@/i18n/navigation";
 
-type SignOutHandler = (props: {
+type HandleSignOut = (props: {
   setIsSigningOut: Dispatch<SetStateAction<boolean>>;
   router: ReturnType<typeof useRouter>;
 }) => Promise<void>;
@@ -16,4 +16,4 @@ type UserNavHandlersReturn = {
   handleSignOut: () => void;
 };
 
-export type { SignOutHandler, UserNavHandlersProps, UserNavHandlersReturn };
+export type { HandleSignOut, UserNavHandlersProps, UserNavHandlersReturn };

@@ -1,0 +1,8 @@
+{
+  "chat.tools.terminal.autoApprove": {
+    "/^powershell -ExecutionPolicy Bypass -File \\.\\\\rename-hooks\\.ps1$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "home": {
+    "metadata": {
+      "title": "Nubigest — Plataforma de Gestión Empresarial",
+      "description": "Nubigest centraliza tu organización, usuarios, clientes, documentación y procesos internos en una sola plataforma en la nube."
+    },
+    "layout": {
+      "header": {
+        "nav": {
+          "features": "Funcionalidades",
+          "howItWorks": "Cómo funciona",
+          "faq": "FAQ"
+        },
+        "actions": {
+          "signIn": "Iniciar sesión",
+          "getStarted": "Empezar"
+        }
+      },
+      "footer": {
+        "tagline": "Gestión empresarial, simplificada.",
+        "contact": {
+          "label": "Contacto",
+          "email": "hello@nubigest.com"
+        },
+        "legal": {
+          "privacy": "Política de privacidad",
+          "terms": "Términos de servicio",
+          "refund": "Política de reembolso",
+          "cancellation": "Política de cancelación"
+        },
+        "copyright": "© {year} Nubigest. Todos los derechos reservados."
+      }
+    },
+    "hero": {
+      "badge": "Plataforma SaaS en la nube",
+      "title": "El sistema operativo para tu empresa",
+      "description": "Nubigest centraliza tu organización, usuarios, clientes, documentación y procesos internos en una sola plataforma — disponible en cualquier lugar, lista desde el primer día.",
+      "actions": {
+        "primary": "Empezar",
+        "secondary": "Iniciar sesión"
+      }
+    },
+    "about": {
+      "title": "Diseñado para empresas que necesitan claridad",
+      "description": "Nubigest es una plataforma de gestión empresarial en la nube diseñada para equipos que necesitan organizar operaciones, gestionar accesos y hacer seguimiento de la actividad diaria — sin complejidad. Construido como servicio por suscripción, se adapta al crecimiento de tu organización.",
+      "items": [
+        {
+          "label": "Alojado en la nube",
+          "description": "Sin servidores que gestionar. Tus datos siempre disponibles, respaldados y seguros."
+        },
+        {
+          "label": "Por suscripción",
+          "description": "Precios simples y predecibles. Sin costes iniciales ni compromisos a largo plazo."
+        },
+        {
+          "label": "Multi-tenant",
+          "description": "Gestiona una o varias organizaciones desde una sola cuenta."
+        }
+      ]
+    },
+    "features": {
+      "badge": "Capacidades de la plataforma",
+      "title": "Todo lo que tu equipo necesita",
+      "description": "Nubigest reúne las herramientas esenciales que las empresas necesitan para mantenerse organizadas, alineadas y eficientes.",
+      "items": [
+        {
+          "title": "Gestión de organizaciones",
+          "description": "Estructura tu empresa, departamentos y roles en una jerarquía clara y manejable."
+        },
+        {
+          "title": "Usuarios y control de acceso",
+          "description": "Define quién accede a qué con permisos granulares basados en roles."
+        },
+        {
+          "title": "Soporte multi-tenant",
+          "description": "Opera y supervisa múltiples organizaciones desde una sola cuenta."
+        },
+        {
+          "title": "Gestión de clientes",
+          "description": "Centraliza datos de contacto y mantén los registros de clientes organizados y accesibles."
+        },
+        {
+          "title": "Gestión documental",
+          "description": "Almacena, organiza y recupera documentos empresariales de forma segura en un solo lugar."
+        },
+        {
+          "title": "Auditoría y registros de actividad",
+          "description": "Registra automáticamente cambios, acciones y eventos en toda tu organización."
+        }
+      ]
+    },
+    "benefits": {
+      "badge": "Por qué Nubigest",
+      "title": "Diseñado para la claridad operativa",
+      "items": [
+        {
+          "title": "Sin carga de IT",
+          "description": "Nubigest funciona completamente en la nube. Sin infraestructura que aprovisionar, mantener ni gestionar."
+        },
+        {
+          "title": "Estructurado para equipos",
+          "description": "El control de acceso basado en roles mantiene los equipos alineados y los datos protegidos."
+        },
+        {
+          "title": "Preparado para escalar",
+          "description": "Desde un equipo pequeño hasta una operación multi-organización, la plataforma crece con tus necesidades."
+        }
+      ]
+    },
+    "howItWorks": {
+      "badge": "Primeros pasos",
+      "title": "En funcionamiento en minutos",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Crea tu cuenta",
+          "description": "Regístrate y configura tu organización con los ajustes básicos en pocos minutos."
+        },
+        {
+          "number": "02",
+          "title": "Invita a tu equipo",
+          "description": "Añade usuarios, asigna roles y configura los niveles de acceso para cada persona."
+        },
+        {
+          "number": "03",
+          "title": "Empieza a gestionar",
+          "description": "Accede a todas tus herramientas de operaciones, documentación y actividad del equipo desde un único panel."
+        }
+      ]
+    },
+    "faq": {
+      "badge": "FAQ",
+      "title": "Preguntas frecuentes",
+      "items": [
+        {
+          "question": "¿Qué es Nubigest?",
+          "answer": "Nubigest es una plataforma SaaS en la nube para gestión empresarial. Ayuda a las organizaciones a centralizar operaciones, gestionar usuarios y accesos, almacenar documentación y hacer seguimiento de la actividad interna."
+        },
+        {
+          "question": "¿Es un servicio por suscripción?",
+          "answer": "Sí. Nubigest se ofrece como suscripción de software como servicio. Pagas una tarifa recurrente por el acceso a la plataforma sin costes iniciales."
+        },
+        {
+          "question": "¿Puedo gestionar varias organizaciones?",
+          "answer": "Sí. La plataforma admite arquitectura multi-tenant, lo que te permite operar y gestionar múltiples organizaciones desde una sola cuenta."
+        },
+        {
+          "question": "¿Cómo se gestiona el acceso de usuarios?",
+          "answer": "El acceso se controla mediante un sistema de permisos basado en roles. Puedes definir roles personalizados y asignarlos a usuarios para controlar exactamente qué puede ver y hacer cada persona."
+        },
+        {
+          "question": "¿Dónde se almacenan mis datos?",
+          "answer": "Nubigest está alojado en infraestructura cloud segura. Tus datos están cifrados en tránsito y en reposo y nunca se comparten con terceros."
+        },
+        {
+          "question": "¿Cómo puedo empezar?",
+          "answer": "Puedes crear una cuenta directamente desde la página de registro. No se requiere instalación — todo funciona en tu navegador."
+        }
+      ]
+    },
+    "cta": {
+      "title": "¿Listo para empezar?",
+      "description": "Crea tu cuenta y empieza a gestionar tu empresa desde una sola plataforma.",
+      "action": "Empezar"
+    }
+  }
+}

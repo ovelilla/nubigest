@@ -1,4 +1,4 @@
-// Vendors
+﻿// Vendors
 import { Controller } from "react-hook-form";
 // Components
 import { ButtonLoading } from "@/components/ui/button-loading";
@@ -18,7 +18,7 @@ import {
   StepTitle,
 } from "@/components/step/step.component";
 // Hooks
-import { VerifyCodeHook } from "./hooks/verify-code.hook";
+import { useVerifyCode } from "./hooks/use-verify-code.hook";
 // Types
 import type { VerifyCodeProps } from "./types/verify-code.component.types";
 
@@ -28,7 +28,7 @@ const VerifyCode = ({
   onPrev,
   title,
 }: VerifyCodeProps) => {
-  const { form, handleSubmit, t } = VerifyCodeHook({ onNext });
+  const { form, handleSubmit, t } = useVerifyCode({ onNext });
   return (
     <Step>
       {(description || title) && (

@@ -1,4 +1,4 @@
-// Vendors
+﻿// Vendors
 import type { _Translator } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";
 import type { LoadingState } from "../../hooks/types/signup.hook.types";
@@ -17,14 +17,14 @@ type SignUpHandlersReturn = {
   handleSubmit: (values: SignUpSchema) => void;
 };
 
-type OAuthClickHandlerProps = {
+type HandleOAuthClickProps = {
   setLoading: Dispatch<SetStateAction<LoadingState>>;
   provider: string;
   tErrors: _Translator;
   tSignUp: _Translator;
 };
 
-type SubmitHandlerProps = {
+type HandleSubmitProps = {
   form: UseFormReturn<SignUpSchema>;
   setLoading: Dispatch<SetStateAction<LoadingState>>;
   tErrors: _Translator;
@@ -33,8 +33,8 @@ type SubmitHandlerProps = {
 };
 
 export type {
-  OAuthClickHandlerProps,
+  HandleOAuthClickProps,
   SignUpHandlersProps,
   SignUpHandlersReturn,
-  SubmitHandlerProps,
+  HandleSubmitProps,
 };

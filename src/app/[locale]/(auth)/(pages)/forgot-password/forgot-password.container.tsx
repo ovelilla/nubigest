@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Vendors
 import { Controller } from "react-hook-form";
 // Components
@@ -15,10 +15,10 @@ import { Field, FieldLabel, FieldError, FieldSet } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Link } from "@/components/ui/link";
 // Hooks
-import { ForgotPasswordHook } from "./hooks/forgot-password.hook";
+import { useForgotPassword } from "./hooks/use-forgot-use-password.hook";
 
 const ForgotPasswordContainer = () => {
-  const { form, handleSubmit, loading, t } = ForgotPasswordHook();
+  const { form, handleSubmit, loading, t } = useForgotPassword();
 
   return (
     <AuthCard>

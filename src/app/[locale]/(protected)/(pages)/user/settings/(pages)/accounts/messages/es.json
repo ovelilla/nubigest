@@ -203,6 +203,10 @@
       "header": {
         "title": "Cuentas conectadas",
         "description": "Gestiona cómo inicias sesión en tu cuenta."
+      },
+      "breadcrumb": {
+        "settings": "Ajustes",
+        "profile": "Cuentas conectadas"
       }
     }
   }

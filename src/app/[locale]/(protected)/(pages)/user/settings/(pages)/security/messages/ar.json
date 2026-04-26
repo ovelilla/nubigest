@@ -35,7 +35,7 @@
           },
           "passkey": {
             "title": "مفتاح وصول بدون اسم",
-            "description": "يمكن استخدام مفتاح الوصول هذا لتسجيل الدخول إلى حسابك.",
+            "description": "أضيف في {createdAt, date, medium}.",
             "actions": {
               "renameButton": {
                 "label": "إعادة التسمية"
@@ -444,6 +444,10 @@
       "header": {
         "title": "إعدادات الأمان",
         "description": "قم بإدارة إعدادات الأمان وتحديد تفضيلاتك."
+      },
+      "breadcrumb": {
+        "settings": "الإعدادات",
+        "profile": "الأمان"
       }
     }
   }

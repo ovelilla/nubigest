@@ -1,11 +1,24 @@
 // Vendors
-import { getLocale } from "next-intl/server";
-// i18n
-import { redirect } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
+// Containers
+import { HomeContainer } from "./home.container";
+// Types
+import type { Metadata } from "next";
+import type { HomePageProps } from "./types/page.types";
 
-const Home = async () => {
-  const locale = await getLocale();
-  return redirect({ href: "/signin", locale });
+export async function generateMetadata({
+  params,
+}: HomePageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "home.metadata" });
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
+
+const HomePage = () => {
+  return <HomeContainer />;
 };
 
-export default Home;
+export default HomePage;

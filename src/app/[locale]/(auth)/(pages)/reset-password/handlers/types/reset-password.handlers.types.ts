@@ -1,4 +1,4 @@
-// Types
+﻿// Types
 import type { _Translator } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";
 import type { ResetPasswordSchema } from "../../schemas/types/reset-password.schema.types";
@@ -18,7 +18,7 @@ type ResetPasswordHandlersReturn = {
   handleSubmit: (values: ResetPasswordSchema) => void;
 };
 
-type SubmitHandler = (props: {
+type HandleSubmit = (props: {
   form: UseFormReturn<ResetPasswordSchema>;
   router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<boolean>>;
@@ -31,5 +31,5 @@ type SubmitHandler = (props: {
 export type {
   ResetPasswordHandlersProps,
   ResetPasswordHandlersReturn,
-  SubmitHandler,
+  HandleSubmit,
 };

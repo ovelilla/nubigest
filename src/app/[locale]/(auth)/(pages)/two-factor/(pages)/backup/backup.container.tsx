@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Vendors
 import { Controller } from "react-hook-form";
 // Components
@@ -16,10 +16,10 @@ import { Field, FieldLabel, FieldError, FieldSet } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Link } from "@/components/ui/link";
 // Hooks
-import { BackupHook } from "./hooks/backup.hook";
+import { useBackup } from "./hooks/use-backup.hook";
 
 const BackupContainer = () => {
-  const { form, handleSubmit, loading, t } = BackupHook();
+  const { form, handleSubmit, loading, t } = useBackup();
 
   return (
     <AuthCard>

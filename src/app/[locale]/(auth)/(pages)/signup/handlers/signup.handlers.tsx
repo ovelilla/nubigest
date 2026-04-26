@@ -1,4 +1,4 @@
-// Vendors
+﻿// Vendors
 import { toast } from "sonner";
 // Auth
 import { authClient } from "@/lib/auth-client";
@@ -6,18 +6,18 @@ import { authClient } from "@/lib/auth-client";
 import { DEFAULT_REDIRECT } from "@/constants/routes.constants";
 // Types
 import type {
-  OAuthClickHandlerProps,
+  HandleOAuthClickProps,
   SignUpHandlersProps,
   SignUpHandlersReturn,
-  SubmitHandlerProps,
+  HandleSubmitProps,
 } from "./types/signup.handlers.types";
 
-const oauthClickHandler = async ({
+const handleOAuthClick = async ({
   setLoading,
   provider,
   tErrors,
   tSignUp,
-}: OAuthClickHandlerProps): Promise<void> => {
+}: HandleOAuthClickProps): Promise<void> => {
   try {
     setLoading({ provider, status: true });
 
@@ -42,13 +42,13 @@ const oauthClickHandler = async ({
   }
 };
 
-const submitHandler = async ({
+const handleSubmit = async ({
   form,
   setLoading,
   tErrors,
   tSignUp,
   values,
-}: SubmitHandlerProps): Promise<void> => {
+}: HandleSubmitProps): Promise<void> => {
   try {
     await authClient.signUp.email(
       {
@@ -92,9 +92,9 @@ const SignUpHandlers = ({
 }: SignUpHandlersProps): SignUpHandlersReturn => {
   return {
     handleOAuthClick: (provider) =>
-      oauthClickHandler({ setLoading, provider, tErrors, tSignUp }),
+      handleOAuthClick({ setLoading, provider, tErrors, tSignUp }),
     handleSubmit: (values) =>
-      submitHandler({
+      handleSubmit({
         form,
         setLoading,
         tErrors,

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Components
 import {
   AlertDialog,
@@ -22,7 +22,7 @@ import { Password } from "../../steps/password/password.component";
 import { ScanQrCode } from "../../steps/scan-qr-code/scan-qr-code.component";
 import { VerifyCode } from "../../steps/verify-code/verify-code.component";
 // Hooks
-import { SetupAuthenticatorAppHook } from "./hook/setup-authenticator-app.hook";
+import { useSetupAuthenticatorApp } from "./hooks/use-setup-authenticator-app.hook";
 // Types
 import type { SetupAuthenticatorAppProps } from "./types/setup-authenticator-app.component.types";
 
@@ -46,7 +46,7 @@ const SetupAuthenticatorApp = ({
     stepper,
     t,
     totpUri,
-  } = SetupAuthenticatorAppHook({
+  } = useSetupAuthenticatorApp({
     onOpenChange,
   });
   return (

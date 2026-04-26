@@ -1,13 +1,13 @@
-// Vendors
+﻿// Vendors
 import { toast } from "sonner";
 // Types
 import type {
   PasswordHandlersProps,
   PasswordHandlersReturn,
-  SubmitHandler,
+  HandleSubmit,
 } from "./types/password.handlers.types";
 
-const submitHandler: SubmitHandler = async ({
+const handleSubmit: HandleSubmit = async ({
   data,
   form,
   onNext,
@@ -40,7 +40,7 @@ const PasswordHandlers = ({
 }: PasswordHandlersProps): PasswordHandlersReturn => {
   return {
     handleSubmit: (data) =>
-      submitHandler({
+      handleSubmit({
         data,
         form,
         onNext,

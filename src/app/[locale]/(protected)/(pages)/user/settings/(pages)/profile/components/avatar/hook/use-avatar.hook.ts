@@ -1,5 +1,5 @@
 // Vendors
-import { useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 // Auth
 import { authClient } from "@/lib/auth-client";
@@ -32,10 +32,7 @@ const useAvatar = () => {
 
   const t = useTranslations("profileSettings.components.avatar");
 
-  const initials = useMemo(
-    () => getInitials(sessionData?.user?.name),
-    [sessionData?.user?.name],
-  );
+  const initials = getInitials(sessionData?.user?.name);
 
   const avatarPreview = sessionData?.user?.image ?? null;
 

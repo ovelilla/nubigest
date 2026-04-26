@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Vendors
 import { Controller } from "react-hook-form";
 // Components
@@ -20,7 +20,7 @@ import {
 } from "@/components/password-strength";
 import { Skeleton } from "@/components/ui/skeleton";
 // Hooks
-import { ChangePasswordHook } from "./hooks/change-password.hook";
+import { useChangePassword } from "./hooks/use-change-password.hook";
 // Types
 import type { ChangePasswordProps } from "./types/change-password.component.types";
 
@@ -36,7 +36,7 @@ const ChangePassword = ({
     isPendingSession,
     sessionData,
     t,
-  } = ChangePasswordHook({
+  } = useChangePassword({
     onOpenChange,
     onSuccess,
   });

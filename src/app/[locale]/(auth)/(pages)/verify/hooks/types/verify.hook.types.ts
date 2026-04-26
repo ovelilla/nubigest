@@ -1,5 +1,5 @@
-type VerifyHookProps = {
+﻿type UseVerifyProps = {
   email: string;
 };
 
-export type { VerifyHookProps };
+export type { UseVerifyProps };

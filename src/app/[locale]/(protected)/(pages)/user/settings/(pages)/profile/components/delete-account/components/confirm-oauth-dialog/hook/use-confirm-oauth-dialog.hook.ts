@@ -1,4 +1,4 @@
-// Vendors
+﻿// Vendors
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 // Handlers

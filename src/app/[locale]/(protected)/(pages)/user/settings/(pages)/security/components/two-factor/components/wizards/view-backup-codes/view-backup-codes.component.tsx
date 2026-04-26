@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Components
 import { BackupCodes } from "../../steps/backup-codes/backup-codes.component";
 import {
@@ -9,7 +9,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 // Hooks
-import { ViewBackupCodesHook } from "./hook/view-backup-codes.hook";
+import { useViewBackupCodes } from "./hooks/use-view-backup-codes.hook";
 // Types
 import type { ViewBackupCodesProps } from "./types/view-backup-codes.component.types";
 
@@ -23,7 +23,7 @@ const ViewBackupCodes = ({ onOpenChange, open }: ViewBackupCodesProps) => {
     isPending,
     stepper,
     t,
-  } = ViewBackupCodesHook({
+  } = useViewBackupCodes({
     onOpenChange,
     open,
   });

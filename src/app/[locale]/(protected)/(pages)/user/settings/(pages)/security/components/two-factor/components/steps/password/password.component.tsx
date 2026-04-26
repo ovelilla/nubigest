@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Vendors
 import { Controller } from "react-hook-form";
 // Components
@@ -15,12 +15,12 @@ import {
   StepTitle,
 } from "@/components/step/step.component";
 // Hooks
-import { PasswordHook } from "./hooks/password.hook";
+import { usePassword } from "./hooks/use-password.hook";
 // Types
 import type { PasswordProps } from "./types/password.component.types";
 
 const Password = ({ description, onCancel, onNext, title }: PasswordProps) => {
-  const { form, handleSubmit, t } = PasswordHook({ onNext });
+  const { form, handleSubmit, t } = usePassword({ onNext });
 
   return (
     <Step>

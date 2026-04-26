@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "2mb",
     },
   },
+  reactCompiler: true,
   reactStrictMode: false,
 };
 

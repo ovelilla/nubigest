@@ -72,7 +72,9 @@ const PasskeyItem = ({
             <h3>{passkey.name ?? t("ui.passkey.title")}</h3>
           </ItemTitle>
         )}
-        <ItemDescription>{t("ui.passkey.description")}</ItemDescription>
+        <ItemDescription>
+          {t("ui.passkey.description", { createdAt: passkey.createdAt })}
+        </ItemDescription>
       </ItemContent>
       <ItemActions>
         {isEditing ? (

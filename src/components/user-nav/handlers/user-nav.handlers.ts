@@ -1,13 +1,13 @@
-// Auth
+﻿// Auth
 import { authClient } from "@/lib/auth-client";
 // Types
 import type {
   UserNavHandlersProps,
   UserNavHandlersReturn,
-  SignOutHandler,
+  HandleSignOut,
 } from "./types/user-nav.handlers.types";
 
-const signOutHandler: SignOutHandler = async ({ setIsSigningOut, router }) => {
+const handleSignOut: HandleSignOut = async ({ setIsSigningOut, router }) => {
   setIsSigningOut(true);
   await authClient.signOut();
   setIsSigningOut(false);
@@ -19,7 +19,7 @@ const UserNavHandlers = ({
   setIsSigningOut,
 }: UserNavHandlersProps): UserNavHandlersReturn => {
   return {
-    handleSignOut: () => signOutHandler({ setIsSigningOut, router }),
+    handleSignOut: () => handleSignOut({ setIsSigningOut, router }),
   };
 };
 

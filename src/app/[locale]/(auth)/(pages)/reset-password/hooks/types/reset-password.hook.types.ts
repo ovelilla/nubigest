@@ -1,6 +1,6 @@
-type ResetPasswordHookProps = {
+﻿type UseResetPasswordProps = {
   error?: string;
   token?: string;
 };
 
-export type { ResetPasswordHookProps };
+export type { UseResetPasswordProps };

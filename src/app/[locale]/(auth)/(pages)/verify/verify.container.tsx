@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Components
 import {
   AuthCard,
@@ -10,14 +10,14 @@ import {
 } from "@/components/auth-card/auth-card.component";
 import { ButtonLoading } from "@/components/ui/button-loading";
 // Hooks
-import { VerifyHook } from "./hooks/verify.hook";
+import { useVerify } from "./hooks/use-verify.hook";
 // i18n
 import { Link } from "@/i18n/navigation";
 // Types
 import { VerifyContainerProps } from "./types/verify.container.types";
 
 const VerifyContainer = ({ email }: VerifyContainerProps) => {
-  const { cooldown, handleResend, loading, t } = VerifyHook({ email });
+  const { cooldown, handleResend, loading, t } = useVerify({ email });
 
   return (
     <AuthCard>

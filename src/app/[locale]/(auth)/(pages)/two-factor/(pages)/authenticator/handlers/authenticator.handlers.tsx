@@ -1,4 +1,4 @@
-// Vendors
+﻿// Vendors
 import { toast } from "sonner";
 // Auth
 import { authClient } from "@/lib/auth-client";
@@ -8,10 +8,10 @@ import { DEFAULT_REDIRECT } from "@/constants/routes.constants";
 import type {
   TwoFactorHandlersProps,
   TwoFactorHandlersReturn,
-  SubmitHandler,
+  HandleSubmit,
 } from "./types/authenticator.handlers.types";
 
-const submitHandler: SubmitHandler = async ({
+const handleSubmit: HandleSubmit = async ({
   form,
   router,
   setLoading,
@@ -57,7 +57,7 @@ const TwoFactorHandlers = ({
 }: TwoFactorHandlersProps): TwoFactorHandlersReturn => {
   return {
     handleSubmit: (values) =>
-      submitHandler({
+      handleSubmit({
         form,
         router,
         setLoading,

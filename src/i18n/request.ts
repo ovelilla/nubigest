@@ -15,6 +15,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
   const messages = {
   ...(await import(`@/messages/${locale}.json`)).default,
   ...(await import(`@/app/[locale]/messages/${locale}.json`)).default,
+  ...(await import(`@/app/[locale]/(public)/messages/${locale}.json`)).default,
   ...(await import(`@/app/[locale]/(auth)/(pages)/forgot-password/messages/${locale}.json`)).default,
   ...(await import(`@/app/[locale]/(auth)/(pages)/reset-password/messages/${locale}.json`)).default,
   ...(await import(`@/app/[locale]/(auth)/(pages)/signin/messages/${locale}.json`)).default,

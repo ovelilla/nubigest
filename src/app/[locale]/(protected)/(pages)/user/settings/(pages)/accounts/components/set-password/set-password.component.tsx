@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Vendors
 import { Controller } from "react-hook-form";
 // Components
@@ -20,7 +20,7 @@ import {
 } from "@/components/password-strength";
 import { Skeleton } from "@/components/ui/skeleton";
 // Hooks
-import { SetPasswordHook } from "./hooks/set-password.hook";
+import { useSetPassword } from "./hooks/use-set-password.hook";
 // Types
 import type { SetPasswordProps } from "./types/set-password.component.types";
 
@@ -32,7 +32,7 @@ const SetPassword = ({ onOpenChange, onSuccess, open }: SetPasswordProps) => {
     isPendingSession,
     sessionData,
     t,
-  } = SetPasswordHook({
+  } = useSetPassword({
     onOpenChange,
     onSuccess,
   });

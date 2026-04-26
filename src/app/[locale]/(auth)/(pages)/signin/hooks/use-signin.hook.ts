@@ -1,4 +1,4 @@
-// Vendors
+﻿// Vendors
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";

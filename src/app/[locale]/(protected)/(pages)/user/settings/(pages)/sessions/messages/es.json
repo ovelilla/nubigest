@@ -85,6 +85,10 @@
       "header": {
         "title": "Configuración de sesiones",
         "description": "Gestiona tus sesiones activas y la seguridad de tu cuenta."
+      },
+      "breadcrumb": {
+        "settings": "Ajustes",
+        "profile": "Sesiones"
       }
     }
   }

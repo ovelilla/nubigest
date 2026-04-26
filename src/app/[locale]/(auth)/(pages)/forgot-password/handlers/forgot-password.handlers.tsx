@@ -1,4 +1,4 @@
-// Vendors
+﻿// Vendors
 import { toast } from "sonner";
 // Auth
 import { authClient } from "@/lib/auth-client";
@@ -6,10 +6,10 @@ import { authClient } from "@/lib/auth-client";
 import type {
   ForgotPasswordHandlersProps,
   ForgotPasswordHandlersReturn,
-  SubmitHandler,
+  HandleSubmit,
 } from "./types/forgot-password.handlers.types";
 
-const submitHandler: SubmitHandler = async ({
+const handleSubmit: HandleSubmit = async ({
   form,
   setLoading,
   tForgotPassword,
@@ -49,7 +49,7 @@ const ForgotPasswordHandlers = ({
 }: ForgotPasswordHandlersProps): ForgotPasswordHandlersReturn => {
   return {
     handleSubmit: (values) =>
-      submitHandler({
+      handleSubmit({
         form,
         setLoading,
         tErrors,

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Components
 import {
   AlertDialog,
@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/dialog";
 import { Password } from "../../steps/password/password.component";
 // Hooks
-import { GenerateBackupCodesHook } from "./hook/generate-backup-codes.hook";
+import { useGenerateBackupCodes } from "./hooks/use-generate-backup-codes.hook";
 // Types
 import type { GenerateBackupCodesProps } from "./types/generate-backup-codes.component.types";
 
@@ -45,7 +45,7 @@ const GenerateBackupCodes = ({
     id,
     stepper,
     t,
-  } = GenerateBackupCodesHook({
+  } = useGenerateBackupCodes({
     onOpenChange,
   });
 

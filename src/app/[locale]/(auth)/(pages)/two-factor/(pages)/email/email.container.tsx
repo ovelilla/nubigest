@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Vendors
 import { Controller } from "react-hook-form";
 // Components
@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/input-otp";
 import { Link } from "@/components/ui/link";
 // Hooks
-import { EmailHook } from "./hooks/email.hook";
+import { useEmail } from "./hooks/use-email.hook";
 
 const EmailContainer = () => {
   const {
@@ -33,7 +33,7 @@ const EmailContainer = () => {
     loadingVerify,
     form,
     t,
-  } = EmailHook();
+  } = useEmail();
 
   return (
     <AuthCard>

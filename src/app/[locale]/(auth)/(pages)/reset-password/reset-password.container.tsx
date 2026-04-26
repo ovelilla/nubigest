@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Vendors
 import { Controller } from "react-hook-form";
 // Components
@@ -21,7 +21,7 @@ import {
   PasswordStrengthRule,
 } from "@/components/password-strength";
 // Hooks
-import { ResetPasswordHook } from "./hooks/reset-password.hook";
+import { useResetPassword } from "./hooks/use-reset-password.hook";
 // Types
 import type { ResetPasswordContainerProps } from "./types/reset-password.container.types";
 
@@ -29,7 +29,7 @@ const ResetPasswordContainer = ({
   error,
   token,
 }: ResetPasswordContainerProps) => {
-  const { form, isInvalidToken, handleSubmit, loading, t } = ResetPasswordHook({
+  const { form, isInvalidToken, handleSubmit, loading, t } = useResetPassword({
     error,
     token,
   });

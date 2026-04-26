@@ -1,4 +1,4 @@
-// Types
+﻿// Types
 import type { TotpSchema } from "../../schemas/types/verify-code.schema.types";
 import type { UseFormReturn } from "react-hook-form";
 import type { _Translator } from "next-intl";
@@ -16,7 +16,7 @@ type VerifyCodeHandlersReturn = {
   handleSubmit: (data: TotpSchema) => void;
 };
 
-type SubmitHandler = (props: {
+type HandleSubmit = (props: {
   data: TotpSchema;
   form: UseFormReturn<TotpSchema>;
   onNext: (data: TotpSchema) => Promise<{
@@ -29,5 +29,5 @@ type SubmitHandler = (props: {
 export type {
   VerifyCodeHandlersProps,
   VerifyCodeHandlersReturn,
-  SubmitHandler,
+  HandleSubmit,
 };

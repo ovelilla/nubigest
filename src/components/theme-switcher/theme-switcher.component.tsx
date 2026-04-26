@@ -1,5 +1,5 @@
 "use client";
-
+// Components
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,18 +8,19 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useIsMounted } from "@/hooks/use-is-mounted";
-import { useTranslations } from "next-intl";
-import { useTheme } from "@wrksz/themes/client";
+// Constants
+import { THEMES } from "./constants/theme-switcher.constants";
+// Hooks
+import { useThemeSwitcher } from "./hooks/use-theme-switcher.hook";
+// Icons
 import { Loader2, Moon, Sun } from "lucide-react";
 
 const ThemeSwitcher = () => {
-  const { theme, resolvedTheme, setTheme } = useTheme();
-  const isMounted = useIsMounted();
-  const t = useTranslations("root.components.themeSwitcher");
+  const { handleSetTheme, isMounted, open, resolvedTheme, setOpen, t, theme } =
+    useThemeSwitcher();
 
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger
         render={
           <Button
@@ -40,19 +41,12 @@ const ThemeSwitcher = () => {
         }
       />
       <DropdownMenuContent align="end">
-        <DropdownMenuRadioGroup
-          value={theme}
-          onValueChange={(value) => setTheme(value)}
-        >
-          <DropdownMenuRadioItem value="light">
-            {t("themes.light")}
-          </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="dark">
-            {t("themes.dark")}
-          </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="system">
-            {t("themes.system")}
-          </DropdownMenuRadioItem>
+        <DropdownMenuRadioGroup value={theme} onValueChange={handleSetTheme}>
+          {THEMES.map((item) => (
+            <DropdownMenuRadioItem key={item.value} value={item.value}>
+              {t(`themes.${item.value}`)}
+            </DropdownMenuRadioItem>
+          ))}
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -4,6 +4,10 @@
       "header": {
         "title": "Privacy Settings",
         "description": "Manage your privacy settings and set preferences."
+      },
+      "breadcrumb": {
+        "settings": "Settings",
+        "profile": "Privacy"
       }
     }
   }

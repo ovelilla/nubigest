@@ -1,4 +1,4 @@
-// Types
+﻿// Types
 import type { Dispatch, SetStateAction } from "react";
 import type { BackupSchema } from "../../schemas/types/backup.schema.types";
 import type { UseFormReturn } from "react-hook-form";
@@ -17,7 +17,7 @@ type BackupHandlersReturn = {
   handleSubmit: (values: BackupSchema) => void;
 };
 
-type SubmitHandler = (props: {
+type HandleSubmit = (props: {
   form: UseFormReturn<BackupSchema>;
   router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<boolean>>;
@@ -26,4 +26,4 @@ type SubmitHandler = (props: {
   values: BackupSchema;
 }) => Promise<void>;
 
-export type { BackupHandlersProps, BackupHandlersReturn, SubmitHandler };
+export type { BackupHandlersProps, BackupHandlersReturn, HandleSubmit };

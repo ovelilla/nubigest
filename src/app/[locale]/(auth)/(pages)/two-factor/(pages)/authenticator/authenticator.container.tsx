@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Vendors
 import { Controller } from "react-hook-form";
 // Components
@@ -20,10 +20,10 @@ import {
 } from "@/components/ui/input-otp";
 import { Link } from "@/components/ui/link";
 // Hooks
-import { AuthenticatorHook } from "./hooks/authenticator.hook";
+import { useAuthenticator } from "./hooks/use-authenticator.hook";
 
 const AuthenticatorContainer = () => {
-  const { form, handleSubmit, loading, t } = AuthenticatorHook();
+  const { form, handleSubmit, loading, t } = useAuthenticator();
 
   return (
     <AuthCard>

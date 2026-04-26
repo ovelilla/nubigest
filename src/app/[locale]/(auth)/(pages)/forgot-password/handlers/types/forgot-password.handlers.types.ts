@@ -1,4 +1,4 @@
-// Types
+﻿// Types
 import type { _Translator } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";
 import type { ForgotPasswordSchema } from "../../schemas/types/forgot-password.schema.types";
@@ -15,7 +15,7 @@ type ForgotPasswordHandlersReturn = {
   handleSubmit: (values: ForgotPasswordSchema) => void;
 };
 
-type SubmitHandler = (props: {
+type HandleSubmit = (props: {
   form: UseFormReturn<ForgotPasswordSchema>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   tForgotPassword: _Translator;
@@ -26,5 +26,5 @@ type SubmitHandler = (props: {
 export type {
   ForgotPasswordHandlersProps,
   ForgotPasswordHandlersReturn,
-  SubmitHandler,
+  HandleSubmit,
 };

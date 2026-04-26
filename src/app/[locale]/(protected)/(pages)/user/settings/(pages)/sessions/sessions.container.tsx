@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Vendors
 import React from "react";
 // Components
@@ -28,7 +28,7 @@ import { SessionsEmpty } from "./components/sessions-empty/sessions-empty.compon
 import { SessionsError } from "./components/sessions-error/sessions-error.component";
 import { SessionsSkeleton } from "./components/sessions-skeleton/sessions-skeleton.component";
 // Hooks
-import { SessionsHook } from "./hooks/sessions.hook";
+import { useSessions } from "./hooks/use-sessions.hook";
 // Utils
 import { getDeviceIcon } from "./utils/get-device-icon/get-device-icon.util";
 
@@ -54,7 +54,7 @@ const SessionsContainer = () => {
     now,
     revokingToken,
     t,
-  } = SessionsHook();
+  } = useSessions();
 
   if (isLoading) {
     return <SessionsSkeleton />;

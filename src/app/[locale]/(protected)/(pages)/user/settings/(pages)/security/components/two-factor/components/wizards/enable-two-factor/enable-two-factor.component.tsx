@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Components
 import {
   AlertDialog,
@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/dialog";
 import { Password } from "../../steps/password/password.component";
 // Hooks
-import { EnableTwoFactorHook } from "./hook/enable-two-factor.hook";
+import { useEnableTwoFactor } from "./hooks/use-enable-two-factor.hook";
 // Types
 import type { EnableTwoFactorProps } from "./types/enable-two-factor.component.types";
 
@@ -42,7 +42,7 @@ const EnableTwoFactor = ({ onOpenChange, open }: EnableTwoFactorProps) => {
     id,
     stepper,
     t,
-  } = EnableTwoFactorHook({
+  } = useEnableTwoFactor({
     onOpenChange,
   });
 

@@ -203,6 +203,10 @@
       "header": {
         "title": "Connected accounts",
         "description": "Manage how you sign in to your account."
+      },
+      "breadcrumb": {
+        "settings": "Settings",
+        "profile": "Connected Accounts"
       }
     }
   }

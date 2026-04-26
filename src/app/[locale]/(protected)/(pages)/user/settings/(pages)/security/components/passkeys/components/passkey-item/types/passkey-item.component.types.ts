@@ -1,3 +1,5 @@
+// Types
+import type { _Translator } from "next-intl";
 import type { UseFormReturn } from "react-hook-form";
 import type { Passkey } from "@better-auth/passkey";
 import type { PasskeySchema } from "../../../schemas/types/passkey.schema.types";
@@ -11,7 +13,7 @@ type PasskeyItemProps = {
   onStartRename: (passkey: Passkey) => void;
   onSubmit: (values: PasskeySchema) => void | Promise<void>;
   passkey: Passkey;
-  t: (key: string) => string;
+  t: _Translator;
 };
 
 export type { PasskeyItemProps };

@@ -1,6 +1,6 @@
-type SetPasswordHookProps = {
+﻿type UseSetPasswordProps = {
   onOpenChange: (open: boolean) => void;
   onSuccess: () => Promise<void>;
 };
 
-export type { SetPasswordHookProps };
+export type { UseSetPasswordProps };

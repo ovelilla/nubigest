@@ -1,4 +1,4 @@
-// Types
+﻿// Types
 import type { Dispatch, SetStateAction } from "react";
 import type { TotpSchema } from "../../schemas/types/authenticator.schema.types";
 import type { UseFormReturn } from "react-hook-form";
@@ -17,7 +17,7 @@ type TwoFactorHandlersReturn = {
   handleSubmit: (values: TotpSchema) => void;
 };
 
-type SubmitHandler = (props: {
+type HandleSubmit = (props: {
   form: UseFormReturn<TotpSchema>;
   router: ReturnType<typeof useRouter>;
   setLoading: Dispatch<SetStateAction<boolean>>;
@@ -26,4 +26,4 @@ type SubmitHandler = (props: {
   values: TotpSchema;
 }) => Promise<void>;
 
-export type { TwoFactorHandlersProps, TwoFactorHandlersReturn, SubmitHandler };
+export type { TwoFactorHandlersProps, TwoFactorHandlersReturn, HandleSubmit };

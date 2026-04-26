@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Components
 import { Complete } from "../../steps/complete/complete.component";
 import {
@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Password } from "../../steps/password/password.component";
 // Hooks
-import { DisableTwoFactorHook } from "./hook/disable-two-factor.hook";
+import { useDisableTwoFactor } from "./hooks/use-disable-two-factor.hook";
 // Types
 import type { DisableTwoFactorProps } from "./types/disable-two-factor.component.types";
 
@@ -24,7 +24,7 @@ const DisableTwoFactor = ({ onOpenChange, open }: DisableTwoFactorProps) => {
     id,
     stepper,
     t,
-  } = DisableTwoFactorHook({
+  } = useDisableTwoFactor({
     onOpenChange,
   });
 

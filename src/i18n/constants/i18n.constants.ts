@@ -84,6 +84,22 @@ const PATHNAMES = {
     es: "/usuario/ajustes/privacidad",
     ar: "/المستخدم/الإعدادات/الخصوصية",
   },
+  "/privacy-policy": {
+    es: "/politica-de-privacidad",
+    ar: "/سياسة-الخصوصية",
+  },
+  "/terms-of-service": {
+    es: "/terminos-de-servicio",
+    ar: "/شروط-الخدمة",
+  },
+  "/refund-policy": {
+    es: "/politica-de-reembolso",
+    ar: "/سياسة-الاسترداد",
+  },
+  "/cancellation-policy": {
+    es: "/politica-de-cancelacion",
+    ar: "/سياسة-الإلغاء",
+  },
 } as const;
 
 export { DEFAULT_LOCALE, LOCALES, PATHNAMES, RTL_LOCALES };

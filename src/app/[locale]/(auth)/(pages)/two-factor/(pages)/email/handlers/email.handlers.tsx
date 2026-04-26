@@ -1,4 +1,4 @@
-// Vendors
+﻿// Vendors
 import { toast } from "sonner";
 // Auth
 import { authClient } from "@/lib/auth-client";
@@ -7,13 +7,13 @@ import { DEFAULT_REDIRECT } from "@/constants/routes.constants";
 import { OTP_COOLDOWN_MS } from "../constants/email.constants";
 // Types
 import type {
-  ResendHandler,
+  HandleResend,
   EmailHandlersProps,
   EmailHandlersReturn,
-  SubmitHandler,
+  HandleSubmit,
 } from "./types/email.handlers.types";
 
-const resendHandler: ResendHandler = async ({
+const handleResend: HandleResend = async ({
   setLoadingEmail,
   startCooldown,
   tEmail,
@@ -48,7 +48,7 @@ const resendHandler: ResendHandler = async ({
   }
 };
 
-const submitHandler: SubmitHandler = async ({
+const handleSubmit: HandleSubmit = async ({
   form,
   router,
   setLoadingVerify,
@@ -96,9 +96,9 @@ const EmailHandlers = ({
 }: EmailHandlersProps): EmailHandlersReturn => {
   return {
     handleResend: () =>
-      resendHandler({ setLoadingEmail, startCooldown, tEmail, tTwoFactor }),
+      handleResend({ setLoadingEmail, startCooldown, tEmail, tTwoFactor }),
     handleSubmit: (values) =>
-      submitHandler({
+      handleSubmit({
         form,
         router,
         setLoadingVerify,

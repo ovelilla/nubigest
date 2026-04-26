@@ -1,13 +1,13 @@
-// Vendors
+﻿// Vendors
 import { toast } from "sonner";
 // Types
 import type {
   VerifyCodeHandlersProps,
   VerifyCodeHandlersReturn,
-  SubmitHandler,
+  HandleSubmit,
 } from "./types/verify-code.handlers.types";
 
-const submitHandler: SubmitHandler = async ({
+const handleSubmit: HandleSubmit = async ({
   data,
   form,
   onNext,
@@ -40,7 +40,7 @@ const VerifyCodeHandlers = ({
 }: VerifyCodeHandlersProps): VerifyCodeHandlersReturn => {
   return {
     handleSubmit: (data) =>
-      submitHandler({
+      handleSubmit({
         data,
         form,
         onNext,

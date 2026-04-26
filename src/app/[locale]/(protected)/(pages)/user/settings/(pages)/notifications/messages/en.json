@@ -4,6 +4,10 @@
       "header": {
         "title": "Notifications Settings",
         "description": "Manage your notifications settings and set preferences."
+      },
+      "breadcrumb": {
+        "settings": "Settings",
+        "profile": "Notifications"
       }
     }
   }

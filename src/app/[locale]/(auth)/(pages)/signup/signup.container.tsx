@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 // Vendors
 import { Controller } from "react-hook-form";
 // Components
@@ -26,10 +26,10 @@ import { SeparatorWithText } from "@/components/ui/separator-with-text";
 // Constants
 import { OAUTH_PROVIDERS } from "./constants/signup.constants";
 // Hooks
-import { SignUpHook } from "./hooks/signup.hook";
+import { useSignUp } from "./hooks/use-signup.hook";
 
 const SignUpContainer = () => {
-  const { form, handleOAuthClick, handleSubmit, loading, t } = SignUpHook();
+  const { form, handleOAuthClick, handleSubmit, loading, t } = useSignUp();
 
   return (
     <AuthCard>

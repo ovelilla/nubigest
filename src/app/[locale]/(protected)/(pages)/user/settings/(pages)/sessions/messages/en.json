@@ -85,6 +85,10 @@
       "header": {
         "title": "Session Settings",
         "description": "Manage your active sessions and security."
+      },
+      "breadcrumb": {
+        "settings": "Settings",
+        "profile": "Sessions"
       }
     }
   }

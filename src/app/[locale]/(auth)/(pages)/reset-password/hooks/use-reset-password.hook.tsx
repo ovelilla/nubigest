@@ -1,0 +1,52 @@
+﻿// Vendors
+import { useForm } from "react-hook-form";
+import { useRouter } from "@/i18n/navigation";
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { zodResolver } from "@hookform/resolvers/zod";
+// Constants
+import { DEFAULT_VALUES } from "../constants/reset-password.constants";
+// Handlers
+import { ResetPasswordHandlers } from "../handlers/reset-password.handlers";
+// Schemas
+import { getResetPasswordSchema } from "../schemas/reset-password.schema";
+// Types
+import type { UseResetPasswordProps } from "./types/reset-password.hook.types";
+import type { ResetPasswordSchema } from "../schemas/types/reset-password.schema.types";
+
+const useResetPassword = ({ error, token }: UseResetPasswordProps) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const tResetPassword = useTranslations("resetPassword");
+  const tErrors = useTranslations("root.errors");
+
+  const router = useRouter();
+
+  const resetPasswordSchema = getResetPasswordSchema(tResetPassword);
+
+  const form = useForm<ResetPasswordSchema>({
+    resolver: zodResolver(resetPasswordSchema),
+    defaultValues: DEFAULT_VALUES,
+  });
+
+  const isInvalidToken = !token || error === "INVALID_TOKEN";
+
+  const { handleSubmit } = ResetPasswordHandlers({
+    form,
+    router,
+    setLoading,
+    tErrors,
+    tResetPassword,
+    token,
+  });
+
+  return {
+    form,
+    handleSubmit,
+    isInvalidToken,
+    loading,
+    t: tResetPassword,
+  };
+};
+
+export { useResetPassword };

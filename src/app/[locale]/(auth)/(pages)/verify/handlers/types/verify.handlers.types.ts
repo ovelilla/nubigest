@@ -1,8 +1,8 @@
-// Types
+﻿// Types
 import type { Dispatch, SetStateAction } from "react";
 import type { _Translator } from "next-intl";
 
-type ResendHandler = (props: {
+type HandleResend = (props: {
   email: string;
   startCooldown: (seconds: number) => void;
   setLoading: Dispatch<SetStateAction<boolean>>;
@@ -22,4 +22,4 @@ type VerifyHandlersReturn = {
   handleResend: () => void;
 };
 
-export type { ResendHandler, VerifyHandlersProps, VerifyHandlersReturn };
+export type { HandleResend, VerifyHandlersProps, VerifyHandlersReturn };

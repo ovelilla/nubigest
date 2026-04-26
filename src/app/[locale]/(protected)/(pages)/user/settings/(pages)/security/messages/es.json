@@ -35,7 +35,7 @@
           },
           "passkey": {
             "title": "Clave de acceso sin nombre",
-            "description": "Esta clave de acceso puede utilizarse para iniciar sesión en tu cuenta.",
+            "description": "Añadida el {createdAt, date, medium}.",
             "actions": {
               "renameButton": {
                 "label": "Renombrar"
@@ -444,6 +444,10 @@
       "header": {
         "title": "Configuración de seguridad",
         "description": "Gestiona tus ajustes de seguridad y define tus preferencias."
+      },
+      "breadcrumb": {
+        "settings": "Ajustes",
+        "profile": "Seguridad"
       }
     }
   }

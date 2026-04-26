@@ -1,4 +1,4 @@
-// Vendors
+﻿// Vendors
 import QRCode from "react-qr-code";
 // Components
 import { ButtonCopy } from "@/components/ui/button-copy.component";
@@ -13,7 +13,7 @@ import {
   StepTitle,
 } from "@/components/step/step.component";
 // Hooks
-import { ScanQrCodeHook } from "./hooks/scan-qr-code.hook";
+import { useScanQrCode } from "./hooks/use-scan-qr-code.hook";
 // Types
 import type { ScanQrCodeProps } from "./types/scan-qr-code.component.types";
 
@@ -23,7 +23,7 @@ const ScanQrCode = ({
   title,
   totpUri,
 }: ScanQrCodeProps) => {
-  const { formattedSecret, secret, t } = ScanQrCodeHook({ totpUri });
+  const { formattedSecret, secret, t } = useScanQrCode({ totpUri });
 
   return (
     <Step>

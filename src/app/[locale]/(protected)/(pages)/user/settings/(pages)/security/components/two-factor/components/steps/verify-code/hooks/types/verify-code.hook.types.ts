@@ -1,11 +1,11 @@
-// Types
+﻿// Types
 import type { TotpSchema } from "../../schemas/types/verify-code.schema.types";
 
-type VerifyCodeHookProps = {
+type UseVerifyCodeProps = {
   onNext: (data: TotpSchema) => Promise<{
     code: string;
     status: number;
   }>;
 };
 
-export type { VerifyCodeHookProps };
+export type { UseVerifyCodeProps };

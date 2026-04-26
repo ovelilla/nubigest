@@ -1,6 +1,6 @@
-type BackupCodesHookProps = {
+﻿type UseBackupCodesProps = {
   acknowledged?: boolean;
   onAcknowledgedChange?: (checked: boolean) => void;
 };
 
-export type { BackupCodesHookProps };
+export type { UseBackupCodesProps };

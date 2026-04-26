@@ -1,4 +1,4 @@
-// Vendors
+﻿// Vendors
 import { Link } from "@/i18n/navigation";
 // Components
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -14,14 +14,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Spinner } from "@/components/ui/spinner";
 // Hooks
-import { UserNavHook } from "./hooks/user-nav.hook";
+import { useUserNav } from "./hooks/use-user-nav.hook";
 // Icons
 import { LogOut, Settings } from "lucide-react";
 // Types
 import type { UserNavProps } from "./types/user-nav.component.types";
 
 const UserNav = ({ session }: UserNavProps) => {
-  const { handleSignOut, isSigningOut, t } = UserNavHook();
+  const { handleSignOut, isSigningOut, t } = useUserNav();
 
   const email = session.user.email;
   const name = session.user.name;

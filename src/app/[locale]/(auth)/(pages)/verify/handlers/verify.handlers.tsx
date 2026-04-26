@@ -1,4 +1,4 @@
-// Vendors
+﻿// Vendors
 import { toast } from "sonner";
 // Auth
 import { authClient } from "@/lib/auth-client";
@@ -7,14 +7,14 @@ import { DEFAULT_REDIRECT } from "@/constants/routes.constants";
 import { VERIFY_COOLDOWN_MS } from "../constants/verify.constants";
 // Types
 import type {
-  ResendHandler,
+  HandleResend,
   VerifyHandlersProps,
   VerifyHandlersReturn,
 } from "./types/verify.handlers.types";
 // Utils
 import { getRetryAfter } from "@/utils/auth/get-retry-after/get-retry-after.util";
 
-const resendHandler: ResendHandler = async ({
+const handleResend: HandleResend = async ({
   email,
   startCooldown,
   setLoading,
@@ -67,7 +67,7 @@ const VerifyHandlers = ({
 }: VerifyHandlersProps): VerifyHandlersReturn => {
   return {
     handleResend: () =>
-      resendHandler({ email, startCooldown, setLoading, tErrors, tVerify }),
+      handleResend({ email, startCooldown, setLoading, tErrors, tVerify }),
   };
 };
 

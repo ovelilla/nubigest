@@ -35,7 +35,7 @@
           },
           "passkey": {
             "title": "Unnamed passkey",
-            "description": "This passkey can be used to sign in to your account.",
+            "description": "Added on {createdAt, date, medium}.",
             "actions": {
               "renameButton": {
                 "label": "Rename"
@@ -444,6 +444,10 @@
       "header": {
         "title": "Security Settings",
         "description": "Manage your security settings and set preferences."
+      },
+      "breadcrumb": {
+        "settings": "Settings",
+        "profile": "Security"
       }
     }
   }

@@ -1,4 +1,4 @@
-// Components
+﻿// Components
 import {
   Step,
   StepContent,
@@ -9,12 +9,12 @@ import {
   StepTitle,
 } from "@/components/step/step.component";
 // Hooks
-import { CompleteHook } from "./hooks/complete.hook";
+import { useComplete } from "./hooks/use-complete.hook";
 // Types
 import type { CompleteProps } from "./types/complete.component.types";
 
 const Complete = ({ children, description, onDone, title }: CompleteProps) => {
-  const { t } = CompleteHook();
+  const { t } = useComplete();
   return (
     <Step>
       {(description || title) && (

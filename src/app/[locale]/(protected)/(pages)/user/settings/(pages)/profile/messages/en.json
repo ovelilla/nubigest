@@ -278,6 +278,10 @@
       "header": {
         "title": "Profile Settings",
         "description": "Manage your profile settings and set preferences."
+      },
+      "breadcrumb": {
+        "settings": "Settings",
+        "profile": "Profile"
       }
     }
   }

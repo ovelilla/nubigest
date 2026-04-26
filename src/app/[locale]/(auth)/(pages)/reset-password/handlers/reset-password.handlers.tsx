@@ -1,4 +1,4 @@
-// Vendors
+﻿// Vendors
 import { toast } from "sonner";
 // Auth
 import { authClient } from "@/lib/auth-client";
@@ -6,10 +6,10 @@ import { authClient } from "@/lib/auth-client";
 import type {
   ResetPasswordHandlersProps,
   ResetPasswordHandlersReturn,
-  SubmitHandler,
+  HandleSubmit,
 } from "./types/reset-password.handlers.types";
 
-const submitHandler: SubmitHandler = async ({
+const handleSubmit: HandleSubmit = async ({
   form,
   router,
   setLoading,
@@ -56,7 +56,7 @@ const ResetPasswordHandlers = ({
 }: ResetPasswordHandlersProps): ResetPasswordHandlersReturn => {
   return {
     handleSubmit: (values) =>
-      submitHandler({
+      handleSubmit({
         form,
         router,
         setLoading,

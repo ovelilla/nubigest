@@ -1,4 +1,4 @@
-// Components
+﻿// Components
 import { Button } from "@/components/ui/button";
 import { ButtonCopy } from "@/components/ui/button-copy.component";
 import { ButtonDownload } from "@/components/ui/button-download.component";
@@ -17,7 +17,7 @@ import {
   StepTitle,
 } from "@/components/step/step.component";
 // Hooks
-import { BackupCodesHook } from "./hooks/backup-codes.hook";
+import { useBackupCodes } from "./hooks/use-backup-codes.hook";
 // Types
 import type { BackupCodesProps } from "./types/backup-codes.component.types";
 
@@ -37,7 +37,7 @@ const BackupCodes = ({
     handleDownloadSuccess,
     showAcknowledgement,
     t,
-  } = BackupCodesHook({
+  } = useBackupCodes({
     acknowledged,
     onAcknowledgedChange,
   });

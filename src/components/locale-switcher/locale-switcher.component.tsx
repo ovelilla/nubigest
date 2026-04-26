@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -9,11 +9,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LOCALES } from "./constants/locale-switcher.constants";
-import { LocaleSwitcherHook } from "./hooks/locale-switcher.hook";
+import { useLocaleSwitcher } from "./hooks/use-locale-switcher.hook";
 import { ChevronDown, Globe, Loader2 } from "lucide-react";
 
 const LocaleSwitcher = () => {
-  const { handleSwitchLocale, isPending, locale, t } = LocaleSwitcherHook();
+  const { handleSwitchLocale, isPending, locale, t } = useLocaleSwitcher();
 
   return (
     <DropdownMenu>

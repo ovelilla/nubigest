@@ -1,5 +1,5 @@
-type ScanQrCodeHookProps = {
+﻿type UseScanQrCodeProps = {
   totpUri: string | null;
 };
 
-export type { ScanQrCodeHookProps };
+export type { UseScanQrCodeProps };

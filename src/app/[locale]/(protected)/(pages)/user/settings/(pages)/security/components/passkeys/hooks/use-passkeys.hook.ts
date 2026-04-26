@@ -1,6 +1,6 @@
-// Vendors
+﻿// Vendors
 import { useForm } from "react-hook-form";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -35,7 +35,7 @@ const usePasskeys = () => {
   const hasSession = !!sessionData?.user;
   const userId = sessionData?.user.id;
 
-  const passkeySchema = useMemo(() => getPasskeySchema(t), [t]);
+  const passkeySchema = getPasskeySchema(t);
 
   const form = useForm<PasskeySchema>({
     resolver: zodResolver(passkeySchema),
@@ -47,6 +47,8 @@ const usePasskeys = () => {
     enabled: hasSession,
     queryFn: listUserPasskeys,
   });
+
+  console.log("passkeys", passkeys);
 
   const hasPasskeys = passkeys.length > 0;
 

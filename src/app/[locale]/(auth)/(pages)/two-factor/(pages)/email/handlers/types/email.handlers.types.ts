@@ -1,11 +1,11 @@
-// Types
+﻿// Types
 import type { Dispatch, SetStateAction } from "react";
 import type { OtpSchema } from "../../schemas/types/email.schema.types";
 import type { UseFormReturn } from "react-hook-form";
 import type { _Translator } from "next-intl";
 import type { useRouter } from "@/i18n/navigation";
 
-type ResendHandler = (props: {
+type HandleResend = (props: {
   setLoadingEmail: Dispatch<SetStateAction<boolean>>;
   startCooldown: (seconds: number) => void;
   tEmail: _Translator;
@@ -27,7 +27,7 @@ type EmailHandlersReturn = {
   handleSubmit: (values: OtpSchema) => void;
 };
 
-type SubmitHandler = (props: {
+type HandleSubmit = (props: {
   form: UseFormReturn<OtpSchema>;
   router: ReturnType<typeof useRouter>;
   setLoadingVerify: Dispatch<SetStateAction<boolean>>;
@@ -37,8 +37,8 @@ type SubmitHandler = (props: {
 }) => Promise<void>;
 
 export type {
-  ResendHandler,
+  HandleResend,
   EmailHandlersProps,
   EmailHandlersReturn,
-  SubmitHandler,
+  HandleSubmit,
 };
