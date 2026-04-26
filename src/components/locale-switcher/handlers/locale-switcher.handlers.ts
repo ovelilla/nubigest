@@ -1,16 +1,16 @@
 // Types
 import {
   LocaleSwitcherHandlersProps,
-  SwitchLocaleHandlerProps,
+  HandleSwitchLocaleProps,
 } from "./types/locale-switcher.handlers.types";
 
-const switchLocaleHandler = ({
+const handleSwitchLocale = ({
   locale,
   params,
   pathname,
   router,
   startTransition,
-}: SwitchLocaleHandlerProps) => {
+}: HandleSwitchLocaleProps) => {
   startTransition(() => {
     // @ts-expect-error -- TypeScript will validate that only known `params`
     // are used in combination with a given `pathname`. Since the two will
@@ -26,7 +26,7 @@ const LocaleSwitcherHandlers = ({
   startTransition,
 }: LocaleSwitcherHandlersProps) => ({
   handleSwitchLocale: (locale: string) =>
-    switchLocaleHandler({
+    handleSwitchLocale({
       locale,
       params,
       pathname,

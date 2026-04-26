@@ -11,11 +11,11 @@ type LocaleSwitcherHandlersProps = {
   startTransition: TransitionStartFunction;
 };
 
-type SwitchLocaleHandlerProps = Pick<
+type HandleSwitchLocaleProps = Pick<
   LocaleSwitcherHandlersProps,
   "params" | "pathname" | "router" | "startTransition"
 > & {
   locale: string;
 };
 
-export type { LocaleSwitcherHandlersProps, SwitchLocaleHandlerProps };
+export type { LocaleSwitcherHandlersProps, HandleSwitchLocaleProps };

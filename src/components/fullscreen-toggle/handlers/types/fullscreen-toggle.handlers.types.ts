@@ -5,9 +5,9 @@ type FullscreenToggleHandlersProps = {
   setIsFullscreen: Dispatch<SetStateAction<boolean>>;
 };
 
-type FullscreenChangeHandlerProps = Pick<
+type HandleFullscreenChangeProps = Pick<
   FullscreenToggleHandlersProps,
   "setIsFullscreen"
 >;
 
-export type { FullscreenToggleHandlersProps, FullscreenChangeHandlerProps };
+export type { FullscreenToggleHandlersProps, HandleFullscreenChangeProps };

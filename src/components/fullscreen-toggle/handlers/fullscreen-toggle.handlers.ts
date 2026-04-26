@@ -1,27 +1,28 @@
 // Types
 import {
   FullscreenToggleHandlersProps,
-  FullscreenChangeHandlerProps,
+  HandleFullscreenChangeProps,
 } from "./types/fullscreen-toggle.handlers.types";
 
-const toggleFullscreenHandler = () => {
+const handleToggleFullscreen = () => {
   if (document.fullscreenElement) {
     document.exitFullscreen();
   } else {
     document.documentElement.requestFullscreen();
   }
 };
-const fullscreenChangeHandler = ({
+
+const handleFullscreenChange = ({
   setIsFullscreen,
-}: FullscreenChangeHandlerProps) => {
+}: HandleFullscreenChangeProps) => {
   setIsFullscreen(Boolean(document.fullscreenElement));
 };
 
 const FullscreenToggleHandlers = ({
   setIsFullscreen,
 }: FullscreenToggleHandlersProps) => ({
-  handleToggleFullscreen: () => toggleFullscreenHandler(),
-  handleFullscreenChange: () => fullscreenChangeHandler({ setIsFullscreen }),
+  handleToggleFullscreen: () => handleToggleFullscreen(),
+  handleFullscreenChange: () => handleFullscreenChange({ setIsFullscreen }),
 });
 
 export { FullscreenToggleHandlers };
