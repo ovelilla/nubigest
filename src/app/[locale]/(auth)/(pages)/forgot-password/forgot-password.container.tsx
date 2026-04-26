@@ -15,7 +15,7 @@ import { Field, FieldLabel, FieldError, FieldSet } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Link } from "@/components/ui/link";
 // Hooks
-import { useForgotPassword } from "./hooks/use-forgot-use-password.hook";
+import { useForgotPassword } from "./hooks/use-forgot-password.hook";
 
 const ForgotPasswordContainer = () => {
   const { form, handleSubmit, loading, t } = useForgotPassword();
